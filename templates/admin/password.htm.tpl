@@ -1,9 +1,9 @@
-<!-- (c) 2005-2020 by Martin Willisegger -->
+<!-- (c) 2005-2023 by Martin Willisegger -->
 <!-- -->
 <!-- Project   : NagiosQL -->
 <!-- Component : Password template -->
 <!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
-<!-- Version   : 3.4.1 -->
+<!-- Version   : 3.5.0 -->
 <!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
 <!-- BEGIN passwordsite -->
 <div id="content_main">
@@ -15,9 +15,6 @@
             this.location.href = "{ACTION_INSERT}";
         }
         // Send form
-        /**
-         * @return {boolean}
-         */
         function LockButton() {
             if (checkForm() === false) {
                 return false;
@@ -41,13 +38,13 @@
                 msginit(msg1,header,1);
                 return false;
             }
-            // Are the passwords not equal
+            // The passwords are not equal
             if(form.tfValue2.value !== form.tfValue3.value)  {
                 msginit(msg2,header,1);
                 form.tfValue2.focus();
                 return false;
             }
-            // Is the new passord too short
+            // The new passord is too short
             if((form.tfValue2.value !== "") && (form.tfValue2.value.length <= 5)) {
                 msginit(msg3,header,1);
                 form.tfValue2.focus();
