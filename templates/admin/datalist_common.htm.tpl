@@ -12,7 +12,7 @@
     <script type="text/javascript">
         // Action icons
         function actionPic(modus,id,name) {
-            if(id !== '') {
+            if (id !== '') {
                 document.frmDatalist.hidModify.value = modus;
                 document.frmDatalist.hidListId.value = id;
                 if ((document.frmDatalist.hidModify.value === "delete") && (name === "Admin")) {

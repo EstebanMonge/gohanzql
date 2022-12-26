@@ -757,18 +757,20 @@ class NagDataClass
     public function dataDeleteEasy(string $strTableName, int $intDataId = 0): int
     {
         /* Define variables */
-        $strNoDelete = '';
+        $strNoDelete1 = '';
+        $strNoDelete2 = '';
         $intReturn = 0;
         $arrData = array();
         /* Special rule for tables with "nodelete" cells */
         if (($strTableName === 'tbl_datadomain') || ($strTableName === 'tbl_configtarget') ||
             ($strTableName === 'tbl_user')) {
-            $strNoDelete = "AND `nodelete` <> '1'";
+            $strNoDelete1 = "AND `nodelete` <> '1'";
+            $strNoDelete2 = "WHERE `nodelete` <> '1'";
         }
         /* Delete a single data set */
         if ($intDataId !== 0) {
             /** @noinspection SqlResolve */
-            $strSQL = 'DELETE FROM `' . $strTableName . "` WHERE `id` = $intDataId $strNoDelete";
+            $strSQL = 'DELETE FROM `' . $strTableName . "` WHERE `id` = $intDataId $strNoDelete1";
             $booReturn = $this->myDBClass->insertData($strSQL);
             if ($booReturn === false) {
                 $this->processClassMessage(translate('Delete failed because a database error:') .
@@ -788,8 +790,8 @@ class NagDataClass
             /* Delete data sets based on form POST parameter */
         } else {
             /** @noinspection SqlResolve */
-            $strSQL = 'SELECT `id` FROM `' . $strTableName . '`';
-            $strSQL .= $strNoDelete;
+            $strSQL = 'SELECT `id` FROM `' . $strTableName . '` ';
+            $strSQL .= $strNoDelete2;
             $booReturn = $this->myDBClass->hasDataArray($strSQL, $arrData, $intDataCount);
             if ($booReturn && ($intDataCount !== 0)) {
                 $intDeleteCount = 0;
