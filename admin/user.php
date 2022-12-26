@@ -27,7 +27,7 @@ use functions\NagVisualClass;
  * @var NagContentClass $myContentClass NagiosQL content class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  * @var string $chkModus from prepend_adm.php -> Form work mode
- * @var string $chkDataId from prepend_adm.php -> Actual dataset id
+ * @var int $chkDataId from prepend_adm.php -> Actual dataset id
  * @var string $chkSelModify from prepend_adm.php -> Modification selection value
  * @var int $hidSortBy from prepend_adm.php -> Sort data by
  * @var string $hidSortDir from prepend_adm.php -> Sort data direction (ASC, DESC)
@@ -64,7 +64,6 @@ $preKeyField = 'username';
 $preAccess = 1;
 $preFieldvars = 1;
 $preNoAccessGrp = 1;
-$intLineCount = 0;
 $strErrorMessage = '';
 $strInfoMessage = '';
 $strConsistMessage = '';
@@ -210,6 +209,7 @@ if ($chkModus === 'display') {
         $strOrderString = "ORDER BY `alias` $hidSortDir";
     }
     /* Count datasets */
+    $intLineCount = 0;
     /** @noinspection SqlResolve */
     $strSQL = "SELECT count(*) AS `number` FROM `$preTableName`";
     $booReturn1 = $myDBClass->hasSingleDataset($strSQL, $arrDataLinesCount);
@@ -223,8 +223,8 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL     = "SELECT `id`, `$preKeyField`, `alias`, `active`, `nodelete` "
-                . "FROM `$preTableName` $strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+    $strSQL = "SELECT `id`, `$preKeyField`, `alias`, `active`, `nodelete` "
+        . "FROM `$preTableName` $strOrderString LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn2 = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     if ($booReturn2 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

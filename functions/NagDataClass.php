@@ -1069,7 +1069,7 @@ class NagDataClass
         $arrData = array();
         $arrDataCheck = array();
         $intReturn = $this->fullTableRelations($strTable, $arrRelations);
-        if ($intReturn === 1) {
+        if (($intReturn === 1) && ($intMasterId !== 0)) {
             /* Get master field data */
             $strNewMasterfield = str_replace(',', '`,`', $strMasterfield);
             $strSQL = 'SELECT `' . $strNewMasterfield . '` FROM `' . $strTable . "` WHERE `id` = $intMasterId";
