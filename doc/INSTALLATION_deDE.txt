@@ -4,12 +4,12 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 //
-// (c) 2005-2020 by Martin Willisegger
+// (c) 2005-2022 by Martin Willisegger
 //
 // Project   : NagiosQL
 // Component : Installations HowTo
 // Website   : https://sourceforge.net/projects/nagiosql/
-// Version   : 3.4.1
+// Version   : 3.5.0
 // GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@
   * Webserver z.B. Apache 2.x
   * MySQL/MariaDB 5.x oder neuer
   * Nagios 2.x/3.x/4.x oder Nagios kompatible Monitoringsoftware
-	* PHP 5.5.0 oder groesser, inklusive:
+	* PHP 7.2.0 oder groesser, inklusive:
     * PHP Module: Session
     * PHP Module: MySQLi
     * PHP Module: gettext
@@ -35,7 +35,7 @@
 = Neuinstallation =
 ===================
 
-  1. Download und entpacken von NagiosQL 3.4 in einem Apache zugaenglichen Verzeichnis.
+  1. Download und entpacken von NagiosQL 3.5 in einem Apache zugaenglichen Verzeichnis.
   2. Der Installationsassistent wird automatisch durch Eingabe von install/index.php gestartet.
   3. Die gewuenschte Sprache auswaehlen (siehe Appendix 2.)
   4. Zum Installieren von NagiosQL den Anweisungen folgen.
@@ -47,11 +47,11 @@
   1. Aktualisierungen von NagiosQL 1.x und 2.x sind leider nicht moeglich, bitte einfach eine neue Installation starten und
      dann die Nagios Konfiguration durch den Import einbinden.
   2. Aktualisierungen von NagiosQL 3.x
-    a. Download und entpacken von NagiosQL 3.4 in ein NEUES Apache zugaenglichen Verzeichnis (DocumentRoot auf neues Verzeichnis
+    a. Download und entpacken von NagiosQL 3.5 in ein NEUES Apache zugaenglichen Verzeichnis (DocumentRoot auf neues Verzeichnis
 	   aendern)
 	b. Wird dieselbe Apachekonfiguration verwendet (altes NagiosQL Verzeichnis wegkopieren, neues NagiosQL Verzeichnis bekommt
 	   denselben Namen), sollte der Apache Demon vor dem Upgrade neu gestartet werden.
-    c. Verschiebe die alte config/settings.php Datei in das neue NagiosQL 3.4 Verzeichnis config/
+    c. Verschiebe die alte config/settings.php Datei in das neue NagiosQL 3.5 Verzeichnis config/
 	d. Die alte Datenbank manuell sichern (z.Bsp. mit mysqldump)
     e. Der Installationsassistent wird durch den Aufruf von install/index.php gestartet
     f. Die gewuenschte Sprache waehlen (siehe auch Appendix 1.) und den Anweisungen folgen

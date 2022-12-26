@@ -801,6 +801,7 @@ class NagConfigClass
     public function lastModifiedFile(string $strTableName, array &$arrTimeData = null, string &$strCheckConfig = null): int
     {
         /* Variable definitions */
+        /** @noinspection PhpUnusedLocalVariableInspection */
         $intEnableCommon = 0;
         $arrDataset = array();
         $strFileName = '';

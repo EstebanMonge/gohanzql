@@ -44,8 +44,6 @@ use functions\NagVisualClass;
  * @var int $chkDataId - from prepend_adm.php
  * @var int $chkListId - from prepend_adm.php
  * @var int $intGlobalWriteAccess - from prepend_adm.php
- *
- *
  */
 /*
 Define common variables

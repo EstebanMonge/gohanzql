@@ -1,9 +1,9 @@
-<!-- (c) 2005-2020 by Martin Willisegger -->
+<!-- (c) 2005-2022 by Martin Willisegger -->
 <!-- -->
 <!-- Project   : NagiosQL -->
 <!-- Component : host template -->
 <!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
-<!-- Version   : 3.4.1 -->
+<!-- Version   : 3.5.0 -->
 <!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
 <!-- BEGIN datainsert -->
 <div id="content_main">
@@ -274,7 +274,7 @@
                         </tr>
                         <tr>
                             <td>$ARG1$&nbsp;<img src="{IMAGE_PATH}tip.gif" alt="{LANG_HELP}" title="{LANG_HELP}" width="18" height="18" onclick="dialoginit('cmd_arguments',getCommandValue(),'1','Argument Info');" class="infobutton_1"  style="vertical-align: middle;margin-bottom: 2px;"></td>
-                            <td><input title="$ARG1$" name="tfArg1" type="text" id="tfArg1" value="{DAT_ARG1}" tabindex="8")"></td>
+                            <td><input title="$ARG1$" name="tfArg1" type="text" id="tfArg1" value="{DAT_ARG1}" tabindex="8"></td>
                             <td><img src="{IMAGE_PATH}tip.gif" alt="{LANG_HELP}" title="{LANG_HELP}" width="18" height="18" onclick="dialoginit('host','arguments','all','Info');" class="infobutton_1"></td>
                             <td>$ARG5$&nbsp;<img src="{IMAGE_PATH}tip.gif" alt="{LANG_HELP}" title="{LANG_HELP}" width="18" height="18" onclick="dialoginit('cmd_arguments',getCommandValue(),'5','Argument Info');" class="infobutton_1"  style="vertical-align: middle;margin-bottom: 2px;"></td>
                             <td colspan="2"><input title="$ARG5$" name="tfArg5" type="text" id="tfArg5" value="{DAT_ARG5}" tabindex="12"></td>
