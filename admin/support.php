@@ -375,9 +375,9 @@ if ($intConfigId !== 0) {
                 $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('ok'));
                 $intDemonOk = 0;
             } else {
-                $conttp->setVariable('CHECK_NAG_LOCK_CLASS', 'checkred');
-                $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('failed') . ' ('
-                    . translate('file is missed') . ')');
+                $conttp->setVariable('CHECK_NAG_LOCK_CLASS', 'checkorange');
+                $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('ok') . ' ('
+                    . translate('file is missed or not used') . ')');
                 $intDemonOk = 1;
             }
         } else {
@@ -407,8 +407,8 @@ if ($intConfigId !== 0) {
             $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('ok'));
             $intDemonOk = 0;
         } elseif (($intBinary === 0) && ($intPid === 1)) {
-            $conttp->setVariable('CHECK_NAG_LOCK_CLASS', 'checkred');
-            $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('failed'). ' (' .translate('file is missed'). ')');
+            $conttp->setVariable('CHECK_NAG_LOCK_CLASS', 'checkorange');
+            $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('ok'). ' (' .translate('file is missed or not used'). ')');
             $intDemonOk = 1;
         } else {
             $conttp->setVariable('CHECK_NAG_LOCK_CLASS', 'checkred');
