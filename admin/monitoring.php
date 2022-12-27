@@ -14,10 +14,10 @@ use functions\MysqliDbClass;
 use functions\NagVisualClass;
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
- * @var NagVisualClass $myVisClass
- * @var MysqliDbClass $myDBClass
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var MysqliDbClass $myDBClass MySQL database class
+ * @var NagVisualClass $myVisClass Visual content class
  * @var int $chkDomainId from prepend_adm.php
  * @var string $setFileVersion from prepend_adm.php
  */

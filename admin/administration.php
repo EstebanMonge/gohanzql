@@ -12,9 +12,9 @@
 -----------------------------------------------------------------------------*/
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
- * @var string $setFileVersion from prepend_adm.php
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
  */
 /*
 Path settings
