@@ -26,13 +26,13 @@ use functions\NagVisualClass;
  * @var NagDataClass $myDataClass NagiosQL data class
  * @var NagContentClass $myContentClass NagiosQL content class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var int $chkActive from prepend_adm.php -> Active checkbox
  * @var string $chkModus from prepend_adm.php -> Form work mode
  * @var int $chkDataId from prepend_adm.php -> Actual dataset id
  * @var string $chkSelModify from prepend_adm.php -> Modification selection value
  * @var int $hidSortBy from prepend_adm.php -> Sort data by
  * @var string $hidSortDir from prepend_adm.php -> Sort data direction (ASC, DESC)
  * @var int $chkLimit from prepend_adm.php / settings -> Data set count per page
- * @var int $chkActive from prepend_adm.php -> Active checkbox
  * @var array $SETS Settings array
  * @var int $intGlobalWriteAccess from prepend_content.php -> Global admin write access
  * @var int $intWriteAccessId from prepend_content.php -> Admin write access to actual dataset id

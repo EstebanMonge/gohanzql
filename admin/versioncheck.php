@@ -1,54 +1,58 @@
 <?php
-///////////////////////////////////////////////////////////////////////////////
-//
-// NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// (c) 2005-2020 by Martin Willisegger
-//
-// Project   : NagiosQL
-// Component : Online version check
-// Website   : https://sourceforge.net/projects/nagiosql/
-// Version   : 3.4.1
-// GIT Repo  : https://gitlab.com/wizonet/NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// Path settings
-// ===================
+/* ----------------------------------------------------------------------------
+ NagiosQL
+-------------------------------------------------------------------------------
+ (c) 2005-2023 by Martin Willisegger
+
+ Project   : NagiosQL
+ Component : Online version check
+ Website   : https://sourceforge.net/projects/nagiosql/
+ Version   : 3.5.0
+ GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+-----------------------------------------------------------------------------*/
+
+/**
+ * Class and variable includes
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var string $setGITVersion from prepend_adm.php -> Application version string - GIT version
+ * @var array $SETS Settings array
+ */
+/*
+Path settings
+*/
 $strPattern = '(admin/[^/]*.php)';
-$preRelPath  = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
-$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME', FILTER_SANITIZE_STRING));
-//
-// Define common variables
-// =======================
+$preRelPath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF'));
+$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'));
+/*
+Define common variables
+*/
 $preNoMain = 1;
-$chkShow   = filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
-//
-// Include preprocessing file
-// ==========================
-require $preBasePath.'functions/prepend_adm.php';
+$chkShow = filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
+/*
+Include preprocessing file
+*/
+require $preBasePath . 'functions/prepend_adm.php';
 $strCommandLine = '&nbsp;';
-$intCount       = 0;
-//
-// Get database values
-// ===================
-if ($chkShow == 1) {
-    $versionfeed = 'http://api.wizonet.ch/nagiosql/versioncheck.php?myversion=' .urlencode($setFileVersion).'&mygit='
-                    .urlencode($setGITVersion);
-    $strError     = '';
-    if ((isset($SETS['network']['proxy']) && ($SETS['network']['proxy'] == '1')) &&
-        (isset($SETS['network']['proxyserver']) && ($SETS['network']['proxyserver'] != ''))) {
-        if ((isset($SETS['network']['proxyuser']) && ($SETS['network']['proxyuser'] != '')) &&
-            (isset($SETS['network']['proxypasswd']) && ($SETS['network']['proxypasswd'] != ''))) {
-            $strProxyAuth = base64_encode($SETS['network']['proxyuser']. ':' .$SETS['network']['proxypasswd']);
+$intCount = 0;
+/*
+Get database values
+*/
+if ($chkShow === 1) {
+    /** @noinspection HttpUrlsUsage */
+    $versionfeed = 'http://api.wizonet.ch/nagiosql/versioncheck.php?myversion=' . urlencode($setFileVersion) . '&mygit='
+        . urlencode($setGITVersion);
+    $strError = '';
+    if (isset($SETS['network']['proxy'], $SETS['network']['proxyserver']) && ($SETS['network']['proxy'] === '1') &&
+        ($SETS['network']['proxyserver'] !== '')) {
+        if (isset($SETS['network']['proxyuser'], $SETS['network']['proxypasswd']) && ($SETS['network']['proxyuser'] !== '')
+            && ($SETS['network']['proxypasswd'] !== '')) {
+            $strProxyAuth = base64_encode($SETS['network']['proxyuser'] . ':' . $SETS['network']['proxypasswd']);
             $aContext = array(
                 'http' => array(
-                'proxy' => 'tcp://'.$SETS['network']['proxyserver'],
-                'request_fulluri' => true,
-                'header' => "Proxy-Authorization: Basic $strProxyAuth",
-                'timeout' => 1,
+                    'proxy' => 'tcp://' . $SETS['network']['proxyserver'],
+                    'request_fulluri' => true,
+                    'header' => "Proxy-Authorization: Basic $strProxyAuth",
+                    'timeout' => 1,
                 ),
             );
         } else {
@@ -63,72 +67,68 @@ if ($chkShow == 1) {
         $intErrorReporting = error_reporting();
         error_reporting(0);
         $cxContext = stream_context_create($aContext);
-        $arrFile   = file($versionfeed, false, $cxContext);
-        $arrError  = error_get_last();
-        error_reporting($intErrorReporting);
-        if ($arrError['message'] != '') {
-            $strError .= utf8_encode($arrError['message']). ' (' .translate('check proxy settings'). ')';
-        }
     } else {
         $intErrorReporting = error_reporting();
         error_reporting(0);
         $cxContext = stream_context_create(array('http' => array('timeout' => 1)));
-        $arrFile   = file($versionfeed, false, $cxContext);
-        $arrError  = error_get_last();
-        error_reporting($intErrorReporting);
-        if ($arrError['message'] != '') {
-            $strError .= utf8_encode($arrError['message']). ' (' .translate('check proxy settings'). ')';
-        }
     }
-    $strInstalled   = translate('Installed');
-    $strAvailable   = translate('Available');
+    $arrFile = file($versionfeed, false, $cxContext);
+    $arrError = error_get_last();
+    error_reporting($intErrorReporting);
+    if (isset($arrError['message']) && $arrError['message'] !== '') {
+        $strError .= utf8_encode($arrError['message']) . ' (' . translate('check proxy settings') . ')';
+    }
+    $strInstalled = translate('Installed');
+    $strAvailable = translate('Available');
     $strInformation = translate('Information');
-    $strVersion        = '';
-    $strRelease        = '';
-    $strRelInfo        = '';
-    if (is_array($arrFile) && count($arrFile) != 0) {
+    $strVersion = '';
+    $strRelease = '';
+    $strRelInfo = '';
+    $strGIT = '';
+    if (is_array($arrFile) && count($arrFile) !== 0) {
         foreach ($arrFile as $elem) {
-            if (substr_count($elem, 'version')       != 0) {
+            if (substr_count($elem, 'version') !== 0) {
                 $strVersion = trim(strip_tags($elem));
             }
-            if (substr_count($elem, 'git')  != 0) {
+            if (substr_count($elem, 'git') !== 0) {
                 $strGIT = trim(strip_tags($elem));
             }
-            if (substr_count($elem, 'release_date') != 0) {
+            if (substr_count($elem, 'release_date') !== 0) {
                 $strRelease = trim(strip_tags($elem));
             }
-            if (substr_count($elem, 'error')       != 0) {
-                $strError   = trim(strip_tags($elem));
+            if (substr_count($elem, 'error') !== 0) {
+                $strError = trim(strip_tags($elem));
             }
-            if (substr_count($elem, 'information')  != 0) {
+            if (substr_count($elem, 'information') !== 0) {
                 $strRelInfo = trim(strip_tags($elem));
             }
         }
     }
     $setFileAvailable = $strVersion;
+    $setFileInformation = '';
     if (version_compare($strVersion, $setFileVersion, '==')) {
-        if ($strGIT == $setGITVersion) {
-            $setFileInformation = "<span class='greenmessage'>".translate('You already have the latest version installed').
+        if ($strGIT === $setGITVersion) {
+            $setFileInformation = "<span class='greenmessage'>" . translate('You already have the latest version installed') .
                 '</span>';
         } else {
-            $setFileInformation = "<span class='greenmessage'>".translate('You already have the latest version installed').
-                ' ('.translate('new GIT hotfix version available:').' '.$strVersion.'-'.$strGIT.')</span>';
+            $setFileInformation = "<span class='greenmessage'>" . translate('You already have the latest version installed') .
+                ' (' . translate('new GIT hotfix version available:') . ' ' . $strVersion . '-' . $strGIT . ')</span>';
         }
 
     } elseif (version_compare($strVersion, $setFileVersion, '>=')) {
-        $setFileInformation = "<span class='redmessage'>".translate('You are using an old NagiosQL version. Please '.
-                'update to the latest stable version'). '</span>: ';
-        $setFileInformation .= '<a href="http://sourceforge.net/projects/nagiosql/files/" target="_blank">' .
+        $setFileInformation = "<span class='redmessage'>" . translate('You are using an old NagiosQL version. Please ' .
+                'update to the latest stable version') . '</span>: ';
+        $setFileInformation .= '<a href="https://sourceforge.net/projects/nagiosql/files/" target="_blank">' .
             'NagiosQL on Sourceforge</a>';
     } elseif (version_compare($strVersion, $setFileVersion, '<=')) {
-        $setFileInformation = "<span class='redmessage'>".translate('You are using a newer development version '.
-                'without official support'). '</span>';
+        $setFileInformation = "<span class='redmessage'>" . translate('You are using a newer development version ' .
+                'without official support') . '</span>';
     }
-    if (($strError != 'none') && ($strError != '')) {
-        $setFileInformation = "<span class='redmessage'>".$strError. '</span>';
+    if (($strError !== 'none') && ($strError !== '')) {
+        $setFileInformation = "<span class='redmessage'>" . $strError . '</span>';
     } ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html lang="en">
     <head>
         <title>Version check</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -170,7 +170,7 @@ if ($chkShow == 1) {
             parent.document.getElementById('vcheck').className       = 'elementHide';
             parent.document.getElementById('versioncheck').className = 'elementShow';
 <?php
-if (($strError != 'none') && ($strError != '')) {
+if (($strError !== 'none') && ($strError !== '')) {
     echo "            parent.document.getElementById('versioncheck').height = '65';";
 }
 ?>
@@ -182,7 +182,7 @@ if (($strError != 'none') && ($strError != '')) {
 } else {
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html lang="en">
     <head>
         <title>Commandline</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

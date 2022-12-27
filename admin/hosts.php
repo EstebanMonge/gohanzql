@@ -14,7 +14,7 @@
  * Class and variable includes
  * @var HTML_Template_IT $conttp
  * @var HTML_Template_IT $maintp
- * @var string $chkDomainId from prepend_adm.php
+ * @var int $chkDomainId from prepend_adm.php
  * @var string $setFileVersion from prepend_adm.php
  * @noinspection PhpUndefinedVariableInspection
  */

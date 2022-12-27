@@ -1,9 +1,9 @@
-<!-- (c) 2005-2020 by Martin Willisegger -->
+<!-- (c) 2005-2023 by Martin Willisegger -->
 <!-- -->
 <!-- Project    : NagiosQL -->
 <!-- Component  : NagiosQL support page template -->
 <!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
-<!-- Version   : 3.4.1 -->
+<!-- Version   : 3.5.0 -->
 <!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
 <!-- BEGIN support -->
 <div id="content_main">
@@ -13,7 +13,7 @@
     <p><a href="https://sourceforge.net/projects/nagiosql/" target="_blank">{WEBSITE_LINK}</a>
     <h2 style="padding-top:10px;">{SUBTITLE_2}</h2>
     <p style="margin-bottom:0;">{SUPPORT_TEXT_2}</p>
-    <p><a href="http://sourceforge.net/donate/index.php?group_id=134390" target="_blank">{DONATE_LINK}</a>
+    <p><a href="https://sourceforge.net/donate/index.php?group_id=134390" target="_blank">{DONATE_LINK}</a>
     <h2 style="padding-top:10px;">{SUBTITLE_3}</h2>
     <p style="margin-bottom:0;">{SUPPORT_TEXT_3}</p>
     <p><a href="https://www.transifex.net/projects/p/nagiosql/" target="_blank">{TRANSLATION_LINK}</a>

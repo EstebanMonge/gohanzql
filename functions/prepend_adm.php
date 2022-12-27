@@ -637,7 +637,7 @@ if (isset($chkLimitGet)) {
     $chkLimit = $chkLimitGet;
 }
 if (isset($_SESSION['domain'])) {
-    $chkDomainId = $_SESSION['domain'];
+    $chkDomainId = (int)$_SESSION['domain'];
 }
 if (isset($_SESSION['groupadm'])) {
     $chkGroupAdm = $_SESSION['groupadm'];

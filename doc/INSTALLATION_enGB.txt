@@ -27,7 +27,7 @@
     * PHP Module: gettext
     * PHP Module: filter
     * PHP Module: FTP (optional)
-    * PECL Extension: SSH (optional)
+    * PECL Extension: SSH (optional) -> pecl install ssh2
   * Javascript activated in Webbrowser
   * Recommended Webbrowser: Mozilla Firefox
 

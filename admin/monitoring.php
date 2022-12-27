@@ -18,7 +18,7 @@ use functions\NagVisualClass;
  * @var HTML_Template_IT $maintp
  * @var NagVisualClass $myVisClass
  * @var MysqliDbClass $myDBClass
- * @var string $chkDomainId from prepend_adm.php
+ * @var int $chkDomainId from prepend_adm.php
  * @var string $setFileVersion from prepend_adm.php
  */
 /*
