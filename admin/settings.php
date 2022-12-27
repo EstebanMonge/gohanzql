@@ -1,140 +1,173 @@
 <?php
-///////////////////////////////////////////////////////////////////////////////
-//
-// NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// (c) 2005-2020 by Martin Willisegger
-//
-// Project   : NagiosQL
-// Component : Settings configuration
-// Website   : https://sourceforge.net/projects/nagiosql/
-// Version   : 3.4.1
-// GIT Repo  : https://gitlab.com/wizonet/NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// Path settings
-// ===================
+/* ----------------------------------------------------------------------------
+ NagiosQL
+-------------------------------------------------------------------------------
+ (c) 2005-2023 by Martin Willisegger
+
+ Project   : NagiosQL
+ Component : NagiosQL settings
+ Website   : https://sourceforge.net/projects/nagiosql/
+ Version   : 3.5.0
+ GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+-----------------------------------------------------------------------------*/
+
+use functions\MysqliDbClass;
+use functions\NagVisualClass;
+
+/**
+ * Class and variable includes
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var MysqliDbClass $myDBClass MySQL database class
+ * @var NagVisualClass $myVisClass Visual content class
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var string $prePageKey from prepend_adm.php -> Menu group id
+ * @var array $SETS Settings array
+ * @var string $chkTfValue1 from prepend_content.php -> Temporary directory
+ * @var string $chkTfValue2 from prepend_content.php -> Encoding
+ * @var string $chkTfValue3 from prepend_content.php -> Database server
+ * @var string $chkTfValue4 from prepend_content.php -> Database server port
+ * @var string $chkTfValue5 from prepend_content.php -> Database server db name
+ * @var string $chkTfValue6 from prepend_content.php -> Database server user
+ * @var string $chkTfValue7 from prepend_content.php -> Database server password
+ * @var string $chkTfValue8 from prepend_content.php -> Logoff time
+ * @var string $chkTfValue9 from prepend_content.php -> Data lines per page
+ * @var string $chkTfValue10 from prepend_content.php -> Proxy server
+ * @var string $chkTfValue11 from prepend_content.php -> Proxy user
+ * @var string $chkTfValue12 from prepend_content.php -> Proxy password
+ * @var int $chkSelValue1 from prepend_content.php -> Server protocol
+ * @var int $chkSelValue2 from prepend_content.php -> Standard language
+ * @var int $chkSelValue3 from prepend_content.php -> Webserver authentication
+ * @var int $chkSelValue4 from prepend_content.php -> Multiselect method
+ * @var int $chkRadValue1 from prepend_content.php -> Template warnings
+ * @var int $chkRadValue2 from prepend_content.php -> Update check
+ * @var int $chkRadValue3 from prepend_content.php -> Enable proxy server
+ * @var int $chkRadValue4 from prepend_content.php -> Show dependencies
+ * @var array $arrDescription from fieldvars.php -> Translated common strings
+ */
+/*
+Path settings
+*/
 $strPattern = '(admin/[^/]*.php)';
-$preRelPath  = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
-$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME', FILTER_SANITIZE_STRING));
-//
-// Define common variables
-// =======================
-$prePageId    = 38;
-$preContent   = 'admin/settings.htm.tpl';
-$preAccess    = 1;
+$preRelPath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF'));
+$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'));
+/*
+Define common variables
+*/
+$prePageId = 38;
+$preContent = 'admin/settings.htm.tpl';
+$preAccess = 1;
 $preFieldvars = 1;
-$arrSQL       = array();
-//
-// Include preprocessing files
-// ===========================
-require $preBasePath.'functions/prepend_adm.php';
-require $preBasePath.'functions/prepend_content.php';
-//
-// Process initial values
-// ======================
-if (filter_input(INPUT_POST, 'tfValue1') == null) {
-    $chkTfValue1  = $SETS['path']['tempdir'];
+$arrSQL = array();
+$strErrorMessage = '';
+$strInfoMessage = '';
+/*
+Include preprocessing file
+*/
+require $preBasePath . 'functions/prepend_adm.php';
+require $preBasePath . 'functions/prepend_content.php';
+/*
+Process initial values
+*/
+if (filter_input(INPUT_POST, 'tfValue1') === null) {
+    $chkTfValue1 = $SETS['path']['tempdir'];
 }
-if (filter_input(INPUT_POST, 'tfValue2') == null) {
-    $chkTfValue2  = $SETS['data']['encoding'];
+if (filter_input(INPUT_POST, 'tfValue2') === null) {
+    $chkTfValue2 = $SETS['data']['encoding'];
 }
-if (filter_input(INPUT_POST, 'tfValue3') == null) {
-    $chkTfValue3  = $SETS['db']['server'];
+if (filter_input(INPUT_POST, 'tfValue3') === null) {
+    $chkTfValue3 = $SETS['db']['server'];
 }
-if (filter_input(INPUT_POST, 'tfValue4') == null) {
-    $chkTfValue4  = $SETS['db']['port'];
+if (filter_input(INPUT_POST, 'tfValue4') === null) {
+    $chkTfValue4 = $SETS['db']['port'];
 }
-if (filter_input(INPUT_POST, 'tfValue5') == null) {
-    $chkTfValue5  = $SETS['db']['database'];
+if (filter_input(INPUT_POST, 'tfValue5') === null) {
+    $chkTfValue5 = $SETS['db']['database'];
 }
-if (filter_input(INPUT_POST, 'tfValue6') == null) {
-    $chkTfValue6  = $SETS['db']['username'];
+if (filter_input(INPUT_POST, 'tfValue6') === null) {
+    $chkTfValue6 = $SETS['db']['username'];
 }
-if (filter_input(INPUT_POST, 'tfValue7') == null) {
-    $chkTfValue7  = $SETS['db']['password'];
+if (filter_input(INPUT_POST, 'tfValue7') === null) {
+    $chkTfValue7 = $SETS['db']['password'];
 }
-if (filter_input(INPUT_POST, 'tfValue8') == null) {
-    $chkTfValue8  = $SETS['security']['logofftime'];
+if (filter_input(INPUT_POST, 'tfValue8') === null) {
+    $chkTfValue8 = $SETS['security']['logofftime'];
 }
-if (filter_input(INPUT_POST, 'tfValue9') == null) {
-    $chkTfValue9  = $SETS['common']['pagelines'];
+if (filter_input(INPUT_POST, 'tfValue9') === null) {
+    $chkTfValue9 = $SETS['common']['pagelines'];
 }
-if (filter_input(INPUT_POST, 'tfValue10') == null) {
+if (filter_input(INPUT_POST, 'tfValue10') === null) {
     $chkTfValue10 = $SETS['network']['proxyserver'];
 }
-if (filter_input(INPUT_POST, 'tfValue11') == null) {
+if (filter_input(INPUT_POST, 'tfValue11') === null) {
     $chkTfValue11 = $SETS['network']['proxyuser'];
 }
-if (filter_input(INPUT_POST, 'tfValue12') == null) {
+if (filter_input(INPUT_POST, 'tfValue12') === null) {
     $chkTfValue12 = $SETS['network']['proxypasswd'];
 }
-if (filter_input(INPUT_POST, 'selValue3') == null) {
-    $chkSelValue3 = $SETS['security']['wsauth'];
+if (filter_input(INPUT_POST, 'selValue3') === null) {
+    $chkSelValue3 = (int)$SETS['security']['wsauth'];
 }
-if (filter_input(INPUT_POST, 'selValue4') == null) {
-    $chkSelValue4 = $SETS['common']['seldisable'];
+if (filter_input(INPUT_POST, 'selValue4') === null) {
+    $chkSelValue4 = (int)$SETS['common']['seldisable'];
 }
-if (filter_input(INPUT_POST, 'radValue1') == null) {
-    $chkRadValue1 = $SETS['common']['tplcheck'];
+if (filter_input(INPUT_POST, 'radValue1') === null) {
+    $chkRadValue1 = (int)$SETS['common']['tplcheck'];
 }
-if (filter_input(INPUT_POST, 'radValue2') == null) {
-    $chkRadValue2 = $SETS['common']['updcheck'];
+if (filter_input(INPUT_POST, 'radValue2') === null) {
+    $chkRadValue2 = (int)$SETS['common']['updcheck'];
 }
-if (filter_input(INPUT_POST, 'radValue3') == null) {
-    $chkRadValue3 = $SETS['network']['proxy'];
+if (filter_input(INPUT_POST, 'radValue3') === null) {
+    $chkRadValue3 = (int)$SETS['network']['proxy'];
 }
-if (filter_input(INPUT_POST, 'radValue4') == null) {
-    $chkRadValue4 = $SETS['performance']['parents'];
+if (filter_input(INPUT_POST, 'radValue4') === null) {
+    $chkRadValue4 = (int)$SETS['performance']['parents'];
 }
-//
-// Save changes
-// ============
+/*
+Save changes
+*/
 if (filter_input(INPUT_POST, 'selValue1')) {
-    //
-    // Write settings to database
-    // ==========================
-    if ($chkSelValue1 == 2) {
+    /*
+    Write settings to database
+    */
+    if ($chkSelValue1 === 2) {
         $strProtocol = 'https';
     } else {
         $strProtocol = 'http';
     }
-    $strLocale = $myDBClass->getFieldData("SELECT `locale` FROM `tbl_language` WHERE `id`='".$chkSelValue2."'");
-    if ($strLocale == '') {
+    $strLocale = $myDBClass->getFieldData("SELECT `locale` FROM `tbl_language` WHERE `id`='" . $chkSelValue2 . "'");
+    if ($strLocale === '') {
         $strLocale = 'en_GB';
     }
     $SETS['path']['protocol'] = $strProtocol;
-    $SETS['data']['locale']   = $strLocale;
-    // Check Proxy via curl
+    $SETS['data']['locale'] = $strLocale;
+    /* Check Proxy via curl */
     if (!function_exists('curl_init')) {
         $myVisClass->processMessage(translate('Curl module not loaded, Proxy will be deactivated!'), $strErrorMessage);
         $chkRadValue3 = 0;
     }
-    // Check base paths
+    /* Check base paths */
     $strSQLBase = "UPDATE `tbl_settings` SET `value`='%s' WHERE `category`='%s' AND `name`='%s'";
-    $arrSQL[]   = sprintf($strSQLBase, $strProtocol, 'path', 'protocol');
-    $arrSQL[]   = sprintf($strSQLBase, $chkTfValue1, 'path', 'tempdir');
-    $arrSQL[]   = sprintf($strSQLBase, $preRelPath, 'path', 'base_url');
-    $arrSQL[]   = sprintf($strSQLBase, $preBasePath, 'path', 'base_path');
-    $arrSQL[]   = sprintf($strSQLBase, $strLocale, 'data', 'locale');
-    $arrSQL[]   = sprintf($strSQLBase, $chkTfValue2, 'data', 'encoding');
-    $arrSQL[]   = sprintf($strSQLBase, $chkTfValue8, 'security', 'logofftime');
-    $arrSQL[]   = sprintf($strSQLBase, $chkSelValue3, 'security', 'wsauth');
-    $arrSQL[]   = sprintf($strSQLBase, $chkTfValue9, 'common', 'pagelines');
-    $arrSQL[]   = sprintf($strSQLBase, $chkSelValue4, 'common', 'seldisable');
-    $arrSQL[]   = sprintf($strSQLBase, $chkRadValue1, 'common', 'tplcheck');
-    $arrSQL[]   = sprintf($strSQLBase, $chkRadValue2, 'common', 'updcheck');
-    $arrSQL[]   = sprintf($strSQLBase, $chkRadValue3, 'network', 'proxy');
-    $arrSQL[]   = sprintf($strSQLBase, $chkTfValue10, 'network', 'proxyserver');
-    $arrSQL[]   = sprintf($strSQLBase, $chkTfValue11, 'network', 'proxyuser');
-    $arrSQL[]   = sprintf($strSQLBase, $chkTfValue12, 'network', 'proxypasswd');
-    $arrSQL[]   = sprintf($strSQLBase, $chkRadValue4, 'performance', 'parents');
+    $arrSQL[] = sprintf($strSQLBase, $strProtocol, 'path', 'protocol');
+    $arrSQL[] = sprintf($strSQLBase, $chkTfValue1, 'path', 'tempdir');
+    $arrSQL[] = sprintf($strSQLBase, $preRelPath, 'path', 'base_url');
+    $arrSQL[] = sprintf($strSQLBase, $preBasePath, 'path', 'base_path');
+    $arrSQL[] = sprintf($strSQLBase, $strLocale, 'data', 'locale');
+    $arrSQL[] = sprintf($strSQLBase, $chkTfValue2, 'data', 'encoding');
+    $arrSQL[] = sprintf($strSQLBase, $chkTfValue8, 'security', 'logofftime');
+    $arrSQL[] = sprintf($strSQLBase, $chkSelValue3, 'security', 'wsauth');
+    $arrSQL[] = sprintf($strSQLBase, $chkTfValue9, 'common', 'pagelines');
+    $arrSQL[] = sprintf($strSQLBase, $chkSelValue4, 'common', 'seldisable');
+    $arrSQL[] = sprintf($strSQLBase, $chkRadValue1, 'common', 'tplcheck');
+    $arrSQL[] = sprintf($strSQLBase, $chkRadValue2, 'common', 'updcheck');
+    $arrSQL[] = sprintf($strSQLBase, $chkRadValue3, 'network', 'proxy');
+    $arrSQL[] = sprintf($strSQLBase, $chkTfValue10, 'network', 'proxyserver');
+    $arrSQL[] = sprintf($strSQLBase, $chkTfValue11, 'network', 'proxyuser');
+    $arrSQL[] = sprintf($strSQLBase, $chkTfValue12, 'network', 'proxypasswd');
+    $arrSQL[] = sprintf($strSQLBase, $chkRadValue4, 'performance', 'parents');
     foreach ($arrSQL as $elem) {
         $booReturn = $myDBClass->insertData($elem);
-        if ($booReturn == false) {
+        if ($booReturn === false) {
             $myVisClass->processMessage(
                 translate('An error occured while writing settings to database:'),
                 $strErrorMessage
@@ -142,7 +175,7 @@ if (filter_input(INPUT_POST, 'selValue1')) {
             $myVisClass->processMessage($myDBClass->strErrorMessage, $strErrorMessage);
         }
     }
-    // Write db settings to file
+    /* Write db settings to file */
     if (is_writable($preBasePath. 'config/settings.php')) {
         $filSettings = fopen($preBasePath. 'config/settings.php', 'wb');
         if ($filSettings) {
@@ -173,7 +206,7 @@ if (filter_input(INPUT_POST, 'selValue1')) {
             fwrite($filSettings, 'base_url     = \'' .$preRelPath. "'\n");
             fwrite($filSettings, 'base_path    = \'' .$preBasePath. "'\n");
             fclose($filSettings);
-            // Activate new language settings
+            /* Activate new language settings */
             $arrLocale = explode('.', $strLocale);
             $strDomain = $arrLocale[0];
             $loc = setlocale(
@@ -205,39 +238,36 @@ if (filter_input(INPUT_POST, 'selValue1')) {
                 . 'check permissions!'), $strErrorMessage);
     }
 }
-//
-// Start content
-// =============
+/*
+Start content
+*/
 $conttp->setVariable('TITLE', translate('Configure Settings'));
 foreach ($arrDescription as $elem) {
     $conttp->setVariable($elem['name'], $elem['string']);
 }
-$conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
+$conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF'));
 $conttp->setVariable('LANG_DESCRIPTION', translate('Change your current NagiosQL settings (e.g. Database user, '
-        . 'Language).'));
-//
-// Path settings
-// =============
+    . 'Language).'));
+/* Path settings */
 $conttp->setVariable('PATH', translate('Path'));
 $conttp->setVariable('TEMPDIR_NAME', translate('Temporary Directory'));
 $conttp->setVariable('TEMPDIR_VALUE', htmlspecialchars($chkTfValue1, ENT_QUOTES, 'utf-8'));
 $conttp->setVariable('PROTOCOL_NAME', translate('Server protocol'));
 $conttp->setVariable(strtoupper($SETS['path']['protocol']). '_SELECTED', 'selected');
-//
-// Data settings
-// =============
+/* Data settings */
 $conttp->setVariable('DATA', translate('Language'));
 $conttp->setVariable('LOCALE', translate('Language'));
-// Process language selection field
+/* Process language selection field */
 $strSQL    = "SELECT * FROM `tbl_language` WHERE `active`='1' ORDER BY `id`";
 $booReturn = $myDBClass->hasDataArray($strSQL, $arrData, $intDataCount);
-if ($booReturn && ($intDataCount != 0)) {
+if ($booReturn && ($intDataCount !== 0)) {
     foreach ($arrData as $elem) {
         $conttp->setVariable('LANGUAGE_ID', $elem['id']);
         $conttp->setVariable('LANGUAGE_NAME', translate($elem['language']));
-        if ($elem['locale'] == $SETS['data']['locale']) {
+        if ($elem['locale'] === $SETS['data']['locale']) {
             $conttp->setVariable('LANGUAGE_SELECTED', 'selected');
         }
+        /** @noinspection DisconnectedForeachInstructionInspection */
         $conttp->parse('language');
     }
 } else {
@@ -246,9 +276,7 @@ if ($booReturn && ($intDataCount != 0)) {
 }
 $conttp->setVariable('ENCODING_NAME', translate('Encoding'));
 $conttp->setVariable('ENCODING_VALUE', htmlspecialchars($chkTfValue2, ENT_QUOTES, 'utf-8'));
-//
-// Database settings
-// =================
+/* Database settings */
 $conttp->setVariable('DB', translate('Database'));
 $conttp->setVariable('SERVER_NAME', translate('MySQL Server'));
 $conttp->setVariable('SERVER_VALUE', htmlspecialchars($chkTfValue3, ENT_QUOTES, 'utf-8'));
@@ -260,45 +288,36 @@ $conttp->setVariable('USERNAME_NAME', translate('Database user'));
 $conttp->setVariable('USERNAME_VALUE', htmlspecialchars($chkTfValue6, ENT_QUOTES, 'utf-8'));
 $conttp->setVariable('PASSWORD_NAME', translate('Database password'));
 $conttp->setVariable('PASSWORD_VALUE', htmlspecialchars($chkTfValue7, ENT_QUOTES, 'utf-8'));
-//
-// Security settings
-// =================
+/* Security settings */
 $conttp->setVariable('SECURITY', translate('Security'));
 $conttp->setVariable('LOGOFFTIME_NAME', translate('Session auto logoff time'));
 $conttp->setVariable('LOGOFFTIME_VALUE', htmlspecialchars($chkTfValue8, ENT_QUOTES, 'utf-8'));
 $conttp->setVariable('WSAUTH_NAME', translate('Authentication type'));
 $conttp->setVariable('WSAUTH_' .$chkSelValue3. '_SELECTED', 'selected');
-//
-// Common settings
-// ===============
+/* Common settings */
 $conttp->setVariable('COMMON', translate('Common'));
 $conttp->setVariable('PAGELINES_NAME', translate('Data lines per page'));
 $conttp->setVariable('PAGELINES_VALUE', htmlspecialchars($chkTfValue9, ENT_QUOTES, 'utf-8'));
 $conttp->setVariable('SELDISABLE_NAME', translate('Selection method'));
 $conttp->setVariable('SELDISABLE_' .$chkSelValue4. '_SELECTED', 'selected');
-//
-// Template Check
-// ==============
+/* Template Check */
 $conttp->setVariable('TEMPLATE_CHECK', translate('Template warn message'));
 $conttp->setVariable('LANG_ENABLE', translate('Enable'));
 $conttp->setVariable('LANG_DISABLE', translate('Disable'));
 $conttp->setVariable('TPL_CHECK_' .$chkRadValue1. '_CHECKED', 'checked');
-//
-// Online version check
-// ====================
+/* Online version check */
 $conttp->setVariable('CLASS_NAME_1', 'elementHide');
 $conttp->setVariable('CLASS_NAME_2', 'elementHide');
 $conttp->setVariable('UPDATE_CHECK', translate('Online version check'));
 $conttp->setVariable('UPD_CHECK_' .$chkRadValue2. '_CHECKED', 'checked');
-if ($chkRadValue2 == 1) {
+if ($chkRadValue2 === 1) {
     $conttp->setVariable('CLASS_NAME_1', 'elementShow');
 }
-//
-// Online update proxy settings
-// ============================
+/* Online update proxy settings */
 $conttp->setVariable('UPD_PROXY_CHECK', translate('Proxyserver'));
 $conttp->setVariable('UPD_PROXY_' .$chkRadValue3. '_CHECKED', 'checked');
-if (($chkRadValue3 == 1) && ($chkRadValue2 == 1)) {
+if (($chkRadValue3 === 1) && ($chkRadValue2 === 1)) {
+    echo "da";
     $conttp->setVariable('CLASS_NAME_2', 'elementShow');
 }
 $conttp->setVariable('UPD_PROXY_SERVER', translate('Proxy Address'));
@@ -307,32 +326,26 @@ $conttp->setVariable('UPD_PROXY_USERNAME', translate('Proxy Username (optional)'
 $conttp->setVariable('UPD_PROXY_USERNAME_VALUE', htmlspecialchars($chkTfValue11, ENT_QUOTES, 'utf-8'));
 $conttp->setVariable('UPD_PROXY_PASSWORD', translate('Proxy Password (optional)'));
 $conttp->setVariable('UPD_PROXY_PASSWORD_VALUE', htmlspecialchars($chkTfValue12, ENT_QUOTES, 'utf-8'));
-//
-// Performance options
-// ===================
+/* Performance options */
 $conttp->setVariable('PERFORMANCE', translate('Performance options'));
 $conttp->setVariable('SHOW_PARENTS', translate('Show object parents'));
-$conttp->setVariable('PAR_CHECK_' .$chkRadValue4. '_CHECKED', 'checked');
-//
-// Requirements of form
-// ====================
+$conttp->setVariable('PAR_CHECK_' . $chkRadValue4 . '_CHECKED', 'checked');
+/* Requirements of form */
 $conttp->setVariable('LANG_SAVE', translate('Save'));
 $conttp->setVariable('LANG_ABORT', translate('Abort'));
 $conttp->setVariable('LANG_REQUIRED', translate('required'));
 $conttp->setVariable('ERRORMESSAGE', $strErrorMessage);
 $conttp->setVariable('INFOMESSAGE', $strInfoMessage);
-//
-// Check access rights for adding new objects
-// ==========================================
-if ($myVisClass->checkAccountGroup($prePageKey, 'write') != 0) {
+/* Check access rights for adding new objects */
+if ($myVisClass->checkAccountGroup($prePageKey, 'write') !== 0) {
     $conttp->setVariable('ADD_CONTROL', 'disabled="disabled"');
 }
 $conttp->parse('settingssite');
 $conttp->show('settingssite');
-//
-// Footer ausgeben
-// ===============
+/*
+Footer ausgeben
+*/
 $maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-        . "target='_blank'>NagiosQL</a> $setFileVersion");
+    . "target='_blank'>NagiosQL</a> $setFileVersion");
 $maintp->parse('footer');
 $maintp->show('footer');
