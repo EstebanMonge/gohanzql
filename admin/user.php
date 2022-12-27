@@ -32,6 +32,7 @@ use functions\NagVisualClass;
  * @var int $hidSortBy from prepend_adm.php -> Sort data by
  * @var string $hidSortDir from prepend_adm.php -> Sort data direction (ASC, DESC)
  * @var int $chkLimit from prepend_adm.php / settings -> Data set count per page
+ * @var int $chkActive from prepend_adm.php -> Active checkbox
  * @var array $SETS Settings array
  * @var int $intGlobalWriteAccess from prepend_content.php -> Global admin write access
  * @var int $intWriteAccessId from prepend_content.php -> Admin write access to actual dataset id
@@ -40,9 +41,8 @@ use functions\NagVisualClass;
  * @var string $chkTfValue3 from prepend_content.php -> Password
  * @var string $chkTfValue4 from prepend_content.php -> Password confirmation
  * @var string $chkTfValue5 from prepend_content.php -> (hidden) old user name
- * @var string $chkChbValue1 from prepend_content.php -> Admin rights checkbox
- * @var string $chkChbValue2 from prepend_content.php -> Webserver authentification checkbox
- * @var string $chkActive from prepend_content.php -> Active checkbox
+ * @var int $chkChbValue1 from prepend_content.php -> Admin rights checkbox
+ * @var int $chkChbValue2 from prepend_content.php -> Webserver authentification checkbox
  * @var int $chkSelValue1 from prepend_content.php -> Language selector
  * @var int $chkSelValue2 from prepend_content.php -> Standard domain selector
  */

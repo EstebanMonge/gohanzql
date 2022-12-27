@@ -26,6 +26,7 @@ use functions\NagVisualClass;
  * @var NagDataClass $myDataClass NagiosQL data class
  * @var NagContentClass $myContentClass NagiosQL content class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var int $chkActive from prepend_adm.php -> Active checkbox
  * @var string $chkModus from prepend_adm.php -> Form work mode
  * @var int $chkDataId from prepend_adm.php -> Actual dataset id
  * @var int $chkListId from prepend_adm.php -> Actual dataset id (list view)
@@ -37,7 +38,6 @@ use functions\NagVisualClass;
  * @var int $intWriteAccessId from prepend_content.php -> Admin write access to actual dataset id
  * @var string $chkTfValue1 from prepend_content.php -> Group name
  * @var string $chkTfValue2 from prepend_content.php -> Group description
- * @var string $chkActive from prepend_content.php -> Active checkbox
  */
 /*
 Path settings

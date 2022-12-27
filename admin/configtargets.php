@@ -28,6 +28,7 @@ use functions\NagVisualClass;
  * @var NagContentClass $myContentClass NagiosQL content class
  * @var NagConfigClass $myConfigClass NagiosQL configuration class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var int $chkActive from prepend_adm.php -> Active checkbox
  * @var string $chkModus from prepend_adm.php -> Form work mode
  * @var int $chkDataId from prepend_adm.php -> Actual dataset id
  * @var string $chkSelModify from prepend_adm.php -> Modification selection value
@@ -60,7 +61,6 @@ use functions\NagVisualClass;
  * @var string $chkTfValue21 from prepend_content.php -> CGI configuration file
  * @var string $chkTfValue22 from prepend_content.php -> Ressource file
  * @var string $chkTfValue23 from prepend_content.php -> ssh port
- * @var string $chkActive from prepend_content.php -> Active checkbox
  * @var int $chkSelValue1 from prepend_content.php -> Configuration access method (file based, ssh, ftp)
  * @var int $chkSelValue2 from prepend_content.php -> Nagios version
  * @var int $chkChbValue1 from prepend_content.php -> Use secure ftp

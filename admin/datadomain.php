@@ -26,6 +26,7 @@ use functions\NagVisualClass;
  * @var NagDataClass $myDataClass NagiosQL data class
  * @var NagContentClass $myContentClass NagiosQL content class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var int $chkActive from prepend_adm.php -> Active checkbox
  * @var string $chkModus from prepend_adm.php -> Form work mode
  * @var int $chkDataId from prepend_adm.php -> Actual dataset id
  * @var string $chkSelModify from prepend_adm.php -> Modification selection value
@@ -38,8 +39,7 @@ use functions\NagVisualClass;
  * @var string $strAccess from prepend_content.php -> List of read access group id's for actual user
  * @var string $chkTfValue1 from prepend_content.php -> Domain name
  * @var string $chkTfValue2 from prepend_content.php -> Domain description
- * @var string $chkActive from prepend_content.php -> Active checkbox
- * @var string $chkSelValue1 from prepend_content.php -> Configuration target domain
+ * @var int $chkSelValue1 from prepend_content.php -> Configuration target domain
  * @var string $chkSelValue2 from prepend_content.php -> Nagios version
  * @var string $chkSelValue3 from prepend_content.php -> Use common domain selection
  * @var string $chkSelAccGr from prepend_content.php -> Access group selector
@@ -84,7 +84,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
         $strSQL = 'UPDATE ' . $strSQLx . ' WHERE `id`=' . $chkDataId;
     }
     if ($intWriteAccessId === 0) {
-        if (($chkTfValue1 !== '') && ($chkTfValue2 !== '') && (($chkTfValue1 === 'common') || ((int)$chkSelValue1 !== 0))) {
+        if (($chkTfValue1 !== '') && ($chkTfValue2 !== '') && (($chkTfValue1 === 'common') || ($chkSelValue1 !== 0))) {
             $intReturn = $myDataClass->dataInsert($strSQL, $intInsertId);
             if ($chkModus === 'insert') {
                 $chkDataId = $intInsertId;

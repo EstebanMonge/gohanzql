@@ -26,8 +26,8 @@ use functions\NagVisualClass;
  * @var array $arrDescription from fieldvars.php -> Translated common strings
  * @var int $intGlobalWriteAccess from prepend_content.php -> Global admin write access
  * @var int $intWriteAccessId from prepend_content.php -> Admin write access to actual dataset id
- * @var string $chkSelValue1 from prepend_content.php -> Language selector
- * @var string $chkSelValue2 from prepend_content.php -> Standard domain selector
+ * @var int $chkSelValue1 from prepend_content.php -> Language selector
+ * @var int $chkSelValue2 from prepend_content.php -> Standard domain selector
  */
 /*
 Path settings
@@ -54,7 +54,7 @@ require $preBasePath . 'functions/prepend_content.php';
 /*
 Process data
 */
-if (filter_input(INPUT_POST, 'subSave') && ((int)$chkSelValue1 !== 0)) {
+if (filter_input(INPUT_POST, 'subSave') && ($chkSelValue1 !== 0)) {
     $strSQL = "UPDATE `tbl_menu` SET `mnuGrpId`='$chkSelValue2' WHERE `mnuId`=$chkSelValue1";
     $booReturn = $myDBClass->insertData($strSQL);
     if ($booReturn === false) {
@@ -96,7 +96,7 @@ if ($booReturn === false) {
         } else {
             $conttp->setVariable('SUBMENU_NAME', translate($elem['subitem']));
         }
-        if ((int)$chkSelValue1 === (int)$elem['mnuId']) {
+        if ($chkSelValue1 === (int)$elem['mnuId']) {
             $conttp->setVariable('SUBMENU_SELECTED', 'selected');
             $intFieldId = $elem['mnuGrpId'];
         }

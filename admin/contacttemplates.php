@@ -70,14 +70,14 @@ use functions\NagVisualClass;
  * @var int $intMselValue1 from prepend_content.php
  * @var int $intMselValue2 from prepend_content.php
  * @var int $intMselValue3 from prepend_content.php
- * @var string $chkRadValue1 from prepend_content.php
- * @var string $chkRadValue2 from prepend_content.php
- * @var string $chkRadValue3 from prepend_content.php
- * @var string $chkRadValue4 from prepend_content.php
- * @var string $chkRadValue5 from prepend_content.php
- * @var string $chkRadValue6 from prepend_content.php
- * @var string $chkRadValue7 from prepend_content.php
- * @var string $chkRadValue8 from prepend_content.php
+ * @var int $chkRadValue1 from prepend_content.php
+ * @var int $chkRadValue2 from prepend_content.php
+ * @var int $chkRadValue3 from prepend_content.php
+ * @var int $chkRadValue4 from prepend_content.php
+ * @var int $chkRadValue5 from prepend_content.php
+ * @var int $chkRadValue6 from prepend_content.php
+ * @var int $chkRadValue7 from prepend_content.php
+ * @var int $chkRadValue8 from prepend_content.php
  * @var int $chkTfNullVal1 from prepend_content.php
  * @var int $chkSelValue1 from prepend_content.php
  * @var int $chkSelValue2 from prepend_content.php
