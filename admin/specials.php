@@ -18,24 +18,24 @@
 // Path settings
 // ===================
 $strPattern = '(admin/[^/]*.php)';
-$preRelPath  = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
+$preRelPath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
 $preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME', FILTER_SANITIZE_STRING));
 //
 // Define common variables
 // =======================
-$prePageId  = 5;
+$prePageId = 5;
 $preContent = 'admin/mainpages.htm.tpl';
 //
 // Include preprocessing file
 // ==========================
-require $preBasePath.'functions/prepend_adm.php';
+require $preBasePath . 'functions/prepend_adm.php';
 //
 // Include content
 // ===============
 $conttp->setVariable('TITLE', translate('Misc commands'));
 $conttp->parse('header');
 $conttp->show('header');
-$conttp->setVariable('DESC', translate('Define host and service dependencies, host and service escalations as well '.
+$conttp->setVariable('DESC', translate('Define host and service dependencies, host and service escalations as well ' .
     'as host and service additional data.'));
 $conttp->setVariable('STATISTICS', translate('Statistical datas'));
 $conttp->setVariable('TYPE', translate('Group'));

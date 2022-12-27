@@ -43,8 +43,8 @@ use functions\NagVisualClass;
  * @var string $chkChbValue1 from prepend_content.php -> Admin rights checkbox
  * @var string $chkChbValue2 from prepend_content.php -> Webserver authentification checkbox
  * @var string $chkActive from prepend_content.php -> Active checkbox
- * @var string $chkSelValue1 from prepend_content.php -> Language selector
- * @var string $chkSelValue2 from prepend_content.php -> Standard domain selector
+ * @var int $chkSelValue1 from prepend_content.php -> Language selector
+ * @var int $chkSelValue2 from prepend_content.php -> Standard domain selector
  */
 /*
 Path settings
