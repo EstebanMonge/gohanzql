@@ -531,6 +531,7 @@ class NagConfigClass
         $intMethod = 1;
         $intReturn = 0;
         $booRetVal = false;
+        $strMethod = '';
         /* Get connection method */
         if ($this->getConfigData($intConfigID, 'method', $strMethod) === 0) {
             $intMethod = (int)$strMethod;

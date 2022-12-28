@@ -132,6 +132,7 @@ $conttp->setVariable('IMPORT_INFO_2', '<span style="color:#FF0000">' .translate(
 $conttp->parse('filelist1');
 /* Get settings */
 $intMethod = 0;
+$strMethod = '';
 if ($myConfigClass->getConfigValues($intConfigId, 'method', $strMethod) === 0) {
     $intMethod = (int)$strMethod;
 }
