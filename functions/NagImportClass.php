@@ -288,9 +288,11 @@ class NagImportClass
         $arrImportRelations = array();
         $arrFreeVariables = array();
         $arrRelations = array();
+        $strTable = '';
+        $strKeyField = '';
         /* Block data from template or real configuration? */
         if (array_key_exists('name', $arrImportData) && (isset($arrImportData['register']) &&
-                ($arrImportData['register']['value'] === 0))) {
+                ((int)$arrImportData['register']['value'] === 0))) {
             $intIsTemplate = 1;
         }
         /* Get table name and key for import */
@@ -359,6 +361,8 @@ class NagImportClass
                     $arrImportData[$strKeyField]['value'] . '</b> ' . translate('inside') . ' <b class="blackmessage">' .
                     $strTable . '</b> ' . translate('were not written') . '::';
             } else {
+                $strSQL1 = '';
+                $strSQL2 = '';
                 /* Define SQL statement - part 1 */
                 $this->getSQLPart1(
                     $arrImportData,
