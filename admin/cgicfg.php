@@ -2,10 +2,10 @@
 /* ----------------------------------------------------------------------------
  NagiosQL
 -------------------------------------------------------------------------------
- (c) 2005-2022 by Martin Willisegger
+ (c) 2005-2023 by Martin Willisegger
 
  Project   : NagiosQL
- Component : File editor cgi.cfg
+ Component : Cgi configuration file editor
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 3.5.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
@@ -17,15 +17,15 @@ use functions\NagVisualClass;
 
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
- * @var NagVisualClass $myVisClass
- * @var NagConfigClass $myConfigClass
- * @var NagDataClass $myDataClass
- * @var string $setFileVersion from prepend_adm.php
- * @var string $prePageKey from prepend_adm.php
- * @var string $chkTaFileText from prepend_content.php
- * @var array $arrDescription from fieldvars.php
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var NagVisualClass $myVisClass Visual content class
+ * @var NagDataClass $myDataClass NagiosQL data class
+ * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var string $prePageKey from prepend_adm.php -> Menu group id
+ * @var string $chkTaFileText from prepend_content.php -> Text area
+ * @var array $arrDescription from fieldvars.php -> Translated common strings
  */
 /*
 Path settings
@@ -53,9 +53,10 @@ require $preBasePath . 'functions/prepend_content.php';
 /*
 Get configuration set ID
 */
+$intMethod = 0;
+$strMethod = '';
 $myConfigClass->getConfigTargets($arrConfigSet);
-$intConfigId = $arrConfigSet[0];
-/* Get connection method */
+$intConfigId  = (int)$arrConfigSet[0];
 if ($myConfigClass->getConfigValues($intConfigId, 'method', $strMethod) === 0) {
     $intMethod = (int)$strMethod;
 }
