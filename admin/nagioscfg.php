@@ -1,64 +1,81 @@
 <?php
-///////////////////////////////////////////////////////////////////////////////
-//
-// NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// (c) 2005-2020 by Martin Willisegger
-//
-// Project   : NagiosQL
-// Component : Admin timeperiod definitions
-// Website   : https://sourceforge.net/projects/nagiosql/
-// Version   : 3.4.1
-// GIT Repo  : https://gitlab.com/wizonet/NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// Path settings
-// ===================
+/* ----------------------------------------------------------------------------
+ NagiosQL
+-------------------------------------------------------------------------------
+ (c) 2005-2023 by Martin Willisegger
+
+ Project   : NagiosQL
+ Component : Nagios configuration file editor
+ Website   : https://sourceforge.net/projects/nagiosql/
+ Version   : 3.5.0
+ GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+-----------------------------------------------------------------------------*/
+
+use functions\NagConfigClass;
+use functions\NagDataClass;
+use functions\NagVisualClass;
+
+/**
+ * Class and variable includes
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var NagVisualClass $myVisClass Visual content class
+ * @var NagDataClass $myDataClass NagiosQL data class
+ * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var string $prePageKey from prepend_adm.php -> Menu group id
+ * @var string $chkTaFileText from prepend_content.php -> Text area
+ * @var array $arrDescription from fieldvars.php -> Translated common strings
+ */
+/*
+Path settings
+*/
 $strPattern = '(admin/[^/]*.php)';
-$preRelPath  = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
-$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME', FILTER_SANITIZE_STRING));
-//
-// Define common variables
-// =======================
-$prePageId    = 28;
-$preContent   = 'admin/nagioscfg.htm.tpl';
-$preAccess    = 1;
+$preRelPath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF'));
+$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'));
+/*
+Define common variables
+*/
+$prePageId = 28;
+$preContent = 'admin/nagioscfg.htm.tpl';
+$preAccess = 1;
 $preFieldvars = 1;
 $intRemoveTmp = 0;
-$strConfig    = '';
-//
-// Include preprocessing files
-// ===========================
-require $preBasePath.'functions/prepend_adm.php';
-require $preBasePath.'functions/prepend_content.php';
-//
-// Get configuration set ID
-// ========================
+$strConfig = '';
+$strErrorMessage = '';
+$strInfoMessage = '';
+/*
+Include preprocessing files
+*/
+require $preBasePath . 'functions/prepend_adm.php';
+require $preBasePath . 'functions/prepend_content.php';
+/*
+Get configuration set ID
+*/
+$intMethod = 0;
+$strMethod = '';
 $myConfigClass->getConfigTargets($arrConfigSet);
-$intConfigId    = $arrConfigSet[0];
-$myConfigClass->getConfigValues($intConfigId, 'method', $intMethod);
+$intConfigId  = (int)$arrConfigSet[0];
+if ($myConfigClass->getConfigValues($intConfigId, 'method', $strMethod) === 0) {
+    $intMethod = (int)$strMethod;
+}
 $myConfigClass->getConfigValues($intConfigId, 'nagiosbasedir', $strBaseDir);
 $myConfigClass->getConfigValues($intConfigId, 'conffile', $strConfigfile);
-$strLocalBackup = $strConfigfile. '_old_' .date('YmdHis');
-//
-// Convert Windows to UNIX
-// =======================
+$strLocalBackup = $strConfigfile . '_old_' . date('YmdHis');
+/* Convert Windows to UNIX */
 $chkTaFileText = str_replace("\r\n", "\n", $chkTaFileText);
-//
-// Process data
-// ============
-if (($chkTaFileText != '') && ($arrConfigSet[0] != 0)) {
-    if ($intMethod == 1) {
+/*
+Process data
+*/
+if (($chkTaFileText !== '') && ($arrConfigSet[0] !== 0)) {
+    if ($intMethod === 1) {
         if (file_exists($strBaseDir) && (is_writable($strBaseDir) && is_writable($strConfigfile))) {
-            // Backup config file
+            /* Backup config file */
             $intReturn = $myConfigClass->moveFile('nagiosbasic', basename($strConfigfile), $intConfigId);
-            if ($intReturn == 1) {
+            if ($intReturn === 1) {
                 $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
             }
-            // Write configuration
+            /* Write configuration */
             $resFile = fopen($strConfigfile, 'wb');
             fwrite($resFile, $chkTaFileText);
             fclose($resFile);
@@ -70,48 +87,47 @@ if (($chkTaFileText != '') && ($arrConfigSet[0] != 0)) {
                     . 'permissions)!'), $strErrorMessage);
             $myDataClass->writeLog(translate('Configuration write failed:'). ' ' .$strConfigfile);
         }
-    } elseif (($intMethod == 2) || ($intMethod == 3)) {
-        // Backup config file
+    } elseif (($intMethod === 2) || ($intMethod === 3)) {
+        /* Backup config file */
         $intReturn1 = $myConfigClass->moveFile('nagiosbasic', basename($strConfigfile), $intConfigId);
-        if ($intReturn1 == 1) {
+        if ($intReturn1 === 1) {
             $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
         }
-        // Write file to temporary
+        /* Write file to temporary */
         $strFileName = tempnam($_SESSION['SETS']['path']['tempdir'], 'nagiosql_conf');
         $resFile = fopen($strFileName, 'wb');
         fwrite($resFile, $chkTaFileText);
         fclose($resFile);
-        // Copy configuration to remoty system
+        /* Copy configuration to remoty system */
         $intReturn2 = $myConfigClass->remoteFileCopy($strConfigfile, $intConfigId, $strFileName, 1);
-        if ($intReturn2 == 0) {
+        if ($intReturn2 === 0) {
             $myVisClass->processMessage('<span style="color:green">' .translate('Configuration file successfully '
                     . 'written!'). '</span>', $strInfoMessage);
             $myDataClass->writeLog(translate('Configuration successfully written:'). ' ' .$strConfigfile);
-            unlink($strFileName);
         } else {
             $myVisClass->processMessage(translate('Cannot open/overwrite the configuration file (check the permissions '
                     . 'on remote system)!'), $strErrorMessage);
             $myDataClass->writeLog(translate('Configuration write failed (remote):'). ' ' .$strConfigfile);
-            unlink($strFileName);
         }
+        unlink($strFileName);
     }
-} elseif ($arrConfigSet[0] == 0) {
+} elseif ($arrConfigSet[0] === 0) {
     $myVisClass->processMessage(translate('There are no nagios configuration files in common domain, please select a '.
         'valid domain to edit this files!'), $strErrorMessage);
 }
-//
-// Include content
-// ===============
+/*
+Include content
+*/
 $conttp->setVariable('TITLE', translate('Nagios main configuration file'));
-$conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
+$conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF'));
 $conttp->setVariable('MAINSITE', $_SESSION['SETS']['path']['base_url']. 'admin.php');
 foreach ($arrDescription as $elem) {
     $conttp->setVariable($elem['name'], $elem['string']);
 }
-//
-// Open configuration
-// ==================
-if ($intMethod == 1) {
+/*
+Open configuration
+*/
+if ($intMethod === 1) {
     if (file_exists($strConfigfile) && is_readable($strConfigfile)) {
         $resFile   = fopen($strConfigfile, 'rb');
         if ($resFile) {
@@ -122,12 +138,12 @@ if ($intMethod == 1) {
     } else {
         $myVisClass->processMessage(translate('Cannot open the data file (check the permissions)!'), $strErrorMessage);
     }
-} elseif (($intMethod == 2) || ($intMethod == 3)) {
-    // Write file to temporary
+} elseif (($intMethod === 2) || ($intMethod === 3)) {
+    /* Write file to temporary */
     $strFileName = tempnam($_SESSION['SETS']['path']['tempdir'], 'nagiosql_conf');
-    // Copy configuration from remoty system
-    $intReturn = $myConfigClass->remoteFileCopy($strConfigfile, $intConfigId, $strFileName, 0);
-    if ($intReturn == 0) {
+    /* Copy configuration from remoty system */
+    $intReturn = $myConfigClass->remoteFileCopy($strConfigfile, $intConfigId, $strFileName);
+    if ($intReturn === 0) {
         $resFile = fopen($strFileName, 'rb');
         if (is_resource($resFile)) {
             while (!feof($resFile)) {
@@ -146,19 +162,19 @@ if ($intMethod == 1) {
     }
 }
 $conttp->setVariable('DAT_NAGIOS_CONFIG', $strConfig);
-if ($strErrorMessage != '') {
+if ($strErrorMessage !== '') {
     $conttp->setVariable('ERRORMESSAGE', $strErrorMessage);
 }
 $conttp->setVariable('INFOMESSAGE', $strInfoMessage);
-// Check access rights for adding new objects
-if ($myVisClass->checkAccountGroup($prePageKey, 'write') != 0) {
+/* Check access rights for adding new objects */
+if ($myVisClass->checkAccountGroup($prePageKey, 'write') !== 0) {
     $conttp->setVariable('ADD_CONTROL', 'disabled="disabled"');
 }
 $conttp->parse('naginsert');
 $conttp->show('naginsert');
-//
-// Process footer
-// ==============
+/*
+Process footer
+*/
 $maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
         . "target='_blank'>NagiosQL</a> $setFileVersion");
 $maintp->parse('footer');
