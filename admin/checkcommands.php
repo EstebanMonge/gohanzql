@@ -2,7 +2,7 @@
 /* ----------------------------------------------------------------------------
  NagiosQL
 -------------------------------------------------------------------------------
- (c) 2005-2022 by Martin Willisegger
+ (c) 2005-2023 by Martin Willisegger
 
  Project   : NagiosQL
  Component : Check command definitions
@@ -19,20 +19,28 @@ use functions\NagVisualClass;
 
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
- * @var HTML_Template_IT $mastertp
- * @var NagVisualClass $myVisClass
- * @var MysqliDbClass $myDBClass
- * @var NagDataClass $myDataClass
- * @var NagConfigClass $myConfigClass
- * @var NagContentClass $myContentClass
- * @var string $setFileVersion from prepend_adm.php
- * @var string $chkModus from prepend_adm.php
- * @var int $chkDataId from prepend_adm.php
- * @var int $intGlobalWriteAccess from prepend_content.php
- * @var int $intWriteAccessId from prepend_content.php
- * @var string $preSQLCommon1 from prepend_content.php
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var HTML_Template_IT $mastertp Master template (list view)
+ * @var MysqliDbClass $myDBClass MySQL database class
+ * @var NagVisualClass $myVisClass Visual content class
+ * @var NagDataClass $myDataClass NagiosQL data class
+ * @var NagContentClass $myContentClass NagiosQL content class
+ * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var string $chkModus from prepend_adm.php -> Form work mode
+ * @var int $chkDataId from prepend_adm.php -> Actual dataset id
+ * @var string $chkSelModify from prepend_adm.php -> Modification selection value
+ * @var int $hidSortBy from prepend_adm.php -> Sort data by
+ * @var string $hidSortDir from prepend_adm.php -> Sort data direction (ASC, DESC)
+ * @var int $chkLimit from prepend_adm.php / settings -> Data set count per page
+ * @var int $intVersion from prepend_adm.php -> Nagios version
+ * @var array $SETS Settings array
+ * @var int $intGlobalWriteAccess from prepend_content.php -> Global admin write access
+ * @var int $intWriteAccessId from prepend_content.php -> Admin write access to actual dataset id
+ * @var string $strAccess from prepend_content.php -> List of read access group id's for actual user
+ * @var string $preSQLCommon1 from prepend_content.php -> Common SQL part 1
+ * @var string $strDomainWhere from prepend_adm.php -> Domain selection SQL part
  * @var string $chkTfValue1 from prepend_content.php
  * @var string $chkTfSpValue1 from prepend_content.php
  * @var int $chkSelValue1 from prepend_content.php
@@ -44,17 +52,6 @@ use functions\NagVisualClass;
  * @var string $chkTaArg6Info from prepend_content.php
  * @var string $chkTaArg7Info from prepend_content.php
  * @var string $chkTaArg8Info from prepend_content.php
- * @var int $intDataWarning from prepend_content.php
- * @var string $strDBWarning from ? TODO
- * @var int $intVersion from prepend_adm.php
- * @var string $chkSelModify from prepend_adm.php
- * @var string $hidSortDir from prepend_adm.php
- * @var int $hidSortBy from prepend_adm.php
- * @var string $strDomainWhere from prepend_adm.php
- * @var string $strAccess from prepend_content.php
- * @var int $chkLimit from prepend_adm.php
- * @var array $SETS from prepend_adm.php
- * @var string $strConsistMessage from prepend_adm.php
  */
 /*
 Path settings
@@ -73,8 +70,11 @@ $preTableName = 'tbl_command';
 $preKeyField = 'command_name';
 $preAccess = 1;
 $preFieldvars = 1;
+$intDataWarning = 0;
 $strErrorMessage = '';
 $strInfoMessage = '';
+$strConsistMessage = '';
+$strDBWarning = '';
 /*
 Include preprocessing file
 */
