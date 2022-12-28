@@ -112,15 +112,15 @@ if ($intMethod === 1) {
     /* Open ftp connection */
     if ($myConfigClass->getFTPConnection($intConfigId) === 0) {
         $arrFiles  = array();
-        $arrFiles1 = ftp_nlist($myConfigClass->resConnectId, $strBaseDir);
+        $arrFiles1 = ftp_nlist($myConfigClass->conFTPConId, $strBaseDir);
         if (is_array($arrFiles1)) {
             $arrFiles = array_merge($arrFiles, $arrFiles1);
         }
-        $arrFiles2 = ftp_nlist($myConfigClass->resConnectId, $strHostDir);
+        $arrFiles2 = ftp_nlist($myConfigClass->conFTPConId, $strHostDir);
         if (is_array($arrFiles2)) {
             $arrFiles = array_merge($arrFiles, $arrFiles2);
         }
-        $arrFiles3 = ftp_nlist($myConfigClass->resConnectId, $strServiceDir);
+        $arrFiles3 = ftp_nlist($myConfigClass->conFTPConId, $strServiceDir);
         if (is_array($arrFiles3)) {
             $arrFiles = array_merge($arrFiles, $arrFiles3);
         }
@@ -135,7 +135,7 @@ if ($intMethod === 1) {
                 }
             }
         }
-        ftp_close($myConfigClass->resConnectId);
+        ftp_close($myConfigClass->conFTPConId);
     } else {
         $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
     }

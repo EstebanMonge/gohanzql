@@ -82,7 +82,7 @@ if ($argFunction == 'check') {
         }
     } elseif ($intMethod == 2) {
         $booReturn = 0;
-        if (empty($myConfigClass->resConnectId) || !is_resource($myConfigClass->resConnectId)) {
+        if (empty($myConfigClass->conFTPConId)) {
             $booReturn = $myConfigClass->getFTPConnection($intTarget);
         }
         if ($booReturn == 1) {
@@ -90,7 +90,7 @@ if ($argFunction == 'check') {
         } else {
             $intErrorReporting = error_reporting();
             error_reporting(0);
-            if (!($resFile = ftp_exec($myConfigClass->resConnectId, $strBinary.' -v '.$strConffile))) {
+            if (!($resFile = ftp_exec($myConfigClass->conFTPConId, $strBinary.' -v '.$strConffile))) {
                 echo "Remote execution (FTP SITE EXEC) is not supported on your system!\n";
                 error_reporting($intErrorReporting);
                 exit(1);
@@ -100,7 +100,7 @@ if ($argFunction == 'check') {
         }
     } elseif ($intMethod == 3) {
         $booReturn = 0;
-        if (empty($myConfigClass->resConnectId) || !is_resource($myConfigClass->resConnectId)) {
+        if (empty($myConfigClass->resSSHConId) || !is_resource($myConfigClass->resSSHConId)) {
             $booReturn = $myConfigClass->getSSHConnection($intTarget);
         }
         if ($booReturn == 1) {
@@ -156,7 +156,7 @@ if ($argFunction == 'restart') {
     }
     if ($intMethod == 3) {
         $booReturn = 0;
-        if (empty($myConfigClass->resConnectId) || !is_resource($myConfigClass->resConnectId)) {
+        if (empty($myConfigClass->resSSHConId) || !is_resource($myConfigClass->resSSHConId)) {
             $booReturn = $myConfigClass->getSSHConnection($intTarget);
         }
         if ($booReturn == 1) {

@@ -193,28 +193,28 @@ if ($intMethod === 1) {
     /* Set up basic connection */
     if ($myConfigClass->getFTPConnection($intConfigId) === 0) {
         $arrFiles  = array();
-        $arrFiles1 = ftp_nlist($myConfigClass->resConnectId, $strBaseDir);
+        $arrFiles1 = ftp_nlist($myConfigClass->conFTPConId, $strBaseDir);
         if (is_array($arrFiles1)) {
             $arrFiles = array_merge($arrFiles, $arrFiles1);
         }
-        $arrFiles2 = ftp_nlist($myConfigClass->resConnectId, $strHostDir);
+        $arrFiles2 = ftp_nlist($myConfigClass->conFTPConId, $strHostDir);
         if (is_array($arrFiles2)) {
             $arrFiles = array_merge($arrFiles, $arrFiles2);
         }
-        $arrFiles3 = ftp_nlist($myConfigClass->resConnectId, $strServiceDir);
+        $arrFiles3 = ftp_nlist($myConfigClass->conFTPConId, $strServiceDir);
         if (is_array($arrFiles3)) {
             $arrFiles = array_merge($arrFiles, $arrFiles3);
         }
-        $arrFiles4 = ftp_nlist($myConfigClass->resConnectId, $strHostBackupDir);
+        $arrFiles4 = ftp_nlist($myConfigClass->conFTPConId, $strHostBackupDir);
         if (is_array($arrFiles4)) {
             $arrFiles = array_merge($arrFiles, $arrFiles4);
         }
-        $arrFiles5 = ftp_nlist($myConfigClass->resConnectId, $strServiceBackupDir);
+        $arrFiles5 = ftp_nlist($myConfigClass->conFTPConId, $strServiceBackupDir);
         if (is_array($arrFiles5)) {
             $arrFiles = array_merge($arrFiles, $arrFiles5);
         }
         if ($strImportDir !== '') {
-            $arrFiles6 = ftp_nlist($myConfigClass->resConnectId, $strImportDir);
+            $arrFiles6 = ftp_nlist($myConfigClass->conFTPConId, $strImportDir);
             if (is_array($arrFiles6)) {
                 $arrFiles = array_merge($arrFiles, $arrFiles6);
             }
@@ -245,7 +245,7 @@ if ($intMethod === 1) {
                 }
             }
         }
-        ftp_close($myConfigClass->resConnectId);
+        ftp_close($myConfigClass->conFTPConId);
     } else {
         $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
     }

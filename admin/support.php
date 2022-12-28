@@ -275,7 +275,7 @@ if ($intConfigId !== 0) {
         $conttp->setVariable('CONNECT_CHECK_RESULT', translate('ok'));
     } elseif ($intMethod === 2) {
         $booReturn = 0;
-        if (empty($myConfigClass->resConnectId) || !is_resource($myConfigClass->resConnectId)) {
+        if (empty($myConfigClass->conFTPConId)) {
             $booReturn = $myConfigClass->getFTPConnection($intConfigId);
         }
         if ($booReturn === 1) {
@@ -290,7 +290,7 @@ if ($intConfigId !== 0) {
         }
     } elseif ($intMethod === 3) {
         $booReturn = 0;
-        if (empty($myConfigClass->resConnectId) || !is_resource($myConfigClass->resConnectId)) {
+        if (empty($myConfigClass->resSSHConId) || !is_resource($myConfigClass->resSSHConId)) {
             $booReturn = $myConfigClass->getSSHConnection($intConfigId);
         }
         if ($booReturn === 1) {
@@ -488,7 +488,7 @@ if ($intConfigId !== 0) {
         $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('ok'). ' (' .translate('not used with FTP'). ')');
     } elseif ($intMethod === 3) {
         $booReturn = 0;
-        if (empty($myConfigClass->resConnectId) || !is_resource($myConfigClass->resConnectId)) {
+        if (empty($myConfigClass->resSSHConId) || !is_resource($myConfigClass->resSSHConId)) {
             $booReturn = $myConfigClass->getSSHConnection($intConfigId);
         }
         if ($booReturn === 1) {

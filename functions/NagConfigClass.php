@@ -20,6 +20,7 @@
 
 namespace functions;
 
+use FTP\Connection;
 use HTML_Template_IT;
 use function count;
 use function dirname;
@@ -32,7 +33,12 @@ use function strlen;
 class NagConfigClass
 {
     /* Define class variables */
-    public $resConnectId; /* Connection id for FTP and SSH connections */
+    /**
+     * @var Connection $conFTPConId
+     * @var resource $resSSHConId
+     */
+    public $conFTPConId; /* Connection id for FTP connections */
+    public $resSSHConId; /* Connection id for SSH connections */
     public $resSFTP; /* SFTP ressource id */
     public $arrSession = array(); /* Session content */
     public $strRelTable = ''; /* Relation table name */
@@ -244,7 +250,7 @@ class NagConfigClass
             /* Check connection */
             $intReturn = $this->getFTPConnection($intConfigId);
             if ($intReturn === 0) {
-                $intFileStamp = ftp_mdtm($this->resConnectId, $strBaseDir . '/' . $strFile);
+                $intFileStamp = ftp_mdtm($this->conFTPConId, $strBaseDir . '/' . $strFile);
                 if ($intFileStamp !== -1) {
                     $strTimeData = date('Y-m-d H:i:s', $intFileStamp);
                 }
@@ -282,7 +288,7 @@ class NagConfigClass
         $strServer = '';
         $intFtpSecure = 0;
         /* Already connected? */
-        if (empty($this->resConnectId) || !is_resource($this->resConnectId) || ($this->resConnectType !== 'FTP')) {
+        if (empty($this->conFTPConId) || !is_resource($this->conFTPConId) || ($this->resConnectType !== 'FTP')) {
             /* Define variables */
             $booLogin = false;
             if ($this->getConfigValues($intConfigID, 'server', $strServerVal) === 0) {
@@ -296,32 +302,32 @@ class NagConfigClass
             $this->resConnectType = 'FTP';
             /* Secure FTP? */
             if ($intFtpSecure === 1) {
-                $this->resConnectId = ftp_ssl_connect($strServer);
+                $this->conFTPConId = ftp_ssl_connect($strServer);
             } else {
-                $this->resConnectId = ftp_connect($strServer);
+                $this->conFTPConId = ftp_connect($strServer);
             }
             /* Login with username and password */
-            if ($this->resConnectId) {
+            if ($this->conFTPConId) {
                 $this->getConfigValues($intConfigID, 'user', $strUser);
                 $this->getConfigValues($intConfigID, 'password', $strPasswd);
                 $intErrorReporting = error_reporting();
                 error_reporting('0');
-                $booLogin = ftp_login($this->resConnectId, $strUser, $strPasswd);
+                $booLogin = ftp_login($this->conFTPConId, $strUser, $strPasswd);
                 $arrError = error_get_last();
                 error_reporting($intErrorReporting);
                 if ($booLogin === false) {
-                    ftp_close($this->resConnectId);
+                    ftp_close($this->conFTPConId);
                     $this->resConnectServer = '';
                     $this->resConnectType = 'none';
-                    $this->resConnectId = null;
+                    $this->conFTPConId = null;
                     $intReturn = 1;
                 } else {
                     /* Change to PASV mode */
-                    ftp_pasv($this->resConnectId, true);
+                    ftp_pasv($this->conFTPConId, true);
                 }
             }
             /* Check connection */
-            if ((!$this->resConnectId) || (!$booLogin)) {
+            if ((!$this->conFTPConId) || (!$booLogin)) {
                 $this->myDataClass->writeLog(translate('Connection to remote system failed (FTP connection):') .
                     ' ' . $strServer);
                 $this->processClassMessage(translate('Connection to remote system failed (FTP connection):') .
@@ -363,7 +369,7 @@ class NagConfigClass
         $strServer = '';
         $intPort = 22;
         /* Already connected? */
-        if (empty($this->resConnectId) || !is_resource($this->resConnectId) || ($this->resConnectType !== 'SSH')) {
+        if (empty($this->resSSHConId) || !is_resource($this->resSSHConId) || ($this->resConnectType !== 'SSH')) {
             /* SSH Possible */
             if (!function_exists('ssh2_connect')) {
                 $this->processClassMessage(translate('SSH module not loaded!') . '::', $this->strErrorMessage);
@@ -384,11 +390,11 @@ class NagConfigClass
             $this->resConnectType = 'SSH';
             $intErrorReporting = error_reporting();
             error_reporting(0);
-            $this->resConnectId = ssh2_connect($strServer, $intPort);
+            $this->resSSHConId = ssh2_connect($strServer, $intPort);
             $arrError = error_get_last();
             error_reporting($intErrorReporting);
             /* Check connection */
-            if ($this->resConnectId) {
+            if ($this->resSSHConId) {
                 /* Login with username and password */
                 $this->getConfigValues($intConfigID, 'user', $strUser);
                 $this->getConfigValues($intConfigID, 'password', $strPasswd);
@@ -415,14 +421,14 @@ class NagConfigClass
                     error_reporting(0);
                     if ($strPasswd === '') {
                         $booLogin = ssh2_auth_pubkey_file(
-                            $this->resConnectId,
+                            $this->resSSHConId,
                             $strUser,
                             $strSSHKeyPath . '/id_rsa.pub',
                             $strSSHKeyPath . '/id_rsa'
                         );
                     } else {
                         $booLogin = ssh2_auth_pubkey_file(
-                            $this->resConnectId,
+                            $this->resSSHConId,
                             $strUser,
                             $strSSHKeyPath . '/id_rsa.pub',
                             $strSSHKeyPath . '/id_rsa',
@@ -433,7 +439,7 @@ class NagConfigClass
                 } else {
                     $intErrorReporting = error_reporting();
                     error_reporting(0);
-                    $booLogin = ssh2_auth_password($this->resConnectId, $strUser, $strPasswd);
+                    $booLogin = ssh2_auth_password($this->resSSHConId, $strUser, $strPasswd);
                     $arrError = error_get_last();
                     $strPasswordNote = 'If you are using ssh2 with user/password - you have to enable ' .
                         'PasswordAuthentication in your sshd_config';
@@ -450,7 +456,7 @@ class NagConfigClass
                 $intReturn = 1;
             }
             /* Check connection */
-            if ((!$this->resConnectId) || (!$booLogin)) {
+            if ((!$this->resSSHConId) || (!$booLogin)) {
                 $this->myDataClass->writeLog(translate('Connection to remote system failed (SSH2 connection):') .
                     ' ' . $strServer . ' / ' . translate('port') . ' : ' . $intPort);
                 $this->processClassMessage(translate('Connection to remote system failed (SSH2 connection):')
@@ -463,11 +469,11 @@ class NagConfigClass
                 }
                 $this->resConnectServer = '';
                 $this->resConnectType = 'none';
-                $this->resConnectId = null;
+                $this->resSSHConId = null;
                 $intReturn = 1;
             } else {
                 /* Etablish an SFTP connection ressource */
-                $this->resSFTP = ssh2_sftp($this->resConnectId);
+                $this->resSFTP = ssh2_sftp($this->resSSHConId);
             }
         }
         return $intReturn;
@@ -489,9 +495,9 @@ class NagConfigClass
         $this->getConfigTargets($arrConfigSet);
         /* Check connection */
         $intReturn = $this->getSSHConnection($arrConfigSet[0]);
-        if (is_resource($this->resConnectId)) {
+        if (is_resource($this->resSSHConId)) {
             /* Send command */
-            $resStream = ssh2_exec($this->resConnectId, $strCommand . '; echo __END__');
+            $resStream = ssh2_exec($this->resSSHConId, $strCommand . '; echo __END__');
             if ($resStream) {
                 /* Read result */
                 stream_set_blocking($resStream, true);
@@ -512,7 +518,7 @@ class NagConfigClass
                 ((bool)$arrStatus['timed_out'] !== true) && $booBreak === false);
                 fclose($resStream);
                 /* Close SSH connection because of timing problems */
-                unset($this->resConnectId);
+                unset($this->resSSHConId);
             }
         }
         return $intReturn;
@@ -557,11 +563,11 @@ class NagConfigClass
             $intReturn = $this->getFTPConnection($intConfigID);
             if ($intReturn === 0) {
                 /* Save configuration file */
-                $intFileStamp = ftp_mdtm($this->resConnectId, $strFileName);
+                $intFileStamp = ftp_mdtm($this->conFTPConId, $strFileName);
                 if ($intFileStamp > -1) {
                     $intErrorReporting = error_reporting();
                     error_reporting(0);
-                    $booRetVal = ftp_delete($this->resConnectId, $strFileName);
+                    $booRetVal = ftp_delete($this->conFTPConId, $strFileName);
                     error_reporting($intErrorReporting);
                 } else {
                     $this->processClassMessage(translate('Cannot delete file because it does not exists (remote '
@@ -681,7 +687,7 @@ class NagConfigClass
             if (($intReturn === 0) && ($intDirection === 0)) {
                 $intErrorReporting = error_reporting();
                 error_reporting(0);
-                if (!ftp_get($this->resConnectId, $strFileLocal, $strFileRemote, FTP_ASCII)) {
+                if (!ftp_get($this->conFTPConId, $strFileLocal, $strFileRemote, FTP_ASCII)) {
                     $this->processClassMessage(translate('Cannot get the remote file (it does not exist or is not '
                             . 'readable) - remote file: ') . $strFileRemote . '::', $this->strErrorMessage);
                     $intReturn = 1;
@@ -690,21 +696,21 @@ class NagConfigClass
             } elseif (($intReturn === 0) && ($intDirection === 1)) {
                 $intErrorReporting = error_reporting();
                 error_reporting(0);
-                if (!ftp_put($this->resConnectId, $strFileRemote, $strFileLocal, FTP_ASCII)) {
+                if (!ftp_put($this->conFTPConId, $strFileRemote, $strFileLocal, FTP_ASCII)) {
                     $this->processClassMessage(translate('Cannot write the remote file (remote file is not writeable)'
                             . '- remote file: ') . $strFileRemote . '::', $this->strErrorMessage);
                     $intReturn = 1;
                 }
                 error_reporting($intErrorReporting);
             }
-            ftp_close($this->resConnectId);
+            ftp_close($this->conFTPConId);
         } elseif ($intMethod === 3) { /* Remote file (SFTP) */
             $intReturn = $this->getSSHConnection($intConfigID);
             if (($intReturn === 0) && ($intDirection === 0)) {
                 /* Copy file */
                 $intErrorReporting = error_reporting();
                 error_reporting(0);
-                if (!ssh2_scp_recv($this->resConnectId, $strFileRemote, $strFileLocal)) {
+                if (!ssh2_scp_recv($this->resSSHConId, $strFileRemote, $strFileLocal)) {
                     if ($this->sendSSHCommand('ls ' . $strFileRemote, $arrTemp) !== 0) {
                         $this->processClassMessage(translate('Cannot get the remote file (it does not exist or is not '
                                 . 'readable) - remote file: ') . $strFileRemote . '::', $this->strErrorMessage);
@@ -719,7 +725,7 @@ class NagConfigClass
                 if (file_exists($strFileLocal) && is_readable($strFileLocal)) {
                     $intErrorReporting = error_reporting();
                     error_reporting(0);
-                    if (!ssh2_scp_send($this->resConnectId, $strFileLocal, $strFileRemote, 0644)) {
+                    if (!ssh2_scp_send($this->resSSHConId, $strFileLocal, $strFileRemote, 0644)) {
                         $this->processClassMessage(translate('Cannot write a remote file (remote file is not writeable)'
                                 . ' - remote file: ') . $strFileRemote . '::', $this->strErrorMessage);
                         $intReturn = 1;
@@ -2191,7 +2197,7 @@ class NagConfigClass
             }
         } elseif ($intMethod === 2) { /* Remote file (FTP) */
             /* Check connection */
-            if (empty($this->resConnectId) || !is_resource($this->resConnectId) ||
+            if (empty($this->conFTPConId) || !is_resource($this->conFTPConId) ||
                 ($this->resConnectType !== 'FTP')) {
                 $intReturn = $this->getFTPConnection($intConfigID);
             }
@@ -2207,7 +2213,7 @@ class NagConfigClass
             }
         } elseif ($intMethod === 3) { /* Remote file (SFTP) */
             /* Check connection */
-            if (empty($this->resConnectId) || !is_resource($this->resConnectId) ||
+            if (empty($this->resSSHConId) || !is_resource($this->resSSHConId) ||
                 ($this->resConnectType !== 'SSH')) {
                 $intReturn = $this->getSSHConnection($intConfigID);
             }
@@ -2294,11 +2300,11 @@ class NagConfigClass
                     $strSourceFile = str_replace('//', '/', $strSourceFile);
                     $strDestinationFile = str_replace('//', '/', $strDestinationFile);
                     /* Save configuration file */
-                    $intFileStamp = ftp_mdtm($this->resConnectId, $strSourceFile);
+                    $intFileStamp = ftp_mdtm($this->conFTPConId, $strSourceFile);
                     if ($intFileStamp > -1) {
                         $intErrorReporting = error_reporting();
                         error_reporting(0);
-                        $booRetVal = ftp_rename($this->resConnectId, $strSourceFile, $strDestinationFile);
+                        $booRetVal = ftp_rename($this->conFTPConId, $strSourceFile, $strDestinationFile);
                         error_reporting($intErrorReporting);
                     } else {
                         $this->processClassMessage(translate('Cannot backup the old file because the source file is '
@@ -2382,7 +2388,7 @@ class NagConfigClass
             } else {
                 $intErrorReporting = error_reporting();
                 error_reporting(0);
-                if (!ftp_put($this->resConnectId, $strBaseDir . '/' . $strFile, $strConfigFile, FTP_ASCII)) {
+                if (!ftp_put($this->conFTPConId, $strBaseDir . '/' . $strFile, $strConfigFile, FTP_ASCII)) {
                     $arrError = error_get_last();
                     error_reporting($intErrorReporting);
                     $this->processClassMessage(translate('Cannot open/overwrite the configuration file (FTP connection '
@@ -2393,7 +2399,7 @@ class NagConfigClass
                     $intReturn = 1;
                 }
                 error_reporting($intErrorReporting);
-                ftp_close($this->resConnectId);
+                ftp_close($this->conFTPConId);
                 fclose($resConfigFile);
             }
         } elseif ($intMethod === 3) { /* SSH access */
@@ -2404,7 +2410,7 @@ class NagConfigClass
             } else {
                 $intErrorReporting = error_reporting();
                 error_reporting(0);
-                if (!ssh2_scp_send($this->resConnectId, $strConfigFile, $strBaseDir . '/' . $strFile, 0644)) {
+                if (!ssh2_scp_send($this->resSSHConId, $strConfigFile, $strBaseDir . '/' . $strFile, 0644)) {
                     $arrError = error_get_last();
                     error_reporting($intErrorReporting);
                     $this->processClassMessage(translate('Cannot open/overwrite the configuration file (remote SFTP)!') .
@@ -2417,7 +2423,7 @@ class NagConfigClass
                 error_reporting($intErrorReporting);
                 fclose($resConfigFile);
                 unlink($strConfigFile);
-                $this->resConnectId = null;
+                $this->resSSHConId = null;
             }
         }
         if ($intReturn === 0) {
