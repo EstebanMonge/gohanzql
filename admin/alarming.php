@@ -2,7 +2,7 @@
 /* ----------------------------------------------------------------------------
  NagiosQL
 -------------------------------------------------------------------------------
- (c) 2005-2022 by Martin Willisegger
+ (c) 2005-2023 by Martin Willisegger
 
  Project   : NagiosQL
  Component : Alarming overview
@@ -16,10 +16,10 @@ use functions\NagVisualClass;
 
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
- * @var NagVisualClass $myVisClass
- * @var MysqliDbClass $myDBClass
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var MysqliDbClass $myDBClass MySQL database class
+ * @var NagVisualClass $myVisClass Visual content class
  * @var int $chkDomainId from prepend_adm.php
  * @var string $setFileVersion from prepend_adm.php
  */

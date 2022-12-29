@@ -40,18 +40,18 @@ use functions\NagVisualClass;
  * @var int $intWriteAccessId from prepend_content.php -> Admin write access to actual dataset id
  * @var string $strAccess from prepend_content.php -> List of read access group id's for actual user
  * @var string $preSQLCommon1 from prepend_content.php -> Common SQL part 1
- * @var string $strDomainWhere from prepend_adm.php -> Domain selection SQL part
- * @var string $chkTfValue1 from prepend_content.php
- * @var string $chkTfSpValue1 from prepend_content.php
- * @var int $chkSelValue1 from prepend_content.php
- * @var string $chkTaArg1Info from prepend_content.php
- * @var string $chkTaArg2Info from prepend_content.php
- * @var string $chkTaArg3Info from prepend_content.php
- * @var string $chkTaArg4Info from prepend_content.php
- * @var string $chkTaArg5Info from prepend_content.php
- * @var string $chkTaArg6Info from prepend_content.php
- * @var string $chkTaArg7Info from prepend_content.php
- * @var string $chkTaArg8Info from prepend_content.php
+ * @var string $strDomainWhere from prepend_adm.php -> Domain selection SQL part with table name
+ * @var string $chkTfValue1 from prepend_content.php -> Command name
+ * @var string $chkTfSpValue1 from prepend_content.php -> Command definition
+ * @var int $chkSelValue1 from prepend_content.php -> Command type
+ * @var string $chkTaArg1Info from prepend_content.php -> Command argument 1 information
+ * @var string $chkTaArg2Info from prepend_content.php -> Command argument 2 information
+ * @var string $chkTaArg3Info from prepend_content.php -> Command argument 3 information
+ * @var string $chkTaArg4Info from prepend_content.php -> Command argument 4 information
+ * @var string $chkTaArg5Info from prepend_content.php -> Command argument 5 information
+ * @var string $chkTaArg6Info from prepend_content.php -> Command argument 6 information
+ * @var string $chkTaArg7Info from prepend_content.php -> Command argument 7 information
+ * @var string $chkTaArg8Info from prepend_content.php -> Command argument 8 information
  */
 /*
 Path settings

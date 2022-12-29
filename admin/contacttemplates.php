@@ -19,73 +19,71 @@ use functions\NagVisualClass;
 
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
- * @var HTML_Template_IT $mastertp
- * @var NagVisualClass $myVisClass
- * @var MysqliDbClass $myDBClass
- * @var NagDataClass $myDataClass
- * @var NagConfigClass $myConfigClass
- * @var NagContentClass $myContentClass
- * @var string $setFileVersion from prepend_adm.php
- * @var string $chkModus from prepend_adm.php
- * @var int $chkDataId from prepend_adm.php
- * @var int $intVersion from prepend_adm.php
- * @var string $chkSelModify from prepend_adm.php
- * @var string $hidSortDir from prepend_adm.php
- * @var int $hidSortBy from prepend_adm.php
- * @var string $strDomainWhere from prepend_adm.php
- * @var string $strDomainWhere2 from prepend_adm.php
- * @var int $chkLimit from prepend_adm.php
- * @var array $SETS from prepend_adm.php
- * @var string $strConsistMessage from prepend_adm.php
- * @var int $intGlobalWriteAccess from prepend_content.php
- * @var int $intWriteAccessId from prepend_content.php
- * @var string $preSQLCommon2 from prepend_content.php
- * @var string $strAccess from prepend_content.php
- *
- * @var string $chkChbGr1a from prepend_content.php
- * @var string $chkChbGr2a from prepend_content.php
- * @var string $chkChbGr1b from prepend_content.php
- * @var string $chkChbGr2b from prepend_content.php
- * @var string $chkChbGr1c from prepend_content.php
- * @var string $chkChbGr2c from prepend_content.php
- * @var string $chkChbGr1d from prepend_content.php
- * @var string $chkChbGr2d from prepend_content.php
- * @var string $chkChbGr1e from prepend_content.php
- * @var string $chkChbGr2e from prepend_content.php
- * @var string $chkChbGr1f from prepend_content.php
- * @var string $chkChbGr2f from prepend_content.php
- * @var string $chkChbGr2g from prepend_content.php
- * @var string $chkTfValue1 contactgroup_name text field from prepend_content.php
- * @var string $chkTfValue2 alias text field from prepend_content.php
- * @var string $chkTfValue3 email text field from prepend_content.php
- * @var string $chkTfValue4 pager text field from prepend_content.php
- * @var string $chkTfValue5 address1 text field from prepend_content.php
- * @var string $chkTfValue6 address2 text field from prepend_content.php
- * @var string $chkTfValue7 address3 text field from prepend_content.php
- * @var string $chkTfValue8 address4 text field from prepend_content.php
- * @var string $chkTfValue9 address5 text field from prepend_content.php
- * @var string $chkTfValue10 address6 text field from prepend_content.php
- * @var int $intMselValue1 from prepend_content.php
- * @var int $intMselValue2 from prepend_content.php
- * @var int $intMselValue3 from prepend_content.php
- * @var int $chkRadValue1 from prepend_content.php
- * @var int $chkRadValue2 from prepend_content.php
- * @var int $chkRadValue3 from prepend_content.php
- * @var int $chkRadValue4 from prepend_content.php
- * @var int $chkRadValue5 from prepend_content.php
- * @var int $chkRadValue6 from prepend_content.php
- * @var int $chkRadValue7 from prepend_content.php
- * @var int $chkRadValue8 from prepend_content.php
- * @var int $chkTfNullVal1 from prepend_content.php
- * @var int $chkSelValue1 from prepend_content.php
- * @var int $chkSelValue2 from prepend_content.php
- * @var int $intVariables from prepend_content.php
- * @var int $intTemplates from prepend_content.php
- * @var array $chkMselValue1 from prepend_content.php
- * @var array $chkMselValue2 from prepend_content.php
- * @var array $chkMselValue3 from prepend_content.php
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var HTML_Template_IT $mastertp Master template (list view)
+ * @var MysqliDbClass $myDBClass MySQL database class
+ * @var NagVisualClass $myVisClass Visual content class
+ * @var NagDataClass $myDataClass NagiosQL data class
+ * @var NagContentClass $myContentClass NagiosQL content class
+ * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var string $chkModus from prepend_adm.php -> Form work mode
+ * @var int $chkDataId from prepend_adm.php -> Actual dataset id
+ * @var string $chkSelModify from prepend_adm.php -> Modification selection value
+ * @var int $hidSortBy from prepend_adm.php -> Sort data by
+ * @var string $hidSortDir from prepend_adm.php -> Sort data direction (ASC, DESC)
+ * @var int $chkLimit from prepend_adm.php / settings -> Data set count per page
+ * @var int $intVersion from prepend_adm.php -> Nagios version
+ * @var array $SETS Settings array
+ * @var int $intGlobalWriteAccess from prepend_content.php -> Global admin write access
+ * @var int $intWriteAccessId from prepend_content.php -> Admin write access to actual dataset id
+ * @var string $strAccess from prepend_content.php -> List of read access group id's for actual user
+ * @var string $preSQLCommon2 from prepend_content.php -> Common SQL part 2
+ * @var string $strDomainWhere from prepend_adm.php -> Domain selection SQL part with table name
+ * @var string $strDomainWhere2 from prepend_adm.php -> Domain selection SQL part without table name
+ * @var string $chkTfValue1 from prepend_content.php -> Contact template name
+ * @var string $chkTfValue2 from prepend_content.php -> Contact template description
+ * @var string $chkTfValue3 from prepend_content.php -> Email address
+ * @var string $chkTfValue4 from prepend_content.php -> Pager number
+ * @var string $chkTfValue5 from prepend_content.php -> Additional address 1
+ * @var string $chkTfValue6 from prepend_content.php -> Additional address 2
+ * @var string $chkTfValue7 from prepend_content.php -> Additional address 3
+ * @var string $chkTfValue8 from prepend_content.php -> Additional address 4
+ * @var string $chkTfValue9 from prepend_content.php -> Additional address 5
+ * @var string $chkTfValue10 from prepend_content.php -> Additional address 6
+ * @var int $chkSelValue1 from prepend_content.php -> Time period hosts
+ * @var int $chkSelValue2 from prepend_content.php -> Time period services
+ * @var array $chkMselValue1 from prepend_content.php -> Contact groups
+ * @var array $chkMselValue2 from prepend_content.php -> Host command
+ * @var array $chkMselValue3 from prepend_content.php -> Service command
+ * @var int $intMselValue1 from prepend_content.php -> Contact groups multiselect status value
+ * @var int $intMselValue2 from prepend_content.php -> Host command multiselect status value
+ * @var int $intMselValue3 from prepend_content.php -> Service command multiselect status value
+ * @var string $chkChbGr1a from prepend_content.php -> Host options (d)
+ * @var string $chkChbGr1b from prepend_content.php -> Host options (u)
+ * @var string $chkChbGr1c from prepend_content.php -> Host options (r)
+ * @var string $chkChbGr1d from prepend_content.php -> Host options (f)
+ * @var string $chkChbGr1e from prepend_content.php -> Host options (s)
+ * @var string $chkChbGr1f from prepend_content.php -> Host options (n)
+ * @var string $chkChbGr2a from prepend_content.php -> Service options (w)
+ * @var string $chkChbGr2b from prepend_content.php -> Service options (u)
+ * @var string $chkChbGr2c from prepend_content.php -> Service options (c)
+ * @var string $chkChbGr2d from prepend_content.php -> Service options (r)
+ * @var string $chkChbGr2e from prepend_content.php -> Service options (f)
+ * @var string $chkChbGr2f from prepend_content.php -> Service options (s)
+ * @var string $chkChbGr2g from prepend_content.php -> Service options (n)
+ * @var int $chkRadValue1 from prepend_content.php -> Contact groups multiselect options
+ * @var int $chkRadValue2 from prepend_content.php -> Host alarming
+ * @var int $chkRadValue3 from prepend_content.php -> Service alarming
+ * @var int $chkRadValue4 from prepend_content.php -> Host command multiselect options
+ * @var int $chkRadValue5 from prepend_content.php -> Service command multiselect options
+ * @var int $chkRadValue6 from prepend_content.php -> Retain status information
+ * @var int $chkRadValue7 from prepend_content.php -> Retain non-status information
+ * @var int $chkRadValue8 from prepend_content.php -> Can submit command
+ * @var int $chkTfNullVal1 from prepend_content.php -> Minimum importance
+ * @var int $intVariables from prepend_content.php -> Form uses variable definitions
+ * @var int $intTemplates from prepend_content.php -> Form uses template definitions
  */
 /*
 Path settings
@@ -106,6 +104,7 @@ $preAccess = 1;
 $preFieldvars = 1;
 $strErrorMessage = '';
 $strInfoMessage = '';
+$strConsistMessage = '';
 $strDBWarning = '';
 $intRet1 = 0;
 $intRet2 = 0;
