@@ -1,81 +1,80 @@
 <?php
-///////////////////////////////////////////////////////////////////////////////
-//
-// NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// (c) 2005-2020 by Martin Willisegger
-//
-// Project   : NagiosQL
-// Component : Admin time definition list
-// Website   : https://sourceforge.net/projects/nagiosql/
-// Version   : 3.4.1
-// GIT Repo  : https://gitlab.com/wizonet/NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// Path settings
-// ===================
+/* ----------------------------------------------------------------------------
+ NagiosQL
+-------------------------------------------------------------------------------
+ (c) 2005-2023 by Martin Willisegger
+
+ Project   : NagiosQL
+ Component : Time definition list
+ Website   : https://sourceforge.net/projects/nagiosql/
+ Version   : 3.5.0
+ GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+-----------------------------------------------------------------------------*/
+
+use functions\MysqliDbClass;
+
+/**
+ * Class and variable includes
+ * @var MysqliDbClass $myDBClass MySQL database class
+ */
+/*
+Path settings
+*/
 $strPattern = '(admin/[^/]*.php)';
-$preRelPath  = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
-$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME', FILTER_SANITIZE_STRING));
-//
-// Define common variables
-// =======================
+$preRelPath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF'));
+$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'));
+/*
+Define common variables
+*/
 $preAccess = 1;
 $preNoMain = 1;
-//
-// Include preprocessing file
-// ==========================
-require $preBasePath.'functions/prepend_adm.php';
-//
-// Process post parameters
-// =======================
-$chkTipId   = filter_input(INPUT_GET, 'tipId', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
+/*
+Include preprocessing file
+*/
+require $preBasePath . 'functions/prepend_adm.php';
+/*
+Process post parameters
+*/
+$chkTipId = filter_input(INPUT_GET, 'tipId', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
 $chkVersion = filter_input(INPUT_GET, 'version', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
-$chkMode    = filter_input(INPUT_GET, 'mode', FILTER_SANITIZE_STRING);
-$chkDef     = filter_input(INPUT_GET, 'def', FILTER_SANITIZE_STRING);
-$chkRange   = filter_input(INPUT_GET, 'range', FILTER_SANITIZE_STRING);
-$chkId      = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
-if (get_magic_quotes_gpc() == 0) {
-    $chkDef   = addslashes($chkDef);
-    $chkRange = addslashes($chkRange);
-}
-//
-// Get data
-// ========
-$strSQL    = "SELECT * FROM `tbl_timedefinition` WHERE `tipId`=$chkTipId ORDER BY `definition`";
+$chkMode = filter_input(INPUT_GET, 'mode');
+$chkDef = filter_input(INPUT_GET, 'def');
+$chkRange = filter_input(INPUT_GET, 'range');
+$chkId = filter_input(INPUT_GET, 'id');
+/*
+Get data
+*/
+$strSQL = "SELECT * FROM `tbl_timedefinition` WHERE `tipId`=$chkTipId ORDER BY `definition`";
 $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
-//
-// Store data to session
-// ============================
-if ($chkMode == '') {
+/*
+Store data to session
+*/
+if (($chkMode === '') || ($chkMode === null)) {
     $_SESSION['timedefinition'] = array();
-    if ($booReturn && ($intDataCount != 0)) {
+    if ($booReturn && ($intDataCount !== 0)) {
         foreach ($arrDataLines as $elem) {
-            $arrTemp['id']            = $elem['id'];
-            $arrTemp['definition']    = addslashes($elem['definition']);
-            $arrTemp['range']         = addslashes($elem['range']);
-            $arrTemp['status']        = 0;
-            $_SESSION['timedefinition'][]   = $arrTemp;
+            $arrTemp['id'] = $elem['id'];
+            $arrTemp['definition'] = addslashes($elem['definition']);
+            $arrTemp['range'] = addslashes($elem['range']);
+            $arrTemp['status'] = 0;
+            $_SESSION['timedefinition'][] = $arrTemp;
         }
     }
 }
-//
-// Add mode
-// =========
-if ($chkMode == 'add') {
+/*
+Add mode
+*/
+if ($chkMode === 'add') {
     if (isset($_SESSION['timedefinition']) && is_array($_SESSION['timedefinition'])) {
         $intCheck = 0;
         foreach ($_SESSION['timedefinition'] as $key => $elem) {
-            if (($elem['definition'] == $chkDef) && ($elem['status'] == 0)) {
+            if (($elem['definition'] === $chkDef) && ((int)$elem['status'] === 0)) {
                 $_SESSION['timedefinition'][$key]['definition'] = $chkDef;
                 $_SESSION['timedefinition'][$key]['range'] = $chkRange;
                 $intCheck = 1;
             }
         }
-        if ($intCheck == 0) {
+        if ($intCheck === 0) {
             $arrTemp['id'] = 0;
             $arrTemp['definition'] = $chkDef;
             $arrTemp['range'] = $chkRange;
@@ -90,19 +89,19 @@ if ($chkMode == 'add') {
         $_SESSION['timedefinition'][] = $arrTemp;
     }
 }
-//
-// Deletion mode
-// =============
-if ($chkMode == 'del' && isset($_SESSION['timedefinition']) && is_array($_SESSION['timedefinition'])) {
+/*
+Deletion mode
+*/
+if ($chkMode === 'del' && isset($_SESSION['timedefinition']) && is_array($_SESSION['timedefinition'])) {
     foreach ($_SESSION['timedefinition'] as $key => $elem) {
-        if (($elem['definition'] == $chkDef) && ($elem['status'] == 0)) {
+        if (($elem['definition'] === $chkDef) && ($elem['status'] === 0)) {
             $_SESSION['timedefinition'][$key]['status'] = 1;
         }
     }
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>None</title>
@@ -113,13 +112,13 @@ if ($chkMode == 'del' && isset($_SESSION['timedefinition']) && is_array($_SESSIO
             <!--
             function doEdit(key,range) {
 <?php
-if ($chkVersion == 3) {
-?>
+                if ($chkVersion >= 3) {
+                ?>
                 parent.document.frmDetail.txtTimedefinition.value = decodeURIComponent(key);
                 parent.document.frmDetail.txtTimerange2.value = decodeURIComponent(range);
-<?php
-} else {
-?>
+                <?php
+                } else {
+                ?>
                 if (key === "monday") {
                     parent.document.frmDetail.selTimedefinition.selectedIndex = 0;
                 } else if (key === "tuesday") {
@@ -143,7 +142,7 @@ if ($chkVersion == 3) {
             function doDel(key) {
                 document.location.href = "<?php
                 echo $_SESSION['SETS']['path']['base_url']; ?>admin/timedefinitions.php?tipId=<?php
-                echo $chkTipId; ?>&mode=del&def="+key;
+                echo $chkTipId; ?>&version=<?php echo $chkVersion; ?>&mode=del&def="+key;
             }
             //-->
         </script>
@@ -162,10 +161,10 @@ if ($chkVersion == 3) {
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <?php
 if (isset($_SESSION['timedefinition']) && is_array($_SESSION['timedefinition']) &&
-    (count($_SESSION['timedefinition']) != 0)) {
+    (count($_SESSION['timedefinition']) !== 0)) {
     foreach ($_SESSION['timedefinition'] as $elem) {
-        if ($elem['status'] == 0) {
-?>
+        if ((int)$elem['status'] === 0) {
+            ?>
             <tr>
                 <td class="tablerow" style="padding-bottom:2px; width:260px"><?php
                     echo htmlentities(stripslashes($elem['definition']), ENT_COMPAT, 'UTF-8'); ?></td>
