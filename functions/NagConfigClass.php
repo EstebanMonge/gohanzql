@@ -1447,19 +1447,19 @@ class NagConfigClass
                     } elseif ((int)$elem['type'] === 1) {
                         $intReturn = $this->processRelation2($arrData, $strDataValue, $elem, $strDomainWhere1);
                         /* Process normal 1:n relations with special table and idSort (template tables) */
-                    } elseif ((int)($elem['type'] === 3) && ((int)$strDataValue === 1)) {
+                    } elseif (((int)$elem['type'] === 3) && ((int)$strDataValue === 1)) {
                         $intReturn = $this->processRelation3($arrData, $strDataValue, $elem, $strDomainWhere1);
                         /* Process special 1:n:str relations with string values (servicedependencies) */
-                    } elseif ((int)($elem['type'] === 6) && ((int)($strDataValue === 1) || ((int)$strDataValue === 2))) {
+                    } elseif (((int)$elem['type'] === 6) && (((int)$strDataValue === 1) || ((int)$strDataValue === 2))) {
                         $intReturn = $this->processRelation4($arrData, $strDataValue, $elem, $strDomainWhere1);
                         /* Process special relations for free variables */
-                    } elseif ((int)($elem['type'] === 4) && ((int)$strDataValue === 1) && ($this->intNagVersion >= 3)) {
+                    } elseif (((int)$elem['type'] === 4) && ((int)$strDataValue === 1) && ($this->intNagVersion >= 3)) {
                         $intReturn = $this->processRelation5($resTemplate, $arrData, $elem);
                         /* Process special relations for service groups */
-                    } elseif ((int)($elem['type'] === 5) && ((int)$strDataValue === 1)) {
+                    } elseif (((int)$elem['type'] === 5) && ((int)$strDataValue === 1)) {
                         $intReturn = $this->processRelation6($arrData, $strDataValue, $elem, $strDomainWhere1);
                         /* Process special relations for service parents */
-                    } elseif ((int)($elem['type'] === 7) && ((int)$strDataValue === 1)) {
+                    } elseif (((int)$elem['type'] === 7) && ((int)$strDataValue === 1)) {
                         $intReturn = $this->processRelation7($arrData, $strDataValue, $elem);
                         /* Process "*" */
                     } elseif ((int)$strDataValue === 2) {
