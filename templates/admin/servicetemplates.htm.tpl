@@ -1,9 +1,9 @@
-<!-- (c) 2005-2020 by Martin Willisegger -->
+<!-- (c) 2005-2023 by Martin Willisegger -->
 <!-- -->
 <!-- Project   : NagiosQL -->
 <!-- Component : servicetemplate template -->
 <!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
-<!-- Version   : 3.4.1 -->
+<!-- Version   : 3.5.0 -->
 <!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
 <!-- BEGIN datainsert -->
 <div id="content_main">
@@ -253,11 +253,11 @@
                             <td>
                                 <table cellpadding="0" cellspacing="0" border="0" class="{VERSION_40_VISIBLE}">
                                     <tr>
-                                        <td class="radio_cell_1"><input title="+" name="radValue18" type="radio" class="checkbox" id="radValue180" value="0" tabindex="8" {DAT_SEG0_CHECKED}></td>
+                                        <td class="radio_cell_1"><input title="+" name="radValue18" type="radio" class="checkbox" id="radValue180" value="0" tabindex="8" {DAT_PAS0_CHECKED}></td>
                                         <td class="radio_cell_2">+</td>
-                                        <td class="radio_cell_1"><input title="null" name="radValue18" type="radio" class="checkbox" id="radValue181" value="1" tabindex="8" {DAT_SEG1_CHECKED}></td>
+                                        <td class="radio_cell_1"><input title="null" name="radValue18" type="radio" class="checkbox" id="radValue181" value="1" tabindex="8" {DAT_PAS1_CHECKED}></td>
                                         <td class="radio_cell_2">null</td>
-                                        <td class="radio_cell_1"><input title="{LANG_STANDARD}" name="radValue18" type="radio" class="checkbox" id="radValue182" value="2" tabindex="8" {DAT_SEG2_CHECKED}></td>
+                                        <td class="radio_cell_1"><input title="{LANG_STANDARD}" name="radValue18" type="radio" class="checkbox" id="radValue182" value="2" tabindex="8" {DAT_PAS2_CHECKED}></td>
                                         <td class="radio_cell_2">{LANG_STANDARD}</td>
                                     </tr>
                                 </table>
