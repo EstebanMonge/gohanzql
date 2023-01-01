@@ -42,15 +42,15 @@ use functions\NagVisualClass;
  * @var string $strAccess from prepend_content.php -> List of read access group id's for actual user
  * @var string $preSQLCommon1 from prepend_content.php -> Common SQL part 1
  * @var string $strDomainWhere from prepend_adm.php -> Domain selection SQL part with table name
- * @var string $chkTfValue1 from prepend_content.php -> Serrvicegroup name
- * @var string $chkTfValue2 from prepend_content.php -> Serrvicegroup description
+ * @var string $chkTfValue1 from prepend_content.php -> Servicegroup name
+ * @var string $chkTfValue2 from prepend_content.php -> Servicegroup description
  * @var string $chkTfValue3 from prepend_content.php -> Notes
  * @var string $chkTfValue4 from prepend_content.php -> Notes URL
  * @var string $chkTfValue5 from prepend_content.php -> Action URL
  * @var array $chkMselValue1 from prepend_content.php -> Members
- * @var array $chkMselValue2 from prepend_content.php -> Serrvicegroup members
+ * @var array $chkMselValue2 from prepend_content.php -> Servicegroup members
  * @var int $intMselValue1 from prepend_content.php -> Members multiselect status value
- * @var int $intMselValue2 from prepend_content.php -> Serrvicegroup members multiselect status value
+ * @var int $intMselValue2 from prepend_content.php -> Servicegroup members multiselect status value
  */
 /*
 Path settings
@@ -320,9 +320,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL2    = "SELECT `id`, `$preKeyField`, `alias`, `register`, `active`, `config_id`, `access_group` "
-                . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess) "
-                . "$strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+    $strSQL2 = "SELECT `id`, `$preKeyField`, `alias`, `register`, `active`, `config_id`, `access_group` "
+        . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess) "
+        . "$strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
     $booReturn2 = $myDBClass->hasDataArray($strSQL2, $arrDataLines, $intDataCount);
     if ($booReturn2 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);
