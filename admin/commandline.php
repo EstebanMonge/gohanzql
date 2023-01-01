@@ -2,7 +2,7 @@
 /* ----------------------------------------------------------------------------
  NagiosQL
 -------------------------------------------------------------------------------
- (c) 2005-2022 by Martin Willisegger
+ (c) 2005-2023 by Martin Willisegger
 
  Project   : NagiosQL
  Component : Command line visualization

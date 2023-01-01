@@ -197,13 +197,13 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
         . "`max_check_attempts`=$chkTfNullVal2, `check_interval`=$chkTfNullVal3, `retry_interval`=$chkTfNullVal1, "
         . "`active_checks_enabled`=$chkRadValue6, `passive_checks_enabled`=$chkRadValue7, "
         . "`check_period`=$chkSelValue2, `parallelize_check`=$chkRadValue8, `obsess_over_service`=$chkRadValue10, "
-             . "`check_freshness`=$chkRadValue9, `freshness_threshold`=$chkTfNullVal4, `event_handler`=$chkSelValue3, "
-             . "`event_handler_enabled`=$chkRadValue11, `low_flap_threshold`=$chkTfNullVal5, "
-             . "`high_flap_threshold`=$chkTfNullVal6, `flap_detection_enabled`=$chkRadValue12, "
-             . "`flap_detection_options`='$strFL', `process_perf_data`=$chkRadValue15, "
-             . "`retain_status_information`=$chkRadValue13, `retain_nonstatus_information`=$chkRadValue14, "
-             . "`contacts`=$intMselValue4, `contacts_tploptions`=$chkRadValue4, `contact_groups`=$intMselValue5, "
-             . "`contact_groups_tploptions`=$chkRadValue5, `notification_interval`=$chkTfNullVal7, "
+        . "`check_freshness`=$chkRadValue9, `freshness_threshold`=$chkTfNullVal4, `event_handler`=$chkSelValue3, "
+        . "`event_handler_enabled`=$chkRadValue11, `low_flap_threshold`=$chkTfNullVal5, "
+        . "`high_flap_threshold`=$chkTfNullVal6, `flap_detection_enabled`=$chkRadValue12, "
+        . "`flap_detection_options`='$strFL', `process_perf_data`=$chkRadValue15, "
+        . "`retain_status_information`=$chkRadValue13, `retain_nonstatus_information`=$chkRadValue14, "
+        . "`contacts`=$intMselValue4, `contacts_tploptions`=$chkRadValue4, `contact_groups`=$intMselValue5, "
+        . "`contact_groups_tploptions`=$chkRadValue5, `notification_interval`=$chkTfNullVal7, "
         . "`notification_period`=$chkSelValue4, `first_notification_delay`=$chkTfNullVal8, "
         . "`notification_options`='$strNO', `notifications_enabled`=$chkRadValue17, `stalking_options`='$strST', "
         . "`notes`='$chkTfValue4', `notes_url`='$chkTfValue5', `action_url`='$chkTfValue6', "
@@ -495,13 +495,13 @@ if ($chkModus === 'add') {
                 $conttp->setVariable('SPECIAL_STYLE');
             }
             $conttp->setVariable('DAT_TEMPLATE', htmlspecialchars($elem[$preKeyField], ENT_QUOTES, 'UTF-8') . $strActive);
-            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id']. '::1');
+            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id'] . '::1');
             /** @noinspection DisconnectedForeachInstructionInspection */
             $conttp->parse('template');
         }
     }
-    $strSQL2    = 'SELECT `id`, `name`, `active` FROM `tbl_service` '
-                . "WHERE `name` <> '' AND $strDomainWhere2 ORDER BY `name`";
+    $strSQL2 = 'SELECT `id`, `name`, `active` FROM `tbl_service` '
+        . "WHERE `name` <> '' AND $strDomainWhere2 ORDER BY `name`";
     $booReturn2 = $myDBClass->hasDataArray($strSQL2, $arrDataHpl, $intDataCountHpl);
     if ($booReturn2 === false) {
         $myVisClass->processMessage($myDBClass->strErrorMessage, $strErrorMessage);
@@ -517,7 +517,7 @@ if ($chkModus === 'add') {
                 $conttp->setVariable('SPECIAL_STYLE');
             }
             $conttp->setVariable('DAT_TEMPLATE', htmlspecialchars($elem['name'], ENT_QUOTES, 'UTF-8') . $strActive);
-            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id']. '::2');
+            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id'] . '::2');
             /** @noinspection DisconnectedForeachInstructionInspection */
             $conttp->parse('template');
         }
@@ -652,25 +652,25 @@ if ($chkModus === 'add') {
         $myContentClass->addInsertData($conttp, $arrModifyData, $intLocked, $strInfo, $strChbFields);
         $conttp->setVariable('DAT_ACE' . $arrModifyData['active_checks_enabled'] . '_CHECKED', 'checked');
         $conttp->setVariable('DAT_PCE' . $arrModifyData['passive_checks_enabled'] . '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_PAC' .$arrModifyData['parallelize_check']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_FRE' .$arrModifyData['check_freshness']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_OBS' .$arrModifyData['obsess_over_service']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_EVH' .$arrModifyData['event_handler_enabled']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_FLE' .$arrModifyData['flap_detection_enabled']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_STI' .$arrModifyData['retain_status_information']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_NSI' .$arrModifyData['retain_nonstatus_information']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_PED' .$arrModifyData['process_perf_data']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_ISV' .$arrModifyData['is_volatile']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_NOE' .$arrModifyData['notifications_enabled']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_HOS' .$arrModifyData['host_name_tploptions']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_HOG' .$arrModifyData['hostgroup_name_tploptions']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_SEG' .$arrModifyData['servicegroups_tploptions']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_COT' .$arrModifyData['contacts_tploptions']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_COG' .$arrModifyData['contact_groups_tploptions']. '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_PAC' . $arrModifyData['parallelize_check'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_FRE' . $arrModifyData['check_freshness'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_OBS' . $arrModifyData['obsess_over_service'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_EVH' . $arrModifyData['event_handler_enabled'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_FLE' . $arrModifyData['flap_detection_enabled'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_STI' . $arrModifyData['retain_status_information'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_NSI' . $arrModifyData['retain_nonstatus_information'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_PED' . $arrModifyData['process_perf_data'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_ISV' . $arrModifyData['is_volatile'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_NOE' . $arrModifyData['notifications_enabled'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_HOS' . $arrModifyData['host_name_tploptions'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_HOG' . $arrModifyData['hostgroup_name_tploptions'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_SEG' . $arrModifyData['servicegroups_tploptions'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_COT' . $arrModifyData['contacts_tploptions'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_COG' . $arrModifyData['contact_groups_tploptions'] . '_CHECKED', 'checked');
         $conttp->setVariable('DAT_TPL' . $arrModifyData['use_template_tploptions'] . '_CHECKED', 'checked');
         $conttp->setVariable('DAT_PAS' . $arrModifyData['parents_tploptions'] . '_CHECKED', 'checked');
         /* Special processing for -1 values - write 'null' to integer fields */
-        $strIntegerfelder  = 'max_check_attempts,check_interval,retry_interval,freshness_threshold,low_flap_threshold,';
+        $strIntegerfelder = 'max_check_attempts,check_interval,retry_interval,freshness_threshold,low_flap_threshold,';
         $strIntegerfelder .= 'high_flap_threshold,notification_interval,first_notification_delay';
         foreach (explode(',', $strIntegerfelder) as $elem) {
             if ($arrModifyData[$elem] === -1) {
@@ -690,16 +690,16 @@ if ($chkModus === 'add') {
         }
         /* Process option fields */
         foreach (explode(',', $arrModifyData['initial_state']) as $elem) {
-            $conttp->setVariable('DAT_IS' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_IS' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         foreach (explode(',', $arrModifyData['flap_detection_options']) as $elem) {
-            $conttp->setVariable('DAT_FL' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_FL' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         foreach (explode(',', $arrModifyData['notification_options']) as $elem) {
-            $conttp->setVariable('DAT_NO' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_NO' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         foreach (explode(',', $arrModifyData['stalking_options']) as $elem) {
-            $conttp->setVariable('DAT_ST' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_ST' . strtoupper($elem) . '_CHECKED', 'checked');
         }
     }
     $conttp->parse('datainsert');
@@ -740,8 +740,8 @@ if ($chkModus === 'display') {
     /* Count datasets */
     $intLineCount = 0;
     /** @noinspection SqlResolve */
-    $strSQL1    = "SELECT count(*) AS `number` FROM `$preTableName` "
-                . "WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess)";
+    $strSQL1 = "SELECT count(*) AS `number` FROM `$preTableName` "
+        . "WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess)";
     $booReturn1 = $myDBClass->hasSingleDataset($strSQL1, $arrDataLinesCount);
     if ($booReturn1 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);
@@ -753,9 +753,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL2    = "SELECT `id`, `$preKeyField`, `service_description`, `register`, `active`, `last_modified`, "
-                . "`config_id`, `access_group` FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere "
-                . "AND `access_group` IN ($strAccess) $strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+    $strSQL2 = "SELECT `id`, `$preKeyField`, `service_description`, `register`, `active`, `last_modified`, "
+        . "`config_id`, `access_group` FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere "
+        . "AND `access_group` IN ($strAccess) $strOrderString LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn2 = $myDBClass->hasDataArray($strSQL2, $arrDataLines, $intDataCount);
     if ($booReturn2 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);
