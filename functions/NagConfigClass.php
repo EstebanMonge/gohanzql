@@ -1026,7 +1026,7 @@ class NagConfigClass
         $setEnableCommon = 0;
         $strConfigValue = '';
         /* Read some settings and information */
-        if ($this->getConfigData($intConfigID, 'utf8_decode', $strConfigValue) === 0) {
+        if ($this->getDomainData('utf8_decode', $strConfigValue) === 0) {
             $setUTF8Decode = (int)$strConfigValue;
         }
         if ($this->getConfigData($intConfigID, 'version', $strConfigValue) === 0) {
@@ -1096,7 +1096,7 @@ class NagConfigClass
                     }
                     /* UTF8 decoded vaules */
                     if ($setUTF8Decode === 1) {
-                        $value = utf8_decode($value);
+                        $value = mb_convert_encoding($value, 'UTF-8');
                     }
                     /* Pass special fields (NagiosQL data fields not used by Nagios itselves) */
                     if ($value === null) {

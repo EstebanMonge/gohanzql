@@ -154,6 +154,8 @@ class MysqliDbClass
                 $this->strErrorMessage .= $strError . '::';
                 $this->error = true;
             }
+            /** PHP8 exception handling */
+            mysqli_report(MYSQLI_REPORT_ERROR);
         }
     }
 
@@ -194,7 +196,10 @@ class MysqliDbClass
             $booReturn = false;
         }
         if ($booReturn === true) {
+            $intErrorReporting = error_reporting();
+            error_reporting(0);
             $bolConnect = mysqli_select_db($this->strDBId, $database);
+            error_reporting($intErrorReporting);
             /* Session cannot be etablished */
             if (!$bolConnect) {
                 $this->strErrorMessage .= '[' . $database . '] ' .

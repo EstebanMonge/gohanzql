@@ -589,7 +589,7 @@ $arrSortDir = array('ASC', 'DESC');
 $arrSortBy = array(1, 2);
 $chkModus = 'display';
 $chkModusGet = filter_input(INPUT_GET, 'modus', 513, array('options' => array('default' => 'display')));
-$chkOrderBy = filter_input(INPUT_GET, 'orderby');
+$chkOrderBy = filter_input(INPUT_GET, 'orderby', FILTER_VALIDATE_INT);
 $chkOrderDir = filter_input(INPUT_GET, 'orderdir');
 $chkLimitGet = filter_input(INPUT_GET, 'limit', FILTER_VALIDATE_INT);
 $chkModusPost = filter_input(INPUT_POST, 'modus', 513, array('options' => array('default' => 'display')));

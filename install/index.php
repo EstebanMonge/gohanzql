@@ -164,7 +164,7 @@ $arrTemplate['TEXT_PART_1'] = $myInstClass->translate('This wizard will help you
 $arrTemplate['TEXT_PART_2'] = $myInstClass->translate('For questions please visit') . ': ';
 $arrTemplate['TEXT_PART_3'] = $myInstClass->translate("First let's check your local environment and find out if everything NagiosQL needs is available.");
 $arrTemplate['TEXT_PART_4'] = $myInstClass->translate('The basic requirements are:');
-$arrTemplate['TEXT_PART_5'] = $myInstClass->translate('PHP 7.2.0 or greater including:');
+$arrTemplate['TEXT_PART_5'] = $myInstClass->translate('PHP 7.2.0 or above (PHP 8 is recommended) including:');
 $arrTemplate['TEXT_PHP_REQ_1'] = $myInstClass->translate('PHP database module:') . ' ' .
     $myInstClass->translate('supported types are') . ' <b>mysqli</b>';
 $arrTemplate['TEXT_PHP_REQ_2'] = $myInstClass->translate('PHP module:') . ' <b>session</b>';

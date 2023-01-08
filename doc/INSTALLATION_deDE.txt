@@ -27,9 +27,24 @@
     * PHP Module: gettext
     * PHP Module: filter
     * PHP Module: FTP (optional)
-    * PECL Erweiterung: SSH (optional) -> pecl install ssh2
+    * PECL Erweiterung: SSH (optional)
   * Javascript im Webbrowser zugelassen
   * Empfohlener Webbrowser: Mozilla Firefox
+
+==============================================
+= Installation der ssh2 Erweiterung mit PHP8 =
+==============================================
+Benötigte RPM/Software:
+  * php8-pecl
+  * php8-devel
+  * libssh2-devel
+  * make
+
+Installation mit:
+# pecl install ssh2-1.3.1
+
+Konfiguration in php.ini:
+extension=ssh2
 
 ===================
 = Neuinstallation =

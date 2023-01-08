@@ -223,10 +223,10 @@ class NagImportClass
                     } else {
                         $strConfigFile = tempnam(sys_get_temp_dir(), 'nagiosql_imp');
                     }
-                    if (!ftp_get($this->myConfigClass->resConnectId, $strConfigFile, $strFileName, FTP_ASCII)) {
+                    if (!ftp_get($this->myConfigClass->conFTPConId, $strConfigFile, $strFileName, FTP_ASCII)) {
                         $this->strErrorMessage .= translate('Cannot receive the configuration file (FTP connection)!') .
                             '::';
-                        ftp_close($this->myConfigClass->resConnectId);
+                        ftp_close($this->myConfigClass->conFTPConId);
                         $intReturn = 1;
                     } else {
                         $intRemoveTmp = 1;
@@ -246,7 +246,7 @@ class NagImportClass
                     } else {
                         $strConfigFile = tempnam(sys_get_temp_dir(), 'nagiosql_imp');
                     }
-                    if (!ssh2_scp_recv($this->myConfigClass->resConnectId, $strFileName, $strConfigFile)) {
+                    if (!ssh2_scp_recv($this->myConfigClass->resSSHConId, $strFileName, $strConfigFile)) {
                         $this->strErrorMessage .= translate('Cannot receive the configuration file (SSH connection)!') .
                             '::';
                         $intReturn = 1;
@@ -460,7 +460,7 @@ class NagImportClass
                                 $strKey = $elem['key'];
                                 if ($elem['key'] === 'check_command') {
                                     $this->writeRelation5($strValue, $intDataId, $strTable, $reldata);
-                                } elseif ($reldata['type'] === 1) {
+                                } elseif ((int)$reldata['type'] === 1) {
                                     $this->writeRelation1(
                                         $strKey,
                                         $strValue,
@@ -469,17 +469,17 @@ class NagImportClass
                                         $reldata,
                                         $arrImportData
                                     );
-                                } elseif ($reldata['type'] === 2) {
+                                } elseif ((int)$reldata['type'] === 2) {
                                     $this->writeRelation2($strKey, $strValue, $intDataId, $strTable, $reldata);
-                                } elseif ($reldata['type'] === 3) {
+                                } elseif ((int)$reldata['type'] === 3) {
                                     $this->writeRelation3($strValue, $intDataId, $strTable, $reldata);
-                                } elseif ($reldata['type'] === 4) {
+                                } elseif ((int)$reldata['type'] === 4) {
                                     $this->writeRelation4($strKey, $strValue, $intDataId, 0, $strTable, $reldata);
-                                } elseif ($reldata['type'] === 5) {
+                                } elseif ((int)$reldata['type'] === 5) {
                                     $this->writeRelation6($strValue, $intDataId, $strTable, $reldata);
-                                } elseif ($reldata['type'] === 6) {
+                                } elseif ((int)$reldata['type'] === 6) {
                                     $this->writeRelation7($strValue, $intDataId, $strTable, $reldata);
-                                } elseif ($reldata['type'] === 7) {
+                                } elseif ((int)$reldata['type'] === 7) {
                                     $this->writeRelation8($strValue, $intDataId, $strTable, $reldata);
                                 }
                             }
@@ -508,7 +508,7 @@ class NagImportClass
                         $intRemoveOldVariables = 1;
                         foreach ($arrFreeVariables as $elem) {
                             foreach ($arrRelations as $reldata) {
-                                if ($reldata['type'] === 4) {
+                                if ((int)$reldata['type'] === 4) {
                                     $this->writeRelation4(
                                         $elem['key'],
                                         $elem['value'],
@@ -835,7 +835,7 @@ class NagImportClass
             /* Remove free variables */
             if ($intRelation !== 0) {
                 foreach ($arrRelations as $relVar) {
-                    if ($relVar['type'] === 4) {
+                    if ((int)$relVar['type'] === 4) {
                         /** @noinspection SqlResolve */
                         $strSQL = 'SELECT * FROM `' . $relVar['linkTable'] . "` WHERE `idMaster`=$intExists";
                         $booReturn = $this->myDBClass->hasDataArray($strSQL, $arrData, $intDataCount);

@@ -116,14 +116,23 @@ class NagDataClass
                         $i
                     );
                     /* Build the INSERT command based on the table name */
-                    $strSQLInsert = $this->buildInsertSQL(
-                        $strTableName,
-                        $strKeyField,
-                        $intDomainId,
-                        $strNewName,
-                        $arrData,
-                        $i
-                    );
+                    if ($strTableName === 'tbl_service') {
+                        $strSQLInsert = $this->buildInsertSQL(
+                            $strTableName,
+                            'service_description',
+                            $intDomainId,
+                            $strNewName,
+                            $arrData,
+                            $i);
+                    } else {
+                        $strSQLInsert = $this->buildInsertSQL(
+                            $strTableName,
+                            $strKeyField,
+                            $intDomainId,
+                            $strNewName,
+                            $arrData,
+                            $i);
+                    }
                     /* Insert the master dataset */
                     $intCheck = 0;
                     $booReturn = $this->myDBClass->insertData($strSQLInsert);
@@ -135,15 +144,15 @@ class NagDataClass
                     if (($this->tableRelations($strTableName, $arrRelations) === 0) && ($intCheck === 0)) {
                         foreach ($arrRelations as $elem) {
                             /* Normal 1:n relation */
-                            if ((string)$elem['type'] === '2') {
+                            if ((int)$elem['type'] === 2) {
                                 $intCheck = $this->insertRelationType2($arrData, $i, $elem, $intMasterId, $intCheck);
-                            } elseif ((string)$elem['type'] === '3') { /* 1:n relation for templates */
+                            } elseif ((int)$elem['type'] === 3) { /* 1:n relation for templates */
                                 $intCheck = $this->insertRelationType3($arrData, $i, $elem, $intMasterId, $intCheck);
-                            } elseif ((string)$elem['type'] === '4') { /* Special relation for free variables */
+                            } elseif ((int)$elem['type'] === 4) { /* Special relation for free variables */
                                 $intCheck = $this->insertRelationType4($arrData, $i, $elem, $intMasterId, $intCheck);
-                            } elseif ((string)$elem['type'] === '5') { /* 1:n relation for tbl_lnkServicegroupToService */
+                            } elseif ((int)$elem['type'] === 5) { /* 1:n relation for tbl_lnkServicegroupToService */
                                 $intCheck = $this->insertRelationType5($arrData, $i, $elem, $intMasterId, $intCheck);
-                            } elseif ((string)$elem['type'] === '6') { /* 1:n relation for services */
+                            } elseif ((int)$elem['type'] === 6) { /* 1:n relation for services */
                                 $intCheck = $this->insertRelationType6($arrData, $i, $elem, $intMasterId, $intCheck);
                             }
                         }
@@ -155,7 +164,7 @@ class NagDataClass
                         if ($strTableName === 'tbl_group') {
                             $intCheck = $this->insertRelationGroup($arrData, $i, $intMasterId, $intCheck);
                         }
-                        /* 1:n relation fot service to host connections */
+                        /* 1:n relation for service to host connections */
                         if ($strTableName === 'tbl_host') {
                             $intCheck = $this->insertRelationHost($arrData, $i, $intMasterId, $intCheck);
                         }
@@ -242,6 +251,11 @@ class NagDataClass
                 ($strTableName === 'tbl_datadomain') || ($strTableName === 'tbl_configtarget')) {
                 /** @noinspection SqlResolve */
                 $strSQL = 'SELECT `id` FROM `' . $strTableName . '` WHERE `' . $strKeyField . "`='$strNewName'";
+            } else if ($strTableName === 'tbl_service') {
+                $strNewName = $arrData[$intID]['service_description'] . " ($y)";
+                /** @noinspection SqlResolve */
+                $strSQL = 'SELECT `id` FROM `' . $strTableName . '` WHERE `' . $strKeyField . "`='" .
+                    $arrData[$intID][$strKeyField] . "' AND `service_description`='$strNewName'";
             } else {
                 /** @noinspection SqlResolve */
                 $strSQL = 'SELECT `id` FROM `' . $strTableName . '` ' .

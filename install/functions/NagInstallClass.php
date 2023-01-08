@@ -712,7 +712,7 @@ class NagInstallClass
             $strStatusMessage = '<span class="green">' . $this->translate('done') . '</span>';
         } else {
             $strStatusMessage = '<span class="red">' . $this->translate('failed') . '</span>';
-            $strErrorMessage .= $this->translate('Connot open/write to config/settings.php') . "<br>\n";
+            $strErrorMessage .= $this->translate('Cannot open/write to config/settings.php') . "<br>\n";
             $intReturn = 1;
         }
         return $intReturn;
