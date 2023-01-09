@@ -56,6 +56,7 @@
                                 <ul>
                                     <li>{TEXT_INI_REQ_1}</li>
                                     <li>{TEXT_INI_REQ_2}</li>
+                                    <li>{TEXT_INI_REQ_3}</li>
                                 </ul>
                             </ul> 
                             <ul>

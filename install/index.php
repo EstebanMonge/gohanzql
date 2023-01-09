@@ -177,6 +177,7 @@ $arrTemplate['TEXT_PHP_REQ_10'] = $myInstClass->translate('PECL extension:') . '
 $arrTemplate['TEXT_PART_6'] = $myInstClass->translate('php.ini options') . ':';
 $arrTemplate['TEXT_INI_REQ_1'] = $myInstClass->translate('file_uploads on (for upload features)');
 $arrTemplate['TEXT_INI_REQ_2'] = $myInstClass->translate('session.auto_start needs to be off');
+$arrTemplate['TEXT_INI_REQ_3'] = $myInstClass->translate('date.timezone should be set to your local timezone');
 $arrTemplate['TEXT_PART_7'] = $myInstClass->translate('A database server');
 $arrTemplate['TEXT_PART_8'] = $myInstClass->translate('Nagios 2.x/3.x/4.x');
 $arrTemplate['TEXT_PART_9'] = $myInstClass->translate('NagiosQL version') . ' ' . $strVersion;
