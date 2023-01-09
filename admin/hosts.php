@@ -2,7 +2,7 @@
 /* ----------------------------------------------------------------------------
  NagiosQL
 -------------------------------------------------------------------------------
- (c) 2005-2022 by Martin Willisegger
+ (c) 2005-2023 by Martin Willisegger
 
  Project   : NagiosQL
  Component : Host definition
@@ -10,13 +10,108 @@
  Version   : 3.5.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 -----------------------------------------------------------------------------*/
+
+use functions\MysqliDbClass;
+use functions\NagConfigClass;
+use functions\NagContentClass;
+use functions\NagDataClass;
+use functions\NagVisualClass;
+
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
- * @var int $chkDomainId from prepend_adm.php
- * @var string $setFileVersion from prepend_adm.php
- * @noinspection PhpUndefinedVariableInspection
+ * @var HTML_Template_IT $conttp Content template
+ * @var HTML_Template_IT $maintp Main template
+ * @var HTML_Template_IT $mastertp Master template (list view)
+ * @var MysqliDbClass $myDBClass MySQL database class
+ * @var NagVisualClass $myVisClass Visual content class
+ * @var NagDataClass $myDataClass NagiosQL data class
+ * @var NagContentClass $myContentClass NagiosQL content class
+ * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var int $chkActive from prepend_adm.php -> Active checkbox
+ * @var string $chkModus from prepend_adm.php -> Form work mode
+ * @var int $chkDataId from prepend_adm.php -> Actual dataset id
+ * @var string $chkSelModify from prepend_adm.php -> Modification selection value
+ * @var int $hidSortBy from prepend_adm.php -> Sort data by
+ * @var string $hidSortDir from prepend_adm.php -> Sort data direction (ASC, DESC)
+ * @var int $chkLimit from prepend_adm.php / settings -> Data set count per page
+ * @var int $chkDomainId from prepend_adm.php -> Configuration domain id
+ * @var int $intVersion from prepend_adm.php -> Nagios version
+ * @var array $SETS Settings array
+ * @var int $intGlobalWriteAccess from prepend_content.php -> Global admin write access
+ * @var int $intWriteAccessId from prepend_content.php -> Admin write access to actual dataset id
+ * @var string $strAccess from prepend_content.php -> List of read access group id's for actual user
+ * @var string $preSQLCommon1 from prepend_content.php -> Common SQL part 1
+ * @var string $strDomainWhere from prepend_adm.php -> Domain selection SQL part with table name
+ * @var string $strDomainWhere2 from prepend_adm.php -> Domain selection SQL part without table name
+ * @var string $chkTfValue1 from prepend_content.php -> Host name
+ * @var string $chkTfValue2 from prepend_content.php -> (Hidden) Host name
+ * @var string $chkTfValue3 from prepend_content.php -> Host description
+ * @var string $chkTfValue4 from prepend_content.php -> Display name
+ * @var string $chkTfValue5 from prepend_content.php -> Address
+ * @var string $chkTfValue6 from prepend_content.php -> Generic name
+ * @var string $chkTfValue7 from prepend_content.php -> Notes
+ * @var string $chkTfValue8 from prepend_content.php -> VRML image
+ * @var string $chkTfValue9 from prepend_content.php -> Notes URL
+ * @var string $chkTfValue10 from prepend_content.php -> Status image
+ * @var string $chkTfValue11 from prepend_content.php -> Action URL
+ * @var string $chkTfValue12 from prepend_content.php -> Icon image
+ * @var string $chkTfValue13 from prepend_content.php -> Icon image alt text
+ * @var string $chkTfValue14 from prepend_content.php -> 2D coords
+ * @var string $chkTfValue15 from prepend_content.php -> 3D coords
+ * @var int $chkSelValue1 from prepend_content.php -> Check command
+ * @var int $chkSelValue2 from prepend_content.php -> Check period
+ * @var int $chkSelValue3 from prepend_content.php -> Event handler
+ * @var int $chkSelValue4 from prepend_content.php -> Notification period
+ * @var array $chkMselValue1 from prepend_content.php -> Parents
+ * @var array $chkMselValue2 from prepend_content.php -> Host groups
+ * @var array $chkMselValue3 from prepend_content.php -> Contacts
+ * @var array $chkMselValue4 from prepend_content.php -> Contact groups
+ * @var array $chkMselValue5 from prepend_content.php -> Services
+ * @var int $intMselValue1 from prepend_content.php -> Parents multiselect status value
+ * @var int $intMselValue2 from prepend_content.php -> Host groups multiselect status value
+ * @var int $intMselValue3 from prepend_content.php -> Contacts multiselect status value
+ * @var int $intMselValue4 from prepend_content.php -> Contact groups multiselect status value
+ * @var int $intMselValue5 from prepend_content.php -> Services multiselect status value
+ * @var string $chkChbGr1a from prepend_content.php -> Notification options (d)
+ * @var string $chkChbGr1b from prepend_content.php -> Notification options (u)
+ * @var string $chkChbGr1c from prepend_content.php -> Notification options (r)
+ * @var string $chkChbGr1d from prepend_content.php -> Notification options (f)
+ * @var string $chkChbGr1e from prepend_content.php -> Notification options (s)
+ * @var string $chkChbGr2a from prepend_content.php -> Initial state (o)
+ * @var string $chkChbGr2b from prepend_content.php -> Initial state (d)
+ * @var string $chkChbGr2c from prepend_content.php -> Initial state (u)
+ * @var string $chkChbGr3a from prepend_content.php -> Flap detection options (o)
+ * @var string $chkChbGr3b from prepend_content.php -> Flap detection options (d)
+ * @var string $chkChbGr3c from prepend_content.php -> Flap detection options (u)
+ * @var string $chkChbGr4a from prepend_content.php -> Stalking options (o)
+ * @var string $chkChbGr4b from prepend_content.php -> Stalking options (d)
+ * @var string $chkChbGr4c from prepend_content.php -> Stalking options (u)
+ * @var int $chkRadValue1 from prepend_content.php -> Parents multiselect options
+ * @var int $chkRadValue2 from prepend_content.php -> Hosts groups multiselect options
+ * @var int $chkRadValue3 from prepend_content.php -> Contacts multiselect options
+ * @var int $chkRadValue4 from prepend_content.php -> Contact groups multiselect options
+ * @var int $chkRadValue5 from prepend_content.php -> Active checks
+ * @var int $chkRadValue6 from prepend_content.php -> Passive checks
+ * @var int $chkRadValue7 from prepend_content.php -> Freshness checks
+ * @var int $chkRadValue8 from prepend_content.php -> Obsess over service
+ * @var int $chkRadValue9 from prepend_content.php -> Event handler
+ * @var int $chkRadValue10 from prepend_content.php -> Flap detection
+ * @var int $chkRadValue11 from prepend_content.php -> Retain status information
+ * @var int $chkRadValue12 from prepend_content.php -> Retain non-status information
+ * @var int $chkRadValue13 from prepend_content.php -> Process performance data
+ * @var int $chkRadValue14 from prepend_content.php -> Notification
+ * @var int $chkTfNullVal1 from prepend_content.php -> Retry interval
+ * @var int $chkTfNullVal2 from prepend_content.php -> Max check attempts
+ * @var int $chkTfNullVal3 from prepend_content.php -> Check interval
+ * @var int $chkTfNullVal4 from prepend_content.php -> Freshness threshold
+ * @var int $chkTfNullVal5 from prepend_content.php -> Low flap threshold
+ * @var int $chkTfNullVal6 from prepend_content.php -> High flap threshold
+ * @var int $chkTfNullVal7 from prepend_content.php -> Notification interval
+ * @var int $chkTfNullVal8 from prepend_content.php -> First notification delay
+ * @var int $chkTfNullVal9 from prepend_content.php -> Importance
+ * @var int $intVariables from prepend_content.php -> Form uses variable definitions
+ * @var int $intTemplates from prepend_content.php -> Form uses template definitions
  */
 /*
 Path settings
@@ -36,6 +131,34 @@ $preKeyField = 'host_name';
 $preAccess = 1;
 $preFieldvars = 1;
 $strSqlParents = '';
+$strErrorMessage = '';
+$strInfoMessage = '';
+$strConsistMessage = '';
+$strDBWarning = '';
+$intDataWarning = 0;
+$intRet1 = 0;
+$intRet2 = 0;
+$intRet3 = 0;
+$intRet4 = 0;
+$intNoTime = 0;
+/*
+Default values for form variables
+*/
+if (!isset($intMselValue1)) {
+    $intMselValue1 = 0;
+}
+if (!isset($intMselValue2)) {
+    $intMselValue2 = 0;
+}
+if (!isset($intMselValue3)) {
+    $intMselValue3 = 0;
+}
+if (!isset($intMselValue4)) {
+    $intMselValue4 = 0;
+}
+if (!isset($intMselValue5)) {
+    $intMselValue5 = 0;
+}
 /*
 Include preprocessing file
 */
@@ -48,7 +171,7 @@ $strNO = substr($chkChbGr1a . $chkChbGr1b . $chkChbGr1c . $chkChbGr1d . $chkChbG
 $strIS = substr($chkChbGr2a . $chkChbGr2b . $chkChbGr2c, 0, -1);
 $strFL = substr($chkChbGr3a . $chkChbGr3b . $chkChbGr3c, 0, -1);
 $strST = substr($chkChbGr4a . $chkChbGr4b . $chkChbGr4c, 0, -1);
-if ($chkSelValue1 !== '') {
+if ($chkSelValue1 !== 0) {
     for ($i = 1; $i <= 8; $i++) {
         $tmpVar = 'chkTfArg' . $i;
         $$tmpVar = str_replace('!', '::bang::', $$tmpVar);
@@ -194,7 +317,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                 /*
                 Removing the config file if an entry was deleted or renamed
                 */
-                if (($chkModus === 'modify') && ($chkTfValue2 !== $chkTfValue1) && ((int)$chkDomainId !== 0)) {
+                if (($chkModus === 'modify') && ($chkTfValue2 !== $chkTfValue1) && ($chkDomainId !== 0)) {
                     $myConfigClass->getConfigTargets($arrConfigID);
                     if (($arrConfigID !== 1) && is_array($arrConfigID)) {
                         $intReturn = 0;
@@ -205,7 +328,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                             $myVisClass->processMessage(translate('The assigned, no longer used configuration files '
                                 . 'were deleted successfully!'), $strInfoMessage);
                             $myDataClass->writeLog(translate('Host file deleted:') . ' ' . $chkTfValue2 . '.cfg');
-                        } else if ((int)$chkDomainId === 0) {
+                        } else if ($chkDomainId === 0) {
                             $myVisClass->processMessage(translate('Common files cannot be removed from target '
                                 . 'systems - please check manually'), $strErrorMessage);
                         } else {
@@ -229,7 +352,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                             $myVisClass->processMessage(translate('The assigned, no longer used configuration files '
                                 . 'were deleted successfully!'), $strInfoMessage);
                             $myDataClass->writeLog(translate('Host file deleted:') . ' ' . $chkTfValue1 . '.cfg');
-                        } else if ((int)$chkDomainId === 0) {
+                        } else if ($chkDomainId === 0) {
                             $myVisClass->processMessage(translate('Common files cannot be removed from target '
                                 . 'systems - please check manually'), $strErrorMessage);
                         } else {
@@ -411,7 +534,7 @@ if ($chkModus === 'add') {
     $strSQL1 = 'SELECT `id`,`template_name`, `active` ' .
         "FROM `tbl_hosttemplate` WHERE $strDomainWhere2 ORDER BY `template_name`";
     $booReturn1 = $myDBClass->hasDataArray($strSQL1, $arrDataTpl, $intDataCountTpl);
-    if ($booReturn === false) {
+    if ($booReturn1 === false) {
         $myVisClass->processMessage($myDBClass->strErrorMessage, $strErrorMessage);
     }
     if ($intDataCountTpl !== 0) {
@@ -433,7 +556,7 @@ if ($chkModus === 'add') {
     $strSQL2 = 'SELECT `id`, `name`, `active` '
         . "FROM `$preTableName` WHERE `name` <> '' $strWhere AND $strDomainWhere ORDER BY `name`";
     $booReturn2 = $myDBClass->hasDataArray($strSQL2, $arrDataHpl, $intDataCountHpl);
-    if ($booReturn === false) {
+    if ($booReturn2 === false) {
         $myVisClass->processMessage($myDBClass->strErrorMessage, $strErrorMessage);
     }
     if ($intDataCountHpl !== 0) {
@@ -576,7 +699,7 @@ if ($chkModus === 'add') {
     }
     /* Insert data from database in "modify" mode */
     if (isset($arrModifyData) && ($chkSelModify === 'modify')) {
-        // Check relation information to find out locked configuration datasets */
+        /* Check relation information to find out locked configuration datasets */
         $intLocked = $myDataClass->infoRelation($preTableName, $arrModifyData['id'], $preKeyField);
         $myVisClass->processMessage($myDataClass->strInfoMessage, $strRelMessage);
         $strInfo = '<br><span class="redmessage">' . translate('Entry cannot be activated because it is used by '
@@ -680,6 +803,8 @@ if ($chkModus === 'display') {
         $strOrderString = "ORDER BY `config_id`, `alias` $hidSortDir";
     }
     /* Count datasets */
+    $intLineCount = 0;
+    /** @noinspection SqlResolve */
     $strSQL = "SELECT count(*) AS `number` FROM `" . $preTableName . "` WHERE $strDomainWhere $strSearchWhere "
         . "AND `access_group` IN ($strAccess)";
     $booReturn1 = $myDBClass->hasSingleDataset($strSQL, $arrDataLinesCount);
