@@ -14,7 +14,7 @@
  * Class and variable includes
  * @var HTML_Template_IT $conttp
  * @var HTML_Template_IT $maintp
- * @var string $setFileVersion from prepend_adm.php
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
  */
 if ($_SERVER['PHP_SELF'] !== '/nagiosql350/index.php') {
     echo "Nagiosql 3.5.0 is not yet released - the version basically does not work correctly and must not be used for productive use. Please download version 3.4.1!";
@@ -23,7 +23,6 @@ if ($_SERVER['PHP_SELF'] !== '/nagiosql350/index.php') {
 /*
 Path settings
 */
-/** @noinspection PhpUnreachableStatementInspection */
 $preRelPath = strstr(filter_input(INPUT_SERVER, 'PHP_SELF'), 'index.php', true);
 $preBasePath = strstr(filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'), 'index.php', true);
 /*

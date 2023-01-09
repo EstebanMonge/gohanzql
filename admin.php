@@ -14,8 +14,8 @@
  * Class and variable includes
  * @var HTML_Template_IT $conttp
  * @var HTML_Template_IT $maintp
- * @var string $setFileVersion from prepend_adm.php
- * @var string $setGITVersion from prepend_adm.php
+ * @var string $setFileVersion from prepend_adm.php -> Application version string
+ * @var string $setGITVersion from prepend_adm.php -> Application GIT subversion string
  */
 /*
 Path settings
