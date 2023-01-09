@@ -1,13 +1,13 @@
-<!-- (c) 2005-2020 by Martin Willisegger -->
+<!-- (c) 2005-2023 by Martin Willisegger -->
 <!-- -->
 <!-- Project   : NagiosQL -->
 <!-- Component : mutation dialog template -->
 <!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
-<!-- Version   : 3.4.1 -->
+<!-- Version   : 3.5.0 -->
 <!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
 <!-- BEGIN header -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html lang="en">
 <head>
     <title>none</title>
     <link href="{BASE_PATH}config/main.css" rel="stylesheet" type="text/css">

@@ -1,44 +1,47 @@
 <?php
-///////////////////////////////////////////////////////////////////////////////
-//
-// NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// (c) 2005-2020 by Martin Willisegger
-//
-// Project   : NagiosQL
-// Component : Admin information dialog
-// Website   : https://sourceforge.net/projects/nagiosql/
-// Version   : 3.4.1
-// GIT Repo  : https://gitlab.com/wizonet/NagiosQL
-//
-///////////////////////////////////////////////////////////////////////////////
-//
-// Path settings
-// ===================
+/* ----------------------------------------------------------------------------
+ NagiosQL
+-------------------------------------------------------------------------------
+ (c) 2005-2023 by Martin Willisegger
+
+ Project   : NagiosQL
+ Component : Admin information dialog
+ Website   : https://sourceforge.net/projects/nagiosql/
+ Version   : 3.5.0
+ GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+-----------------------------------------------------------------------------*/
+
+use functions\MysqliDbClass;
+
+/**
+ * Class and variable includes
+ * @var MysqliDbClass $myDBClass MySQL database class
+ */
+/*
+Path settings
+*/
 $strPattern = '(admin/[^/]*.php)';
-$preRelPath  = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING));
-$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME', FILTER_SANITIZE_STRING));
-//
-// Include preprocessing file
-// ==========================
+$preRelPath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF'));
+$preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'));
+/*
+Include preprocessing file
+*/
 $preNoMain = 1;
-require $preBasePath.'functions/prepend_adm.php';
-//
-// Process get parameters
-// ======================
-$chkKey1    = filter_input(INPUT_GET, 'key1', FILTER_SANITIZE_STRING);
-$chkKey2    = filter_input(INPUT_GET, 'key2', FILTER_SANITIZE_STRING);
-$chkVersion = filter_input(INPUT_GET, 'version', FILTER_SANITIZE_STRING);
-//
-// Get information data
-// ===================================================
-if ($chkKey1 == 'admin' and isset($_SESSION['updInfo'])) {
-    // Exception for version check at admin.php
+require $preBasePath . 'functions/prepend_adm.php';
+/*
+Process get parameters
+*/
+$chkKey1 = filter_input(INPUT_GET, 'key1');
+$chkKey2 = filter_input(INPUT_GET, 'key2');
+$chkVersion = filter_input(INPUT_GET, 'version');
+/*
+Get information data
+*/
+if ($chkKey1 === 'admin' and isset($_SESSION['updInfo'])) {
+    /* Exception for version check at admin.php */
     $strContentDB = $_SESSION['updInfo'];
-} elseif ($chkKey1 == 'settings') {
-    // Exception for settings page to have gettext translated text
+} elseif ($chkKey1 === 'settings') {
+    /* Exception for settings page to have gettext translated text */
     $arrTrans = array(
         'txtRootPath' => translate('This is relative path of your NagiosQL Installation'),
         'txtBasePath' => translate('This is the absolut path to your NagiosQL Installation'),
@@ -71,17 +74,17 @@ if ($chkKey1 == 'admin' and isset($_SESSION['updInfo'])) {
         'show_parents' => translate('In environments with a high number of host and service objects, the display of the parent objects can be disabled to improve performance. Existing assignments are preserved during modification.')
     );
     $strContentDB = $arrTrans[$chkKey2];
-} elseif ($chkKey1 == 'cmd_arguments') {
-    // Get information from tbl_command
+} elseif ($chkKey1 === 'cmd_arguments') {
+    /* Get information from tbl_command */
     $strSQL       = 'SELECT `arg' .$chkVersion. '_info` FROM `tbl_command` WHERE `id`='.$chkKey2;
     $strContentDB = nl2br($myDBClass->getFieldData($strSQL));
 } else {
-    // Get information from tbl_info
+    /* Get information from tbl_info */
     $strSQL       = 'SELECT `infotext` FROM `tbl_info` ' .
                     "WHERE `key1` = '$chkKey1' AND `key2` = '$chkKey2' AND `version` = '$chkVersion' ".
                     "AND `language` = 'private'";
     $strContentDB = $myDBClass->getFieldData($strSQL);
-    if ($strContentDB == '') {
+    if ($strContentDB === '') {
         $strSQL       = 'SELECT `infotext` FROM `tbl_info` ' .
                         "WHERE `key1` = '$chkKey1' AND `key2` = '$chkKey2' AND `version` = '$chkVersion' ".
                         "AND `language` = 'default'";
@@ -91,7 +94,7 @@ if ($chkKey1 == 'admin' and isset($_SESSION['updInfo'])) {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo translate('Information PopUp');?></title>
@@ -104,7 +107,7 @@ if ($chkKey1 == 'admin' and isset($_SESSION['updInfo'])) {
     </head>
     <body class="infobody">
 <?php
-if (trim($strContentDB) != '') {
+if (trim($strContentDB) !== '') {
     echo $strContentDB;
 } else {
     echo translate('No information available');
