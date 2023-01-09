@@ -2456,7 +2456,7 @@ class NagConfigClass
         if ($this->getDomainData('enable_common', $strEnableCommon) === 0) {
             $setEnableCommon = (int)$strEnableCommon;
         }
-        /* Variable rewritting */
+        /* Variable rewriting */
         if ($setEnableCommon !== 0) {
             $strDomainWhere = str_replace(')', ' OR `config_id`=0)', $strDomainWhere);
         }
@@ -2480,7 +2480,7 @@ class NagConfigClass
                     /* Process form POST variable */
                     $strChbName = 'chbId_' . $arrData[$i]['id'];
                     /* Check if this POST variable exists or the data ID parameter matches */
-                    if ((($intDbId !== 0) && ($intDbId === $arrData[$i]['id'])) ||
+                    if ((($intDbId !== 0) && ($intDbId === (int)$arrData[$i]['id'])) ||
                         (filter_input(INPUT_POST, $strChbName) !== null)) {
                         /* Get configuration targets */
                         $this->getConfigSets($arrConfigID);
