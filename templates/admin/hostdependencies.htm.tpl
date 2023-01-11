@@ -1,10 +1,9 @@
-<!-- (c) 2005-2020 by Martin Willisegger -->
+<!-- (c) 2005-2023 by Martin Willisegger -->
 <!-- -->
 <!-- Project   : NagiosQL -->
 <!-- Component : hostdependencies template -->
 <!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
-<!-- Version   : 3.4.1 -->
-<!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
+<!-- Version   : 3.5.0 -->
 <!-- BEGIN datainsert -->
 <div id="content_main">
     <div id="content_title">{TITLE}</div>

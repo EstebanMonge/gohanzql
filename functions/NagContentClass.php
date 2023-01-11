@@ -339,7 +339,7 @@ class NagContentClass
                     }
                 }
             }
-            if ($arrData['dependent_hostgroup_name'] !== 0) {
+            if ((int)$arrData['dependent_hostgroup_name'] !== 0) {
                 $strSQLHost = 'SELECT `hostgroup_name`, `exclude` FROM `tbl_hostgroup` ' .
                     'LEFT JOIN `tbl_lnkHostdependencyToHostgroup_DH` ON `id`=`idSlave` ' .
                     'WHERE `idMaster`=' . $arrData['id'] . ' ORDER BY `hostgroup_name`';

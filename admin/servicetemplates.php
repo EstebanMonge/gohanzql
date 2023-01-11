@@ -673,7 +673,7 @@ if ($chkModus === 'add') {
         $strIntegerfelder = 'max_check_attempts,check_interval,retry_interval,freshness_threshold,low_flap_threshold,';
         $strIntegerfelder .= 'high_flap_threshold,notification_interval,first_notification_delay';
         foreach (explode(',', $strIntegerfelder) as $elem) {
-            if ($arrModifyData[$elem] === -1) {
+            if ((int)$arrModifyData[$elem] === -1) {
                 $conttp->setVariable('DAT_' . strtoupper($elem), 'null');
             }
         }
