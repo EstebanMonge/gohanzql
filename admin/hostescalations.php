@@ -42,29 +42,21 @@ use functions\NagVisualClass;
  * @var string $strSearchWhere from prepend_content.php -> SQL WHERE addon for data search
  * @var string $strDomainWhere from prepend_adm.php -> Domain selection SQL part with table name
  * @var string $chkTfValue1 from prepend_content.php -> Configuration name
- * @var int $chkSelValue1 from prepend_content.php -> Dependency period
- * @var array $chkMselValue1 from prepend_content.php -> Dependent hosts
- * @var array $chkMselValue2 from prepend_content.php -> Hosts
- * @var array $chkMselValue3 from prepend_content.php -> Dependent hostgroups
+ * @var int $chkSelValue1 from prepend_content.php -> Escalation period
+ * @var array $chkMselValue1 from prepend_content.php -> Contacts
+ * @var array $chkMselValue2 from prepend_content.php -> Contact groups
+ * @var array $chkMselValue3 from prepend_content.php -> Hosts
  * @var array $chkMselValue4 from prepend_content.php -> Hostgroups
- * @var int $intMselValue1 from prepend_content.php -> Dependent hosts multiselect status value
- * @var int $intMselValue2 from prepend_content.php -> Hosts multiselect status value
- * @var int $intMselValue3 from prepend_content.php -> Dependent hostgroups multiselect status value
+ * @var int $intMselValue1 from prepend_content.php -> Contacts multiselect status value
+ * @var int $intMselValue2 from prepend_content.php -> Contact groups multiselect status value
+ * @var int $intMselValue3 from prepend_content.php -> Hosts multiselect status value
  * @var int $intMselValue4 from prepend_content.php -> Hostgroups multiselect status value
- * @var string $chkChbGr1a from prepend_content.php -> Execution failure criteria (o)
- * @var string $chkChbGr1b from prepend_content.php -> Execution failure criteria (d)
- * @var string $chkChbGr1c from prepend_content.php -> Execution failure criteria (u)
- * @var string $chkChbGr1d from prepend_content.php -> Execution failure criteria (p)
- * @var string $chkChbGr1e from prepend_content.php -> Execution failure criteria (n)
- * @var string $chkChbGr2a from prepend_content.php -> Notification failure criteria (o)
- * @var string $chkChbGr2b from prepend_content.php -> Notification failure criteria (d)
- * @var string $chkChbGr2c from prepend_content.php -> Notification failure criteria (u)
- * @var string $chkChbGr2d from prepend_content.php -> Notification failure criteria (p)
- * @var string $chkChbGr2e from prepend_content.php -> Notification failure criteria (n)
- * @var int $chkChbValue1 from prepend_content.php -> Inherit parents
- * @var string $chkTfNullVal1 from prepend_content.php -> Retry interval
- * @var string $chkTfNullVal2 from prepend_content.php -> Max check attempts
- * @var string $chkTfNullVal3 from prepend_content.php -> Check interval
+ * @var string $chkChbGr1a from prepend_content.php -> Escalation options (d)
+ * @var string $chkChbGr1b from prepend_content.php -> Escalation options (u)
+ * @var string $chkChbGr1c from prepend_content.php -> Escalation options (r)
+ * @var string $chkTfNullVal1 from prepend_content.php -> First notification
+ * @var string $chkTfNullVal2 from prepend_content.php -> Last notification
+ * @var string $chkTfNullVal3 from prepend_content.php -> Notification interval
  */
 /*
 Path settings
