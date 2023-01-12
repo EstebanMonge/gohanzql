@@ -82,7 +82,7 @@ use functions\NagVisualClass;
  * @var int $chkRadValue6 from prepend_content.php -> Retain status information
  * @var int $chkRadValue7 from prepend_content.php -> Retain non-status information
  * @var int $chkRadValue8 from prepend_content.php -> Can submit command
- * @var int $chkTfNullVal1 from prepend_content.php -> Minimum importance
+ * @var string $chkTfNullVal1 from prepend_content.php -> Minimum importance
  * @var int $intVariables from prepend_content.php -> Form uses variable definitions
  * @var int $intTemplates from prepend_content.php -> Form uses template definitions
  */

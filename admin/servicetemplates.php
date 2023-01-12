@@ -101,15 +101,15 @@ use functions\NagVisualClass;
  * @var int $chkRadValue16 from prepend_content.php -> Is volatile
  * @var int $chkRadValue17 from prepend_content.php -> Notifcation
  * @var int $chkRadValue18 from prepend_content.php -> Parent services multiselect options
- * @var int $chkTfNullVal1 from prepend_content.php -> Retry interval
- * @var int $chkTfNullVal2 from prepend_content.php -> Max check attempts
- * @var int $chkTfNullVal3 from prepend_content.php -> Check interval
- * @var int $chkTfNullVal4 from prepend_content.php -> Freshness threshold
- * @var int $chkTfNullVal5 from prepend_content.php -> Low flap threshold
- * @var int $chkTfNullVal6 from prepend_content.php -> High flap threshold
- * @var int $chkTfNullVal7 from prepend_content.php -> Notification interval
- * @var int $chkTfNullVal8 from prepend_content.php -> First notification delay
- * @var int $chkTfNullVal9 from prepend_content.php -> Importance
+ * @var string $chkTfNullVal1 from prepend_content.php -> Retry interval
+ * @var string $chkTfNullVal2 from prepend_content.php -> Max check attempts
+ * @var string $chkTfNullVal3 from prepend_content.php -> Check interval
+ * @var string $chkTfNullVal4 from prepend_content.php -> Freshness threshold
+ * @var string $chkTfNullVal5 from prepend_content.php -> Low flap threshold
+ * @var string $chkTfNullVal6 from prepend_content.php -> High flap threshold
+ * @var string $chkTfNullVal7 from prepend_content.php -> Notification interval
+ * @var string $chkTfNullVal8 from prepend_content.php -> First notification delay
+ * @var string $chkTfNullVal9 from prepend_content.php -> Importance
  * @var int $intVariables from prepend_content.php -> Form uses variable definitions
  * @var int $intTemplates from prepend_content.php -> Form uses template definitions
  */
