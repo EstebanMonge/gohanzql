@@ -13,7 +13,7 @@
 error_reporting(E_ALL & ~E_STRICT);
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
+ * @var HTML_Template_IT $conttp Content template
  */
 /*
 Timezone settings
