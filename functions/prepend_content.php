@@ -19,31 +19,31 @@ use functions\NagVisualClass;
 
 /**
  * Class and variable includes
- * @var NagContentClass $myContentClass
- * @var NagVisualClass $myVisClass
- * @var MysqliDbClass $myDBClass
- * @var NagConfigClass $myConfigClass
- * @var NagDataClass $myDataClass
- * @var HTML_Template_IT $mastertp
- * @var string $chkLimit from prepend_adm.php
- * @var string $preBrowser from prepend_adm.php
- * @var string $chkGroupAdm from prepend_adm.php
- * @var string $hidSortBy from prepend_adm.php
- * @var string $hidSortDir from prepend_adm.php
- * @var string $chkModus from prepend_adm.php
- * @var string $chkRegister from prepend_adm.php
- * @var string $preKeyField from content file
- * @var string $strDomainWhere from prepend_adm.php
- * @var string $chkSelModify from prepend_adm.php
- * @var string $strInfoMessage from prepend_adm.php
- * @var string $chkSelTarDom from prepend_adm.php
- * @var int $intVersion - from prepend_adm.php
- * @var int $hidActive - from prepend_adm.php
- * @var int $chkActive - from prepend_adm.php
- * @var int $chkDomainId - from prepend_adm.php
- * @var int $chkDataId - from prepend_adm.php
- * @var int $chkListId - from prepend_adm.php
- * @var int $intGlobalWriteAccess - from prepend_adm.php
+ * @var NagContentClass $myContentClass NagiosQL content class
+ * @var NagVisualClass $myVisClass Visual content class
+ * @var MysqliDbClass $myDBClass MySQL database class
+ * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var NagDataClass $myDataClass NagiosQL data class
+ * @var HTML_Template_IT $mastertp Master template (list view)
+ * @var string $chkLimit from prepend_adm.php / settings -> Data set count per page
+ * @var string $preBrowser from prepend_adm.php -> Browser version
+ * @var string $chkGroupAdm from prepend_adm.php -> Session value group admin
+ * @var string $hidSortBy  from prepend_adm.php -> Sort data by
+ * @var string $hidSortDir from prepend_adm.php -> Sort data direction (ASC, DESC)
+ * @var string $chkModus from prepend_adm.php -> Form work mode
+ * @var string $chkRegister from prepend_adm.php -> Register checkbox
+ * @var string $preKeyField from content file -> Table key field
+ * @var string $strDomainWhere from prepend_adm.php -> Domain selection SQL part with table name
+ * @var string $chkSelModify from prepend_adm.php -> Modification selection value
+ * @var string $strInfoMessage from prepend_adm.php -> Information messages
+ * @var string $chkSelTarDom from prepend_adm.php -> Target domain
+ * @var int $intVersion from prepend_adm.php -> Nagios version
+ * @var int $hidActive from prepend_adm.php -> (hidden) active checkbox
+ * @var int $chkActive from prepend_adm.php -> Active checkbox
+ * @var int $chkDomainId from prepend_adm.php -> Configuration domain id
+ * @var int $chkDataId from prepend_adm.php -> Actual dataset id
+ * @var int $chkListId from prepend_adm.php -> Actual dataset id (list view)
+ * @var int $intGlobalWriteAccess from prepend_content.php -> Global admin write access
  */
 /*
 Define common variables
