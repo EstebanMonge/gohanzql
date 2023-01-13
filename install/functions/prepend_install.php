@@ -19,15 +19,15 @@ error_reporting(E_ALL);
 Define common variables
 */
 $strErrorMessage = '';  /* All error messages (red) */
-$strInfoMessage  = '';  /* All information messages (green) */
+$strInfoMessage = '';  /* All information messages (green) */
 /*
 // Start PHP session
 */
-session_start([ 'name' => 'nagiosql_install']);
+session_start(['name' => 'nagiosql_install']);
 /*
 Include external function/class files
 */
-require $preBasePath.'functions/Autoloader.php';
+require $preBasePath . 'functions/Autoloader.php';
 functions\Autoloader::register($preBasePath);
 /*
 Initialize class

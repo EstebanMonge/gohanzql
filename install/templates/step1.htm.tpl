@@ -16,9 +16,11 @@
     <div id="installmain_content">
         <h1>{STEP1_TITLE}</h1>
         <h3>{STEP1_SUBTITLE1}</h3>
-        <img src='images/{CHECK_1_PIC}.png' alt='{CHECK_1_PIC}' title='{CHECK_1_PIC}' class='textmiddle'> Javascript: <span class='{CHECK_1_CLASS}'>{CHECK_1_VALUE}</span>{CHECK_1_INFO}
+        <img src='images/{CHECK_1_PIC}.png' alt='{CHECK_1_PIC}' title='{CHECK_1_PIC}' class='textmiddle'> Javascript:
+        <span class='{CHECK_1_CLASS}'>{CHECK_1_VALUE}</span>{CHECK_1_INFO}
         <h3>{STEP1_SUBTITLE2}</h3>
-        <img src='images/{CHECK_2_PIC}.png' alt='{CHECK_2_PIC}' title='{CHECK_2_PIC}' class='textmiddle'> {CHECK_2_TEXT}: <span class='{CHECK_2_CLASS}'>{CHECK_2_VALUE}</span> {CHECK_2_INFO}
+        <img src='images/{CHECK_2_PIC}.png' alt='{CHECK_2_PIC}' title='{CHECK_2_PIC}' class='textmiddle'> {CHECK_2_TEXT}
+        : <span class='{CHECK_2_CLASS}'>{CHECK_2_VALUE}</span> {CHECK_2_INFO}
         <h3>{STEP1_SUBTITLE3}</h3>
         <p class='hint'>{STEP1_TEXT3_1}:</p>
         {CHECK_3_CONTENT_1}
@@ -49,10 +51,10 @@
             </form>
         </div>
     </div>
-</div>     
+</div>
 <script type="text/javascript">
     <!--
     document.frmStep1.hidJScript.value = 'yes';
     //-->
 </script>
-<div id="ie_clearing"> </div>          
+<div id="ie_clearing"></div>

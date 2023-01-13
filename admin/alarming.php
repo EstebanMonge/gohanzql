@@ -43,7 +43,7 @@ Include content
 */
 $conttp->setVariable('TITLE', translate('Alarming'));
 $conttp->setVariable('DESC', translate('To define contact data, contact templates and contact groups and time '
-        . 'periods.'));
+    . 'periods.'));
 $conttp->setVariable('STATISTICS', translate('Statistical datas'));
 $conttp->setVariable('TYPE', translate('Group'));
 $conttp->setVariable('ACTIVE', translate('Active'));
@@ -52,7 +52,7 @@ $conttp->setVariable('INACTIVE', translate('Inactive'));
 Include statistical data
 */
 /* Get read access groups */
-$strAccess    = $myVisClass->getAccessGroups('read');
+$strAccess = $myVisClass->getAccessGroups('read');
 $intGroupId14 = (int)$myDBClass->getFieldData('SELECT `mnuGrpId` FROM `tbl_menu` WHERE `mnuId`=14');
 $intGroupId15 = (int)$myDBClass->getFieldData('SELECT `mnuGrpId` FROM `tbl_menu` WHERE `mnuId`=15');
 $intGroupId16 = (int)$myDBClass->getFieldData('SELECT `mnuGrpId` FROM `tbl_menu` WHERE `mnuId`=16');
@@ -60,33 +60,33 @@ $intGroupId17 = (int)$myDBClass->getFieldData('SELECT `mnuGrpId` FROM `tbl_menu`
 if ($myVisClass->checkAccountGroup($intGroupId14, 'read') === 0) {
     $conttp->setVariable('NAME', translate('Contact data'));
     $conttp->setVariable('ACT_COUNT', $myDBClass->getFieldData('SELECT count(*) FROM `tbl_contact` '
-            . "WHERE `active`='1' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
+        . "WHERE `active`='1' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
     $conttp->setVariable('INACT_COUNT', $myDBClass->getFieldData('SELECT count(*) FROM `tbl_contact` '
-            . "WHERE `active`='0' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
+        . "WHERE `active`='0' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
     $conttp->parse('statisticrow');
 }
 if ($myVisClass->checkAccountGroup($intGroupId15, 'read') === 0) {
     $conttp->setVariable('NAME', translate('Contact groups'));
     $conttp->setVariable('ACT_COUNT', $myDBClass->getFieldData('SELECT count(*) FROM `tbl_contactgroup` '
-            . "WHERE `active`='1' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
+        . "WHERE `active`='1' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
     $conttp->setVariable('INACT_COUNT', $myDBClass->getFieldData('SELECT count(*) FROM `tbl_contactgroup` '
-            . "WHERE active='0' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
+        . "WHERE active='0' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
     $conttp->parse('statisticrow');
 }
 if ($myVisClass->checkAccountGroup($intGroupId16, 'read') === 0) {
     $conttp->setVariable('NAME', translate('Time periods'));
     $conttp->setVariable('ACT_COUNT', $myDBClass->getFieldData('SELECT count(*) FROM `tbl_timeperiod` '
-            . "WHERE `active`='1' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
+        . "WHERE `active`='1' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
     $conttp->setVariable('INACT_COUNT', $myDBClass->getFieldData('SELECT count(*) FROM `tbl_timeperiod` '
-            . "WHERE `active`='0' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
+        . "WHERE `active`='0' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
     $conttp->parse('statisticrow');
 }
 if ($myVisClass->checkAccountGroup($intGroupId17, 'read') === 0) {
     $conttp->setVariable('NAME', translate('Contact templates'));
     $conttp->setVariable('ACT_COUNT', $myDBClass->getFieldData('SELECT count(*) FROM `tbl_contacttemplate` '
-            . "WHERE `active`='1' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
+        . "WHERE `active`='1' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
     $conttp->setVariable('INACT_COUNT', $myDBClass->getFieldData('SELECT count(*) FROM `tbl_contacttemplate` '
-            . "WHERE `active`='0' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
+        . "WHERE `active`='0' AND `config_id`=$chkDomainId AND `access_group` IN ($strAccess)"));
     $conttp->parse('statisticrow');
 }
 $conttp->parse('statistics');
@@ -96,6 +96,6 @@ $conttp->show('main');
 Include Footer
 */
 $maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-        . "target='_blank'>NagiosQL</a> $setFileVersion");
+    . "target='_blank'>NagiosQL</a> $setFileVersion");
 $maintp->parse('footer');
 $maintp->show('footer');

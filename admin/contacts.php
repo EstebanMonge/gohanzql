@@ -375,8 +375,8 @@ if ($chkModus === 'add') {
         }
         $conttp->parse('template');
     }
-    $strSQL6    = 'SELECT `id`, `name`, `active` '
-                . "FROM `$preTableName` WHERE `name` <> '' $strWhere AND $strDomainWhere ORDER BY `name`";
+    $strSQL6 = 'SELECT `id`, `name`, `active` '
+        . "FROM `$preTableName` WHERE `name` <> '' $strWhere AND $strDomainWhere ORDER BY `name`";
     $booReturn6 = $myDBClass->hasDataArray($strSQL6, $arrDataHpl, $intDataCount);
     if ($booReturn6 === false) {
         $myVisClass->processMessage($myDBClass->strErrorMessage, $strErrorMessage);
@@ -550,9 +550,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL8    = "SELECT `id`, `$preKeyField`, `alias`, `active`, `register`, `config_id`, `access_group` "
-                . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` "
-                . "IN ($strAccess) $strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+    $strSQL8 = "SELECT `id`, `$preKeyField`, `alias`, `active`, `register`, `config_id`, `access_group` "
+        . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` "
+        . "IN ($strAccess) $strOrderString LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn8 = $myDBClass->hasDataArray($strSQL8, $arrDataLines, $intDataCount);
     if ($booReturn8 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

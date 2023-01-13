@@ -786,9 +786,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL    = "SELECT `id`, `$preKeyField`, `dependent_service_description`, `register`, `active`, `config_id`, "
+    $strSQL = "SELECT `id`, `$preKeyField`, `dependent_service_description`, `register`, `active`, `config_id`, "
         . "`access_group` FROM `$preTableName`WHERE $strDomainWhere $strSearchWhere AND `access_group` "
-        . "IN ($strAccess) $strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+        . "IN ($strAccess) $strOrderString LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     if ($booReturn === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

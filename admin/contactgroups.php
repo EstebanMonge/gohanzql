@@ -109,11 +109,11 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
             } else {
                 $myVisClass->processMessage($myDataClass->strInfoMessage, $strInfoMessage);
                 $myDataClass->updateStatusTable($preTableName);
-                if ($chkModus  === 'insert') {
-                    $myDataClass->writeLog(translate('New contact group inserted:'). ' ' .$chkTfValue1);
+                if ($chkModus === 'insert') {
+                    $myDataClass->writeLog(translate('New contact group inserted:') . ' ' . $chkTfValue1);
                 }
-                if ($chkModus  === 'modify') {
-                    $myDataClass->writeLog(translate('Contact group modified:'). ' ' .$chkTfValue1);
+                if ($chkModus === 'modify') {
+                    $myDataClass->writeLog(translate('Contact group modified:') . ' ' . $chkTfValue1);
                 }
                 /*
                 Insert/update relations
@@ -129,7 +129,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                     if (isset($intRet1) && ($intRet1 !== 0)) {
                         $myVisClass->processMessage($myDataClass->strErrorMessage, $strErrorMessage);
                     }
-                    if ($intMselValue2  !== 0) {
+                    if ($intMselValue2 !== 0) {
                         $intRet2 = $myDataClass->dataInsertRelation(
                             'tbl_lnkContactgroupToContactgroup',
                             $chkDataId,
@@ -181,7 +181,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
     $chkModus = 'display';
 }
 if ($chkModus !== 'add') {
-    $chkModus    = 'display';
+    $chkModus = 'display';
 }
 /*
 Get date/time of last database and config file manipulation
@@ -236,7 +236,7 @@ if ($chkModus === 'add') {
     /* Initial add/modify form definitions */
     $myContentClass->addFormInit($conttp);
     if ($intDataWarning === 1) {
-        $conttp->setVariable('WARNING', $strDBWarning. '<br>' .translate('Saving not possible!'));
+        $conttp->setVariable('WARNING', $strDBWarning . '<br>' . translate('Saving not possible!'));
     }
     if ($intVersion < 3) {
         $conttp->setVariable('VERSION_20_VALUE_MUST', 'mselValue1,');
@@ -246,9 +246,9 @@ if ($chkModus === 'add') {
         /* Check relation information to find out locked configuration datasets */
         $intLocked = $myDataClass->infoRelation($preTableName, $arrModifyData['id'], $preKeyField);
         $myVisClass->processMessage($myDataClass->strInfoMessage, $strRelMessage);
-        $strInfo  = '<br><span class="redmessage">' .translate('Entry cannot be activated because it is used by '
-                  . 'another configuration'). ':</span>';
-        $strInfo .= '<br><span class="greenmessage">' .$strRelMessage. '</span>';
+        $strInfo = '<br><span class="redmessage">' . translate('Entry cannot be activated because it is used by '
+                . 'another configuration') . ':</span>';
+        $strInfo .= '<br><span class="greenmessage">' . $strRelMessage . '</span>';
         /* Process data */
         $myContentClass->addInsertData($conttp, $arrModifyData, $intLocked, $strInfo);
     }
@@ -268,8 +268,8 @@ if ($chkModus === 'display') {
     $mastertp->setVariable('FILTER_VISIBLE', 'visibility: hidden');
     /* Process filter string */
     if ($_SESSION['search'][$preSearchSession] !== '') {
-        $strSearchTxt   = $_SESSION['search'][$preSearchSession];
-        $strSearchWhere = "AND (`$preKeyField` LIKE '%".$strSearchTxt."%' OR `alias` LIKE '%".$strSearchTxt."%')";
+        $strSearchTxt = $_SESSION['search'][$preSearchSession];
+        $strSearchWhere = "AND (`$preKeyField` LIKE '%" . $strSearchTxt . "%' OR `alias` LIKE '%" . $strSearchTxt . "%')";
     }
     /* Row sorting */
     $strOrderString = "ORDER BY `config_id`, `$preKeyField` $hidSortDir";
@@ -279,8 +279,8 @@ if ($chkModus === 'display') {
     /* Count datasets */
     $intLineCount = 0;
     /** @noinspection SqlResolve */
-    $strSQL     = "SELECT count(*) AS `number` FROM `$preTableName` "
-                . "WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess)";
+    $strSQL = "SELECT count(*) AS `number` FROM `$preTableName` "
+        . "WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess)";
     $booReturn1 = $myDBClass->hasSingleDataset($strSQL, $arrDataLinesCount);
     if ($booReturn1 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);
@@ -292,9 +292,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL     = "SELECT `id`, `$preKeyField`, `alias`, `register`, `active`, `config_id`, `access_group` "
-                . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess) "
-                . "$strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+    $strSQL = "SELECT `id`, `$preKeyField`, `alias`, `register`, `active`, `config_id`, `access_group` "
+        . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess) "
+        . "$strOrderString LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn2 = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     if ($booReturn2 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

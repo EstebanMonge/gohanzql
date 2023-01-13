@@ -68,7 +68,6 @@ use functions\NagVisualClass;
  */
 
 
-
 $strPattern = '(admin/[^/]*.php)';
 $preRelPath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF'));
 $preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'));
@@ -125,7 +124,7 @@ if (($chkModus === 'modify' || $chkModus === 'insert') && $chkDataId !== 0) {
         /* Nagios base configuration files */
         if (!is_writable($chkTfValue20)) {
             $myVisClass->processMessage(str_replace('  ', ' ', translate('Nagios config file') . ' ' . $chkTfValue20
-                    . ' ' .translate('is not writeable')), $strPathMessage);
+                . ' ' . translate('is not writeable')), $strPathMessage);
             $intIsError = 1;
         } else {
             $intCheck = 0;
@@ -146,18 +145,18 @@ if (($chkModus === 'modify' || $chkModus === 'insert') && $chkDataId !== 0) {
             }
         }
         if (!is_writable($chkTfValue14)) {
-            $myVisClass->processMessage(str_replace('  ', ' ', translate('Nagios base directory'). ' ' .
-                $chkTfValue14. ' ' .translate('is not writeable')), $strPathMessage);
+            $myVisClass->processMessage(str_replace('  ', ' ', translate('Nagios base directory') . ' ' .
+                $chkTfValue14 . ' ' . translate('is not writeable')), $strPathMessage);
             $intIsError = 1;
         }
         if (!is_writable($chkTfValue21)) {
-            $myVisClass->processMessage(str_replace('  ', ' ', translate('Nagios cgi config file'). ' ' .
-                    $chkTfValue21. ' ' .translate('is not writeable')), $strPathMessage);
+            $myVisClass->processMessage(str_replace('  ', ' ', translate('Nagios cgi config file') . ' ' .
+                $chkTfValue21 . ' ' . translate('is not writeable')), $strPathMessage);
             $intIsError = 1;
         }
         if (!is_readable($chkTfValue22)) {
-            $myVisClass->processMessage(str_replace('  ', ' ', translate('Nagios resource config file'). ' ' .
-                $chkTfValue22. ' ' .translate('is not readable')), $strPathMessage);
+            $myVisClass->processMessage(str_replace('  ', ' ', translate('Nagios resource config file') . ' ' .
+                $chkTfValue22 . ' ' . translate('is not readable')), $strPathMessage);
             $intIsError = 1;
         }
     }
@@ -386,9 +385,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL     = "SELECT `id`, `$preKeyField`, `alias`, `active`, `nodelete`, `access_group` "
-                . "FROM `$preTableName` WHERE `access_group` IN ($strAccess) $strOrderString "
-                . "LIMIT $chkLimit,".$SETS['common']['pagelines'];
+    $strSQL = "SELECT `id`, `$preKeyField`, `alias`, `active`, `nodelete`, `access_group` "
+        . "FROM `$preTableName` WHERE `access_group` IN ($strAccess) $strOrderString "
+        . "LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn2 = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     if ($booReturn2 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

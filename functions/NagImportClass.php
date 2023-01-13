@@ -32,15 +32,15 @@ class NagImportClass
     public $strInfoMessage = ''; /* String including error messages */
     /** @var MysqliDbClass */
     public $myDBClass; /* String including information messages */
-/** @var NagDataClass */
+    /** @var NagDataClass */
     public $myDataClass;
-/** @var NagConfigClass */
+    /** @var NagConfigClass */
     public $myConfigClass;
 
     /* Class includes */
     private $arrSettings = array(); /* Database class object */
-        private $strList1 = ''; /* NagiosQL data processing class object */
-        private $strList2 = ''; /* NagiosQL configuration class object */
+    private $strList1 = ''; /* NagiosQL data processing class object */
+    private $strList2 = ''; /* NagiosQL configuration class object */
 
     /**
      * NagImportClass constructor.

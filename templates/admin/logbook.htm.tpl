@@ -12,8 +12,9 @@
     <script type="text/javascript">
         <!--
         // build calendar
-        calendarinit("{LOCALE}",1,"tfValue1","showfrom","cal-cont","cal");
-        calendarinit("{LOCALE}",1,"tfValue2","showto","cal-cont2","cal2");
+        calendarinit("{LOCALE}", 1, "tfValue1", "showfrom", "cal-cont", "cal");
+        calendarinit("{LOCALE}", 1, "tfValue2", "showto", "cal-cont2", "cal2");
+
         // Delete function
         function del(key) {
             if (key === "from") {
@@ -27,6 +28,7 @@
                 document.logSearchForm.submit();
             }
         }
+
         // Confirmation question
         /**
          * @return {boolean}
@@ -34,25 +36,32 @@
         function Validate() {
             const form = document.frmLogfile;
             if ((form.tfValue1.value === "") && (form.tfValue2.value === "")) {
-                msginit("{LANG_SELECT_DATE}","{LANG_SECURE_QUESTION}",1);
+                msginit("{LANG_SELECT_DATE}", "{LANG_SECURE_QUESTION}", 1);
                 return false;
             }
-            confirminit("{LANG_DELETELOG}","{LANG_SECURE_QUESTION}",2,"{LANG_YES}","{LANG_NO}",1);
+            confirminit("{LANG_DELETELOG}", "{LANG_SECURE_QUESTION}", 2, "{LANG_YES}", "{LANG_NO}", 1);
         }
+
         // Submit form
         function confOpenerYes(key) {
             if (key === 1) {
                 document.frmLogfile.submit();
             }
         }
+
         //-->
     </script>
-    <form name="logSearchForm"  method="post" action="">
+    <form name="logSearchForm" method="post" action="">
         <table border="0" cellpadding="0" class="content_formtable">
             <tr>
                 <td class="content_tbl_row1">{LANG_SEARCH_STRING}:</td>
-                <td class="content_tbl_row2"><input title="{LANG_SEARCH_STRING}" type="text" name="txtSearch" value="{DAT_SEARCH}"></td>
-                <td class="content_tbl_row3"><img src="{IMAGE_PATH}lupe.gif" width="18" height="18" alt="{LANG_SEARCH}" title="{LANG_SEARCH}" style="cursor:pointer;" onClick="document.logSearchForm.submit();">&nbsp;<img src="{IMAGE_PATH}del.png" width="18" height="18" alt="{LANG_DELETE_SEARCH}" title="{LANG_DELETE_SEARCH}" onClick="del('search');" style="cursor:pointer;"></td>
+                <td class="content_tbl_row2"><input title="{LANG_SEARCH_STRING}" type="text" name="txtSearch"
+                                                    value="{DAT_SEARCH}"></td>
+                <td class="content_tbl_row3"><img src="{IMAGE_PATH}lupe.gif" width="18" height="18" alt="{LANG_SEARCH}"
+                                                  title="{LANG_SEARCH}" style="cursor:pointer;"
+                                                  onClick="document.logSearchForm.submit();">&nbsp;<img
+                            src="{IMAGE_PATH}del.png" width="18" height="18" alt="{LANG_DELETE_SEARCH}"
+                            title="{LANG_DELETE_SEARCH}" onClick="del('search');" style="cursor:pointer;"></td>
             </tr>
         </table>
     </form>
@@ -83,16 +92,26 @@
     <form name="frmLogfile" method="post" action="">
         <table border="0" cellpadding="0" class="content_formtable">
             <tr>
-                <td colspan="7" class="loglegend" style="padding-bottom:5px;"><strong>{LANG_ENTRIES_BEFORE}</strong></td>
+                <td colspan="7" class="loglegend" style="padding-bottom:5px;"><strong>{LANG_ENTRIES_BEFORE}</strong>
+                </td>
             </tr>
             <tr>
                 <td style="width:40px;">{LANG_FROM}:</td>
-                <td style="width:80px;"><input title="{LANG_FROM}" type="text" name="tfValue1" id="tfValue1" value="" style="width:80px;" readonly></td>
-                <td style="width:80px;"><img src="{IMAGE_PATH}calbtn.gif" width="18" height="18" alt="{LANG_CALENDAR}" title="{LANG_CALENDAR}" id="showfrom" style="cursor:pointer;">&nbsp;<img src="{IMAGE_PATH}del.png" width="18" height="18" alt="{LANG_DELETE_SEARCH}" title="{LANG_DELETE_SEARCH}" onClick="del('from');" style="cursor:pointer;"></td>
+                <td style="width:80px;"><input title="{LANG_FROM}" type="text" name="tfValue1" id="tfValue1" value=""
+                                               style="width:80px;" readonly></td>
+                <td style="width:80px;"><img src="{IMAGE_PATH}calbtn.gif" width="18" height="18" alt="{LANG_CALENDAR}"
+                                             title="{LANG_CALENDAR}" id="showfrom" style="cursor:pointer;">&nbsp;<img
+                            src="{IMAGE_PATH}del.png" width="18" height="18" alt="{LANG_DELETE_SEARCH}"
+                            title="{LANG_DELETE_SEARCH}" onClick="del('from');" style="cursor:pointer;"></td>
                 <td style="width:40px;">{LANG_TO}:</td>
-                <td style="width:80px;"><input title="{LANG_TO}" type="text" name="tfValue2" id="tfValue2" value="" style="width:80px;" readonly></td>
-                <td style="width:60px;"><img src="{IMAGE_PATH}calbtn.gif" width="18" height="18" alt="{LANG_CALENDAR}" title="{LANG_CALENDAR}" id="showto" style="cursor:pointer;">&nbsp;<img src="{IMAGE_PATH}del.png" width="18" height="18" alt="{LANG_DELETE_SEARCH}" title="{LANG_DELETE_SEARCH}" onClick="del('to');" style="cursor:pointer;"></td>
-                <td><input type="button" name="butSubmit" id="butSubmit" value="{LANG_DELETE_LOG_ENTRIES}" style="font-size:12px;" onClick="Validate();" {ADD_CONTROL}></td>
+                <td style="width:80px;"><input title="{LANG_TO}" type="text" name="tfValue2" id="tfValue2" value=""
+                                               style="width:80px;" readonly></td>
+                <td style="width:60px;"><img src="{IMAGE_PATH}calbtn.gif" width="18" height="18" alt="{LANG_CALENDAR}"
+                                             title="{LANG_CALENDAR}" id="showto" style="cursor:pointer;">&nbsp;<img
+                            src="{IMAGE_PATH}del.png" width="18" height="18" alt="{LANG_DELETE_SEARCH}"
+                            title="{LANG_DELETE_SEARCH}" onClick="del('to');" style="cursor:pointer;"></td>
+                <td><input type="button" name="butSubmit" id="butSubmit" value="{LANG_DELETE_LOG_ENTRIES}"
+                           style="font-size:12px;" onClick="Validate();" {ADD_CONTROL}></td>
             </tr>
         </table>
     </form>

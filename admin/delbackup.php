@@ -54,7 +54,7 @@ Get configuration set ID
 $intMethod = 0;
 $strMethod = '';
 $myConfigClass->getConfigTargets($arrConfigSet);
-$intConfigId  = (int)$arrConfigSet[0];
+$intConfigId = (int)$arrConfigSet[0];
 if ($myConfigClass->getConfigValues($intConfigId, 'method', $strMethod) === 0) {
     $intMethod = (int)$strMethod;
 }
@@ -70,10 +70,10 @@ if (isset($chkMselValue1[0]) && ($chkMselValue1[0] !== '') && ($chkStatus === 1)
         $intCheck = $myConfigClass->removeFile(trim($elem), $intConfigId);
         $strFileTmp1 = str_replace($strServiceBackupDir, '', $elem);
         $strFileTmp2 = str_replace($strHostBackupDir, '', $strFileTmp1);
-        $strFile     = str_replace($strBackupDir, '', $strFileTmp2);
+        $strFile = str_replace($strBackupDir, '', $strFileTmp2);
         if ($intCheck === 0) {
-            $myDataClass->writeLog(translate('File deleted'). ': ' .trim($strFile));
-            $myVisClass->processMessage($strFile. ' ' .translate('successfully deleted'). '!', $strInfoMessage);
+            $myDataClass->writeLog(translate('File deleted') . ': ' . trim($strFile));
+            $myVisClass->processMessage($strFile . ' ' . translate('successfully deleted') . '!', $strInfoMessage);
         } else {
             $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
         }
@@ -95,7 +95,7 @@ $conttp->setVariable('LANG_REQUIRED', translate('required'));
 $conttp->setVariable('MAKE', translate('Delete'));
 $conttp->setVariable('ABORT', translate('Abort'));
 $conttp->setVariable('CTRL_INFO', translate('Hold CTRL to select<br>more than one entry'));
-$conttp->setVariable('IMAGE_PATH', $_SESSION['SETS']['path']['base_url']. 'images/');
+$conttp->setVariable('IMAGE_PATH', $_SESSION['SETS']['path']['base_url'] . 'images/');
 $conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF'));
 /* Build a local file list */
 if ($intMethod === 1) {
@@ -112,7 +112,7 @@ if ($intMethod === 1) {
 } elseif ($intMethod === 2) {
     /* Set up basic connection */
     if ($myConfigClass->getFTPConnection($intConfigId) === 0) {
-        $arrFiles  = array();
+        $arrFiles = array();
         $arrFiles1 = ftp_nlist($myConfigClass->conFTPConId, $strBackupDir);
         if (is_array($arrFiles1)) {
             $arrFiles = array_merge($arrFiles, $arrFiles1);
@@ -148,16 +148,16 @@ if ($intMethod === 1) {
 } elseif ($intMethod === 3) {
     /* Set up basic connection */
     if ($myConfigClass->getSSHConnection($intConfigId) === 0) {
-        $arrFiles  = array();
-        $intReturn = $myConfigClass->sendSSHCommand('ls ' .$strBackupDir. '*.cfg_old*', $arrFiles1);
+        $arrFiles = array();
+        $intReturn = $myConfigClass->sendSSHCommand('ls ' . $strBackupDir . '*.cfg_old*', $arrFiles1);
         if (($intReturn === 0) && is_array($arrFiles1)) {
             $arrFiles = array_merge($arrFiles, $arrFiles1);
         }
-        $intReturn = $myConfigClass->sendSSHCommand('ls ' .$strHostBackupDir. '*.cfg_old*', $arrFiles2);
+        $intReturn = $myConfigClass->sendSSHCommand('ls ' . $strHostBackupDir . '*.cfg_old*', $arrFiles2);
         if (($intReturn === 0) && is_array($arrFiles2)) {
             $arrFiles = array_merge($arrFiles, $arrFiles2);
         }
-        $intReturn = $myConfigClass->sendSSHCommand('ls ' .$strServiceBackupDir. '*.cfg_old*', $arrFiles3);
+        $intReturn = $myConfigClass->sendSSHCommand('ls ' . $strServiceBackupDir . '*.cfg_old*', $arrFiles3);
         if (($intReturn === 0) && is_array($arrFiles3)) {
             $arrFiles = array_merge($arrFiles, $arrFiles3);
         }
@@ -195,6 +195,6 @@ $conttp->show('main');
 Footer ausgeben
 */
 $maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-        . "target='_blank'>NagiosQL</a> $setFileVersion");
+    . "target='_blank'>NagiosQL</a> $setFileVersion");
 $maintp->parse('footer');
 $maintp->show('footer');

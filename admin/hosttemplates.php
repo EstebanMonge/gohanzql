@@ -602,10 +602,10 @@ if ($chkModus === 'add') {
         }
         /* Process option fields */
         foreach (explode(',', $arrModifyData['initial_state']) as $elem) {
-            $conttp->setVariable('DAT_IS' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_IS' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         foreach (explode(',', $arrModifyData['flap_detection_options']) as $elem) {
-            $conttp->setVariable('DAT_FL' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_FL' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         foreach (explode(',', $arrModifyData['notification_options']) as $elem) {
             $conttp->setVariable('DAT_NO' . strtoupper($elem) . '_CHECKED', 'checked');
@@ -664,9 +664,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL2    = "SELECT `id`, `$preKeyField`, `alias`, `register`, `active`, `last_modified`, `config_id`, "
-                . "`access_group` FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` "
-                . "IN ($strAccess) $strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+    $strSQL2 = "SELECT `id`, `$preKeyField`, `alias`, `register`, `active`, `last_modified`, `config_id`, "
+        . "`access_group` FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` "
+        . "IN ($strAccess) $strOrderString LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn2 = $myDBClass->hasDataArray($strSQL2, $arrDataLines, $intDataCount);
     if ($booReturn2 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

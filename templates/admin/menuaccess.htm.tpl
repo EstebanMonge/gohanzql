@@ -14,6 +14,7 @@
         function update() {
             document.frmMenuAccess.submit();
         }
+
         //-->
     </script>
     <form name="frmMenuAccess" method="post" action="{ACTION_INSERT}">

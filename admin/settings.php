@@ -176,8 +176,8 @@ if (filter_input(INPUT_POST, 'selValue1')) {
         }
     }
     /* Write db settings to file */
-    if (is_writable($preBasePath. 'config/settings.php')) {
-        $filSettings = fopen($preBasePath. 'config/settings.php', 'wb');
+    if (is_writable($preBasePath . 'config/settings.php')) {
+        $filSettings = fopen($preBasePath . 'config/settings.php', 'wb');
         if ($filSettings) {
             fwrite($filSettings, "<?php\n");
             fwrite($filSettings, "exit;\n");
@@ -191,20 +191,20 @@ if (filter_input(INPUT_POST, 'selValue1')) {
             fwrite($filSettings, "; Project  : NagiosQL\n");
             fwrite($filSettings, "; Component: Database Configuration\n");
             fwrite($filSettings, "; Website  : https://sourceforge.net/projects/nagiosql/\n");
-            fwrite($filSettings, '; Date     : ' .date('F j, Y, g:i a')."\n");
-            fwrite($filSettings, '; Version  : ' .$setFileVersion."\n");
+            fwrite($filSettings, '; Date     : ' . date('F j, Y, g:i a') . "\n");
+            fwrite($filSettings, '; Version  : ' . $setFileVersion . "\n");
             fwrite($filSettings, ";\n");
             fwrite($filSettings, ";///////////////////////////////////////////////////////////////////////////////\n");
             fwrite($filSettings, "[db]\n");
             fwrite($filSettings, "type         = 'mysqli'\n");
-            fwrite($filSettings, 'server       = \'' .$chkTfValue3. "'\n");
-            fwrite($filSettings, 'port         = \'' .$chkTfValue4. "'\n");
-            fwrite($filSettings, 'database     = \'' .$chkTfValue5. "'\n");
-            fwrite($filSettings, 'username     = \'' .$chkTfValue6. "'\n");
-            fwrite($filSettings, 'password     = \'' .$chkTfValue7. "'\n");
+            fwrite($filSettings, 'server       = \'' . $chkTfValue3 . "'\n");
+            fwrite($filSettings, 'port         = \'' . $chkTfValue4 . "'\n");
+            fwrite($filSettings, 'database     = \'' . $chkTfValue5 . "'\n");
+            fwrite($filSettings, 'username     = \'' . $chkTfValue6 . "'\n");
+            fwrite($filSettings, 'password     = \'' . $chkTfValue7 . "'\n");
             fwrite($filSettings, "[path]\n");
-            fwrite($filSettings, 'base_url     = \'' .$preRelPath. "'\n");
-            fwrite($filSettings, 'base_path    = \'' .$preBasePath. "'\n");
+            fwrite($filSettings, 'base_url     = \'' . $preRelPath . "'\n");
+            fwrite($filSettings, 'base_path    = \'' . $preBasePath . "'\n");
             fclose($filSettings);
             /* Activate new language settings */
             $arrLocale = explode('.', $strLocale);
@@ -212,29 +212,29 @@ if (filter_input(INPUT_POST, 'selValue1')) {
             $loc = setlocale(
                 LC_ALL,
                 $strLocale,
-                $strLocale. '.utf-8',
-                $strLocale. '.utf-8',
-                $strLocale. '.utf8',
+                $strLocale . '.utf-8',
+                $strLocale . '.utf-8',
+                $strLocale . '.utf8',
                 'en_GB',
                 'en_GB.utf-8',
                 'en_GB.utf8'
             );
             if (!isset($loc)) {
                 $myVisClass->processMessage(translate('Error setting the correct locale. Please report this error '
-                        . "with the associated output of 'locale -a'"), $strErrorMessage);
+                    . "with the associated output of 'locale -a'"), $strErrorMessage);
             }
-            putenv('LC_ALL=' .$strLocale. '.utf-8');
-            putenv('LANG=' .$strLocale. '.utf-8');
-            bindtextdomain($strLocale, $preBasePath. 'config/locale');
+            putenv('LC_ALL=' . $strLocale . '.utf-8');
+            putenv('LANG=' . $strLocale . '.utf-8');
+            bindtextdomain($strLocale, $preBasePath . 'config/locale');
             bind_textdomain_codeset($strLocale, $chkTfValue2);
             textdomain($strLocale);
             $myVisClass->processMessage(translate('Settings were changed'), $strInfoMessage);
         } else {
             $myVisClass->processMessage(translate('An error occured while writing settings.php. Please '
-                    . 'check permissions!'), $strErrorMessage);
+                . 'check permissions!'), $strErrorMessage);
         }
     } else {
-        $myVisClass->processMessage($preBasePath. 'config/settings.php ' .translate('is not writeable, please '
+        $myVisClass->processMessage($preBasePath . 'config/settings.php ' . translate('is not writeable, please '
                 . 'check permissions!'), $strErrorMessage);
     }
 }
@@ -253,12 +253,12 @@ $conttp->setVariable('PATH', translate('Path'));
 $conttp->setVariable('TEMPDIR_NAME', translate('Temporary Directory'));
 $conttp->setVariable('TEMPDIR_VALUE', htmlspecialchars($chkTfValue1, ENT_QUOTES, 'utf-8'));
 $conttp->setVariable('PROTOCOL_NAME', translate('Server protocol'));
-$conttp->setVariable(strtoupper($SETS['path']['protocol']). '_SELECTED', 'selected');
+$conttp->setVariable(strtoupper($SETS['path']['protocol']) . '_SELECTED', 'selected');
 /* Data settings */
 $conttp->setVariable('DATA', translate('Language'));
 $conttp->setVariable('LOCALE', translate('Language'));
 /* Process language selection field */
-$strSQL    = "SELECT * FROM `tbl_language` WHERE `active`='1' ORDER BY `id`";
+$strSQL = "SELECT * FROM `tbl_language` WHERE `active`='1' ORDER BY `id`";
 $booReturn = $myDBClass->hasDataArray($strSQL, $arrData, $intDataCount);
 if ($booReturn && ($intDataCount !== 0)) {
     foreach ($arrData as $elem) {
@@ -293,29 +293,29 @@ $conttp->setVariable('SECURITY', translate('Security'));
 $conttp->setVariable('LOGOFFTIME_NAME', translate('Session auto logoff time'));
 $conttp->setVariable('LOGOFFTIME_VALUE', htmlspecialchars($chkTfValue8, ENT_QUOTES, 'utf-8'));
 $conttp->setVariable('WSAUTH_NAME', translate('Authentication type'));
-$conttp->setVariable('WSAUTH_' .$chkSelValue3. '_SELECTED', 'selected');
+$conttp->setVariable('WSAUTH_' . $chkSelValue3 . '_SELECTED', 'selected');
 /* Common settings */
 $conttp->setVariable('COMMON', translate('Common'));
 $conttp->setVariable('PAGELINES_NAME', translate('Data lines per page'));
 $conttp->setVariable('PAGELINES_VALUE', htmlspecialchars($chkTfValue9, ENT_QUOTES, 'utf-8'));
 $conttp->setVariable('SELDISABLE_NAME', translate('Selection method'));
-$conttp->setVariable('SELDISABLE_' .$chkSelValue4. '_SELECTED', 'selected');
+$conttp->setVariable('SELDISABLE_' . $chkSelValue4 . '_SELECTED', 'selected');
 /* Template Check */
 $conttp->setVariable('TEMPLATE_CHECK', translate('Template warn message'));
 $conttp->setVariable('LANG_ENABLE', translate('Enable'));
 $conttp->setVariable('LANG_DISABLE', translate('Disable'));
-$conttp->setVariable('TPL_CHECK_' .$chkRadValue1. '_CHECKED', 'checked');
+$conttp->setVariable('TPL_CHECK_' . $chkRadValue1 . '_CHECKED', 'checked');
 /* Online version check */
 $conttp->setVariable('CLASS_NAME_1', 'elementHide');
 $conttp->setVariable('CLASS_NAME_2', 'elementHide');
 $conttp->setVariable('UPDATE_CHECK', translate('Online version check'));
-$conttp->setVariable('UPD_CHECK_' .$chkRadValue2. '_CHECKED', 'checked');
+$conttp->setVariable('UPD_CHECK_' . $chkRadValue2 . '_CHECKED', 'checked');
 if ($chkRadValue2 === 1) {
     $conttp->setVariable('CLASS_NAME_1', 'elementShow');
 }
 /* Online update proxy settings */
 $conttp->setVariable('UPD_PROXY_CHECK', translate('Proxyserver'));
-$conttp->setVariable('UPD_PROXY_' .$chkRadValue3. '_CHECKED', 'checked');
+$conttp->setVariable('UPD_PROXY_' . $chkRadValue3 . '_CHECKED', 'checked');
 if (($chkRadValue3 === 1) && ($chkRadValue2 === 1)) {
     echo "da";
     $conttp->setVariable('CLASS_NAME_2', 'elementShow');

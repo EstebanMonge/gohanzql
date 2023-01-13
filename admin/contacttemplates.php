@@ -375,12 +375,12 @@ if ($chkModus === 'add') {
                 $conttp->setVariable('SPECIAL_STYLE');
             }
             $conttp->setVariable('DAT_TEMPLATE', htmlspecialchars($elem[$preKeyField], ENT_QUOTES, 'UTF-8') . $strActive);
-            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id']. '::1');
+            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id'] . '::1');
         }
         $conttp->parse('template');
     }
-    $strSQL2    = 'SELECT `id`, `name`, `active` FROM `tbl_contact` '
-                . "WHERE `name` <> '' AND $strDomainWhere2 ORDER BY name";
+    $strSQL2 = 'SELECT `id`, `name`, `active` FROM `tbl_contact` '
+        . "WHERE `name` <> '' AND $strDomainWhere2 ORDER BY name";
     $booReturn2 = $myDBClass->hasDataArray($strSQL2, $arrDataHpl, $intDataCountHpl);
     if ($booReturn2 === false) {
         $myVisClass->processMessage($myDBClass->strErrorMessage, $strErrorMessage);
@@ -396,7 +396,7 @@ if ($chkModus === 'add') {
                 $conttp->setVariable('SPECIAL_STYLE');
             }
             $conttp->setVariable('DAT_TEMPLATE', htmlspecialchars($elem['name'], ENT_QUOTES, 'UTF-8') . $strActive);
-            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id']. '::2');
+            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id'] . '::2');
         }
         $conttp->parse('template');
     }
@@ -486,23 +486,23 @@ if ($chkModus === 'add') {
         $myContentClass->addInsertData($conttp, $arrModifyData, $intLocked, $strInfo, $strChbFields);
         /* Process radio fields */
         $conttp->setVariable('DAT_HNE' . $arrModifyData['host_notifications_enabled'] . '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_SNE' .$arrModifyData['service_notifications_enabled']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_RSI' .$arrModifyData['retain_status_information']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_CSC' .$arrModifyData['can_submit_commands']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_RNS' .$arrModifyData['retain_nonstatus_information']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_TPL' .$arrModifyData['use_template_tploptions']. '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_SNE' . $arrModifyData['service_notifications_enabled'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_RSI' . $arrModifyData['retain_status_information'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_CSC' . $arrModifyData['can_submit_commands'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_RNS' . $arrModifyData['retain_nonstatus_information'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_TPL' . $arrModifyData['use_template_tploptions'] . '_CHECKED', 'checked');
         $conttp->setVariable(
-            'DAT_SEC' .$arrModifyData['service_notification_commands_tploptions']. '_CHECKED',
+            'DAT_SEC' . $arrModifyData['service_notification_commands_tploptions'] . '_CHECKED',
             'checked'
         );
-        $conttp->setVariable('DAT_HOC' .$arrModifyData['host_notification_commands_tploptions']. '_CHECKED', 'checked');
-        $conttp->setVariable('DAT_COG' .$arrModifyData['contactgroups_tploptions']. '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_HOC' . $arrModifyData['host_notification_commands_tploptions'] . '_CHECKED', 'checked');
+        $conttp->setVariable('DAT_COG' . $arrModifyData['contactgroups_tploptions'] . '_CHECKED', 'checked');
         /* Process option fields */
         foreach (explode(',', $arrModifyData['host_notification_options']) as $elem) {
-            $conttp->setVariable('DAT_HO' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_HO' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         foreach (explode(',', $arrModifyData['service_notification_options']) as $elem) {
-            $conttp->setVariable('DAT_SO' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_SO' . strtoupper($elem) . '_CHECKED', 'checked');
         }
     }
     $conttp->parse('datainsert');
@@ -535,8 +535,8 @@ if ($chkModus === 'display') {
         $strOrderString = "ORDER BY `config_id`, `alias` $hidSortDir";
     }
     /* Count datasets */
-    $strSQL     = 'SELECT count(*) AS `number` '
-                . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess)";
+    $strSQL = 'SELECT count(*) AS `number` '
+        . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess)";
     $booReturn1 = $myDBClass->hasSingleDataset($strSQL, $arrDataLinesCount);
     if ($booReturn1 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);
@@ -548,9 +548,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL     = "SELECT `id`, `$preKeyField`, `alias`, `active`, `register`, `config_id`, `access_group` "
-                . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess) "
-                . "$strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+    $strSQL = "SELECT `id`, `$preKeyField`, `alias`, `active`, `register`, `config_id`, `access_group` "
+        . "FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess) "
+        . "$strOrderString LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn2 = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     if ($booReturn2 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

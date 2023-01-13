@@ -476,7 +476,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                             }
                         }
                     }
-                    $strSQL1    = 'DELETE FROM `tbl_lnkServiceToVariabledefinition` WHERE `idMaster`=' .$chkDataId;
+                    $strSQL1 = 'DELETE FROM `tbl_lnkServiceToVariabledefinition` WHERE `idMaster`=' . $chkDataId;
                     $intReturn1 = $myDataClass->dataInsert($strSQL1, $intInsertId);
                     if ($intReturn1 !== 0) {
                         $myVisClass->processMessage($myDataClass->strErrorMessage, $strErrorMessage);
@@ -569,13 +569,13 @@ if ($chkModus === 'add') {
             }
             $conttp->setVariable('DAT_TEMPLATE', htmlspecialchars($elem['template_name'], ENT_QUOTES, 'UTF-8') .
                 $strActive);
-            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id']. '::1');
+            $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id'] . '::1');
             /** @noinspection DisconnectedForeachInstructionInspection */
             $conttp->parse('template');
         }
     }
     /** @noinspection SqlResolve */
-    $strSQL2    = "SELECT `id`, `name`, `active` FROM `$preTableName` "
+    $strSQL2 = "SELECT `id`, `name`, `active` FROM `$preTableName` "
         . "WHERE `name` <> '' $strWhere AND $strDomainWhere ORDER BY `name`";
     $booReturn2 = $myDBClass->hasDataArray($strSQL2, $arrDataHpl, $intDataCountHpl);
     if ($booReturn2 === false) {
@@ -790,10 +790,10 @@ if ($chkModus === 'add') {
         }
         /* Process option fields */
         foreach (explode(',', $arrModifyData['initial_state']) as $elem) {
-            $conttp->setVariable('DAT_IS' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_IS' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         foreach (explode(',', $arrModifyData['flap_detection_options']) as $elem) {
-            $conttp->setVariable('DAT_FL' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_FL' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         foreach (explode(',', $arrModifyData['notification_options']) as $elem) {
             $conttp->setVariable('DAT_NO' . strtoupper($elem) . '_CHECKED', 'checked');
@@ -886,10 +886,10 @@ if ($chkModus === 'display') {
         }
     }
     /* Datensätze holen */
-    $strSQL3    = "SELECT `id`, `$preKeyField`, `service_description`, `register`, `active`, `last_modified`, "
+    $strSQL3 = "SELECT `id`, `$preKeyField`, `service_description`, `register`, `active`, `last_modified`, "
         . "`config_id`, `access_group` FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere2 "
         . "$strSearchWhere AND `access_group` IN ($strAccess) $strOrderString "
-        . "LIMIT $chkLimit,".$SETS['common']['pagelines'];
+        . "LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn3 = $myDBClass->hasDataArray($strSQL3, $arrDataLines, $intDataCount);
     if ($booReturn3 === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

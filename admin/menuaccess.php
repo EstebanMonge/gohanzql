@@ -74,14 +74,14 @@ foreach ($arrDescription as $elem) {
     $conttp->setVariable($elem['name'], $elem['string']);
 }
 $conttp->setVariable('LANG_ACCESSDESCRIPTION', translate('In order for a user to get access, he needs to be member '
-        . 'of the group selected here.'));
+    . 'of the group selected here.'));
 /*
 Read menu item
 */
-$strSQL    = 'SELECT A.`mnuId` , B.`mnuName` AS `mainitem`, A.`mnuName` AS `subitem`, A.`mnuGrpId` '
-           . 'FROM `tbl_menu` AS A LEFT JOIN `tbl_menu` AS B ON A.`mnuTopId` = B.`mnuId` '
-           . 'ORDER BY A.`mnuTopId`, A.`mnuOrderId`';
-$booReturn  = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
+$strSQL = 'SELECT A.`mnuId` , B.`mnuName` AS `mainitem`, A.`mnuName` AS `subitem`, A.`mnuGrpId` '
+    . 'FROM `tbl_menu` AS A LEFT JOIN `tbl_menu` AS B ON A.`mnuTopId` = B.`mnuId` '
+    . 'ORDER BY A.`mnuTopId`, A.`mnuOrderId`';
+$booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
 if ($booReturn === false) {
     $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);
     $myVisClass->processMessage($myDBClass->strErrorMessage, $strErrorMessage);

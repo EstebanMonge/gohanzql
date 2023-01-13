@@ -10,8 +10,10 @@
  Version   : 3.5.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 -----------------------------------------------------------------------------*/
+
 use functions\MysqliDbClass;
 use functions\NagVisualClass;
+
 /**
  * Class and variable includes
  * @var HTML_Template_IT $conttp Content template

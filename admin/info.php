@@ -76,18 +76,18 @@ if ($chkKey1 === 'admin' and isset($_SESSION['updInfo'])) {
     $strContentDB = $arrTrans[$chkKey2];
 } elseif ($chkKey1 === 'cmd_arguments') {
     /* Get information from tbl_command */
-    $strSQL       = 'SELECT `arg' .$chkVersion. '_info` FROM `tbl_command` WHERE `id`='.$chkKey2;
+    $strSQL = 'SELECT `arg' . $chkVersion . '_info` FROM `tbl_command` WHERE `id`=' . $chkKey2;
     $strContentDB = nl2br($myDBClass->getFieldData($strSQL));
 } else {
     /* Get information from tbl_info */
-    $strSQL       = 'SELECT `infotext` FROM `tbl_info` ' .
-                    "WHERE `key1` = '$chkKey1' AND `key2` = '$chkKey2' AND `version` = '$chkVersion' ".
-                    "AND `language` = 'private'";
+    $strSQL = 'SELECT `infotext` FROM `tbl_info` ' .
+        "WHERE `key1` = '$chkKey1' AND `key2` = '$chkKey2' AND `version` = '$chkVersion' " .
+        "AND `language` = 'private'";
     $strContentDB = $myDBClass->getFieldData($strSQL);
     if ($strContentDB === '') {
-        $strSQL       = 'SELECT `infotext` FROM `tbl_info` ' .
-                        "WHERE `key1` = '$chkKey1' AND `key2` = '$chkKey2' AND `version` = '$chkVersion' ".
-                        "AND `language` = 'default'";
+        $strSQL = 'SELECT `infotext` FROM `tbl_info` ' .
+            "WHERE `key1` = '$chkKey1' AND `key2` = '$chkKey2' AND `version` = '$chkVersion' " .
+            "AND `language` = 'default'";
         $strContentDB = $myDBClass->getFieldData($strSQL);
     }
 }
@@ -95,17 +95,17 @@ if ($chkKey1 === 'admin' and isset($_SESSION['updInfo'])) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title><?php echo translate('Information PopUp');?></title>
-        <style type="text/css">
-            .infobody {
-                font-family:"Courier New", Courier, monospace;
-                font-size:12px;
-            }
-        </style>
-    </head>
-    <body class="infobody">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title><?php echo translate('Information PopUp'); ?></title>
+    <style type="text/css">
+        .infobody {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="infobody">
 <?php
 if (trim($strContentDB) !== '') {
     echo $strContentDB;
@@ -113,5 +113,5 @@ if (trim($strContentDB) !== '') {
     echo translate('No information available');
 }
 ?>
-    </body>
+</body>
 </html>

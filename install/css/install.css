@@ -19,79 +19,80 @@
 /* Body CSS
 /**********************************************/
 body {
-  background: #7fadd4 url(../images/body_background.png) repeat-x fixed left top;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  padding: 10px;
-  }
+    background: #7fadd4 url(../images/body_background.png) repeat-x fixed left top;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 10px;
+}
 
 /**********************************************/
 /* Page Common CSS
 /**********************************************/
 
 #page {
-  border: 5px solid #053056;
-  background: #FFFFFF;
-  }
+    border: 5px solid #053056;
+    background: #FFFFFF;
+}
 
 #page_margins {
-  min-width: 740px;
-  max-width: 80em;
-  margin: 0 auto;
-  border: 0 #889 solid;
-  text-align:left;
-  }
+    min-width: 740px;
+    max-width: 80em;
+    margin: 0 auto;
+    border: 0 #889 solid;
+    text-align: left;
+}
 
 #header, #main, #footer {
-  clear:both;
-  }
+    clear: both;
+}
 
 #header {
-  background: #FFFFFF url(../images/background.png) repeat-x left top;
-  position: relative;
-  padding: 5px;
-  text-align: center;
-  height: 120px;
-  }
+    background: #FFFFFF url(../images/background.png) repeat-x left top;
+    position: relative;
+    padding: 5px;
+    text-align: center;
+    height: 120px;
+}
 
 #main {
-  background: #fff;
-  padding:10px 0;
-  }
+    background: #fff;
+    padding: 10px 0;
+}
 
 #footer {
-  color:#666;
-  background: #f9f9f9;
-  padding: 15px;
-  text-align: center;
-  border-top: 5px #efefef solid;
-  }
+    color: #666;
+    background: #f9f9f9;
+    padding: 15px;
+    text-align: center;
+    border-top: 5px #efefef solid;
+}
 
 /**********************************************/
 /* Page Custom CSS
 /**********************************************/
 
 #header-logo {
-  background: transparent;
-  position: absolute;
-  text-align: center;
-  top: 30px;
-  left: 70px;
-  }
+    background: transparent;
+    position: absolute;
+    text-align: center;
+    top: 30px;
+    left: 70px;
+}
 
 #documentation {
-  position:absolute;
-  left: 320px;
-  text-align:right;
-  top: 56px;
-  }
-  
+    position: absolute;
+    left: 320px;
+    text-align: right;
+    top: 56px;
+}
+
 #langselector {
-  position:absolute;
-  left: 650px;
-  text-align:right;
-  top: 50px;
-  }
+    position: absolute;
+    left: 650px;
+    text-align: right;
+    top: 50px;
+}
+
 /**********************************************/
 /* Step Rows
 /**********************************************/
@@ -99,267 +100,273 @@ body {
 /* Installer Menu */
 
 #installmenu {
-  width: 20%;
-  z-index: 3;
-  float: left;
-  }
+    width: 20%;
+    z-index: 3;
+    float: left;
+}
 
-  #installmenu_content {
+#installmenu_content {
     padding: 10px 10px 10px 20px;
     z-index: 4;
-    }
+}
 
 .step1_active {
-  background: url(../images/step1_active.png) no-repeat;
-  height: 75px;
-  width: 150px;
-  color: #FFFFFF;
-  text-align: center;
-  font-weight: bold;
-  padding: 0 0 0 0;
-  }
-  
- .step1_active a,
- .step1_active a:hover,
- .step3_active a,
- .step3_active a:hover,
- .step2_active a,
- .step2_active a:hover {
-	color: #FFFFFF;
-	}
+    background: url(../images/step1_active.png) no-repeat;
+    height: 75px;
+    width: 150px;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: bold;
+    padding: 0 0 0 0;
+}
+
+.step1_active a,
+.step1_active a:hover,
+.step3_active a,
+.step3_active a:hover,
+.step2_active a,
+.step2_active a:hover {
+    color: #FFFFFF;
+}
 
 .step2_active {
-  background: url(../images/step2_active.png) no-repeat;
-  height: 75px;
-  width: 150px;
-  color: #FFFFFF;
-  text-align: center;
-  font-weight: bold;
-  padding: 0 0 0 0;
-  }
+    background: url(../images/step2_active.png) no-repeat;
+    height: 75px;
+    width: 150px;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: bold;
+    padding: 0 0 0 0;
+}
 
-  .step3_active {
-  background: url(../images/step3_active.png) no-repeat;
-  height: 75px;
-  width: 150px;
-  color: #FFFFFF;
-  text-align: center;
-  font-weight: bold;
-  padding: 0 0 0 0;
-  }
-	  
+.step3_active {
+    background: url(../images/step3_active.png) no-repeat;
+    height: 75px;
+    width: 150px;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: bold;
+    padding: 0 0 0 0;
+}
+
 .textmiddle {
-	vertical-align:middle;
-} 
+    vertical-align: middle;
+}
 
 #installmain {
-  margin-left: 20%;
-  margin-right: 0;
-  z-index: 1;
-  }
+    margin-left: 20%;
+    margin-right: 0;
+    z-index: 1;
+}
 
-  #installmain_content {
+#installmain_content {
     padding: 10px 20px 10px 10px;
     z-index: 2;
-    }
-	
+}
+
 #install-next {
-	float: right;
-	text-align: center;
-	}
-	
+    float: right;
+    text-align: center;
+}
+
 #install-back {
-	float: left;
-	text-align: center;
-	}
+    float: left;
+    text-align: center;
+}
 
 /*noinspection CssUnusedSymbol*/
 #install-center {
-	padding-left: 240px;
-	}
+    padding-left: 240px;
+}
 
-	.button-update {
-		float: right;
-		width:100px;
-		padding: 5px;
-		}
+.button-update {
+    float: right;
+    width: 100px;
+    padding: 5px;
+}
 
 /* Index */
 
 #indexmain {
-  z-index: 1;
-  }
+    z-index: 1;
+}
 
-  #indexmain_content {
+#indexmain_content {
     padding: 0 20px 10px 10px;
     z-index: 2;
-    }
+}
 
 
 #installmain_content,
 #installmenu_content,
 #indexmain_content {
-  position: relative;
-  }
+    position: relative;
+}
 
 /* Hyperlinks */
 
 A {
-  text-decoration: none;
-  font-weight: bold;
-  color: #0c4271;
-  }
+    text-decoration: none;
+    font-weight: bold;
+    color: #0c4271;
+}
 
 A:hover {
-  text-decoration: underline;
-  font-weight: bold;
-  color: #0c4271;
-  }
+    text-decoration: underline;
+    font-weight: bold;
+    color: #0c4271;
+}
 
 /* Headlines */
 
-h1,h2,h3 {
-  color: #0c4271;
-  }
+h1, h2, h3 {
+    color: #0c4271;
+}
 
 h1 {
-  text-align: center;
-  font-size: 22px;
-  }
+    text-align: center;
+    font-size: 22px;
+}
 
 h2 {
-  font-size: 14px;
-  color: #1962a2;
-  }
+    font-size: 14px;
+    color: #1962a2;
+}
 
 h3 {
-  font-size: 14px;
-  font-style:italic;
-  }
+    font-size: 14px;
+    font-style: italic;
+}
 
 /* Index Headlines */
 .index-install {
-  padding: 10px 0 0 28px;
-  height: 25px;
-  background: url(../images/index-install.png) no-repeat left top;
-  margin: 10px 0 0 0;
+    padding: 10px 0 0 28px;
+    height: 25px;
+    background: url(../images/index-install.png) no-repeat left top;
+    margin: 10px 0 0 0;
 }
 
 .index-update {
-  padding: 10px 0 0 28px;
-  height: 25px;
-  background: url(../images/index-update.png) no-repeat left top;
+    padding: 10px 0 0 28px;
+    height: 25px;
+    background: url(../images/index-update.png) no-repeat left top;
 }
 
 /* Specials */
 
 .attention {
-  color: #CC0000;
-  font-weight: bold;
-  }
+    color: #CC0000;
+    font-weight: bold;
+}
 
 
 .red {
-  font-weight:bold;
-  color:#FF0000
-  }
+    font-weight: bold;
+    color: #FF0000
+}
+
 .green {
-  font-weight:bold;
-  color:#006600;
-  }
+    font-weight: bold;
+    color: #006600;
+}
 
 .yellow {
-  font-weight:bold;
-  color:#f2d409;
-  }
+    font-weight: bold;
+    color: #f2d409;
+}
 
 .clear {
-	overflow: hidden;
-	width: 100%;
-	}
+    overflow: hidden;
+    width: 100%;
+}
 
 #ie_clearing {
-  display:none;
-  }
+    display: none;
+}
 
 /*noinspection CssUnusedSymbol*/
 .showfield {
-	
+
 }
 
 /*noinspection CssUnusedSymbol*/
 .hidefield {
-	display:none;	
+    display: none;
 }
 
 /* Required fields validation */
 
-input[type=text].required,input[type=password].required {
-	width:200px;
-	border: 1px solid #053056;
-	background: #941616 url(../images/inputmust.png);
-	font-family:Verdana, Helvetica, sans-serif;
-	color: #FFFFFF;
-	font-weight: bold;
-	font-size:12px;
-	height:18px;
+input[type=text].required, input[type=password].required {
+    width: 200px;
+    border: 1px solid #053056;
+    background: #941616 url(../images/inputmust.png);
+    font-family: Verdana, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 12px;
+    height: 18px;
 }
+
 input[type=text] {
-	width:200px;
-	border: 1px solid #053056;
-	background: #941616 url(../images/input.png);
-	font-family:Verdana, Helvetica, sans-serif;
-	color: #000000;
-	font-size:12px;
-	height:18px;
+    width: 200px;
+    border: 1px solid #053056;
+    background: #941616 url(../images/input.png);
+    font-family: Verdana, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 12px;
+    height: 18px;
 }
+
 input[type=text].locked {
-	width:200px;
-	border: 1px solid #053056;
-	background: #666666 url(../images/inputlock.png);
-	font-family:Verdana, Helvetica, sans-serif;
-	color: #FFFFFF;
-	font-weight: bold;
-	font-size:12px;
-	height:18px;
+    width: 200px;
+    border: 1px solid #053056;
+    background: #666666 url(../images/inputlock.png);
+    font-family: Verdana, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 12px;
+    height: 18px;
 }
+
 input[type=submit] {
-	border:1px solid #6CF;
-	background: #d1e2fd url(../images/input.png);
-	font-family:Verdana, Helvetica, sans-serif;
-	font-size:12px;
-	color:#0c4271;
-	height:25px;
-	padding-left:10px;
-	padding-right:10px;
-	margin:0;
-	padding-bottom:2px;
+    border: 1px solid #6CF;
+    background: #d1e2fd url(../images/input.png);
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #0c4271;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+    padding-bottom: 2px;
 }
+
 input[type=submit][disabled] {
-	border:1px solid #6CF;
-	background: #d1e2fd url(../images/input.png);
-	font-family:Verdana, Helvetica, sans-serif;
-	font-size:12px;
-	color:#999;
-	height:25px;
-	padding-left:10px;
-	padding-right:10px;
-	margin:0;
-	padding-bottom:2px;
+    border: 1px solid #6CF;
+    background: #d1e2fd url(../images/input.png);
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #999;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+    padding-bottom: 2px;
 }
+
 select.required {
-	width:202px;
-	border: 1px solid #053056;
-	background: #941616 url(../images/inputmust.png);
-	font-family:Verdana, Helvetica, sans-serif;
-	color: #FFFFFF;
-	font-weight: bold;
-	font-size:12px;
-	height:22px;
+    width: 202px;
+    border: 1px solid #053056;
+    background: #941616 url(../images/inputmust.png);
+    font-family: Verdana, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 12px;
+    height: 22px;
 }
 
 /*  Text Styles */
 .hint {
-  color: #666;
-  font-size: 0.95em;
+    color: #666;
+    font-size: 0.95em;
 }

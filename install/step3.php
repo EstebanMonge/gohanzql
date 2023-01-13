@@ -19,6 +19,7 @@
  * @var string $preSqlNewInstall from install/index.php
  * @var string $strErrorMessage from install/functions/prepend_install.php
  */
+
 /*
 Prevent this file from direct access
 */

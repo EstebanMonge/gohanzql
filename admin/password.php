@@ -121,7 +121,7 @@ if ($strErrorMessage !== '') {
     $conttp->setVariable('ERRORMESSAGE', $strErrorMessage);
 }
 $conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF'));
-$conttp->setVariable('IMAGE_PATH', $_SESSION['SETS']['path']['base_url']. 'images/');
+$conttp->setVariable('IMAGE_PATH', $_SESSION['SETS']['path']['base_url'] . 'images/');
 /* Check access rights for adding new objects */
 if ($myVisClass->checkAccountGroup($prePageKey, 'write') !== 0) {
     $conttp->setVariable('ADD_CONTROL', 'disabled="disabled"');
@@ -132,6 +132,6 @@ $conttp->show('passwordsite');
 Include footer
 */
 $maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-                   . "target='_blank'>NagiosQL</a> $setFileVersion");
+    . "target='_blank'>NagiosQL</a> $setFileVersion");
 $maintp->parse('footer');
 $maintp->show('footer');

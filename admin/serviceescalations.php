@@ -142,7 +142,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
     }
     if ($intWriteAccessId === 0) {
         if ((($intMselValue1 !== 0) || ($intMselValue2 !== 0) || ($intMselValue6 !== 0)) && (($intMselValue3 !== 0) ||
-            ($intMselValue6 !== 0)) && (($intMselValue5 !== 0) || ($intMselValue4 !== 0)) && ($chkTfNullVal1 !== 'NULL') &&
+                ($intMselValue6 !== 0)) && (($intMselValue5 !== 0) || ($intMselValue4 !== 0)) && ($chkTfNullVal1 !== 'NULL') &&
             ($chkTfNullVal2 !== 'NULL') && ($chkTfNullVal3 !== 'NULL')) {
             $intReturn = $myDataClass->dataInsert($strSQL, $intInsertId);
             if ($chkModus === 'insert') {
@@ -562,7 +562,7 @@ if (($chkModus === 'add') || ($chkModus === 'refresh')) {
             $conttp->setVariable('DAT_CONFIG_NAME', $chkTfValue1);
         }
         foreach (explode(',', $strEO) as $elem) {
-            $conttp->setVariable('DAT_EO' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_EO' . strtoupper($elem) . '_CHECKED', 'checked');
         }
         if ($chkActive !== 1) {
             $conttp->setVariable('ACT_CHECKED');
@@ -586,7 +586,7 @@ if (($chkModus === 'add') || ($chkModus === 'refresh')) {
         $myContentClass->addInsertData($conttp, $arrModifyData, $intLocked, $strInfo);
         /* Process option fields */
         foreach (explode(',', $arrModifyData['escalation_options']) as $elem) {
-            $conttp->setVariable('DAT_EO' .strtoupper($elem). '_CHECKED', 'checked');
+            $conttp->setVariable('DAT_EO' . strtoupper($elem) . '_CHECKED', 'checked');
         }
     }
     $conttp->parse('datainsert');
@@ -616,7 +616,7 @@ if ($chkModus === 'display') {
     /* Count datasets */
     $intLineCount = 0;
     /** @noinspection SqlResolve */
-    $strSQL    = "SELECT count(*) AS `number` FROM `$preTableName` "
+    $strSQL = "SELECT count(*) AS `number` FROM `$preTableName` "
         . "WHERE $strDomainWhere $strSearchWhere AND `access_group` IN ($strAccess)";
     $booReturn = $myDBClass->hasSingleDataset($strSQL, $arrDataLinesCount);
     if ($booReturn === false) {
@@ -629,9 +629,9 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL    = "SELECT `id`, `$preKeyField`, `service_description`, `register`, `active`, `config_id`, "
+    $strSQL = "SELECT `id`, `$preKeyField`, `service_description`, `register`, `active`, `config_id`, "
         . "`access_group` FROM `$preTableName` WHERE $strDomainWhere $strSearchWhere AND `access_group` IN "
-        . "($strAccess) $strOrderString LIMIT $chkLimit,".$SETS['common']['pagelines'];
+        . "($strAccess) $strOrderString LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     if ($booReturn === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

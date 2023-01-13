@@ -15,6 +15,7 @@
  * @var NagInstallClass $myInstClass
  * @var string $preBasePath from install/index.php
  */
+
 /*
 Prevent this file from direct access
 */

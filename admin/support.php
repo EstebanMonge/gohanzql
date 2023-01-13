@@ -59,7 +59,7 @@ $conttp->show('header');
 /*
 Single data form
 */
-$conttp->setVariable('MAINSITE', $_SESSION['SETS']['path']['base_url']. 'admin.php');
+$conttp->setVariable('MAINSITE', $_SESSION['SETS']['path']['base_url'] . 'admin.php');
 foreach ($arrDescription as $elem) {
     $conttp->setVariable($elem['name'], $elem['string']);
 }
@@ -90,7 +90,7 @@ GIT repository
 */
 $conttp->setVariable('SUBTITLE_8', translate('GIT software repository'));
 $conttp->setVariable('SUPPORT_TEXT_5', translate('The NagiosQL sources are available on GitLab. There you will '
-    .'always find the latest bugfixes and changes as well as older branches.'));
+    . 'always find the latest bugfixes and changes as well as older branches.'));
 $conttp->setVariable('GIT_LINK', translate('GitLab'));
 /*
 Online version check
@@ -102,15 +102,15 @@ if (!isset($SETS['common']['updcheck']) || ($SETS['common']['updcheck'] === '0')
 } elseif (isset($SETS['common']['updcheck']) && ($SETS['common']['updcheck'] === '1')) {
     $conttp->setVariable('SUPPORT_TEXT_4', translate('The online version check connects the NagiosQL page to find '
         . 'out, if your version is still up to date.'));
-    $conttp->setVariable('LOADER_IMAGE', $_SESSION['SETS']['path']['base_url']. 'images/loader.gif');
-    $conttp->setVariable('VERSION_IF_SRC', $_SESSION['SETS']['path']['base_url']. 'admin/versioncheck.php?show=0');
+    $conttp->setVariable('LOADER_IMAGE', $_SESSION['SETS']['path']['base_url'] . 'images/loader.gif');
+    $conttp->setVariable('VERSION_IF_SRC', $_SESSION['SETS']['path']['base_url'] . 'admin/versioncheck.php?show=0');
     $conttp->parse('versioncheck_frame');
-    $conttp->setVariable('VERSION_IF_SRC_RELOAD', $_SESSION['SETS']['path']['base_url'].
+    $conttp->setVariable('VERSION_IF_SRC_RELOAD', $_SESSION['SETS']['path']['base_url'] .
         'admin/versioncheck.php?show=1');
     $conttp->parse('versioncheck_js');
 }
 $conttp->setVariable('GIT_TITLE', translate('GIT code version'));
-$conttp->setVariable('GIT_VERSION', $setFileVersion.'-'.$setGITVersion);
+$conttp->setVariable('GIT_VERSION', $setFileVersion . '-' . $setGITVersion);
 /*
 Environment check
 */
@@ -122,16 +122,16 @@ $conttp->setVariable('OK', translate('ok'));
 $conttp->setVariable('PHP_VERSION', translate('PHP version'));
 if (PHP_VERSION_ID >= 50500) {
     $conttp->setVariable('PHP_CLASS', 'checkgreen');
-    $conttp->setVariable('PHP_RESULT', translate('ok'). ' (' .PHP_VERSION. ')');
+    $conttp->setVariable('PHP_RESULT', translate('ok') . ' (' . PHP_VERSION . ')');
 } else {
     $conttp->setVariable('PHP_CLASS', 'checkred');
-    $conttp->setVariable('PHP_RESULT', translate('failed'). ' (' .PHP_VERSION. ' - '
-        .translate('Required:'). ' 5.5.0)');
+    $conttp->setVariable('PHP_RESULT', translate('failed') . ' (' . PHP_VERSION . ' - '
+        . translate('Required:') . ' 5.5.0)');
 }
 /* PHP modules / extensions */
 $strExtPath = ini_get('extension_dir');
-$strPrefix    = (PHP_SHLIB_SUFFIX === 'dll') ? 'php_' : '';
-$conttp->setVariable('PHP_SESSION_MODULE', translate('PHP module:'). ' session');
+$strPrefix = (PHP_SHLIB_SUFFIX === 'dll') ? 'php_' : '';
+$conttp->setVariable('PHP_SESSION_MODULE', translate('PHP module:') . ' session');
 if (extension_loaded('session')) {
     $conttp->setVariable('PHP_SESSION_CLASS', 'checkgreen');
     $conttp->setVariable('PHP_SESSION_RESULT', translate('ok'));
@@ -139,7 +139,7 @@ if (extension_loaded('session')) {
     $conttp->setVariable('PHP_SESSION_CLASS', 'checkred');
     $conttp->setVariable('PHP_SESSION_RESULT', translate('failed'));
 }
-$conttp->setVariable('PHP_GETTEXT_MODULE', translate('PHP module:'). ' gettext');
+$conttp->setVariable('PHP_GETTEXT_MODULE', translate('PHP module:') . ' gettext');
 if (extension_loaded('gettext')) {
     $conttp->setVariable('PHP_GETTEXT_CLASS', 'checkgreen');
     $conttp->setVariable('PHP_GETTEXT_RESULT', translate('ok'));
@@ -147,7 +147,7 @@ if (extension_loaded('gettext')) {
     $conttp->setVariable('PHP_GETTEXT_CLASS', 'checkred');
     $conttp->setVariable('PHP_GETTEXT_RESULT', translate('failed'));
 }
-$conttp->setVariable('PHP_FTP_MODULE', translate('PHP module:'). ' ftp');
+$conttp->setVariable('PHP_FTP_MODULE', translate('PHP module:') . ' ftp');
 if (extension_loaded('ftp')) {
     $conttp->setVariable('PHP_FTP_CLASS', 'checkgreen');
     $conttp->setVariable('PHP_FTP_RESULT', translate('ok'));
@@ -157,7 +157,7 @@ if (extension_loaded('ftp')) {
     $conttp->setVariable('PHP_FTP_RESULT', translate('failed'));
     $intFTP_ok = 0;
 }
-$conttp->setVariable('PHP_SSH2_MODULE', translate('PHP module:'). ' ssh');
+$conttp->setVariable('PHP_SSH2_MODULE', translate('PHP module:') . ' ssh');
 if (extension_loaded('ssh2')) {
     $conttp->setVariable('PHP_SSH2_CLASS', 'checkgreen');
     $conttp->setVariable('PHP_SSH2_RESULT', translate('ok'));
@@ -170,22 +170,22 @@ if (extension_loaded('ssh2')) {
 /* Datenbankversion */
 if ($SETS['db']['type'] === 'mysql') {
     $conttp->setVariable('DB_VERSION', translate('MySQL version'));
-    $strSQL    = "SHOW VARIABLES LIKE 'version'";
+    $strSQL = "SHOW VARIABLES LIKE 'version'";
     $booReturn = $myDBClass->hasSingleDataset($strSQL, $arrDataset);
     if ($booReturn && (count($arrDataset) !== 0)) {
         $strDBVersion = $arrDataset['Value'];
         if (version_compare($strDBVersion, '5.0.0', '>=')) {
             $conttp->setVariable('DB_CLASS', 'checkgreen');
-            $conttp->setVariable('DB_RESULT', translate('ok'). ' (' .$strDBVersion. ')');
+            $conttp->setVariable('DB_RESULT', translate('ok') . ' (' . $strDBVersion . ')');
         } else {
             $conttp->setVariable('DB_CLASS', 'checkorange');
-            $conttp->setVariable('DB_RESULT', translate('failed'). ' (' .$strDBVersion. ' - ' .translate('Required:').
+            $conttp->setVariable('DB_RESULT', translate('failed') . ' (' . $strDBVersion . ' - ' . translate('Required:') .
                 ' 5.0.0)');
         }
     }
 }
 /* INI settings */
-$conttp->setVariable('INI_FILE_UPLOADS', translate('PHP ini settings:'). ' file_uploads');
+$conttp->setVariable('INI_FILE_UPLOADS', translate('PHP ini settings:') . ' file_uploads');
 $strStatus1 = ini_get('file_uploads');
 if (empty($strStatus1) || ($strStatus1 === '1')) {
     $conttp->setVariable('INI_FILE_UPLOADS_CLASS', 'checkgreen');
@@ -194,7 +194,7 @@ if (empty($strStatus1) || ($strStatus1 === '1')) {
     $conttp->setVariable('INI_FILE_UPLOADS_CLASS', 'checkred');
     $conttp->setVariable('INI_FILE_UPLOADS_RESULT', translate('failed'));
 }
-$conttp->setVariable('INI_AUTO_START', translate('PHP ini settings:'). ' session.auto_start');
+$conttp->setVariable('INI_AUTO_START', translate('PHP ini settings:') . ' session.auto_start');
 $strStatus2 = ini_get('session.auto_start');
 if (empty($strStatus2) || ($strStatus2 === '0')) {
     $conttp->setVariable('INI_AUTO_START_CLASS', 'checkgreen');
@@ -203,7 +203,7 @@ if (empty($strStatus2) || ($strStatus2 === '0')) {
     $conttp->setVariable('INI_AUTO_START_CLASS', 'checkred');
     $conttp->setVariable('INI_AUTO_START_RESULT', translate('failed'));
 }
-$conttp->setVariable('INI_SUHO_SESS_ENC', translate('PHP ini settings:'). ' suhosin.session.encrypt');
+$conttp->setVariable('INI_SUHO_SESS_ENC', translate('PHP ini settings:') . ' suhosin.session.encrypt');
 $strStatus3 = ini_get('suhosin.session.encrypt');
 if (empty($strStatus3) || ($strStatus3 === '0')) {
     $conttp->setVariable('INI_SUHO_SESS_ENC_CLASS', 'checkgreen');
@@ -212,17 +212,17 @@ if (empty($strStatus3) || ($strStatus3 === '0')) {
     $conttp->setVariable('INI_SUHO_SESS_ENC_CLASS', 'checkred');
     $conttp->setVariable('INI_SUHO_SESS_ENC_RESULT', translate('failed'));
 }
-$conttp->setVariable('INI_DATE_TIMEZONE', translate('PHP ini settings:'). ' date.timezone');
+$conttp->setVariable('INI_DATE_TIMEZONE', translate('PHP ini settings:') . ' date.timezone');
 $strStatus4 = ini_get('date.timezone');
 if (!empty($strStatus4)) {
     $conttp->setVariable('INI_DATE_TIMEZONE_CLASS', 'checkgreen');
-    $conttp->setVariable('INI_DATE_TIMEZONE_RESULT', translate('ok'). ' (' .$strStatus4. ')');
+    $conttp->setVariable('INI_DATE_TIMEZONE_RESULT', translate('ok') . ' (' . $strStatus4 . ')');
 } else {
     $conttp->setVariable('INI_DATE_TIMEZONE_CLASS', 'checkred');
     $conttp->setVariable('INI_DATE_TIMEZONE_RESULT', translate('failed'));
 }
 /* File access checks */
-$conttp->setVariable('RW_CONFIG', translate('Read/Write access:'). ' settings.php');
+$conttp->setVariable('RW_CONFIG', translate('Read/Write access:') . ' settings.php');
 $strConfigFile = '../config/settings.php';
 if (file_exists($strConfigFile) && is_readable($strConfigFile) && is_writable($strConfigFile)) {
     $conttp->setVariable('RW_CONFIG_CLASS', 'checkgreen');
@@ -235,7 +235,7 @@ if (file_exists($strConfigFile) && is_readable($strConfigFile) && is_writable($s
 Domain checks
 */
 $myConfigClass->getConfigTargets($arrConfigSet);
-$intConfigId  = $arrConfigSet[0];
+$intConfigId = $arrConfigSet[0];
 $myConfigClass->getConfigValues($intConfigId, 'method', $strMethod);
 $intMethod = (int)$strMethod;
 if ($intConfigId !== 0) {
@@ -312,7 +312,7 @@ if ($intConfigId !== 0) {
                 $conttp->setVariable('RW_NAG_CONF_RESULT', translate('ok'));
             } else {
                 $conttp->setVariable('RW_NAG_CONF_CLASS', 'checkorange');
-                $conttp->setVariable('RW_NAG_CONF_RESULT', translate('ok'). ' (' .translate('readonly'). ')');
+                $conttp->setVariable('RW_NAG_CONF_RESULT', translate('ok') . ' (' . translate('readonly') . ')');
             }
         } else {
             $conttp->setVariable('RW_NAG_CONF_CLASS', 'checkred');
@@ -354,7 +354,7 @@ if ($intConfigId !== 0) {
             $conttp->setVariable('RW_NAG_CONF_RESULT', translate('failed'));
         } elseif ($intCheck === 2) {
             $conttp->setVariable('RW_NAG_CONF_CLASS', 'checkorange');
-            $conttp->setVariable('RW_NAG_CONF_RESULT', translate('ok'). ' (' .translate('readonly'). ')');
+            $conttp->setVariable('RW_NAG_CONF_RESULT', translate('ok') . ' (' . translate('readonly') . ')');
         }
     }
     $myConfigClass->getConfigValues($intConfigId, 'pidfile', $strPidfile);
@@ -365,7 +365,7 @@ if ($intConfigId !== 0) {
     $intCheck = 0;
     if ($intMethod === 1) {
         if (substr_count(PHP_OS, 'Linux') !== 0) {
-            exec('ps -ef | grep '.basename($strBinary).' | grep -v grep', $arrExec);
+            exec('ps -ef | grep ' . basename($strBinary) . ' | grep -v grep', $arrExec);
         } else {
             $arrExec[0] = 1;
         }
@@ -388,16 +388,16 @@ if ($intConfigId !== 0) {
         }
     } elseif ($intMethod === 2) {
         $conttp->setVariable('CHECK_NAG_LOCK_CLASS', 'checkorange');
-        $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('ok'). ' (' .translate('not used with FTP'). ')');
+        $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('ok') . ' (' . translate('not used with FTP') . ')');
         $intDemonOk = 1;
     } elseif ($intMethod === 3) {
         $arrResultBinary = array();
-        $arrResultPid    = array();
-        $intBinary       = 1;
-        $intPid          = 1;
+        $arrResultPid = array();
+        $intBinary = 1;
+        $intPid = 1;
         if ($strBinary !== '') {
-            $intBinary = $myConfigClass->sendSSHCommand('ps -ef | grep '.basename($strBinary).' | grep '.
-                basename($strConffile).' | grep -v grep', $arrResultBinary);
+            $intBinary = $myConfigClass->sendSSHCommand('ps -ef | grep ' . basename($strBinary) . ' | grep ' .
+                basename($strConffile) . ' | grep -v grep', $arrResultBinary);
         }
         if ($strPidfile !== '') {
             $intPid = $myConfigClass->sendSSHCommand('ls ' . $strPidfile, $arrResult2);
@@ -408,11 +408,11 @@ if ($intConfigId !== 0) {
             $intDemonOk = 0;
         } elseif (($intBinary === 0) && ($intPid === 1)) {
             $conttp->setVariable('CHECK_NAG_LOCK_CLASS', 'checkorange');
-            $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('ok'). ' (' .translate('file is missed or not used'). ')');
+            $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('ok') . ' (' . translate('file is missed or not used') . ')');
             $intDemonOk = 1;
         } else {
             $conttp->setVariable('CHECK_NAG_LOCK_CLASS', 'checkred');
-            $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('failed'). ' (' .translate('demon dead'). ')');
+            $conttp->setVariable('CHECK_NAG_LOCK_RESULT', translate('failed') . ' (' . translate('demon dead') . ')');
             $myVisClass->processMessage(translate('Nagios daemon is not running'), $strErrorMessage);
             $intDemonOk = 1;
         }
@@ -426,22 +426,22 @@ if ($intConfigId !== 0) {
                 $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('ok'));
             } else {
                 $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkorange');
-                $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('ok'). ' (' .translate('demon dead'). '?)');
+                $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('ok') . ' (' . translate('demon dead') . '?)');
             }
         }
         if (!file_exists($strCommandfile)) {
             $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkred');
-            $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed'). ' (' .translate('file is missed'). ')');
+            $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed') . ' (' . translate('file is missed') . ')');
         } elseif (!is_writable($strCommandfile)) {
             $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkred');
-            $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed'). ' (' .translate('readonly'). ')');
+            $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed') . ' (' . translate('readonly') . ')');
         } elseif (!is_readable($strCommandfile)) {
             $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkred');
             $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed'));
         }
     } elseif ($intMethod === 2) {
         $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkorange');
-        $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('ok'). ' (' .translate('not used with FTP'). ')');
+        $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('ok') . ' (' . translate('not used with FTP') . ')');
     } elseif ($intMethod === 3) {
         if ($strCommandfile !== '') {
             if ($intDemonOk === 0) {
@@ -451,20 +451,20 @@ if ($intConfigId !== 0) {
                     $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('ok'));
                 } else {
                     $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkred');
-                    $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed'). ' ('
-                        .translate('readonly'). ')');
+                    $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed') . ' ('
+                        . translate('readonly') . ')');
                 }
             } elseif ($intDemonOk === 1) {
                 $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkred');
-                $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed'). ' (' .translate('demon dead'). ')');
+                $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed') . ' (' . translate('demon dead') . ')');
             } else {
                 $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkred');
-                $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed'). ' ('
-                    .translate('file is missed'). ')');
+                $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed') . ' ('
+                    . translate('file is missed') . ')');
             }
         } else {
             $conttp->setVariable('RW_NAG_COMMAND_CLASS', 'checkred');
-            $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed'). ' (' .translate('file is missed'). ')');
+            $conttp->setVariable('RW_NAG_COMMAND_RESULT', translate('failed') . ' (' . translate('file is missed') . ')');
         }
     }
     /* Binary file */
@@ -476,16 +476,16 @@ if ($intConfigId !== 0) {
                 $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('ok'));
             } else {
                 $conttp->setVariable('EXE_NAG_BINARY_CLASS', 'checkred');
-                $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('failed'). ' ('
-                    .translate('not executable'). ')');
+                $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('failed') . ' ('
+                    . translate('not executable') . ')');
             }
         } else {
             $conttp->setVariable('EXE_NAG_BINARY_CLASS', 'checkred');
-            $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('failed'). ' (' .translate('file is missed'). ')');
+            $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('failed') . ' (' . translate('file is missed') . ')');
         }
     } elseif ($intMethod === 2) {
         $conttp->setVariable('EXE_NAG_BINARY_CLASS', 'checkorange');
-        $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('ok'). ' (' .translate('not used with FTP'). ')');
+        $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('ok') . ' (' . translate('not used with FTP') . ')');
     } elseif ($intMethod === 3) {
         $booReturn = 0;
         if (empty($myConfigClass->resSSHConId) || !is_resource($myConfigClass->resSSHConId)) {
@@ -494,20 +494,20 @@ if ($intConfigId !== 0) {
         if ($booReturn === 1) {
             $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
         } else if (($strBinary !== '') && ($strConffile !== '') &&
-            ($myConfigClass->sendSSHCommand('ls '.$strBinary, $arrTemp) === 0)) {
-            $myConfigClass->sendSSHCommand($strBinary.' -V', $arrResult);
+            ($myConfigClass->sendSSHCommand('ls ' . $strBinary, $arrTemp) === 0)) {
+            $myConfigClass->sendSSHCommand($strBinary . ' -V', $arrResult);
             if (!is_array($arrResult) || (count($arrResult) === 0)) {
                 $conttp->setVariable('EXE_NAG_BINARY_CLASS', 'checkred');
-                $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('failed'). ' (' .
-                    translate('not executable'). ')');
+                $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('failed') . ' (' .
+                    translate('not executable') . ')');
             } else {
                 $conttp->setVariable('EXE_NAG_BINARY_CLASS', 'checkgreen');
                 $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('ok'));
             }
         } else {
             $conttp->setVariable('EXE_NAG_BINARY_CLASS', 'checkred');
-            $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('failed'). ' (' .
-                translate('file is missed'). ')');
+            $conttp->setVariable('EXE_NAG_BINARY_RESULT', translate('failed') . ' (' .
+                translate('file is missed') . ')');
         }
     }
     /* Check config files */
@@ -517,27 +517,27 @@ if ($intConfigId !== 0) {
     $conttp->setVariable('SUBTITLE_7', translate('Verify configuration files and demon configuration'));
     $conttp->setVariable('CONFIGURATION_NAME', translate('Configuration name'));
     $conttp->setVariable('USED', translate('Used in data domain'));
-    $conttp->setVariable('DEMON_CONFIG', translate('Included in demon configuration'). ' ('
-        .basename($strConffile). ')');
-    $arrConfig      = array();
+    $conttp->setVariable('DEMON_CONFIG', translate('Included in demon configuration') . ' ('
+        . basename($strConffile) . ')');
+    $arrConfig = array();
     $arrConfigFiles = array(
-        'Hosts'               =>    array( 'table' => 'tbl_host',              'file' => 'directory'),
-        'Services'            =>    array( 'table' => 'tbl_service',           'file' => 'directory'),
-        'Hostgroups'          =>    array( 'table' => 'tbl_hostgroup',         'file' => 'hostgroups.cfg'),
-        'Servicegroups'       =>    array( 'table' => 'tbl_servicegroup',      'file' => 'servicegroups.cfg'),
-        'Hosttemplates'       =>    array( 'table' => 'tbl_hosttemplate',      'file' => 'hosttemplates.cfg'),
-        'servicetemplates'    =>    array( 'table' => 'tbl_servicetemplate',   'file' => 'servicetemplates.cfg'),
-        'Contacts'            =>    array( 'table' => 'tbl_contact',           'file' => 'contacts.cfg'),
-        'Contactgroups'       =>    array( 'table' => 'tbl_contactgroup',      'file' => 'contactgroups.cfg'),
-        'Timeperiods'         =>    array( 'table' => 'tbl_timeperiod',        'file' => 'timeperiods.cfg'),
-        'Contacttemplates'    =>    array( 'table' => 'tbl_contacttemplate',   'file' => 'contacttemplates.cfg'),
-        'Commands'            =>    array( 'table' => 'tbl_command',           'file' => 'commands.cfg'),
-        'Hostdependencies'    =>    array( 'table' => 'tbl_hostdependency',    'file' => 'hostdependencies.cfg'),
-        'Hostescalations'     =>    array( 'table' => 'tbl_hostescalation',    'file' => 'hostescalations.cfg'),
-        'Hostextinfo'         =>    array( 'table' => 'tbl_hostextinfo',       'file' => 'hostextinfo.cfg'),
-        'Servicedependencies' =>    array( 'table' => 'tbl_servicedependency', 'file' => 'servicedependencies.cfg'),
-        'Serviceescalations'  =>    array( 'table' => 'tbl_serviceescalation', 'file' => 'serviceescalations.cfg'),
-        'Serviceextinfo'      =>    array( 'table' => 'tbl_serviceextinfo',    'file' => 'serviceextinfo.cfg'));
+        'Hosts' => array('table' => 'tbl_host', 'file' => 'directory'),
+        'Services' => array('table' => 'tbl_service', 'file' => 'directory'),
+        'Hostgroups' => array('table' => 'tbl_hostgroup', 'file' => 'hostgroups.cfg'),
+        'Servicegroups' => array('table' => 'tbl_servicegroup', 'file' => 'servicegroups.cfg'),
+        'Hosttemplates' => array('table' => 'tbl_hosttemplate', 'file' => 'hosttemplates.cfg'),
+        'servicetemplates' => array('table' => 'tbl_servicetemplate', 'file' => 'servicetemplates.cfg'),
+        'Contacts' => array('table' => 'tbl_contact', 'file' => 'contacts.cfg'),
+        'Contactgroups' => array('table' => 'tbl_contactgroup', 'file' => 'contactgroups.cfg'),
+        'Timeperiods' => array('table' => 'tbl_timeperiod', 'file' => 'timeperiods.cfg'),
+        'Contacttemplates' => array('table' => 'tbl_contacttemplate', 'file' => 'contacttemplates.cfg'),
+        'Commands' => array('table' => 'tbl_command', 'file' => 'commands.cfg'),
+        'Hostdependencies' => array('table' => 'tbl_hostdependency', 'file' => 'hostdependencies.cfg'),
+        'Hostescalations' => array('table' => 'tbl_hostescalation', 'file' => 'hostescalations.cfg'),
+        'Hostextinfo' => array('table' => 'tbl_hostextinfo', 'file' => 'hostextinfo.cfg'),
+        'Servicedependencies' => array('table' => 'tbl_servicedependency', 'file' => 'servicedependencies.cfg'),
+        'Serviceescalations' => array('table' => 'tbl_serviceescalation', 'file' => 'serviceescalations.cfg'),
+        'Serviceextinfo' => array('table' => 'tbl_serviceextinfo', 'file' => 'serviceextinfo.cfg'));
     if ($intMethod === 1) {
         $intCheck = 1;
         if (file_exists($strConffile) && is_readable($strConffile)) {
@@ -585,7 +585,7 @@ if ($intConfigId !== 0) {
         /* Line colours */
         $strClassL = 'tdlb';
         $strClassM = 'tdmb';
-        if ($i%2 === 1) {
+        if ($i % 2 === 1) {
             $strClassL = 'tdld';
             $strClassM = 'tdmd';
         }
@@ -595,69 +595,69 @@ if ($intConfigId !== 0) {
         $conttp->setVariable('CONFIG_NAME', $key);
         /* Count active datasets */
         /** @noinspection SqlResolve */
-        $strSQL = 'SELECT * FROM `' .$elem['table']."` WHERE `active`='1' AND `config_id`=$chkDomainId";
+        $strSQL = 'SELECT * FROM `' . $elem['table'] . "` WHERE `active`='1' AND `config_id`=$chkDomainId";
         $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
         if ($booReturn && ($intDataCount !== 0)) {
-            $conttp->setVariable('ACTIVE_CONFIG_COUNT', '<span class="checkgreen">' .translate('ok'). ' (' .
-                $intDataCount. ')</span>');
+            $conttp->setVariable('ACTIVE_CONFIG_COUNT', '<span class="checkgreen">' . translate('ok') . ' (' .
+                $intDataCount . ')</span>');
         } elseif ($intDataCount === 0) {
-            $conttp->setVariable('ACTIVE_CONFIG_COUNT', '<span class="checkgreen">' .translate('not used'). '</span>');
+            $conttp->setVariable('ACTIVE_CONFIG_COUNT', '<span class="checkgreen">' . translate('not used') . '</span>');
         } else {
-            $conttp->setVariable('ACTIVE_CONFIG_COUNT', '<span class="checkred">' .translate('failed'). '</span>');
+            $conttp->setVariable('ACTIVE_CONFIG_COUNT', '<span class="checkred">' . translate('failed') . '</span>');
             $myVisClass->processMessage($myDBClass->strErrorMessage, $strErrorMessage);
         }
-        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkred">' .translate('failed'). '</span> (' .
-            translate('cfg definition missed'). ')');
+        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkred">' . translate('failed') . '</span> (' .
+            translate('cfg definition missed') . ')');
         if (($intCheck === 0) && is_array($arrConfig) && (count($arrConfig) !== 0)) {
             foreach ($arrConfig as $line) {
                 if ($elem['file'] !== 'directory') {
-                    if ((substr_count($line, 'cfg_dir=' .$strBasedir) !== 0) && (substr_count($line, 'cfg_dir=' .
+                    if ((substr_count($line, 'cfg_dir=' . $strBasedir) !== 0) && (substr_count($line, 'cfg_dir=' .
                                 substr($strHostdir, 0, -1)) === 0) && (substr_count($line, 'cfg_dir=' .
                                 substr($strServicedir, 0, -1)) === 0)) {
-                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkgreen">' .translate('ok').
-                            '</span> (' .$line. ')');
+                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkgreen">' . translate('ok') .
+                            '</span> (' . $line . ')');
                         break;
                     }
-                    if (substr_count($line, $strBasedir.$elem['file']) !== 0) {
-                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkgreen">' .translate('ok').
-                            '</span> (' .$line. ')');
+                    if (substr_count($line, $strBasedir . $elem['file']) !== 0) {
+                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkgreen">' . translate('ok') .
+                            '</span> (' . $line . ')');
                         break;
                     }
                     if ($intDataCount === 0) {
-                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkorange">' .translate('ok').
-                            '</span> (' .translate('cfg definition missed, but actually not used'). ')');
+                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkorange">' . translate('ok') .
+                            '</span> (' . translate('cfg definition missed, but actually not used') . ')');
                     } elseif (substr_count($line, $elem['file']) !== 0) {
-                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkred">' .translate('failed').
-                            '</span> (' .translate('wrong base path:'). ' ' .$line. ')');
+                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkred">' . translate('failed') .
+                            '</span> (' . translate('wrong base path:') . ' ' . $line . ')');
                         break;
                     }
                 } elseif ($elem['table'] === 'tbl_host') {
-                    if (substr_count($line, 'cfg_dir=' .substr($strHostdir, 0, -1)) !== 0) {
-                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkgreen">' .translate('ok').
-                            '</span> (' .$line. ')');
+                    if (substr_count($line, 'cfg_dir=' . substr($strHostdir, 0, -1)) !== 0) {
+                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkgreen">' . translate('ok') .
+                            '</span> (' . $line . ')');
                         break;
                     }
                     if ($intDataCount === 0) {
-                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkorange">' .translate('ok').
-                            '</span> (' .translate('cfg definition missed, but actually not used'). ')');
+                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkorange">' . translate('ok') .
+                            '</span> (' . translate('cfg definition missed, but actually not used') . ')');
                         break;
                     }
                 } elseif ($elem['table'] === 'tbl_service') {
-                    if (substr_count($line, 'cfg_dir=' .substr($strServicedir, 0, -1)) !== 0) {
-                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkgreen">' .translate('ok').
-                            '</span> (' .$line. ')');
+                    if (substr_count($line, 'cfg_dir=' . substr($strServicedir, 0, -1)) !== 0) {
+                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkgreen">' . translate('ok') .
+                            '</span> (' . $line . ')');
                         break;
                     }
                     if ($intDataCount === 0) {
-                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkorange">' .translate('ok').
-                            '</span> (' .translate('cfg definition missed, but actually not used'). ')');
+                        $conttp->setVariable('DEMON_CFG_OK', '<span class="checkorange">' . translate('ok') .
+                            '</span> (' . translate('cfg definition missed, but actually not used') . ')');
                         break;
                     }
                 }
             }
         } else {
-            $conttp->setVariable('DEMON_CFG_OK', '<span class="checkred">' .translate('failed').
-                '</span> (' .translate('cfg file not readable'). ')');
+            $conttp->setVariable('DEMON_CFG_OK', '<span class="checkred">' . translate('failed') .
+                '</span> (' . translate('cfg file not readable') . ')');
         }
         $conttp->parse('configfileline');
         $i++;
@@ -665,17 +665,17 @@ if ($intConfigId !== 0) {
     /* Check for unused config */
     if (($intCheck === 0) && is_array($arrConfig) && (count($arrConfig) !== 0)) {
         foreach ($arrConfig as $line) {
-            $intTest=0;
+            $intTest = 0;
             foreach ($arrConfigFiles as $elem) {
                 if (substr_count($line, $elem['file']) !== 0) {
                     $intTest = 1;
                 }
             }
             if ($intTest === 0) {
-                if (substr_count($line, substr('cfg_dir=' .$strHostdir, 0, -1))    !== 0) {
+                if (substr_count($line, substr('cfg_dir=' . $strHostdir, 0, -1)) !== 0) {
                     $intTest = 1;
                 }
-                if (substr_count($line, substr('cfg_dir=' .$strServicedir, 0, -1)) !== 0) {
+                if (substr_count($line, substr('cfg_dir=' . $strServicedir, 0, -1)) !== 0) {
                     $intTest = 1;
                 }
                 //if (substr_count($line,substr("cfg_dir=".$strBasedir,0,-1))    !== 0) $intTest = 1;
@@ -684,16 +684,16 @@ if ($intConfigId !== 0) {
                 /* Line colours */
                 $strClassL = 'tdlb';
                 $strClassM = 'tdmb';
-                if ($i%2 === 1) {
+                if ($i % 2 === 1) {
                     $strClassL = 'tdld';
                     $strClassM = 'tdmd';
                 }
                 $conttp->setVariable('CLASS_L', $strClassL);
                 $conttp->setVariable('CLASS_M', $strClassM);
                 $conttp->setVariable('CONFIG_NAME', translate('Not used'));
-                $conttp->setVariable('ACTIVE_CONFIG_COUNT', '<span class="checkred">' .translate('failed'). '</span>');
-                $conttp->setVariable('DEMON_CFG_OK', '<span class="checkred">' .translate('unused - please delete!').
-                    '</span> (' .$line. ')');
+                $conttp->setVariable('ACTIVE_CONFIG_COUNT', '<span class="checkred">' . translate('failed') . '</span>');
+                $conttp->setVariable('DEMON_CFG_OK', '<span class="checkred">' . translate('unused - please delete!') .
+                    '</span> (' . $line . ')');
                 $conttp->parse('configfileline');
                 $i++;
             }

@@ -14,6 +14,7 @@
         function abort() {
             this.location.href = "{ACTION_INSERT}";
         }
+
         // Send form
         function LockButton() {
             if (checkForm() === false) {
@@ -23,6 +24,7 @@
                 document.frmPasswdInsert.subForm.disabled = true;
             }
         }
+
         // Check form entries
         function checkForm() {
             // Are all required fields filled in?
@@ -33,45 +35,54 @@
             const header = "{LANG_FORMCHECK}";
             const form = document.frmPasswdInsert;
             let check;
-            check = checkfields(fields1,form,myFocusObject);
+            check = checkfields(fields1, form, myFocusObject);
             if (check === false) {
-                msginit(msg1,header,1);
+                msginit(msg1, header, 1);
                 return false;
             }
             // The passwords are not equal
-            if(form.tfValue2.value !== form.tfValue3.value)  {
-                msginit(msg2,header,1);
+            if (form.tfValue2.value !== form.tfValue3.value) {
+                msginit(msg2, header, 1);
                 form.tfValue2.focus();
                 return false;
             }
             // The new passord is too short
-            if((form.tfValue2.value !== "") && (form.tfValue2.value.length <= 5)) {
-                msginit(msg3,header,1);
+            if ((form.tfValue2.value !== "") && (form.tfValue2.value.length <= 5)) {
+                msginit(msg3, header, 1);
                 form.tfValue2.focus();
                 return false;
             }
         }
+
         //-->
     </script>
     <form name="frmPasswdInsert" method="post" action="{ACTION_INSERT}">
         <table border="0" cellpadding="0" class="content_formtable">
             <tr>
                 <td class="content_tbl_row1">{LANG_OLD_PASSWORD} *</td>
-                <td class="content_tbl_row2"><input title="{LANG_OLD_PASSWORD}" name="tfValue1" type="password" id="tfValue1" tabindex="1" maxlength="15" class="inpmust"></td>
+                <td class="content_tbl_row2"><input title="{LANG_OLD_PASSWORD}" name="tfValue1" type="password"
+                                                    id="tfValue1" tabindex="1" maxlength="15" class="inpmust"></td>
             </tr>
             <tr>
                 <td>{LANG_NEW_PASSWORD} *</td>
-                <td><input title="{LANG_NEW_PASSWORD}" name="tfValue2" type="password" id="tfValue2" tabindex="3" maxlength="15" class="inpmust"></td>
+                <td><input title="{LANG_NEW_PASSWORD}" name="tfValue2" type="password" id="tfValue2" tabindex="3"
+                           maxlength="15" class="inpmust"></td>
             </tr>
             <tr>
                 <td>{LANG_CONFIRM_PASSWORD} *</td>
-                <td><input title="{LANG_CONFIRM_PASSWORD}" name="tfValue3" type="password" id="tfValue3" tabindex="4" maxlength="15" class="inpmust"></td>
+                <td><input title="{LANG_CONFIRM_PASSWORD}" name="tfValue3" type="password" id="tfValue3" tabindex="4"
+                           maxlength="15" class="inpmust"></td>
             </tr>
             <tr>
                 <td colspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td colspan="2"><input name="subForm" type="button" id="subForm" value="{LANG_SAVE}" onClick="LockButton();" {ADD_CONTROL}>&nbsp;<input name="subAbort" type="button" id="subAbort" onClick="abort();" value="{LANG_ABORT}"><span class="required_info">* {LANG_REQUIRED}</span></td>
+                <td colspan="2"><input name="subForm" type="button" id="subForm" value="{LANG_SAVE}"
+                                       onClick="LockButton();" {ADD_CONTROL}>&nbsp;<input name="subAbort" type="button"
+                                                                                          id="subAbort"
+                                                                                          onClick="abort();"
+                                                                                          value="{LANG_ABORT}"><span
+                            class="required_info">* {LANG_REQUIRED}</span></td>
             </tr>
         </table>
     </form>

@@ -275,13 +275,13 @@ if ($chkModus === 'display') {
         }
     }
     /* Get datasets */
-    $strSQL    = "SELECT `$preTableName`.`id`, `tbl_host`.`$preKeyField`, `tbl_service`.`service_description`, "
+    $strSQL = "SELECT `$preTableName`.`id`, `tbl_host`.`$preKeyField`, `tbl_service`.`service_description`, "
         . "`$preTableName`.`notes`, `$preTableName`.`register`, `$preTableName`.`active`, `$preTableName`.`config_id`, "
         . "`$preTableName`.`access_group` FROM `$preTableName` "
         . "LEFT JOIN `tbl_host` ON `$preTableName`.`$preKeyField` = `tbl_host`.`id` "
         . "LEFT JOIN `tbl_service` ON `$preTableName`.`service_description` = `tbl_service`.`id` "
         . "WHERE $strDomainWhere $strSearchWhere AND `$preTableName`.`access_group` IN ($strAccess) $strOrderString "
-        . "LIMIT $chkLimit,".$SETS['common']['pagelines'];
+        . "LIMIT $chkLimit," . $SETS['common']['pagelines'];
     $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     if ($booReturn === false) {
         $myVisClass->processMessage(translate('Error while selecting data from database:'), $strErrorMessage);

@@ -54,7 +54,7 @@ Get configuration set ID
 $intMethod = 0;
 $strMethod = '';
 $myConfigClass->getConfigTargets($arrConfigSet);
-$intConfigId  = (int)$arrConfigSet[0];
+$intConfigId = (int)$arrConfigSet[0];
 if ($myConfigClass->getConfigValues($intConfigId, 'method', $strMethod) === 0) {
     $intMethod = (int)$strMethod;
 }
@@ -71,8 +71,8 @@ if (isset($chkMselValue1[0]) && ($chkMselValue1[0] !== '') && ($chkStatus === 1)
         $strFileTmp2 = str_replace($strHostDir, '', $strFileTmp1);
         $strFile = str_replace($strBaseDir, '', $strFileTmp2);
         if ($intCheck === 0) {
-            $myDataClass->writeLog(translate('File deleted'). ': ' .trim($strFile));
-            $myVisClass->processMessage($strFile. ' ' .translate('successfully deleted'). '!', $strInfoMessage);
+            $myDataClass->writeLog(translate('File deleted') . ': ' . trim($strFile));
+            $myVisClass->processMessage($strFile . ' ' . translate('successfully deleted') . '!', $strInfoMessage);
         } else {
             $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
         }
@@ -94,7 +94,7 @@ $conttp->setVariable('LANG_REQUIRED', translate('required'));
 $conttp->setVariable('MAKE', translate('Delete'));
 $conttp->setVariable('ABORT', translate('Abort'));
 $conttp->setVariable('CTRL_INFO', translate('Hold CTRL to select<br>more than one entry'));
-$conttp->setVariable('IMAGE_PATH', $_SESSION['SETS']['path']['base_url']. 'images/');
+$conttp->setVariable('IMAGE_PATH', $_SESSION['SETS']['path']['base_url'] . 'images/');
 $conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF'));
 /* Build a local file list */
 if ($intMethod === 1) {
@@ -111,7 +111,7 @@ if ($intMethod === 1) {
 } elseif ($intMethod === 2) {
     /* Open ftp connection */
     if ($myConfigClass->getFTPConnection($intConfigId) === 0) {
-        $arrFiles  = array();
+        $arrFiles = array();
         $arrFiles1 = ftp_nlist($myConfigClass->conFTPConId, $strBaseDir);
         if (is_array($arrFiles1)) {
             $arrFiles = array_merge($arrFiles, $arrFiles1);
@@ -142,7 +142,7 @@ if ($intMethod === 1) {
 } elseif ($intMethod === 3) {
     /* Open ssh connection */
     if ($myConfigClass->getSSHConnection($intConfigId) === 0) {
-        $intReturn = $myConfigClass->sendSSHCommand('ls '.$strBaseDir, $arrFiles1);
+        $intReturn = $myConfigClass->sendSSHCommand('ls ' . $strBaseDir, $arrFiles1);
         if (($intReturn === 0) && is_array($arrFiles1) && (count($arrFiles1) !== 0)) {
             foreach ($arrFiles1 as $elem) {
                 if (!substr_count($elem, 'cfg')) {
@@ -155,34 +155,34 @@ if ($intMethod === 1) {
                     continue;
                 }
                 if (($chkTfSearch === '') || (substr_count($elem, $chkTfSearch) !== 0)) {
-                    $conttp->setVariable('DAT_BACKUPFILE', str_replace('//', '/', $strBaseDir. '/' .$elem));
-                    $conttp->setVariable('DAT_BACKUPFILE_FULL', str_replace('//', '/', $strBaseDir. '/' .$elem));
+                    $conttp->setVariable('DAT_BACKUPFILE', str_replace('//', '/', $strBaseDir . '/' . $elem));
+                    $conttp->setVariable('DAT_BACKUPFILE_FULL', str_replace('//', '/', $strBaseDir . '/' . $elem));
                     $conttp->parse('filelist');
                 }
             }
         }
-        $intReturn = $myConfigClass->sendSSHCommand('ls '.$strHostDir, $arrFiles2);
+        $intReturn = $myConfigClass->sendSSHCommand('ls ' . $strHostDir, $arrFiles2);
         if (($intReturn === 0) && is_array($arrFiles2) && (count($arrFiles2) !== 0)) {
             foreach ($arrFiles2 as $elem) {
                 if (!substr_count($elem, 'cfg')) {
                     continue;
                 }
                 if (($chkTfSearch === '') || (substr_count($elem, $chkTfSearch) !== 0)) {
-                    $conttp->setVariable('DAT_BACKUPFILE', str_replace('//', '/', $strHostDir. '/' .$elem));
-                    $conttp->setVariable('DAT_BACKUPFILE_FULL', str_replace('//', '/', $strHostDir. '/' .$elem));
+                    $conttp->setVariable('DAT_BACKUPFILE', str_replace('//', '/', $strHostDir . '/' . $elem));
+                    $conttp->setVariable('DAT_BACKUPFILE_FULL', str_replace('//', '/', $strHostDir . '/' . $elem));
                     $conttp->parse('filelist');
                 }
             }
         }
-        $intReturn = $myConfigClass->sendSSHCommand('ls '.$strServiceDir, $arrFiles3);
+        $intReturn = $myConfigClass->sendSSHCommand('ls ' . $strServiceDir, $arrFiles3);
         if (($intReturn === 0) && is_array($arrFiles3) && (count($arrFiles3) !== 0)) {
             foreach ($arrFiles3 as $elem) {
                 if (!substr_count($elem, 'cfg')) {
                     continue;
                 }
                 if (($chkTfSearch === '') || (substr_count($elem, $chkTfSearch) !== 0)) {
-                    $conttp->setVariable('DAT_BACKUPFILE', str_replace('//', '/', $strServiceDir. '/' .$elem));
-                    $conttp->setVariable('DAT_BACKUPFILE_FULL', str_replace('//', '/', $strServiceDir. '/' .$elem));
+                    $conttp->setVariable('DAT_BACKUPFILE', str_replace('//', '/', $strServiceDir . '/' . $elem));
+                    $conttp->setVariable('DAT_BACKUPFILE_FULL', str_replace('//', '/', $strServiceDir . '/' . $elem));
                     $conttp->parse('filelist');
                 }
             }
@@ -205,6 +205,6 @@ $conttp->show('main');
 Footer ausgeben
 */
 $maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-        . "target='_blank'>NagiosQL</a> $setFileVersion");
+    . "target='_blank'>NagiosQL</a> $setFileVersion");
 $maintp->parse('footer');
 $maintp->show('footer');

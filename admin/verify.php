@@ -83,18 +83,18 @@ if (($chkButValue1 !== '') && ($chkButValue1 !== null)) {
         }
     }
     if (($intError === 0) && ($intDataCount !== 0)) {
-        $myVisClass->processMessage(translate('Write host configurations'). ' ...', $strInfo);
-        $myVisClass->processMessage('Hosts: ' .translate('Configuration file successfully written!'), $strInfo);
+        $myVisClass->processMessage(translate('Write host configurations') . ' ...', $strInfo);
+        $myVisClass->processMessage('Hosts: ' . translate('Configuration file successfully written!'), $strInfo);
     } elseif ($intDataCount !== 0) {
-        $myVisClass->processMessage('Hosts: ' .translate('Cannot open/overwrite the configuration file (check the '
+        $myVisClass->processMessage('Hosts: ' . translate('Cannot open/overwrite the configuration file (check the '
                 . 'permissions)!'), $strErrorMessage);
         $intProcessError = 1;
     } else {
-        $myVisClass->processMessage('Hosts: ' .translate('No configuration items defined!'), $strErrorMessage);
+        $myVisClass->processMessage('Hosts: ' . translate('No configuration items defined!'), $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write service configuration */
-    $strSQL   = 'SELECT `id`, `config_name` '
+    $strSQL = 'SELECT `id`, `config_name` '
         . "FROM `tbl_service` WHERE `config_id` = $chkDomainId AND `active`='1' GROUP BY `config_name`";
     $myDBClass->hasDataArray($strSQL, $arrData, $intDataCount);
     if ($intDataCount !== 0) {
@@ -105,197 +105,197 @@ if (($chkButValue1 !== '') && ($chkButValue1 !== null)) {
         }
     }
     if (($intError === 0) && ($intDataCount !== 0)) {
-        $myVisClass->processMessage(translate('Write service configurations'). ' ...', $strInfo);
-        $myVisClass->processMessage('Services: ' .translate('Configuration file successfully written!'), $strInfo);
+        $myVisClass->processMessage(translate('Write service configurations') . ' ...', $strInfo);
+        $myVisClass->processMessage('Services: ' . translate('Configuration file successfully written!'), $strInfo);
     } elseif ($intDataCount !== 0) {
-        $myVisClass->processMessage('Services: ' .translate('Cannot open/overwrite the configuration file (check the '
+        $myVisClass->processMessage('Services: ' . translate('Cannot open/overwrite the configuration file (check the '
                 . 'permissions)!'), $strErrorMessage);
         $intProcessError = 1;
     } else {
-        $myVisClass->processMessage('Services: ' .translate('No configuration items defined!'), $strErrorMessage);
+        $myVisClass->processMessage('Services: ' . translate('No configuration items defined!'), $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write hostgroup configuration */
     $intReturn1 = $myConfigClass->createConfig('tbl_hostgroup');
     if ($intReturn1 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' hostgroups.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hostgroups: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hostgroups.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hostgroups: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' hostgroups.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hostgroups: ' .translate('No dataset or no activated dataset found - empty '
-                . 'configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hostgroups.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hostgroups: ' . translate('No dataset or no activated dataset found - empty '
+                . 'configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Hostgroups: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Hostgroups: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write servicegroup configuration */
     $intReturn2 = $myConfigClass->createConfig('tbl_servicegroup');
     if ($intReturn2 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' servicegroups.cfg ...', $strInfo);
-        $myVisClass->processMessage('Servicegroups: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' servicegroups.cfg ...', $strInfo);
+        $myVisClass->processMessage('Servicegroups: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' servicegroups.cfg ...', $strInfo);
-        $myVisClass->processMessage('Servicegroups: ' .translate('No dataset or no activated dataset found - empty '
-                . 'configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' servicegroups.cfg ...', $strInfo);
+        $myVisClass->processMessage('Servicegroups: ' . translate('No dataset or no activated dataset found - empty '
+                . 'configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Servicegroups: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Servicegroups: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write hosttemplate configuration */
     $intReturn3 = $myConfigClass->createConfig('tbl_hosttemplate');
     if ($intReturn3 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' hosttemplates.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hosttemplates: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hosttemplates.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hosttemplates: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' hosttemplates.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hosttemplates: ' .translate('No dataset or no activated dataset found - empty '
-                . 'configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hosttemplates.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hosttemplates: ' . translate('No dataset or no activated dataset found - empty '
+                . 'configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Hosttemplates: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Hosttemplates: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write servicetemplate configuration */
     $intReturn4 = $myConfigClass->createConfig('tbl_servicetemplate');
     if ($intReturn4 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' servicetemplates.cfg ...', $strInfo);
-        $myVisClass->processMessage('Servicetemplates: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' servicetemplates.cfg ...', $strInfo);
+        $myVisClass->processMessage('Servicetemplates: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' servicetemplates.cfg ...', $strInfo);
-        $myVisClass->processMessage('Servicetemplates: ' .translate('No dataset or no activated dataset found - '
-                . 'empty configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' servicetemplates.cfg ...', $strInfo);
+        $myVisClass->processMessage('Servicetemplates: ' . translate('No dataset or no activated dataset found - '
+                . 'empty configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Servicetemplates: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Servicetemplates: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
 }
 /* Write additional data */
 if (($chkButValue2 !== '') && ($chkButValue2 !== null)) {
-    $strNoData = translate('Writing of the configuration failed - no dataset or not activated dataset found'). '::';
+    $strNoData = translate('Writing of the configuration failed - no dataset or not activated dataset found') . '::';
     /* Write timeperiod configuration */
     $intReturn5 = $myConfigClass->createConfig('tbl_timeperiod');
     if ($intReturn5 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' timeperiods.cfg ...', $strInfo);
-        $myVisClass->processMessage('Timeperiods: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' timeperiods.cfg ...', $strInfo);
+        $myVisClass->processMessage('Timeperiods: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else {
-        $myVisClass->processMessage('Timeperiods: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Timeperiods: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write command configuration */
     $intReturn6 = $myConfigClass->createConfig('tbl_command');
     if ($intReturn6 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' commands.cfg ...', $strInfo);
-        $myVisClass->processMessage('Commands: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' commands.cfg ...', $strInfo);
+        $myVisClass->processMessage('Commands: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else {
-        $myVisClass->processMessage('Commands: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Commands: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write contact configuration */
     $intReturn7 = $myConfigClass->createConfig('tbl_contact');
     if ($intReturn7 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' contacts.cfg ...', $strInfo);
-        $myVisClass->processMessage('Contacts: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' contacts.cfg ...', $strInfo);
+        $myVisClass->processMessage('Contacts: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else {
-        $myVisClass->processMessage('Contacts: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Contacts: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write contactgroup configuration */
     $intReturn8 = $myConfigClass->createConfig('tbl_contactgroup');
     if ($intReturn8 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' contactgroups.cfg ...', $strInfo);
-        $myVisClass->processMessage('Contactgroups: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' contactgroups.cfg ...', $strInfo);
+        $myVisClass->processMessage('Contactgroups: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else {
-        $myVisClass->processMessage('Contactgroups: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Contactgroups: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write contacttemplate configuration */
     $intReturn9 = $myConfigClass->createConfig('tbl_contacttemplate');
     if ($intReturn9 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' contacttemplates.cfg ...', $strInfo);
-        $myVisClass->processMessage('Contacttemplates: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' contacttemplates.cfg ...', $strInfo);
+        $myVisClass->processMessage('Contacttemplates: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' contacttemplates.cfg ...', $strInfo);
-        $myVisClass->processMessage('Contacttemplates: ' .translate('No dataset or no activated dataset found - '
-                . 'empty configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' contacttemplates.cfg ...', $strInfo);
+        $myVisClass->processMessage('Contacttemplates: ' . translate('No dataset or no activated dataset found - '
+                . 'empty configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Contacttemplates: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Contacttemplates: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write servicedependency configuration */
     $intReturn10 = $myConfigClass->createConfig('tbl_servicedependency');
     if ($intReturn10 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' servicedependencies.cfg ...', $strInfo);
-        $myVisClass->processMessage('Servicedependencies: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' servicedependencies.cfg ...', $strInfo);
+        $myVisClass->processMessage('Servicedependencies: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' servicedependencies.cfg ...', $strInfo);
-        $myVisClass->processMessage('Servicedependencies: ' .translate('No dataset or no activated dataset found - '
-                . 'empty configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' servicedependencies.cfg ...', $strInfo);
+        $myVisClass->processMessage('Servicedependencies: ' . translate('No dataset or no activated dataset found - '
+                . 'empty configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Servicedependencies: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Servicedependencies: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write hostdependency configuration */
     $intReturn11 = $myConfigClass->createConfig('tbl_hostdependency');
     if ($intReturn11 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' hostdependencies.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hostdependencies: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hostdependencies.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hostdependencies: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' hostdependencies.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hostdependencies: ' .translate('No dataset or no activated dataset found - '
-                . 'empty configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hostdependencies.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hostdependencies: ' . translate('No dataset or no activated dataset found - '
+                . 'empty configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Hostdependencies: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Hostdependencies: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write serviceescalation configuration */
     $intReturn12 = $myConfigClass->createConfig('tbl_serviceescalation');
     if ($intReturn12 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' serviceescalations.cfg ...', $strInfo);
-        $myVisClass->processMessage('Serviceescalations: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' serviceescalations.cfg ...', $strInfo);
+        $myVisClass->processMessage('Serviceescalations: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' serviceescalations.cfg ...', $strInfo);
-        $myVisClass->processMessage('Serviceescalations: ' .translate('No dataset or no activated dataset found - '
-                . 'empty configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' serviceescalations.cfg ...', $strInfo);
+        $myVisClass->processMessage('Serviceescalations: ' . translate('No dataset or no activated dataset found - '
+                . 'empty configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Serviceescalations: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Serviceescalations: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write hostescalation configuration */
     $intReturn13 = $myConfigClass->createConfig('tbl_hostescalation');
     if ($intReturn13 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' hostescalations.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hostescalations: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hostescalations.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hostescalations: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' hostescalations.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hostescalations: ' .translate('No dataset or no activated dataset found - '
-                . 'empty configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hostescalations.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hostescalations: ' . translate('No dataset or no activated dataset found - '
+                . 'empty configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Hostescalations: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Hostescalations: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write serviceextinfo configuration */
     $intReturn14 = $myConfigClass->createConfig('tbl_serviceextinfo');
     if ($intReturn14 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' serviceextinfo.cfg ...', $strInfo);
-        $myVisClass->processMessage('Serviceextinfo: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' serviceextinfo.cfg ...', $strInfo);
+        $myVisClass->processMessage('Serviceextinfo: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' serviceextinfo.cfg ...', $strInfo);
-        $myVisClass->processMessage('Serviceextinfo: ' .translate('No dataset or no activated dataset found - '
-                . 'empty configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' serviceextinfo.cfg ...', $strInfo);
+        $myVisClass->processMessage('Serviceextinfo: ' . translate('No dataset or no activated dataset found - '
+                . 'empty configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Serviceextinfo: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Serviceextinfo: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
     /* Write hostextinfo configuration */
     $intReturn15 = $myConfigClass->createConfig('tbl_hostextinfo');
     if ($intReturn15 === 0) {
-        $myVisClass->processMessage(translate('Write'). ' hostextinfo.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hostextinfo: ' .$myConfigClass->strInfoMessage, $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hostextinfo.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hostextinfo: ' . $myConfigClass->strInfoMessage, $strInfo);
     } else if ($myConfigClass->strErrorMessage === $strNoData) {
-        $myVisClass->processMessage(translate('Write'). ' hostextinfo.cfg ...', $strInfo);
-        $myVisClass->processMessage('Hostextinfo: ' .translate('No dataset or no activated dataset found - empty '
-                . 'configuration written'). '::', $strInfo);
+        $myVisClass->processMessage(translate('Write') . ' hostextinfo.cfg ...', $strInfo);
+        $myVisClass->processMessage('Hostextinfo: ' . translate('No dataset or no activated dataset found - empty '
+                . 'configuration written') . '::', $strInfo);
     } else {
-        $myVisClass->processMessage('Hostextinfo: ' .$myConfigClass->strErrorMessage, $strErrorMessage);
+        $myVisClass->processMessage('Hostextinfo: ' . $myConfigClass->strErrorMessage, $strErrorMessage);
         $intProcessError = 1;
     }
 }
@@ -307,7 +307,7 @@ if (($chkButValue3 !== '') && ($chkButValue3 !== null)) {
     $myConfigClass->getConfigValues($intConfigId, 'conffile', $strConffile);
     if ($intMethod === 1) {
         if (file_exists($strBinary) && is_executable($strBinary)) {
-            $resFile = popen($strBinary. ' -v ' .$strConffile, 'r');
+            $resFile = popen($strBinary . ' -v ' . $strConffile, 'r');
         } else {
             $myVisClass->processMessage(
                 translate('Cannot find the Nagios binary or no execute permissions!'),
@@ -324,7 +324,7 @@ if (($chkButValue3 !== '') && ($chkButValue3 !== null)) {
         } else {
             $intErrorReporting = error_reporting();
             error_reporting(0);
-            if (!($resFile = ftp_exec($myConfigClass->conFTPConId, $strBinary.' -v '.$strConffile))) {
+            if (!($resFile = ftp_exec($myConfigClass->conFTPConId, $strBinary . ' -v ' . $strConffile))) {
                 $myVisClass->processMessage(translate('Remote execution (FTP SITE EXEC) is not supported on your '
                     . 'system!'), $strErrorMessage);
             }
@@ -339,9 +339,9 @@ if (($chkButValue3 !== '') && ($chkButValue3 !== null)) {
         if ($booReturn === 1) {
             $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
         } else if (($strBinary !== '') && ($strConffile !== '') &&
-            $myConfigClass->sendSSHCommand('ls '.$strBinary, $arrTemp) === 0 &&
-            $myConfigClass->sendSSHCommand('ls '.$strConffile, $arrTemp) === 0) {
-            $intResult = $myConfigClass->sendSSHCommand($strBinary.' -v '.$strConffile, $arrResult, 15000);
+            $myConfigClass->sendSSHCommand('ls ' . $strBinary, $arrTemp) === 0 &&
+            $myConfigClass->sendSSHCommand('ls ' . $strConffile, $arrTemp) === 0) {
+            $intResult = $myConfigClass->sendSSHCommand($strBinary . ' -v ' . $strConffile, $arrResult, 15000);
             if (!is_array($arrResult)) {
                 $myVisClass->processMessage(translate('Remote execution of nagios verify command failed (remote '
                     . 'SSH)!'), $strErrorMessage);
@@ -365,15 +365,15 @@ if (($chkButValue4 !== '') && ($chkButValue4 !== null)) {
     clearstatcache();
     if ($intMethod === 1) {
         if (substr_count(PHP_OS, 'Linux') !== 0) {
-            exec('ps -ef | grep '.basename($strBinary).' | grep -v grep', $arrExec);
+            exec('ps -ef | grep ' . basename($strBinary) . ' | grep -v grep', $arrExec);
         } else {
             $arrExec[0] = 1;
         }
         if (file_exists($strCommandfile) && is_writable($strCommandfile)) {
             if ($intVersion === 4) {
-                $strCommandString = '[' .time(). "] RESTART_PROGRAM\n";
+                $strCommandString = '[' . time() . "] RESTART_PROGRAM\n";
             } else {
-                $strCommandString = '[' .time(). '] RESTART_PROGRAM;' .time()."\n";
+                $strCommandString = '[' . time() . '] RESTART_PROGRAM;' . time() . "\n";
             }
             $timeout = 3;
             $old = ini_set('default_socket_timeout', $timeout);
@@ -416,15 +416,15 @@ if (($chkButValue4 !== '') && ($chkButValue4 !== null)) {
         }
         if ($booReturn === 1) {
             $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
-        } else if ($myConfigClass->sendSSHCommand('ls '.$strCommandfile, $arrTemp) === 0) {
+        } else if ($myConfigClass->sendSSHCommand('ls ' . $strCommandfile, $arrTemp) === 0) {
             if ($intVersion === 4) {
-                $strCommandString = '[' .time(). "] RESTART_PROGRAM\n";
+                $strCommandString = '[' . time() . "] RESTART_PROGRAM\n";
             } else {
-                $strCommandString = '[' .time(). '] RESTART_PROGRAM;' .time()."\n";
+                $strCommandString = '[' . time() . '] RESTART_PROGRAM;' . time() . "\n";
             }
             $arrInfo1 = ssh2_sftp_stat($myConfigClass->resSFTP, $strCommandfile);
             $intFileStamp1 = $arrInfo1['mtime'];
-            $myConfigClass->sendSSHCommand('echo "'.$strCommandString.'" >> '.$strCommandfile, $arrResult);
+            $myConfigClass->sendSSHCommand('echo "' . $strCommandString . '" >> ' . $strCommandfile, $arrResult);
             $arrInfo2 = ssh2_sftp_stat($myConfigClass->resSFTP, $strCommandfile);
             $intFileStamp2 = $arrInfo2['mtime'];
             if ($intFileStamp2 <= $intFileStamp1) {
@@ -452,16 +452,16 @@ $conttp->setVariable('WRITE_MONITORING_DATA', translate('Write monitoring data')
 $conttp->setVariable('WRITE_ADDITIONAL_DATA', translate('Write additional data'));
 if (($chkButValue3 === '') && ($chkButValue4 === '')) {
     $conttp->setVariable('WARNING', translate('Warning, always check the configuration files before restarting '
-        .'Nagios!'));
+        . 'Nagios!'));
 }
 $conttp->setVariable('MAKE', translate('Do it'));
-$conttp->setVariable('IMAGE_PATH', $_SESSION['SETS']['path']['base_url']. 'images/');
+$conttp->setVariable('IMAGE_PATH', $_SESSION['SETS']['path']['base_url'] . 'images/');
 $conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF'));
 $strOutput = '';
 if (isset($resFile) && ($resFile !== false)) {
-    $intError   = 0;
+    $intError = 0;
     $intWarning = 0;
-    $intLines   = 0;
+    $intLines = 0;
     while (!feof($resFile)) {
         $strLine = fgets($resFile, 1024);
         $intLines++;
@@ -483,30 +483,30 @@ if (isset($resFile) && ($resFile !== false)) {
                 $intWarning--;
             }
         }
-        $strOutput .= $strLine. '<br>';
+        $strOutput .= $strLine . '<br>';
     }
-    $myDataClass->writeLog(translate('Nagios written configuration files checked - Warnings/Errors:'). ' '
-        .$intWarning. '/' .
+    $myDataClass->writeLog(translate('Nagios written configuration files checked - Warnings/Errors:') . ' '
+        . $intWarning . '/' .
         $intError);
     pclose($resFile);
     if (($intError === 0) && ($intWarning === 0) && ($intLines > 5)) {
         $conttp->setVariable('VERIFY_CLASS', 'greenmessage');
-        $conttp->setVariable('VERIFY_LINE', '<b>' .translate('Written configuration files are valid, Nagios can be '
-                . 'restarted!'). '</b>');
+        $conttp->setVariable('VERIFY_LINE', '<b>' . translate('Written configuration files are valid, Nagios can be '
+                . 'restarted!') . '</b>');
         $conttp->parse('verifyline');
     }
     if ($intLines < 5) {
         $conttp->setVariable('VERIFY_CLASS', 'redmessage');
-        $conttp->setVariable('VERIFY_LINE', '<b>' .translate('The configuration could not be tested successfully. '
+        $conttp->setVariable('VERIFY_LINE', '<b>' . translate('The configuration could not be tested successfully. '
                 . 'The Nagios binary may have crashed during the test. Please repeat the test or try using the '
                 . 'commandline to test. A running Nagios service should not be restarted because the configuration may '
-                . 'be invalid.'). '</b>');
+                . 'be invalid.') . '</b>');
         $conttp->parse('verifyline');
     }
     $conttp->setVariable('DATA', $strOutput);
     $conttp->parse('verifyline');
 } elseif (isset($arrResult) && is_array($arrResult)) {
-    $intError   = 0;
+    $intError = 0;
     $intWarning = 0;
     foreach ($arrResult as $elem) {
         if ((substr_count($elem, 'Error:') !== 0) || (substr_count($elem, 'Total Errors:') !== 0)) {
@@ -527,15 +527,15 @@ if (isset($resFile) && ($resFile !== false)) {
                 $intWarning--;
             }
         }
-        $strOutput .= $elem. '<br>';
+        $strOutput .= $elem . '<br>';
     }
-    $myDataClass->writeLog(translate('Nagios written configuration files checked - Warnings/Errors:'). ' '
-        .$intWarning. '/' .
+    $myDataClass->writeLog(translate('Nagios written configuration files checked - Warnings/Errors:') . ' '
+        . $intWarning . '/' .
         $intError);
     if (($intError === 0) && ($intWarning === 0)) {
         $conttp->setVariable('VERIFY_CLASS', 'greenmessage');
-        $conttp->setVariable('VERIFY_LINE', '<b>' .translate('Written configuration files are valid, Nagios can be '
-                . 'restarted!'). '</b>');
+        $conttp->setVariable('VERIFY_LINE', '<b>' . translate('Written configuration files are valid, Nagios can be '
+                . 'restarted!') . '</b>');
         $conttp->parse('verifyline');
     }
     $conttp->setVariable('DATA', $strOutput);
@@ -547,7 +547,7 @@ if ($strErrorMessage !== '') {
 $conttp->setVariable('INFOMESSAGE', $strInfoMessage);
 if ($strInfo !== '') {
     $conttp->setVariable('VERIFY_CLASS', 'greenmessage');
-    $conttp->setVariable('VERIFY_LINE', '<br>' .$strInfo);
+    $conttp->setVariable('VERIFY_LINE', '<br>' . $strInfo);
     $conttp->parse('verifyline');
 }
 /* Check access rights for adding new objects */

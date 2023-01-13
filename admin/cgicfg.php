@@ -56,7 +56,7 @@ Get configuration set ID
 $intMethod = 0;
 $strMethod = '';
 $myConfigClass->getConfigTargets($arrConfigSet);
-$intConfigId  = (int)$arrConfigSet[0];
+$intConfigId = (int)$arrConfigSet[0];
 if ($myConfigClass->getConfigValues($intConfigId, 'method', $strMethod) === 0) {
     $intMethod = (int)$strMethod;
 }
@@ -159,7 +159,7 @@ if ($intMethod === 1) {
         }
     } else {
         $myVisClass->processMessage($myConfigClass->strErrorMessage, $strErrorMessage);
-        $myDataClass->writeLog(translate('Configuration read failed (remote):'). ' ' .$strErrorMessage);
+        $myDataClass->writeLog(translate('Configuration read failed (remote):') . ' ' . $strErrorMessage);
         if (file_exists($strFileName)) {
             unlink($strFileName);
         }

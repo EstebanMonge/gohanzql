@@ -15,6 +15,7 @@
  * @var NagInstallClass $myInstClass
  * @var string $strErrorMessage from prepend_install.php
  */
+
 /*
  * Path settings
  */

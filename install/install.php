@@ -14,6 +14,7 @@
  * Class and variable includes
  * @var NagInstallClass $myInstClass
  */
+
 /*
 Path settings
 */
