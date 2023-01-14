@@ -94,7 +94,7 @@ Deletion mode
 */
 if ($chkMode === 'del' && isset($_SESSION['timedefinition']) && is_array($_SESSION['timedefinition'])) {
     foreach ($_SESSION['timedefinition'] as $key => $elem) {
-        if (($elem['definition'] === $chkDef) && ($elem['status'] === 0)) {
+        if (($elem['definition'] === $chkDef) && ((int)$elem['status'] === 0)) {
             $_SESSION['timedefinition'][$key]['status'] = 1;
         }
     }

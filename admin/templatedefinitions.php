@@ -81,12 +81,12 @@ if ($chkLinkTab !== '') {
     $strSQL = 'SELECT * FROM `' . $chkLinkTab . "` WHERE `idMaster` = $chkDataId ORDER BY `idSort`";
     $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     /* Store data to session */
-    if ($chkMode === '') {
+    if ($chkMode === null) {
         $_SESSION['templatedefinition'] = array();
         $arrTemp = array();
         if ($booReturn && ($intDataCount !== 0)) {
             foreach ($arrDataLines as $elem) {
-                if ($elem['idTable'] === 1) {
+                if ((int)$elem['idTable'] === 1) {
                     $strSQL2 = 'SELECT `template_name` '
                         . 'FROM `tbl_' . $chkPreTab . 'template` WHERE `id` = ' . $elem['idSlave'];
                     /** @noinspection SqlResolve */
@@ -127,7 +127,7 @@ if ($chkMode === 'add') {
     if (isset($_SESSION['templatedefinition']) && is_array($_SESSION['templatedefinition'])) {
         $intCheck = 0;
         foreach ($_SESSION['templatedefinition'] as $key => $elem) {
-            if (($elem['idSlave'] === $arrDefinition[0]) && ($elem['idTable'] === $arrDefinition[1]) &&
+            if ((int)($elem['idSlave'] === $arrDefinition[0]) && ((int)$elem['idTable'] === (int)$arrDefinition[1]) &&
                 ((int)$elem['status'] === 0)) {
                 $intCheck = 1;
             }
@@ -156,7 +156,7 @@ Deletion mode
 */
 if ($chkMode === 'del' && isset($_SESSION['templatedefinition']) && is_array($_SESSION['templatedefinition'])) {
     foreach ($_SESSION['templatedefinition'] as $key => $elem) {
-        if (($elem['idSlave'] === $arrDefinition[0]) && ($elem['idTable'] === $arrDefinition[1]) &&
+        if (((int)$elem['idSlave'] === (int)$arrDefinition[0]) && ((int)$elem['idTable'] === (int)$arrDefinition[1]) &&
             ((int)$elem['status'] === 0)) {
             $_SESSION['templatedefinition'][$key]['status'] = 1;
         }

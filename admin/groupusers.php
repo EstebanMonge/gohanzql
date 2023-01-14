@@ -157,7 +157,7 @@ if ($chkMode === 'del' && isset($_SESSION['groupuser']) && is_array($_SESSION['g
     <?php
     if (isset($_SESSION['groupuser']) && is_array($_SESSION['groupuser']) && (count($_SESSION['groupuser']) !== 0)) {
         foreach ($_SESSION['groupuser'] as $elem) {
-            if ($elem['status'] === 0) {
+            if ((int)$elem['status'] === 0) {
                 $strUser = $myDBClass->getFieldData('SELECT `username` FROM `tbl_user` WHERE `id`=' . $elem['user']); ?>
                 <tr>
                     <td class="tablerow" style="padding-bottom:2px; width:260px"><?php echo $strUser; ?></td>

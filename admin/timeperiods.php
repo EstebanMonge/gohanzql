@@ -181,7 +181,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                 if (isset($_SESSION['timedefinition']) && is_array($_SESSION['timedefinition']) &&
                     (count($_SESSION['timedefinition']) !== 0)) {
                     foreach ($_SESSION['timedefinition'] as $elem) {
-                        if ($elem['status'] === 0) {
+                        if ((int)$elem['status'] === 0) {
                             if ($elem['definition'] !== 'use') {
                                 $elem['range'] = str_replace(' ', '', $elem['range']);
                             }

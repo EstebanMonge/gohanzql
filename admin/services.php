@@ -446,7 +446,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                     (count($_SESSION['templatedefinition']) !== 0)) {
                     $intSortId = 1;
                     foreach ($_SESSION['templatedefinition'] as $elem) {
-                        if ($elem['status'] === 0) {
+                        if ((int)$elem['status'] === 0) {
                             $strSQL = 'INSERT INTO `tbl_lnkServiceToServicetemplate` (`idMaster`,`idSlave`, '
                                 . "`idTable`,`idSort`) VALUES ($chkDataId," . $elem['idSlave'] . ', '
                                 . $elem['idTable'] . ',' . $intSortId . ')';
@@ -491,7 +491,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                     (count($_SESSION['variabledefinition']) !== 0)) {
                     $intCountVariable = 0;
                     foreach ($_SESSION['variabledefinition'] as $elem) {
-                        if ($elem['status'] === 0) {
+                        if ((int)$elem['status'] === 0) {
                             $strSQL = 'INSERT INTO `tbl_variabledefinition` (`name`,`value`,`last_modified`) '
                                 . "VALUES ('" . $elem['definition'] . "','" . $elem['range'] . "',now())";
                             $intReturn1 = $myDataClass->dataInsert($strSQL, $intInsertId);
