@@ -49,7 +49,7 @@ $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
 /*
 Store data to session
 */
-if (($chkMode === '') || ($chkMode === null)) {
+if ($chkMode === null) {
     $_SESSION['timedefinition'] = array();
     if ($booReturn && ($intDataCount !== 0)) {
         foreach ($arrDataLines as $elem) {

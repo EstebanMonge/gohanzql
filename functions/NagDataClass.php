@@ -947,8 +947,8 @@ class NagDataClass
                     if (($strTableName === 'tbl_host') && ($this->intDomainId !== 0)) {
                         $strSQL = 'SELECT `host_name` FROM `tbl_host` WHERE `id`=' . $elem['id'];
                         $strHost = $this->myDBClass->getFieldData($strSQL);
-                        $this->myConfigClass->getConfigSets($arrConfigId);
-                        if ((int)$arrConfigId !== 1) {
+                        $intRetConf = $this->myConfigClass->getConfigSets($arrConfigId);
+                        if ($intRetConf !== 1) {
                             $intReturn = 0;
                             foreach ($arrConfigId as $intConfigId) {
                                 $intReturn += $this->myConfigClass->moveFile(
@@ -974,8 +974,8 @@ class NagDataClass
                         $strSQL = "SELECT * FROM `tbl_service` WHERE `config_name` = '$strService'";
                         $this->myDBClass->hasDataArray($strSQL, $arrData, $intDataCount);
                         if ($intDataCount === 1) {
-                            $this->myConfigClass->getConfigSets($arrConfigId);
-                            if ((int)$arrConfigId !== 1) {
+                            $intRetConf = $this->myConfigClass->getConfigSets($arrConfigId);
+                            if ($intRetConf !== 1) {
                                 $intReturn = 0;
                                 foreach ($arrConfigId as $intConfigId) {
                                     $intReturn += $this->myConfigClass->moveFile(

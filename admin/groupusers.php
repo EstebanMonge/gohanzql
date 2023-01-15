@@ -68,7 +68,7 @@ if ($chkLinkTab !== '') {
     /*
     Write data to session
     */
-    if ($chkMode === '') {
+    if ($chkMode === null) {
         $_SESSION['groupuser'] = array();
         if ($intDataCount !== 0) {
             foreach ($arrDataLines as $elem) {
