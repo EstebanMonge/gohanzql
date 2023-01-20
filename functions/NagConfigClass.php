@@ -676,6 +676,7 @@ class NagConfigClass
         /* Variable definitions */
         $intMethod = 3;
         $intReturn = 0;
+        $strMethod = '';
         $arrTemp = array();
         /* Get method */
         if ($this->getConfigData($intConfigID, 'method', $strMethod) === 0) {

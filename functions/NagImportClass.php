@@ -193,12 +193,11 @@ class NagImportClass
             $intRetVal = 0;
         } else {
             $intRetVal = $this->myConfigClass->getConfigData($intConfigId, 'method', $strConfigValue);
+            $intMethod = (int)$strConfigValue;
         }
         if ($intRetVal !== 0) {
             $this->strErrorMessage .= translate('Unable to get configuration data:') . ' method::';
             $intReturn = 1;
-        } else {
-            $intMethod = (int)$strConfigValue;
         }
         if ($intReturn === 0) {
             /* Read import file */

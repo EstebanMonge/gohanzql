@@ -1124,6 +1124,7 @@ class NagVisualClass
                 }
                 if ($intTypeId === 2) {
                     $this->myContentTpl->setVariable('DAT_' . strtoupper($strTemplKey) . '_SEL', 'selected');
+                    $this->myContentTpl->setVariable('IE_' . strtoupper($strTemplKey) . '_SEL', 'ieselected');
                 }
                 if (($intRefresh === 1) && in_array('*', $arrSelected, true)) {
                     $this->myContentTpl->setVariable('DAT_' . strtoupper($strTemplKey) . '_SEL', 'selected');
