@@ -45,7 +45,7 @@ if ($chkShow === 1) {
         $strVersion = '0.0.0';
     }
     if (isset($setGITVersion) && ($setGITVersion !== '') && ($setGITVersion !== null)) {
-        $strGITVersion = $setFileVersion;
+        $strGITVersion = $setGITVersion;
     } else {
         $strGITVersion = '0000-00-00';
     }
