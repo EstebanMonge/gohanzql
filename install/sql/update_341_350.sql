@@ -18,3 +18,4 @@
 --  Modify existing tbl_settings
 --
 UPDATE `tbl_settings` SET `value` = '3.5.0' WHERE `tbl_settings`.`name` = 'version' LIMIT 1;
+INSERT INTO `tbl_settings` (`id`, `category`, `name`, `value`) VALUES (NULL, 'install', 'hash', SHA2(UUID(),256));

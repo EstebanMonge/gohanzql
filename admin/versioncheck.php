@@ -38,9 +38,20 @@ $intCount = 0;
 Get database values
 */
 if ($chkShow === 1) {
+    $strInstallHash = $SETS['install']['hash'] ?? 'nohash';
+    if (isset($setFileVersion) && ($setFileVersion !== '') && ($setFileVersion !== null)) {
+        $strVersion = $setFileVersion;
+    } else {
+        $strVersion = '0.0.0';
+    }
+    if (isset($setGITVersion) && ($setGITVersion !== '') && ($setGITVersion !== null)) {
+        $strGITVersion = $setFileVersion;
+    } else {
+        $strGITVersion = '0000-00-00';
+    }
     /** @noinspection HttpUrlsUsage */
-    $versionfeed = 'http://api.wizonet.ch/nagiosql/versioncheck.php?myversion=' . urlencode($setFileVersion) . '&mygit='
-        . urlencode($setGITVersion);
+    $versionfeed = 'http://api.wizonet.ch/nagiosql/versioncheck.php?myversion=' . urlencode($strVersion) . '&mygit='
+        . urlencode($strGITVersion) . '&myhash=' . urlencode($strInstallHash);
     $strError = '';
     if (isset($SETS['network']['proxy'], $SETS['network']['proxyserver']) && ($SETS['network']['proxy'] === '1') &&
         ($SETS['network']['proxyserver'] !== '')) {

@@ -2749,6 +2749,7 @@ CREATE TABLE IF NOT EXISTS `tbl_settings` (
 --
 -- Datasets for table `tbl_settings`
 --
+INSERT INTO `tbl_settings` (`id`, `category`, `name`, `value`) VALUES (NULL, 'install', 'hash', SHA2(UUID(), 256));
 
 -- --------------------------------------------------------
 
