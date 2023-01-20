@@ -16,7 +16,7 @@
     <p><a href="https://sourceforge.net/donate/index.php?group_id=134390" target="_blank">{DONATE_LINK}</a>
     <h2 style="padding-top:10px;">{SUBTITLE_3}</h2>
     <p style="margin-bottom:0;">{SUPPORT_TEXT_3}</p>
-    <p><a href="https://www.transifex.net/projects/p/nagiosql/" target="_blank">{TRANSLATION_LINK}</a>
+    <p><a href="https://www.transifex.com/wizonet/nagiosql/dashboard/" target="_blank">{TRANSLATION_LINK}</a>
     <h2 style="padding-top:10px;">{SUBTITLE_8}</h2>
     <p style="margin-bottom:0;">{SUPPORT_TEXT_5}</p>
     <p><a href="https://gitlab.com/wizonet/NagiosQL/" target="_blank">{GIT_LINK}</a>
