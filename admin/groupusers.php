@@ -68,12 +68,12 @@ if ($chkLinkTab !== '') {
     /*
     Write data to session
     */
-    if ($chkMode === null) {
+    if (($chkMode === null) || ($chkMode === '')) {
         $_SESSION['groupuser'] = array();
         if ($intDataCount !== 0) {
             foreach ($arrDataLines as $elem) {
-                $arrTemp['id'] = $elem['id'];
-                $arrTemp['user'] = $elem['id'];
+                $arrTemp['id'] = (int)$elem['id'];
+                $arrTemp['user'] = (int)$elem['id'];
                 $strRights = '';
                 if ((int)$elem['read'] === 1) {
                     $strRights .= 'READ,';
@@ -101,7 +101,7 @@ if ($chkMode === 'add') {
     if (isset($_SESSION['groupuser']) && is_array($_SESSION['groupuser'])) {
         $intCheck = 0;
         foreach ($_SESSION['groupuser'] as $key => $elem) {
-            if (($elem['user'] === $chkUser) && ((int)$elem['status'] === 0)) {
+            if (((int)$elem['user'] === (int)$chkUser) && ((int)$elem['status'] === 0)) {
                 $_SESSION['groupuser'][$key]['user'] = $chkUser;
                 $_SESSION['groupuser'][$key]['rights'] = $chkRights;
                 $intCheck = 1;
@@ -128,7 +128,7 @@ Deletion mode
 */
 if ($chkMode === 'del' && isset($_SESSION['groupuser']) && is_array($_SESSION['groupuser'])) {
     foreach ($_SESSION['groupuser'] as $key => $elem) {
-        if (($elem['user'] === $chkUser) && ((int)$elem['status'] === 0)) {
+        if (((int)$elem['user'] === (int)$chkUser) && ((int)$elem['status'] === 0)) {
             $_SESSION['groupuser'][$key]['status'] = 1;
         }
     }
