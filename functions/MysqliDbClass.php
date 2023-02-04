@@ -247,6 +247,9 @@ class MysqliDbClass
             /* Return the field value from position 0/0 */
             $arrDataset = mysqli_fetch_array($resQuery, MYSQLI_NUM);
             $strReturn = $arrDataset[0];
+            if ($strReturn === null) {
+                $strReturn = '';
+            }
         } elseif (mysqli_error($this->strDBId) !== '') {
             $this->strErrorMessage .= mysqli_error($this->strDBId) . '::';
             $this->error = true;

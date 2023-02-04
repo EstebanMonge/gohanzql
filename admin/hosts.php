@@ -531,7 +531,7 @@ if ($chkModus === 'add') {
     if (isset($arrModifyData) && ($chkSelModify === 'modify')) {
         $strWhere = 'AND `id` <> ' . $arrModifyData['id'];
     }
-    $strSQL1 = 'SELECT `id`,`template_name`, `active` ' .
+    $strSQL1 = 'SELECT `id`,`template_name`, `active`, `config_id` ' .
         "FROM `tbl_hosttemplate` WHERE $strDomainWhere2 ORDER BY `template_name`";
     $booReturn1 = $myDBClass->hasDataArray($strSQL1, $arrDataTpl, $intDataCountTpl);
     if ($booReturn1 === false) {
@@ -546,8 +546,13 @@ if ($chkModus === 'add') {
                 $strActive = '';
                 $conttp->setVariable('SPECIAL_STYLE');
             }
+            if ((int)$elem['config_id'] === 0) {
+                $strCommon = ' [common]';
+            } else {
+                $strCommon = '';
+            }
             $conttp->setVariable('DAT_TEMPLATE', htmlspecialchars($elem['template_name'], ENT_QUOTES) .
-                $strActive);
+                $strActive . $strCommon);
             $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id'] . '::1');
             /** @noinspection DisconnectedForeachInstructionInspection */
             $conttp->parse('template');

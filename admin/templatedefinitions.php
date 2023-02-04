@@ -91,17 +91,22 @@ if ($chkLinkTab !== '') {
                         . 'FROM `tbl_' . $chkPreTab . 'template` WHERE `id` = ' . $elem['idSlave'];
                     /** @noinspection SqlResolve */
                     $strSQL3 = 'SELECT `active` FROM `tbl_' . $chkPreTab . 'template` WHERE `id` = ' . $elem['idSlave'];
+                    /** @noinspection SqlResolve */
+                    $strSQL4 = 'SELECT `config_id` FROM `tbl_' . $chkPreTab . 'template` WHERE `id` = ' . $elem['idSlave'];
                 } else {
                     /** @noinspection SqlResolve */
                     $strSQL2 = 'SELECT `name` FROM `tbl_' . $chkPreTab . '` WHERE `id` = ' . $elem['idSlave'];
                     /** @noinspection SqlResolve */
                     $strSQL3 = 'SELECT `active` FROM `tbl_' . $chkPreTab . '` WHERE `id` = ' . $elem['idSlave'];
+                    /** @noinspection SqlResolve */
+                    $strSQL4 = 'SELECT `config_id` FROM `tbl_' . $chkPreTab . '` WHERE `id` = ' . $elem['idSlave'];
                 }
                 $arrTemp['idSlave'] = $elem['idSlave'];
                 $arrTemp['definition'] = addslashes($myDBClass->getFieldData($strSQL2));
                 $arrTemp['idTable'] = $elem['idTable'];
                 $arrTemp['idSort'] = $elem['idSort'];
                 $arrTemp['active'] = (int)$myDBClass->getFieldData($strSQL3);
+                $arrTemp['config_id'] = (int)$myDBClass->getFieldData($strSQL4);
                 $arrTemp['status'] = 0;
                 $_SESSION['templatedefinition'][] = $arrTemp;
             }
@@ -118,11 +123,15 @@ if ($chkMode === 'add') {
         $strSQL2 = 'SELECT `template_name` FROM `tbl_' . $chkPreTab . 'template` WHERE `id` = ' . $arrDefinition[0];
         /** @noinspection SqlResolve */
         $strSQL3 = 'SELECT `active` FROM `tbl_' . $chkPreTab . 'template` WHERE `id` = ' . $arrDefinition[0];
+        /** @noinspection SqlResolve */
+        $strSQL4 = 'SELECT `config_id` FROM `tbl_' . $chkPreTab . 'template` WHERE `id` = ' . $arrDefinition[0];
     } else {
         /** @noinspection SqlResolve */
         $strSQL2 = 'SELECT `name` FROM `tbl_' . $chkPreTab . '` WHERE `id` = ' . $arrDefinition[0];
         /** @noinspection SqlResolve */
         $strSQL3 = 'SELECT `active` FROM `tbl_' . $chkPreTab . '` WHERE `id` = ' . $arrDefinition[0];
+        /** @noinspection SqlResolve */
+        $strSQL4 = 'SELECT `config_id` FROM `tbl_' . $chkPreTab . '` WHERE `id` = ' . $arrDefinition[0];
     }
     if (isset($_SESSION['templatedefinition']) && is_array($_SESSION['templatedefinition'])) {
         $intCheck = 0;
@@ -139,6 +148,7 @@ if ($chkMode === 'add') {
             $arrTemp['idSort'] = 0;
             $arrTemp['status'] = 0;
             $arrTemp['active'] = (int)$myDBClass->getFieldData($strSQL3);
+            $arrTemp['config_id'] = (int)$myDBClass->getFieldData($strSQL4);
             $_SESSION['templatedefinition'][] = $arrTemp;
         }
     } else {
@@ -148,6 +158,7 @@ if ($chkMode === 'add') {
         $arrTemp['idSort'] = 0;
         $arrTemp['status'] = 0;
         $arrTemp['active'] = (int)$myDBClass->getFieldData($strSQL3);
+        $arrTemp['config_id'] = (int)$myDBClass->getFieldData($strSQL4);
         $_SESSION['templatedefinition'][] = $arrTemp;
     }
 }
@@ -266,7 +277,10 @@ if (isset($_SESSION['templatedefinition']) && is_array($_SESSION['templatedefini
                         echo htmlspecialchars(stripslashes($elem['definition']), ENT_COMPAT, 'UTF-8');
                         if ($elem['active'] === 0) {
                             echo ' [inactive]';
-                        } ?></td>
+                        }
+                        if ($elem['config_id'] === 0) {
+                            echo ' [common]';
+                        }?></td>
                     <td class="tablerow" align="right"><img src="<?php
                         echo $_SESSION['SETS']['path']['base_url']; ?>images/up.gif" width="18" height="18" alt="<?php
                         echo translate('Up'); ?>" title="<?php echo translate('Up'); ?>" onClick="doUp('<?php

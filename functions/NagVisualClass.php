@@ -373,7 +373,8 @@ class NagVisualClass
             $intOption = 7;
         }
         /* Get version */
-        $this->myConfigClass->getDomainData('version', $intVersion);
+        $this->myConfigClass->getDomainData('version', $strVersion);
+        $intVersion = (int)$strVersion;
         /* Get raw data */
         $intRaw = $this->getSelectRawdata($strTable, $strTabField, $arrData, $intOption);
         if ($intRaw === 0) {
@@ -457,7 +458,8 @@ class NagVisualClass
         /* Get link rights */
         $strAccess = $this->getAccessGroups('link');
         /* Common domain is enabled? */
-        $this->myConfigClass->getDomainData('enable_common', $intCommonEnable);
+        $this->myConfigClass->getDomainData('enable_common', $strCommonEnable);
+        $intCommonEnable = (int)$strCommonEnable;
         if ($intCommonEnable === 1) {
             $strDomainWhere1 = ' (`config_id`=' . $this->intDomainId . ' OR `config_id`=0) ';
             $strDomainWhere2 = ' (`tbl_service`.`config_id`=' . $this->intDomainId . ' OR `tbl_service`.`config_id`=0) ';
@@ -1071,7 +1073,8 @@ class NagVisualClass
             $intOption = 10;
         }
         /* Get version */
-        $this->myConfigClass->getDomainData('version', $intVersion);
+        $this->myConfigClass->getDomainData('version', $strVersion);
+        $intVersion = (int)$strVersion;
         /* Get raw data */
         $intRaw = $this->getSelectRawdata($strTable, $strTabField, $arrData, $intOption);
         /* Get selected data */

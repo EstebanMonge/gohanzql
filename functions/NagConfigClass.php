@@ -1432,7 +1432,8 @@ class NagConfigClass
         }
         if ($intSkipProc === 0) {
             /* Common domain is enabled? */
-            $this->getDomainData('enable_common', $intCommonEnable);
+            $this->getDomainData('enable_common', $strCommonEnable);
+            $intCommonEnable = (int)$strCommonEnable;
             if ($intCommonEnable === 1) {
                 $strDomainWhere1 = ' (`config_id`=' . $this->intDomainId . ' OR `config_id`=0) ';
             } else {

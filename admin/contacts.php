@@ -353,7 +353,7 @@ if ($chkModus === 'add') {
     if (isset($arrModifyData) && ($chkSelModify === 'modify')) {
         $strWhere = 'AND `id` <> ' . $arrModifyData['id'];
     }
-    $strSQL5 = 'SELECT `id`,`template_name`, `active` '
+    $strSQL5 = 'SELECT `id`,`template_name`, `active`, `config_id` '
         . "FROM `tbl_contacttemplate` WHERE $strDomainWhere2 ORDER BY `template_name`";
     $booReturn5 = $myDBClass->hasDataArray($strSQL5, $arrDataTpl, $intDataCountTpl);
     if ($booReturn5 === false) {
@@ -369,8 +369,13 @@ if ($chkModus === 'add') {
                 $strActive = '';
                 $conttp->setVariable('SPECIAL_STYLE');
             }
+            if ((int)$elem['config_id'] === 0) {
+                $strCommon = ' [common]';
+            } else {
+                $strCommon = '';
+            }
             $conttp->setVariable('DAT_TEMPLATE', htmlspecialchars($elem['template_name'], ENT_QUOTES, 'UTF-8') .
-                $strActive);
+                $strActive . $strCommon);
             $conttp->setVariable('DAT_TEMPLATE_ID', $elem['id'] . '::1');
         }
         $conttp->parse('template');
