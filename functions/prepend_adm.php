@@ -276,7 +276,7 @@ Login process
 */
 $strRemoteUser = filter_input(INPUT_SERVER, 'REMOTE_USER');
 if (isset($strRemoteUser) && ($strRemoteUser !== '') && ((int)$_SESSION['logged_in'] === 0) &&
-    ($chkLogout !== 'yes') && ($chkInsName === '')) {
+    ($chkLogout !== 'yes') && (($chkInsName === '') || ($chkInsName === null))) {
     $strSQL = "SELECT * FROM `tbl_user` WHERE `username`='" . $strRemoteUser . "' AND `wsauth`='1' AND `active`='1'";
     $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataUser, $intDataCount);
     if ($booReturn && ($intDataCount === 1)) {
@@ -299,7 +299,7 @@ if (isset($strRemoteUser) && ($strRemoteUser !== '') && ((int)$_SESSION['logged_
         }
         /* Update last login time */
         $strSQLUpdate = 'UPDATE `tbl_user` SET `last_login`=NOW() '
-            . "WHERE `username`='" . $myDBClass->realEscape($chkInsName) . "'";
+            . "WHERE `username`='" . $myDBClass->realEscape($strRemoteUser) . "'";
         $booReturn = $myDBClass->insertData($strSQLUpdate);
         $myDataClass->strUserName = $arrDataUser[0]['username'];
         $myDataClass->writeLog(translate('Webserver login successfull'));
@@ -310,7 +310,7 @@ if (isset($strRemoteUser) && ($strRemoteUser !== '') && ((int)$_SESSION['logged_
         exit;
     }
 }
-if (($_SESSION['logged_in'] === 0) && isset($chkInsName) && ($chkInsName !== '') && ($intError === 0)) {
+if (((int)$_SESSION['logged_in'] === 0) && isset($chkInsName) && ($chkInsName !== '') && ($intError === 0)) {
     $chkInsName = $myDBClass->realEscape($chkInsName);
     $chkInsPasswd = $myDBClass->realEscape($chkInsPasswd);
     $strSQL = 'SELECT * FROM `tbl_user` '
