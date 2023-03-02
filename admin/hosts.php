@@ -184,7 +184,7 @@ if ($chkSelValue1 !== 0) {
 Add or modify data
 */
 if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAccess === 0)) {
-    if ($SETS['performance']['parents'] === 1) {
+    if ((int)$SETS['performance']['parents'] === 1) {
         $strSqlParents = "`parents`=$intMselValue1, `parents_tploptions`=$chkRadValue1,";
     }
     $strSQLx = "`$preTableName` SET `$preKeyField`='$chkTfValue1', `alias`='$chkTfValue3', "
@@ -233,7 +233,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                 Insert/update relations
                 */
                 if ($chkModus === 'insert') {
-                    if ($SETS['performance']['parents'] === 1) {
+                    if ((int)$SETS['performance']['parents'] === 1) {
                         if ($intMselValue1 !== 0) {
                             $intRet1 = $myDataClass->dataInsertRelation('tbl_lnkHostToHost', $chkDataId, $chkMselValue1);
                         }
@@ -268,7 +268,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                         $myVisClass->processMessage($myDataClass->strErrorMessage, $strErrorMessage);
                     }
                 } elseif ($chkModus === 'modify') {
-                    if ($SETS['performance']['parents'] === 1) {
+                    if ((int)$SETS['performance']['parents'] === 1) {
                         if ($intMselValue1 !== 0) {
                             $intRet1 = $myDataClass->dataUpdateRelation('tbl_lnkHostToHost', $chkDataId, $chkMselValue1);
                         } else {
@@ -579,7 +579,7 @@ if ($chkModus === 'add') {
             $conttp->parse('template');
         }
     }
-    if ($SETS['performance']['parents'] === 1) {
+    if ((int)$SETS['performance']['parents'] === 1) {
         /* Process host selection field */
         $intFieldId = $arrModifyData['parents'] ?? 0;
         $intKeyId = $arrModifyData['id'] ?? 0;

@@ -194,7 +194,7 @@ if ($chkSelValue1 !== 0) {
 Add or modify data
 */
 if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAccess === 0)) {
-    if ($SETS['performance']['parents'] === 1) {
+    if ((int)$SETS['performance']['parents'] === 1) {
         $strSqlParents = "`parents`=$intMselValue6, `parents_tploptions`=$chkRadValue18,";
     }
     $strSQLx = "`$preTableName` SET `$preKeyField`='$chkTfValue1', `host_name`=$intMselValue1, "
@@ -289,7 +289,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                     if (isset($intRet5) && ($intRet5 !== 0)) {
                         $myVisClass->processMessage($myDataClass->strErrorMessage, $strErrorMessage);
                     }
-                    if ($SETS['performance']['parents'] === 1) {
+                    if ((int)$SETS['performance']['parents'] === 1) {
                         if ($intMselValue6 !== 0) {
                             $intRet6 = $myDataClass->dataInsertRelation(
                                 'tbl_lnkServiceToService',
@@ -358,7 +358,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
                     if (isset($intRet5) && ($intRet5 !== 0)) {
                         $myVisClass->processMessage($myDataClass->strErrorMessage, $strErrorMessage);
                     }
-                    if ($SETS['performance']['parents'] === 1) {
+                    if ((int)$SETS['performance']['parents'] === 1) {
                         if ($intMselValue6 !== 0) {
                             $intRet6 = $myDataClass->dataUpdateRelation(
                                 'tbl_lnkServiceToService',
@@ -632,7 +632,7 @@ if ($chkModus === 'add') {
         $intDataWarning = 1;
     }
     /* Process service selection field */
-    if ($SETS['performance']['parents'] === 1) {
+    if ((int)$SETS['performance']['parents'] === 1) {
         $intFieldId = $arrModifyData['parents'] ?? 0;
         $intKeyId = $arrModifyData['id'] ?? 0;
         $intReturn3 = $myVisClass->parseSelectMulti(
