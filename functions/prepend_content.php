@@ -432,7 +432,7 @@ if (($chkModus === 'make') && ($intGlobalWriteAccess === 0)) {
             $intError = 0;
             $intSuccess = 0;
             $intCount = 0;
-            if (((int)$arrConfigID !== 1) && is_array($arrConfigID)) {
+            if (is_array($arrConfigID) && ((int)$arrConfigID[0] !== 0)) {
                 foreach ($arrData as $elem) {
                     $strChbName = 'chbId_' . $elem['id'];
                     /* was the current record is marked for deactivate? */
@@ -483,7 +483,7 @@ if (($chkModus === 'make') && ($intGlobalWriteAccess === 0)) {
             $intReturn = $myConfigClass->getConfigTargets($arrConfigID);
             $intError = 0;
             $intSuccess = 0;
-            if (((int)$arrConfigID !== 1) && is_array($arrConfigID)) {
+            if (is_array($arrConfigID) && ((int)$arrConfigID[0] !== 0)) {
                 $intCount = 0;
                 foreach ($arrData as $elem) {
                     $strChbName = 'chbId_' . $elem['id'];
