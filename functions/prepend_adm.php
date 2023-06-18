@@ -42,8 +42,8 @@ $chkGroupAdm = 0;
 $intError = 0;
 $setEnableCommon = 0;
 $setDBVersion = 'unknown';
-$setFileVersion = '3.5.0-beta';
-$setGITVersion = '2023-03-11';
+$setFileVersion = '3.5.0';
+$setGITVersion = '2023-06-18';
 $arrLocale = array();
 /*
 Start PHP session

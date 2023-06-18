@@ -74,7 +74,12 @@ if ($intDomain === '0') {
 $myDataClass->intDomainId   = $intDomain;
 $myConfigClass->intDomainId = $intDomain;
 $myImportClass->intDomainId = $intDomain;
-$myConfigClass->getConfigData($intTarget, 'method', $intMethod);
+$strMethod = '';
+$intMethod = 0;
+/* Get connection method */
+if ($myConfigClass->getConfigData($intTarget, 'method', $strMethod) === 0) {
+    $intMethod = (int)$strMethod;
+}
 /*
 Process form variables
 */
