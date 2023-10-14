@@ -36,10 +36,10 @@ require $preBasePath . 'functions/prepend_adm.php';
 Process post parameters
 */
 $chkDataId = filter_input(INPUT_GET, 'dataId', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
-$chkMode = filter_input(INPUT_GET, 'mode');
-$chkDef = filter_input(INPUT_GET, 'def');
-$chkRange = filter_input(INPUT_GET, 'range');
-$chkLinkTab = filter_input(INPUT_GET, 'linktab');
+$chkMode = filter_input(INPUT_GET, 'mode', FILTER_DEFAULT, array('options' => array('default' => '')));
+$chkDef = filter_input(INPUT_GET, 'def', FILTER_DEFAULT, array('options' => array('default' => '')));
+$chkRange = filter_input(INPUT_GET, 'range', FILTER_DEFAULT, array('options' => array('default' => '')));
+$chkLinkTab = filter_input(INPUT_GET, 'linktab', FILTER_DEFAULT, array('options' => array('default' => '')));
 /*
 Get data
 */

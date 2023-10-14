@@ -598,6 +598,7 @@ class NagContentClass
             if (($key === 'active') || ($key === 'register') || ($key === 'last_modified') || ($key === 'access_rights')) {
                 continue;
             }
+            $value = filter_var($value, FILTER_DEFAULT, array('options' => array('default' => '')));
             $objTemplate->setVariable('DAT_' . strtoupper($key), htmlentities($value, ENT_QUOTES, 'UTF-8'));
         }
         /* Insert checkbox data values */

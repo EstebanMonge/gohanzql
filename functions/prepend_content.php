@@ -86,27 +86,27 @@ $chkFromLine = filter_input(INPUT_GET, 'from_line', FILTER_VALIDATE_INT, array('
 /*
 Process post parameters
 */
-$chkTfSearchRaw = filter_input(INPUT_POST, 'txtSearch');
+$chkTfSearchRaw = filter_input(INPUT_POST, 'txtSearch', FILTER_DEFAULT, array('options' => array('default' => '')));
 $chkSelAccGr = filter_input(INPUT_POST, 'selAccGr', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
-$chkSelCnfName = filter_input(INPUT_POST, 'selCnfName');
+$chkSelCnfName = filter_input(INPUT_POST, 'selCnfName', FILTER_DEFAULT, array('options' => array('default' => '')));
 $chkSelRegFilter = filter_input(INPUT_POST, 'selRegFilter', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
 $chkSelActiveFilter = filter_input(INPUT_POST, 'selActiveFilter', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
 /* Common text field value */
 for ($i = 1; $i <= 23; $i++) {
     $tmpVar = 'chkTfValue' . $i;
-    $$tmpVar = filter_input(INPUT_POST, 'tfValue' . $i, FILTER_DEFAULT, FILTER_FLAG_NO_ENCODE_QUOTES);
+    $$tmpVar = filter_input(INPUT_POST, 'tfValue' . $i, FILTER_DEFAULT, array('options' => array('default' => ''), 'filter' => FILTER_FLAG_NO_ENCODE_QUOTES));
     $$tmpVar = $myVisClass->tfSecure(addslashes($$tmpVar));
 }
 /* Common argument text field value */
 for ($i = 1; $i <= 8; $i++) {
     $tmpVar = 'chkTfArg' . $i;
-    $$tmpVar = filter_input(INPUT_POST, 'tfArg' . $i, FILTER_UNSAFE_RAW);
+    $$tmpVar = filter_input(INPUT_POST, 'tfArg' . $i, FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
     $$tmpVar = $myVisClass->tfSecure(addslashes($$tmpVar));
 }
 /* Common argument info field value */
 for ($i = 1; $i <= 8; $i++) {
     $tmpVar = 'chkTaArg' . $i . 'Info';
-    $$tmpVar = filter_input(INPUT_POST, 'taArg' . $i . 'Info', FILTER_UNSAFE_RAW);
+    $$tmpVar = filter_input(INPUT_POST, 'taArg' . $i . 'Info', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
     $$tmpVar = $myVisClass->tfSecure(addslashes($$tmpVar));
 }
 /* Common multi select field value */
@@ -165,13 +165,13 @@ for ($i = 1; $i <= 9; $i++) {
 $chkChbValue1 = filter_input(INPUT_POST, 'chbValue1', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
 $chkChbValue2 = filter_input(INPUT_POST, 'chbValue2', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
 /* Common file selection field */
-$chkDatValue1 = filter_input(INPUT_POST, 'datValue1');
+$chkDatValue1 = filter_input(INPUT_POST, 'datValue1', FILTER_DEFAULT, array('options' => array('default' => '')));
 /* Common text area value */
-$chkTaValue1Raw = filter_input(INPUT_POST, 'taValue1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$chkTaValue1Raw = filter_input(INPUT_POST, 'taValue1', FILTER_SANITIZE_FULL_SPECIAL_CHARS, array('options' => array('default' => '')));
 /* Common text area value for file import (not SQL) */
-$chkTaFileTextRaw = filter_input(INPUT_POST, 'taFileText');
+$chkTaFileTextRaw = filter_input(INPUT_POST, 'taFileText', FILTER_DEFAULT, array('options' => array('default' => '')));
 /* Common text field with special chars */
-$chkTfSpValue1 = filter_input(INPUT_POST, 'tfSpValue1');
+$chkTfSpValue1 = filter_input(INPUT_POST, 'tfSpValue1', FILTER_DEFAULT, array('options' => array('default' => '')));
 /*
 Quote special characters
 */

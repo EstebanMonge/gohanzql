@@ -17,6 +17,7 @@
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  * @var string $setGITVersion from prepend_adm.php -> Application GIT subversion string
  */
+error_reporting(E_ALL);
 /*
 Path settings
 */

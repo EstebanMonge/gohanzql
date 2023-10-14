@@ -1328,6 +1328,7 @@ class NagVisualClass
     public function processMessage(string $strNewMessage, string &$strOldMessage = null, string $strSeparate = '<br>'): int
     {
         $strNewMessage = str_replace(array('::::', '::'), array('::', $strSeparate), $strNewMessage);
+        $strOldMessage = filter_var($strOldMessage, FILTER_DEFAULT, array('options' => array('default' => '')));
         if (($strOldMessage !== '') && ($strNewMessage !== '')) {
             if (substr_count($strOldMessage, $strNewMessage) === 0) {
                 if (substr_count(substr($strOldMessage, -5), $strSeparate) === 0) {

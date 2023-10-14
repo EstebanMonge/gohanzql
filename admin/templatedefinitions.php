@@ -38,10 +38,10 @@ require $preBasePath . 'functions/prepend_adm.php';
 Process post parameters
 */
 $chkDataId = filter_input(INPUT_GET, 'dataId', FILTER_VALIDATE_INT, array('options' => array('default' => 0)));
-$chkMode = filter_input(INPUT_GET, 'mode');
-$chkKey = filter_input(INPUT_GET, 'key');
-$chkDef = filter_input(INPUT_GET, 'def');
-$chkType = filter_input(INPUT_GET, 'type');
+$chkMode = filter_input(INPUT_GET, 'mode', FILTER_DEFAULT, array('options' => array('default' => '')));
+$chkKey = filter_input(INPUT_GET, 'key', FILTER_DEFAULT, array('options' => array('default' => '')));
+$chkDef = filter_input(INPUT_GET, 'def', FILTER_DEFAULT, array('options' => array('default' => '')));
+$chkType = filter_input(INPUT_GET, 'type', FILTER_DEFAULT, array('options' => array('default' => '')));
 if ($chkDataId === '') {
     $chkDataId = 0;
 }

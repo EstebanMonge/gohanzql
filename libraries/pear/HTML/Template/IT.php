@@ -144,6 +144,7 @@ class HTML_Template_IT
      * @see      halt(), $printError, $haltOnError
      */
     var $err = array();
+    var $blockparents = array();
 
     /**
      * Clear cache on get()?
