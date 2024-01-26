@@ -81,7 +81,7 @@ if ($chkLinkTab !== '') {
     $strSQL = 'SELECT * FROM `' . $chkLinkTab . "` WHERE `idMaster` = $chkDataId ORDER BY `idSort`";
     $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     /* Store data to session */
-    if ($chkMode === null) {
+    if ($chkMode === '') {
         $_SESSION['templatedefinition'] = array();
         $arrTemp = array();
         if ($booReturn && ($intDataCount !== 0)) {
