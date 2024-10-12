@@ -305,6 +305,8 @@ if (($chkButValue3 !== '') && ($chkButValue3 !== null)) {
     $myConfigClass->getConfigValues($intConfigId, 'basedir', $strBaseDir);
     $myConfigClass->getConfigValues($intConfigId, 'nagiosbasedir', $strNagiosBaseDir);
     $myConfigClass->getConfigValues($intConfigId, 'conffile', $strConffile);
+    $arrBinaryFile = preg_split("/[\s|?-]+/", $strBinary);
+    $strBinary = $arrBinaryFile[0];
     if ($intMethod === 1) {
         if (file_exists($strBinary) && is_executable($strBinary)) {
             $resFile = popen($strBinary . ' -v ' . $strConffile, 'r');
@@ -361,6 +363,8 @@ if (($chkButValue4 !== '') && ($chkButValue4 !== null)) {
     $myConfigClass->getConfigValues($intConfigId, 'binaryfile', $strBinary);
     $myConfigClass->getConfigValues($intConfigId, 'pidfile', $strPidfile);
     $myConfigClass->getConfigValues($intConfigId, 'version', $intVersion);
+    $arrBinaryFile = preg_split("/[\s|?-]+/", $strBinary);
+    $strBinary = $arrBinaryFile[0];
     /* Check state nagios demon */
     clearstatcache();
     if ($intMethod === 1) {

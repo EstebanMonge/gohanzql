@@ -43,7 +43,7 @@ $intError = 0;
 $setEnableCommon = 0;
 $setDBVersion = 'unknown';
 $setFileVersion = '3.5.0';
-$setGITVersion = '2024-01-26';
+$setGITVersion = '2024-10-12';
 $arrLocale = array();
 /*
 Start PHP session

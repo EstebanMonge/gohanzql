@@ -67,7 +67,6 @@ use functions\NagVisualClass;
  * @var int $chkSelAccGr from prepend_content.php -> Access group selector
  */
 
-
 $strPattern = '(admin/[^/]*.php)';
 $preRelPath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'PHP_SELF'));
 $preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'));
@@ -103,6 +102,14 @@ $chkTfValue13 = $myVisClass->addSlash($chkTfValue13);
 $chkTfValue14 = $myVisClass->addSlash($chkTfValue14);
 $chkTfValue15 = $myVisClass->addSlash($chkTfValue15);
 $chkTfValue16 = $myVisClass->addSlash($chkTfValue16);
+
+/* Security Settings - cut binary parameters */
+$chkTfValue18_normalized = '';
+if ($chkTfValue18 !== '') {
+    $arrBinaryFile = preg_split("/[\s|?-]+/", $chkTfValue18);
+    $chkTfValue18_normalized = $arrBinaryFile[0];
+}
+
 /*
 Check Port Value
 */
@@ -185,7 +192,7 @@ if ((($chkModus === 'insert') || ($chkModus === 'modify')) && ($intGlobalWriteAc
         . "`hostconfig`='$chkTfValue9', `serviceconfig`='$chkTfValue10', `backupdir`='$chkTfValue11', "
         . "`hostbackup`='$chkTfValue12', `servicebackup`='$chkTfValue13', `nagiosbasedir`='$chkTfValue14', "
         . "`importdir`='$chkTfValue15', `picturedir`='$chkTfValue16', `commandfile`='$chkTfValue17', "
-        . "`binaryfile`='$chkTfValue18', `pidfile`='$chkTfValue19', `conffile`='$chkTfValue20', "
+        . "`binaryfile`='$chkTfValue18_normalized', `pidfile`='$chkTfValue19', `conffile`='$chkTfValue20', "
         . "`cgifile`='$chkTfValue21', `resourcefile`='$chkTfValue22',`version`=$chkSelValue2, "
         . "`access_group`=$chkSelAccGr, `active`='$chkActive',`last_modified`=NOW()";
     if ($chkModus === 'insert') {
@@ -326,7 +333,7 @@ if ($chkModus === 'add') {
         $conttp->setVariable('DAT_NAGIOSBASEDIR', $chkTfValue14);
         $conttp->setVariable('DAT_IMPORTDIR', $chkTfValue15);
         $conttp->setVariable('DAT_COMMANDFILE', $chkTfValue17);
-        $conttp->setVariable('DAT_BINARYFILE', $chkTfValue18);
+        $conttp->setVariable('DAT_BINARYFILE', $chkTfValue18_normalized);
         $conttp->setVariable('DAT_PIDFILE', $chkTfValue19);
         $conttp->setVariable('DAT_CONFFILE', $chkTfValue20);
         $conttp->setVariable('DAT_CGIFILE', $chkTfValue21);
