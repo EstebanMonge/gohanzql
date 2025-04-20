@@ -49,7 +49,7 @@ if ($chkLinkTab !== '') {
         "WHERE `idMaster`=$chkDataId ORDER BY `name`";
     $booReturn = $myDBClass->hasDataArray($strSQL, $arrDataLines, $intDataCount);
     /* Store data to session */
-    if ($chkMode === null) {
+    if ($chkMode === '') {
         $arrTemp = array();
         $_SESSION['variabledefinition'] = array();
         if ($booReturn && ($intDataCount !== 0)) {

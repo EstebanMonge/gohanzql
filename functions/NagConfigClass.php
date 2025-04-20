@@ -1174,6 +1174,9 @@ class NagConfigClass
                             }
                             /* Insert fill spaces */
                             $strFillLen = (30 - strlen($data['definition']));
+                            if ($strFillLen <= 0) {
+                                $strFillLen = 1;
+                            }
                             $strSpace = ' ';
                             $strSpace .= str_repeat(' ', $strFillLen);
                             /* Write key and value */

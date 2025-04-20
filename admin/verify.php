@@ -309,7 +309,7 @@ if (($chkButValue3 !== '') && ($chkButValue3 !== null)) {
     $strBinary = $arrBinaryFile[0];
     if ($intMethod === 1) {
         if (file_exists($strBinary) && is_executable($strBinary)) {
-            $resFile = popen($strBinary . ' -v ' . $strConffile, 'r');
+            $resFile = popen(escapeshellarg($strBinary) . ' -v ' . $strConffile, 'r');
         } else {
             $myVisClass->processMessage(
                 translate('Cannot find the Nagios binary or no execute permissions!'),
@@ -369,7 +369,7 @@ if (($chkButValue4 !== '') && ($chkButValue4 !== null)) {
     clearstatcache();
     if ($intMethod === 1) {
         if (substr_count(PHP_OS, 'Linux') !== 0) {
-            exec('ps -ef | grep ' . basename($strBinary) . ' | grep -v grep', $arrExec);
+            exec('ps -ef | grep ' . escapeshellarg(basename($strBinary)) . ' | grep -v grep', $arrExec);
         } else {
             $arrExec[0] = 1;
         }

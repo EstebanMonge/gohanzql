@@ -45,7 +45,7 @@ $argDomain = isset($argv[2]) ? htmlspecialchars($argv[2], ENT_QUOTES, 'utf-8') :
 $argObject = isset($argv[3]) ? htmlspecialchars($argv[3], ENT_QUOTES, 'utf-8') : 'none';
 if ((($argDomain === 'none')) || (($argFunction === 'write') && ($argObject === 'none')) ||
     (($argFunction !== 'write') && ($argFunction !== 'check') && ($argFunction !== 'restart') && ($argFunction !== 'import'))) {
-    echo 'Usage: ' . htmlspecialchars($argv[0], ENT_QUOTES, 'utf-8') . " function domain [object]\n";
+    echo 'Usage: ' . htmlspecialchars($argv[0], ENT_QUOTES, 'utf-8') . " function domain object\n";
     echo "function = write/check/restart/import\n";
     echo "domain   = domain name like 'localhost'\n";
     echo "object   = object name, see below:\n";
