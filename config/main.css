@@ -224,39 +224,57 @@ h3 {
 /************************/
 /**  YUI definitions    */
 /************************/
-#cal-cont .bd:after {
-    content: ".";
-    display: block;
-    clear: left;
-    height: 0;
+/* Tabbed forms are hidden until YUI has built the tabs (or failed to load) */
+.nql-tabview {
     visibility: hidden;
 }
 
-#cal-cont .bd {
-    padding: 0;
+.nql-tabview-ready, .nql-yui-failed .nql-tabview {
+    visibility: visible;
 }
 
-#cal-cont2 .bd:after {
-    content: ".";
-    display: block;
-    clear: left;
-    height: 0;
-    visibility: hidden;
-}
-
-#cal-cont2 .bd {
-    padding: 0;
-}
-
-#cal {
-    border: none;
-    padding: 1em
-}
-
-.yui-content input[type="radio"] {
+.nql-tabview input[type="radio"] {
     background-color: #EDF5FF;
 }
 
-.yui-content input[type="checkbox"] {
+.nql-tabview input[type="checkbox"] {
     background-color: #EDF5FF;
+}
+
+/* Message and confirm boxes */
+.nql-dialog-body {
+    display: flex;
+    align-items: flex-start;
+}
+
+.nql-dialog-icon {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    line-height: 24px;
+}
+
+.nql-dialog-icon-warn {
+    background-color: #E6A100;
+}
+
+.nql-dialog-icon-warn:before {
+    content: "!";
+}
+
+.nql-dialog-icon-help {
+    background-color: #2F6FB0;
+}
+
+.nql-dialog-icon-help:before {
+    content: "?";
+}
+
+.nql-dialog-text {
+    flex: 1 1 auto;
 }

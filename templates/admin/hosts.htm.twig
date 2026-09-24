@@ -178,15 +178,15 @@
         //-->
     </script>
     <form name="frmDetail" method="post" action="{{ ACTION_INSERT }}">
-        <div id="host" style="width:909px;" class="yui-navset">
-            <ul class="yui-nav">
-                <li class="selected"><a href="#tab1"><em>{{ LANG_COMMON_SETTINGS }}</em></a></li>
-                <li><a href="#tab2"><em>{{ LANG_CHECK_SETTINGS }}</em></a></li>
-                <li><a href="#tab3"><em>{{ LANG_ALARM_SETTINGS }}</em></a></li>
-                <li><a href="#tab4"><em>{{ LANG_ADDON_SETTINGS }}</em></a></li>
-                <li><a href="#tab5"><em>{{ LANG_SERVICE_SETTINGS }}</em></a></li>
+        <div id="host" style="width:909px;" class="nql-tabview">
+            <ul>
+                <li><a href="#tab1">{{ LANG_COMMON_SETTINGS }}</a></li>
+                <li><a href="#tab2">{{ LANG_CHECK_SETTINGS }}</a></li>
+                <li><a href="#tab3">{{ LANG_ALARM_SETTINGS }}</a></li>
+                <li><a href="#tab4">{{ LANG_ADDON_SETTINGS }}</a></li>
+                <li><a href="#tab5">{{ LANG_SERVICE_SETTINGS }}</a></li>
             </ul>
-            <div class="yui-content">
+            <div>
                 <div id="tab1">
                     <table border="0" cellpadding="0" class="content_formtable">
                         <tr>
@@ -1384,9 +1384,7 @@
     <!--suppress JSUnusedLocalSymbols -->
     <script type="text/javascript" language="javascript">
         <!--
-        (function () {
-            const tabView = new YAHOO.widget.TabView('host');
-        })();
+        nqlTabView('host');
         //-->
     </script>
     <br>

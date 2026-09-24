@@ -1,0 +1,21 @@
+{
+  "name": "@canonical/yui",
+  "version": "3.18.2",
+  "description": "YUI 3 Source (Canonical security-maintained fork)",
+  "author": "Dav Glass <davglass@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/canonical/yui/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "index.js",
+  "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canonical/yui.git"
+  }
+}

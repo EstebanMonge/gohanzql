@@ -143,12 +143,12 @@
         //-->
     </script>
     <form name="frmDetail" method="post" action="{{ ACTION_INSERT }}">
-        <div id="contacts" style="width:909px;" class="yui-navset">
-            <ul class="yui-nav">
-                <li class="selected"><a href="#tab1"><em>{{ LANG_COMMON_SETTINGS }}</em></a></li>
-                <li><a href="#tab1"><em>{{ LANG_ADDON_SETTINGS }}</em></a></li>
+        <div id="contacts" style="width:909px;" class="nql-tabview">
+            <ul>
+                <li><a href="#tab1">{{ LANG_COMMON_SETTINGS }}</a></li>
+                <li><a href="#tab1">{{ LANG_ADDON_SETTINGS }}</a></li>
             </ul>
-            <div class="yui-content">
+            <div>
                 <div id="tab1">
                     <table border="0" cellpadding="0" class="content_formtable">
                         <tr>
@@ -787,9 +787,7 @@
     <!--suppress JSUnusedLocalSymbols -->
     <script type="text/javascript">
         <!--
-        (function () {
-            let tabView = new YAHOO.widget.TabView('contacts');
-        })();
+        nqlTabView('contacts');
         //-->
     </script>
 

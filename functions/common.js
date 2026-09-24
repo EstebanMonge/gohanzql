@@ -55,258 +55,258 @@ function checkboxes(fields, frm) {
     return retval;
 }
 
-<!-- YUI message box -->
+// YUI 3 (@canonical/yui, bundled in functions/yui). The modules are loaded on demand, see YUI_config in main.htm.twig.
+// Preload them, so they are already cached when the first dialog is opened.
+YUI().use('panel', 'dd-plugin', 'dd-constrain', 'io-base', 'node', 'calendar', 'tabview', function (Y, status) {
+    if (!status.success) {
+        // Show the tabbed forms anyway, even if they can't be enhanced
+        document.documentElement.className += ' nql-yui-failed';
+    }
+});
+
+// Dialogs which are created once and reused
+const nqlDialogs = {};
+
+// Destroy a dialog when it is closed (used by message and confirm boxes)
+function nqlDestroyOnHide(e) {
+    if (!e.newVal) {
+        this.destroy(true);
+    }
+}
+
+// Body of message and confirm boxes: optional icon (1 = warning, 2 = question) and text
+function nqlDialogBody(msg, type) {
+    let icon = '';
+    if (type === 1) {
+        icon = '<div class="nql-dialog-icon nql-dialog-icon-warn"></div>';
+    } else if (type === 2) {
+        icon = '<div class="nql-dialog-icon nql-dialog-icon-help"></div>';
+    }
+    return '<div class="nql-dialog-body">' + icon + '<div class="nql-dialog-text">' + msg + '</div></div>';
+}
+
+// Make a dialog draggable by its header, but keep it inside of the viewport
+function nqlMakeDraggable(Y, panel) {
+    panel.headerNode.setStyle('cursor', 'move');
+    panel.get('boundingBox').plug(Y.Plugin.Drag, {handles: ['.yui3-widget-hd']}).dd.plug(Y.Plugin.DDConstrained, {
+        constrain2view: true
+    });
+}
+
+// Load a page into an element
+function nqlLoadContent(Y, url, elementId) {
+    Y.io(url, {
+        on: {
+            success: function (id, o) {
+                if (o.responseText !== undefined) {
+                    document.getElementById(elementId).innerHTML = o.responseText;
+                }
+            },
+            failure: function (id, o) {
+                if (o.responseText !== undefined) {
+                    document.getElementById(elementId).innerHTML = "No information found";
+                }
+            }
+        }
+    });
+}
+
+// YUI message box
 function msginit(msg, header, type) {
-    let iconobj;
-    YAHOO.namespace("msg.container");
-    const handleOK = function () {
-        this.hide();
-        //myFocusObject.myValue.focus();
-    };
-    if (type === 1) {
-        iconobj = YAHOO.widget.SimpleDialog.ICON_WARN;
-    }
-    if (type === 2) {
-        iconobj = YAHOO.widget.SimpleDialog.ICON_HELP;
-    }
-    YAHOO.msg.container.domainmsg = new YAHOO.widget.SimpleDialog("domainmsg",
-        {
-            width: "300px",
-            fixedcenter: true,
-            visible: false,
-            draggable: false,
-            close: true,
-            text: msg,
+    YUI().use('panel', function (Y) {
+        const panel = new Y.Panel({
+            headerContent: header,
+            bodyContent: nqlDialogBody(msg, type),
+            width: '300px',
+            zIndex: 1000,
+            centered: true,
+            constrain: true,
             modal: true,
-            icon: iconobj,
-            constraintoviewport: true,
-            buttons: [{text: "Ok", handler: handleOK, isDefault: true}]
+            visible: false,
+            render: true,
+            buttons: {
+                header: ['close'],
+                footer: [{label: 'Ok', isDefault: true, action: 'hide'}]
+            }
         });
-    YAHOO.msg.container.domainmsg.setHeader(header);
-    YAHOO.msg.container.domainmsg.render("msgcontainer");
-    YAHOO.msg.container.domainmsg.show();
+        panel.after('visibleChange', nqlDestroyOnHide);
+        panel.show();
+    });
 }
 
-<!-- YUI confirm box -->
+// YUI confirm box
 function confirminit(msg, header, type, yes, no, key) {
-    let iconobj;
-    YAHOO.namespace("question.container");
-    const handleYes = function () {
-        // noinspection JSUnresolvedFunction
-        confOpenerYes(key);
-        this.hide();
-    };
-    const handleNo = function () {
-        this.hide();
-    };
-    if (type === 1) {
-        iconobj = YAHOO.widget.SimpleDialog.ICON_WARN;
-    }
-    YAHOO.question.container.domainmsg = new YAHOO.widget.SimpleDialog("confirm1",
-        {
-            width: "400px",
-            fixedcenter: true,
-            visible: false,
-            draggable: false,
-            close: true,
-            text: msg,
+    YUI().use('panel', function (Y) {
+        const panel = new Y.Panel({
+            headerContent: header,
+            bodyContent: nqlDialogBody(msg, type === 1 ? 1 : 0),
+            width: '400px',
+            zIndex: 1000,
+            centered: true,
+            constrain: true,
             modal: true,
-            icon: iconobj,
-            constraintoviewport: true,
-            buttons: [{text: yes, handler: handleYes, isDefault: true},
-                {text: no, handler: handleNo}]
+            visible: false,
+            render: true,
+            buttons: {
+                header: ['close'],
+                footer: [
+                    {
+                        label: yes, isDefault: true, action: function () {
+                            // noinspection JSUnresolvedFunction
+                            confOpenerYes(key);
+                            this.hide();
+                        }
+                    },
+                    {label: no, action: 'hide'}
+                ]
+            }
         });
-    YAHOO.question.container.domainmsg.setHeader(header);
-    YAHOO.question.container.domainmsg.render("confirmcontainer");
-    YAHOO.question.container.domainmsg.show();
+        panel.after('visibleChange', nqlDestroyOnHide);
+        panel.show();
+    });
 }
 
-
-<!-- YUI dialog box -->
+// YUI info dialog
 function dialoginit(key1, key2, ver, header) {
-    YAHOO.namespace("dialog.container");
-
-    const handleCancel = function () {
-        this.cancel();
-    };
-    const handleSuccess = function (o) {
-        if (o.responseText !== undefined) {
-            document.getElementById('dialogcontent').innerHTML = o.responseText;
+    YUI().use('panel', 'dd-plugin', 'dd-constrain', 'io-base', 'node', function (Y) {
+        let sUrl;
+        if (key2 === "updInfo") {
+            sUrl = "admin/info.php?key1=" + key1 + "&key2=" + key2 + "&version=" + ver;
+        } else {
+            sUrl = "info.php?key1=" + key1 + "&key2=" + key2 + "&version=" + ver;
         }
-    };
-    const handleFailure = function (o) {
-        if (o.responseText !== undefined) {
-            document.getElementById('dialogcontent').innerHTML = "No information found";
-        }
-    };
-    const callback = {
-        success: handleSuccess,
-        failure: handleFailure
-    };
-    let sUrl;
-    if (key2 === "updInfo") {
-        sUrl = "admin/info.php?key1=" + key1 + "&key2=" + key2 + "&version=" + ver;
-    } else {
-        sUrl = "info.php?key1=" + key1 + "&key2=" + key2 + "&version=" + ver;
-    }
+        nqlLoadContent(Y, sUrl, 'dialogcontent');
 
-    YAHOO.util.Connect.asyncRequest('GET', sUrl, callback);
-
-    if (typeof YAHOO.dialog.container.infodialog === "undefined") {
-        YAHOO.dialog.container.infodialog = new YAHOO.widget.Dialog("infodialog",
-            {
-                width: "50em",
+        if (typeof nqlDialogs.info === "undefined") {
+            nqlDialogs.info = new Y.Panel({
+                bodyContent: Y.one('#dialogcontent'),
+                width: '50em',
+                zIndex: 1000,
+                centered: true,
+                constrain: true,
                 visible: false,
-                draggable: true,
-                fixedcenter: true,
-                constraintoviewport: true,
-                buttons: [{text: "Ok", handler: handleCancel, isDefault: true}]
+                render: true,
+                buttons: {
+                    header: ['close'],
+                    footer: [{label: 'Ok', isDefault: true, action: 'hide'}]
+                }
+            });
+            nqlMakeDraggable(Y, nqlDialogs.info);
+        }
+        nqlDialogs.info.set('headerContent', header);
+        nqlDialogs.info.show();
+    });
+}
+
+// YUI calendar
+function calendarinit(lang, start, field, key, cont, obj) {
+    YUI({lang: (lang === "de_DE") ? "de" : "en"}).use('panel', 'dd-plugin', 'dd-constrain', 'calendar', 'node', function (Y) {
+        Y.on('domready', function () {
+            // The container holds the title and the (empty) element for the calendar
+            const panel = new Y.Panel({
+                headerContent: Y.one('#' + cont + ' .hd').getHTML(),
+                bodyContent: Y.one('#' + obj),
+                zIndex: 1000,
+                align: {node: '#' + field, points: [Y.WidgetPositionAlign.TL, Y.WidgetPositionAlign.BL]},
+                visible: false,
+                render: true,
+                buttons: {header: ['close']}
+            });
+            nqlMakeDraggable(Y, panel);
+
+            const calendar = new Y.Calendar({
+                strings: Y.merge(Y.Intl.get('calendar-base'), {first_weekday: start})
+            });
+            calendar.render('#' + obj);
+            calendar.on('dateClick', function (e) {
+                let month = e.date.getMonth() + 1, day = e.date.getDate();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                document.getElementById(field).value = e.date.getFullYear() + "-" + month + "-" + day;
+                panel.hide();
             });
 
-    }
-
-    YAHOO.dialog.container.infodialog.setHeader(header);
-    YAHOO.dialog.container.infodialog.render();
-    YAHOO.dialog.container.infodialog.show();
+            Y.one('#' + key).on('click', function () {
+                panel.show();
+            });
+        });
+    });
 }
 
-<!-- YUI calendar -->
-function calendarinit(lang, start, field, key, cont, obj) {
-    YAHOO.util.Event.onDOMReady(function () {
-
-        let dialog, calendar;
-
-        calendar = new YAHOO.widget.Calendar(obj, {
-            iframe: false,
-            hide_blank_weeks: true,
-            START_WEEKDAY: start
-        });
-        if (lang === "de_DE") {
-            calendar.cfg.setProperty("MONTHS_LONG", ["Januar", "Februar", "M\u00E4rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]);
-            calendar.cfg.setProperty("WEEKDAYS_SHORT", ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]);
-        }
-
-        //function cancelHandler() {
-        //   this.hide();
-        //}
-
-        //function handleSelect(type,args,obj) {
-        function handleSelect(type, args) {
-            const dates = args[0];
-            const date = dates[0];
-            const year = date[0];
-            let month = date[1], day = date[2];
-
-            const txtDate1 = document.getElementById(field);
-            if (month < 10) {
-                month = "0" + month;
-            }
-            if (day < 10) {
-                day = "0" + day;
-            }
-            // noinspection JSUndefinedPropertyAssignment
-            txtDate1.value = year + "-" + month + "-" + day;
-            dialog.hide();
-        }
-
-        dialog = new YAHOO.widget.Dialog(cont, {
-            context: [field, "tl", "bl"],
-            width: "16em",
-            draggable: true,
-            close: true
-        });
-        calendar.render();
-        dialog.render();
-        dialog.hide();
-
-        calendar.renderEvent.subscribe(function () {
-            dialog.fireEvent("changeContent");
-        });
-        // noinspection JSUnresolvedVariable
-        calendar.selectEvent.subscribe(handleSelect, calendar.cal1, true);
-
-        YAHOO.util.Event.on(key, "click", dialog.show, dialog, true);
+// Tabbed form
+function nqlTabView(id) {
+    YUI().use('tabview', 'node', function (Y) {
+        new Y.TabView({srcNode: '#' + id}).render();
+        Y.one('#' + id).addClass('nql-tabview-ready');
     });
 }
 
 // Open edit dialog for list boxes
 function openMutDlgInit(field, divbox, header, key, langkey1, langkey2, exclude) {
+    YUI().use('panel', 'dd-plugin', 'dd-constrain', 'io-base', 'node', function (Y) {
+        Y.on('domready', function () {
+            nqlLoadContent(Y, "mutdialog.php?object=" + field + "&exclude=" + exclude, divbox + 'content');
 
-    YAHOO.util.Event.onDOMReady(function () {
-
-        let mutdialog;
-
-        const handleSuccess = function (o) {
-            if (o.responseText !== undefined) {
-                document.getElementById(divbox + 'content').innerHTML = o.responseText;
-            }
-        };
-        const handleFailure = function (o) {
-            if (o.responseText !== undefined) {
-                document.getElementById(divbox + 'content').innerHTML = "No information found";
-            }
-        };
-        const callback = {
-            success: handleSuccess,
-            failure: handleFailure
-        };
-        let sUrl;
-        sUrl = "mutdialog.php?object=" + field + "&exclude=" + exclude;
-        YAHOO.util.Connect.asyncRequest('GET', sUrl, callback);
-
-        const handleSave = function () {
-            const source = document.getElementById(field);
-            const targetSelect = document.getElementById(field + 'Selected');
-            //const targetAvail = document.getElementById(field + 'Avail');
-            for (let i = 0; i < targetSelect.length; ++i) {
-                targetSelect.options[i].selected = true;
-            }
-            for (let i = 0; i < source.length; ++i) {
-                source.options[i].selected = false;
-                source.options[i].className = source.options[i].className.replace(/ ieselected/g, '');
-            }
-            for (let i = 0; i < targetSelect.length; ++i) {
-                for (let y = 0; y < source.length; ++y) {
-                    const value1 = targetSelect.options[i].value.replace(/^e/g, '');
-                    const value2 = "e" + value1;
-                    if ((source.options[y].value === value1) || (source.options[y].value === value2)) {
-                        source.options[y].selected = true;
-                        source.options[y].value = targetSelect.options[i].value;
-                        source.options[y].text = targetSelect.options[i].text;
-                        source.options[y].className = source.options[y].className + " ieselected";
+            const handleSave = function () {
+                const source = document.getElementById(field);
+                const targetSelect = document.getElementById(field + 'Selected');
+                //const targetAvail = document.getElementById(field + 'Avail');
+                for (let i = 0; i < targetSelect.length; ++i) {
+                    targetSelect.options[i].selected = true;
+                }
+                for (let i = 0; i < source.length; ++i) {
+                    source.options[i].selected = false;
+                    source.options[i].className = source.options[i].className.replace(/ ieselected/g, '');
+                }
+                for (let i = 0; i < targetSelect.length; ++i) {
+                    for (let y = 0; y < source.length; ++y) {
+                        const value1 = targetSelect.options[i].value.replace(/^e/g, '');
+                        const value2 = "e" + value1;
+                        if ((source.options[y].value === value1) || (source.options[y].value === value2)) {
+                            source.options[y].selected = true;
+                            source.options[y].value = targetSelect.options[i].value;
+                            source.options[y].text = targetSelect.options[i].text;
+                            source.options[y].className = source.options[y].className + " ieselected";
+                        }
                     }
                 }
-            }
-            this.cancel();
-            // noinspection JSUnresolvedVariable
-            if ((typeof (update) === 'number') && (update === 1)) {
-                // noinspection JSUnresolvedFunction
-                updateForm(field);
-            }
-        };
-        const handleCancel = function () {
-            this.cancel();
-        };
-        mutdialog = new YAHOO.widget.Dialog(divbox,
-            {
-                width: "60em",
-                fixedcenter: true,
-                visible: false,
-                draggable: true,
+                this.hide();
+                // noinspection JSUnresolvedVariable
+                if ((typeof (update) === 'number') && (update === 1)) {
+                    // noinspection JSUnresolvedFunction
+                    updateForm(field);
+                }
+            };
+            const mutdialog = new Y.Panel({
+                headerContent: header,
+                bodyContent: Y.one('#' + divbox + 'content'),
+                width: '60em',
+                zIndex: 1000,
+                centered: true,
+                constrain: true,
                 modal: true,
-                constraintoviewport: true,
-                buttons: [{text: langkey1, handler: handleSave, isDefault: true},
-                    {text: langkey2, handler: handleCancel}]
+                visible: false,
+                render: true,
+                buttons: {
+                    header: ['close'],
+                    footer: [{label: langkey1, isDefault: true, action: handleSave}, {label: langkey2, action: 'hide'}]
+                }
+            });
+            nqlMakeDraggable(Y, mutdialog);
+            mutdialog.before('visibleChange', function (e) {
+                if (e.newVal) {
+                    getData(field);
+                }
             });
 
-        mutdialog.setHeader(header);
-        mutdialog.render();
-        mutdialog.hide();
-        mutdialog.beforeShowEvent.subscribe(function () {
-            getData(field);
+            Y.one('#' + key).on('click', function () {
+                mutdialog.show();
+            });
         });
-
-        YAHOO.util.Event.on(key, "click", mutdialog.show, mutdialog, true);
     });
 }
 

@@ -5,6 +5,8 @@ CHANGELOG 4.0.0
   NagiosQL). PEAR is not required any more. The templates in templates/ are now Twig files (*.htm.twig for the
   pages, *.cfg.twig for the Nagios configuration files) - customized templates have to be ported to the new format
 - Help text editor: TinyMCE 3.4.2 replaced by TinyMCE 8.9.2 (bundled in functions/tinyMCE, GPL)
+- JavaScript library YUI 2.9.0 (unmaintained since 2014) replaced by YUI 3.18.2 from the Canonical maintained fork
+  @canonical/yui (bundled in functions/yui, BSD): dialogs, calendar and tabbed forms were ported to YUI 3
 - Update from NagiosQL 3.5.0 (no database structure changes)
 - [Bugfix] Data containing text like {PLACEHOLDER} was silently removed from the pages
 
