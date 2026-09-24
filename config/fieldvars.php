@@ -7,7 +7,7 @@
  Project   : NagiosQL
  Component : field language variables (for replace in templates)
  Website   : https://sourceforge.net/projects/nagiosql/
- Version   : 3.5.0
+ Version   : 4.0.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 -----------------------------------------------------------------------------*/
 /**

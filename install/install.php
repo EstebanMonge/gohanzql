@@ -7,7 +7,7 @@
  Project   : NagiosQL
  Component : Installer script - check page
  Website   : https://sourceforge.net/projects/nagiosql/
- Version   : 3.5.0
+ Version   : 4.0.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 -----------------------------------------------------------------------------*/
 /**
@@ -39,8 +39,8 @@ require $preBasePath . 'install/functions/prepend_install.php';
 Actual database files
 */
 $preSqlNewInstall = $preBasePath . 'install/sql/nagiosQL_v35_db_mysql.sql';
-$preSqlUpdateLast = $preBasePath . 'install/sql/update_341_350.sql';
-$preNagiosQL_ver = '3.5.0';
+$preSqlUpdateLast = $preBasePath . 'install/sql/update_350_400.sql';
+$preNagiosQL_ver = '4.0.0';
 /*
 Process initial value
 */

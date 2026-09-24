@@ -10,7 +10,7 @@
 --  Project   : NagiosQL
 --  Component : Update from NagiosQL 3.4.1 to NagiosQL 3.5.0
 --  Website   : https://sourceforge.net/projects/nagiosql/
---  Version   : 3.5.0
+--  Version   : 4.0.0
 --  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

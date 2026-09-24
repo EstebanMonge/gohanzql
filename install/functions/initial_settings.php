@@ -10,7 +10,7 @@ exit;
 ; Project   : NagiosQL
 ; Component : Initial configuration settings
 ; Website   : https://sourceforge.net/projects/nagiosql/
-; Version   : 3.5.0
+; Version   : 4.0.0
 ; GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 ;
 ; DO NOT USE THIS FILE AS NAGIOSQL SETTINGS FILE!

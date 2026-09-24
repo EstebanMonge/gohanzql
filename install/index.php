@@ -7,7 +7,7 @@
  Project   : NagiosQL
  Component : Installer main script
  Website   : https://sourceforge.net/projects/nagiosql/
- Version   : 3.5.0
+ Version   : 4.0.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 -----------------------------------------------------------------------------*/
 /**
@@ -33,7 +33,7 @@ $preEncode = 'utf-8';
 $preLocale = $preBasePath . 'config/locale';
 $filConfig = $preBasePath . 'config/settings.php';
 $strLangOpt = '';
-$strVersion = '3.5.0';
+$strVersion = '4.0.0';
 $intUpdate = 0;
 $intError = 0;
 /*

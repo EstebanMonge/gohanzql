@@ -7,7 +7,7 @@
  Project   : NagiosQL
  Component : Installer Class
  Website   : https://sourceforge.net/projects/nagiosql/
- Version   : 3.5.0
+ Version   : 4.0.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 -----------------------------------------------------------------------------*/
 
@@ -305,8 +305,12 @@ class NagInstallClass
                     break;
                 case '3.4.1':
                     $arrUpdate[] = 'sql/update_341_350.sql';
+                    $arrUpdate[] = 'sql/update_350_400.sql';
                     break;
                 case '3.5.0':
+                    $arrUpdate[] = 'sql/update_350_400.sql';
+                    break;
+                case '4.0.0':
                     $intVersionError = 2;
                     break;
                 default:

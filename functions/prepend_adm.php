@@ -7,7 +7,7 @@
  Project   : NagiosQL
  Component : Preprocessing script
  Website   : https://sourceforge.net/projects/nagiosql/
- Version   : 3.5.0
+ Version   : 4.0.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 -----------------------------------------------------------------------------*/
 error_reporting(E_ALL & ~E_STRICT);
@@ -42,7 +42,7 @@ $chkGroupAdm = 0;
 $intError = 0;
 $setEnableCommon = 0;
 $setDBVersion = 'unknown';
-$setFileVersion = '3.5.0';
+$setFileVersion = '4.0.0';
 $setGITVersion = '2025-04-20';
 $arrLocale = array();
 /*

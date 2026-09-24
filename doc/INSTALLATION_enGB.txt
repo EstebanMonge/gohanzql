@@ -9,7 +9,7 @@
 // Project   : NagiosQL
 // Component : Installation HowTo
 // Website   : https://sourceforge.net/projects/nagiosql/
-// Version   : 3.5.0
+// Version   : 4.0.0
 // GIT Repo  : https://gitlab.com/wizonet/NagiosQL
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -50,7 +50,7 @@ extension=ssh2
 NEW INSTALLATION
 ================
 
-  1. Download and extract NagiosQL 3.5 to a directory within your Apache Document Root
+  1. Download and extract NagiosQL 4.0 to a directory within your Apache Document Root
   2. Start the Installation Wizard by opening install/index.php
   3. Switch to your preferred language (see Appendix 1.)
   4. Follow the instructions to install NagiosQL
@@ -62,10 +62,10 @@ NEW INSTALLATION
   1. Upgrade from NagiosQL 1.x and 2.x are not possible, you should better start at "New Installation" and after the installation is done,
      import Nagios configuration files with NagiosQL
   2. Upgrade from NagiosQL 3.x
-    a. Download and extract NagiosQL 3.5 to a NEW directory and change your Apache DocumentRoot to the new directory
+    a. Download and extract NagiosQL 4.0 to a NEW directory and change your Apache DocumentRoot to the new directory
 	b. If the same Apache configuration is used (old NagiosQL directory moved away and new NagiosQL directory moved to the old
 	   DocumentRoot), you should restart the apache demon before upgrade
-    b. Move your old config/settings.php file to the new NagiosQL 3.5 config/ folder
+    b. Move your old config/settings.php file to the new NagiosQL 4.0 config/ folder
 	c. Backup your old NagiosQL database (as example with mysqldump)
     d. Start the Installation Wizard by opening install/index.php
     e. Switch to your preferred language (see Appendix) and follow the instructions
