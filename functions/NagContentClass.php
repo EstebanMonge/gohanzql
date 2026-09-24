@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Content Class
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -46,8 +47,8 @@ class NagContentClass
     /** @var NagConfigClass */
     public $myConfigClass; /* Database class reference */
     /** @var NagVisualClass */
-    public $myVisClass; /* NagiosQL configuration class object */
-    private $arrSettings = array(); /* NagiosQL visual class object */
+    public $myVisClass; /* Gohan ZQL configuration class object */
+    private $arrSettings = array(); /* Gohan ZQL visual class object */
 
     /**
      * NagContentClass constructor.
@@ -498,12 +499,12 @@ class NagContentClass
     /**
      * Display page footer
      * @param NagTemplateClass $objTemplate Form template object
-     * @param string $setFileVersion NagiosQL version
+     * @param string $setFileVersion Gohan ZQL version
      */
     public function showFooter(NagTemplateClass $objTemplate, string $setFileVersion): void
     {
-        $objTemplate->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' " .
-            "target='_blank'>NagiosQL</a> $setFileVersion");
+        $objTemplate->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion " .
+            "(fork of <a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
         $objTemplate->parse('footer');
         $objTemplate->show('footer');
     }

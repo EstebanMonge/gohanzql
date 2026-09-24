@@ -1,14 +1,15 @@
 --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 --
---  NagiosQL
+--  Gohan ZQL
 --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 --
 --  (c) 2005-2023 by Martin Willisegger
+--  (c) 2026 by Esteban Monge - Sempai Space
 --
---  Project   : NagiosQL
---  Component : Update from NagiosQL 3.5.0 to NagiosQL 4.0.0
+--  Project   : Gohan ZQL (fork of NagiosQL)
+--  Component : Update from NagiosQL 3.5.0 to Gohan ZQL 4.0.0
 --  Website   : https://sourceforge.net/projects/nagiosql/
 --  Version   : 4.0.0
 --  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
@@ -18,3 +19,7 @@
 --  Modify existing tbl_settings (there are no database structure changes in this version)
 --
 UPDATE `tbl_settings` SET `value` = '4.0.0' WHERE `tbl_settings`.`category` = 'db' AND `tbl_settings`.`name` = 'version' LIMIT 1;
+--
+--  Rename the product in the default help texts (help texts changed in the help editor are stored as 'private' and are not touched, references to NagiosQL 1, 2 and 3 stay)
+--
+UPDATE `tbl_info` SET `infotext` = REPLACE(REPLACE(REPLACE(REPLACE(`infotext`, 'NagiosQL', 'Gohan ZQL'), 'Gohan ZQL 1', 'NagiosQL 1'), 'Gohan ZQL 2', 'NagiosQL 2'), 'Gohan ZQL 3', 'NagiosQL 3') WHERE `language` = 'default' AND `infotext` LIKE '%NagiosQL%';

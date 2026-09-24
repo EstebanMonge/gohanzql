@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Import Class
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -39,8 +40,8 @@ class NagImportClass
 
     /* Class includes */
     private $arrSettings = array(); /* Database class object */
-    private $strList1 = ''; /* NagiosQL data processing class object */
-    private $strList2 = ''; /* NagiosQL configuration class object */
+    private $strList1 = ''; /* Gohan ZQL data processing class object */
+    private $strList2 = ''; /* Gohan ZQL configuration class object */
 
     /**
      * NagImportClass constructor.
@@ -597,7 +598,7 @@ class NagImportClass
             }
             /* Replace *, + and ! in HASH raw string */
             $strRawString = str_replace(array('*,', '!', '+'), array('any,', 'not_', ''), $strRawString);
-            /* Create configuration name from NagiosQL variable if exists */
+            /* Create configuration name from Gohan ZQL variable if exists */
             if (isset($arrBlockData['_NAGIOSQL_CONFIG_NAME'])) {
                 $strConfigName = $arrBlockData['_NAGIOSQL_CONFIG_NAME']['value'];
             } else {
@@ -657,7 +658,7 @@ class NagImportClass
             $strRawString1 = str_replace('!', 'not_', $strRawString1);
             $strRawString2 = str_replace('!', 'not_', $strRawString2);
             $strRawString3 = str_replace('!', 'not_', $strRawString3);
-            /* Create configuration name from NagiosQL variable if exists */
+            /* Create configuration name from Gohan ZQL variable if exists */
             if (isset($arrBlockData['_NAGIOSQL_CONFIG_NAME'])) {
                 $strConfigName = $arrBlockData['_NAGIOSQL_CONFIG_NAME']['value'];
             } else {
@@ -719,7 +720,7 @@ class NagImportClass
             $strRawString1 = str_replace('!', 'not_', $strRawString1);
             $strRawString2 = str_replace('!', 'not_', $strRawString2);
             $strRawString3 = str_replace('!', 'not_', $strRawString3);
-            /* Create configuration name from NagiosQL variable if exists */
+            /* Create configuration name from Gohan ZQL variable if exists */
             if (isset($arrBlockData['_NAGIOSQL_CONFIG_NAME'])) {
                 $strConfigName = $arrBlockData['_NAGIOSQL_CONFIG_NAME']['value'];
             } else {
@@ -764,7 +765,7 @@ class NagImportClass
             }
             /* HASH string */
             $strRawString = substr($strRawString, 0, -1);
-            /* Create configuration name from NagiosQL variable if exists */
+            /* Create configuration name from Gohan ZQL variable if exists */
             if (isset($arrBlockData['_NAGIOSQL_CONFIG_NAME'])) {
                 $strConfigName = $arrBlockData['_NAGIOSQL_CONFIG_NAME']['value'];
             } else {
@@ -1598,7 +1599,7 @@ class NagImportClass
         if (($strKey === '') || ($strValue === '')) {
             $intReturn = 1;
         }
-        /* Remove NagiosQL variables */
+        /* Remove Gohan ZQL variables */
         if ($strKey === '_NAGIOSQL_CONFIG_NAME') {
             $intReturn = 1;
         }

@@ -1,6 +1,7 @@
 <!-- (c) 2005-2022 by Martin Willisegger -->
+<!-- (c) 2026 by Esteban Monge - Sempai Space -->
 <!-- -->
-<!-- Project   : NagiosQL -->
+<!-- Project   : Gohan ZQL (fork of NagiosQL) -->
 <!-- Component : Installer template -->
 <!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
 <!-- Version   : 4.0.0 -->
@@ -17,7 +18,7 @@
     <div id="page">
         <div id="header">
             <div id="header-logo">
-                <a href="index.php"><img src="images/nagiosql.png" border="0" alt="NagiosQL Logo" title="NagiosQL Logo"></a>
+                <a href="index.php"><img src="images/nagiosql.png" border="0" alt="Gohan ZQL Logo" title="Gohan ZQL Logo"></a>
             </div>
             <div id="documentation">
                 <a href="https://sourceforge.net/projects/nagiosql/faq.html"
@@ -28,8 +29,9 @@
             {CONTENT}
         </div>
         <div id="footer">
+            Gohan ZQL <?php echo BASE_VERSION; ?> (fork of
             <a href='https://sourceforge.net/projects/nagiosql/'
-               target='_blank'>NagiosQL</a> <?php echo BASE_VERSION; ?>
+               target='_blank'>NagiosQL</a>)
         </div>
     </div>
 </div>

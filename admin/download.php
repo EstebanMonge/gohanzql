@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Download config file
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -16,8 +17,8 @@ use functions\NagDataClass;
 
 /**
  * Class and variable includes
- * @var NagDataClass $myDataClass NagiosQL data class
- * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var NagDataClass $myDataClass Gohan ZQL data class
+ * @var NagConfigClass $myConfigClass Gohan ZQL configuration class
  */
 /*
 Path settings

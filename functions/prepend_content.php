@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Preprocessing script for content pages
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -19,11 +20,11 @@ use functions\NagVisualClass;
 
 /**
  * Class and variable includes
- * @var NagContentClass $myContentClass NagiosQL content class
+ * @var NagContentClass $myContentClass Gohan ZQL content class
  * @var NagVisualClass $myVisClass Visual content class
  * @var MysqliDbClass $myDBClass MySQL database class
- * @var NagConfigClass $myConfigClass NagiosQL configuration class
- * @var NagDataClass $myDataClass NagiosQL data class
+ * @var NagConfigClass $myConfigClass Gohan ZQL configuration class
+ * @var NagDataClass $myDataClass Gohan ZQL data class
  * @var functions\NagTemplateClass $mastertp Master template (list view)
  * @var string $chkLimit from prepend_adm.php / settings -> Data set count per page
  * @var string $preBrowser from prepend_adm.php -> Browser version

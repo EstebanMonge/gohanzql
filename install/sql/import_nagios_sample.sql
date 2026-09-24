@@ -1,13 +1,14 @@
 --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 --
---  NagiosQL
+--  Gohan ZQL
 --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 --
 --  (c) 2005-2022 by Martin Willisegger
+--  (c) 2026 by Esteban Monge - Sempai Space
 --
---  Project   : NagiosQL
+--  Project   : Gohan ZQL (fork of NagiosQL)
 --  Component : Import samples build from Nagios 3.0.5 configuration samples
 --  Website   : https://sourceforge.net/projects/nagiosql/
 --  Version   : 4.0.0

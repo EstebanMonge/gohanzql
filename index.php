@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Start script
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -48,7 +49,7 @@ Include Content
 */
 $conttp->setVariable('TITLE', translate('Welcome to'));
 $conttp->setVariable('TITLE_LOGIN', translate('Welcome'));
-$conttp->setVariable('LOGIN_TEXT', translate('Please enter your username and password to access NagiosQL.<br>If '
+$conttp->setVariable('LOGIN_TEXT', translate('Please enter your username and password to access Gohan ZQL.<br>If '
     . 'you forgot one of them, please contact your Administrator.'));
 $conttp->setVariable('USERNAME', translate('Username'));
 $conttp->setVariable('PASSWORD', translate('Password'));
@@ -65,7 +66,7 @@ $conttp->show('main');
 /*
 Include footer
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-    . "target='_blank'>NagiosQL</a> $setFileVersion");
+$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

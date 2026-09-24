@@ -1,11 +1,12 @@
 #!/usr/bin/php
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Scripting API
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -27,9 +28,9 @@ use functions\NagVisualClass;
  * Class and variable includes
  * @var MysqliDbClass $myDBClass MySQL database class
  * @var NagVisualClass $myVisClass Visual content class
- * @var NagDataClass $myDataClass NagiosQL data class
- * @var NagImportClass $myImportClass NagiosQL content class
- * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var NagDataClass $myDataClass Gohan ZQL data class
+ * @var NagImportClass $myImportClass Gohan ZQL content class
+ * @var NagConfigClass $myConfigClass Gohan ZQL configuration class
  */
 /*
 Include preprocessing file

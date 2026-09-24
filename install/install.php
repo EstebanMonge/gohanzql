@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Installer script - check page
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -192,8 +193,8 @@ $strContentRaw = ob_get_clean();
 /*
 Build content
 */
-$arrTemplate['PAGETITLE'] = '[NagiosQL] Installation Wizard';
-$arrTemplate['MAIN_TITLE'] = $myInstClass->translate('Welcome to the NagiosQL Installation Wizard');
+$arrTemplate['PAGETITLE'] = '[Gohan ZQL] Installation Wizard';
+$arrTemplate['MAIN_TITLE'] = $myInstClass->translate('Welcome to the Gohan ZQL Installation Wizard');
 $arrTemplate['CONTENT'] = $strContentRaw;
 /*
 Write content

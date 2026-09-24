@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Configuration Class
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -14,7 +15,7 @@
 /* ----------------------------------------------------------------------------
  Class: Configuration class
 -------------------------------------------------------------------------------
- Includes all functions used for handling configuration files with NagiosQL
+ Includes all functions used for handling configuration files with Gohan ZQL
  Name: NagConfigClass
 -----------------------------------------------------------------------------*/
 
@@ -1096,7 +1097,7 @@ class NagConfigClass
                     if ($setUTF8Decode === 1) {
                         $value = mb_convert_encoding($value, 'UTF-8');
                     }
-                    /* Pass special fields (NagiosQL data fields not used by Nagios itselves) */
+                    /* Pass special fields (Gohan ZQL data fields not used by Nagios itselves) */
                     if ($value === null) {
                         $value = '';
                     }

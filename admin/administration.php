@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Administration overview
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -37,13 +38,13 @@ Include content
 $conttp->setVariable('TITLE', translate('Administration'));
 $conttp->parse('header');
 $conttp->show('header');
-$conttp->setVariable('DESC', translate('Functions to administrate NagiosQL V3'));
+$conttp->setVariable('DESC', translate('Functions to administrate Gohan ZQL V3'));
 $conttp->parse('main');
 $conttp->show('main');
 /*
 Include Footer
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-    . "target='_blank'>NagiosQL</a> $setFileVersion");
+$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Group administration
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -23,8 +24,8 @@ use functions\NagVisualClass;
  * @var functions\NagTemplateClass $mastertp Master template (list view)
  * @var MysqliDbClass $myDBClass MySQL database class
  * @var NagVisualClass $myVisClass Visual content class
- * @var NagDataClass $myDataClass NagiosQL data class
- * @var NagContentClass $myContentClass NagiosQL content class
+ * @var NagDataClass $myDataClass Gohan ZQL data class
+ * @var NagContentClass $myContentClass Gohan ZQL content class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  * @var int $chkActive from prepend_adm.php -> Active checkbox
  * @var string $chkModus from prepend_adm.php -> Form work mode

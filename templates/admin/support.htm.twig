@@ -1,9 +1,10 @@
-{# NagiosQL template (Twig), rendered by functions\NagTemplateClass. Every block is one template fragment: {{ NAME }} is a
+{# Gohan ZQL template (Twig), rendered by functions\NagTemplateClass. Every block is one template fragment: {{ NAME }} is a
    placeholder, {{ __name__ }} is the slot where the output of the inner block "name" is inserted. #}
 {% block __global__ %}<!-- (c) 2005-2023 by Martin Willisegger -->
+<!-- (c) 2026 by Esteban Monge - Sempai Space -->
 <!-- -->
-<!-- Project    : NagiosQL -->
-<!-- Component  : NagiosQL support page template -->
+<!-- Project    : Gohan ZQL (fork of NagiosQL) -->
+<!-- Component  : Gohan ZQL support page template -->
 <!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
 <!-- Version   : 4.0.0 -->
 <!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
@@ -12,6 +13,15 @@
 
 <div id="content_main">
     <div id="content_title">{{ TITLE }}</div>
+    <h2 style="padding-top:10px;">{{ SUBTITLE_ABOUT }}</h2>
+    <p>{{ ABOUT_TEXT }}</p>
+    <h2 style="padding-top:10px;">{{ SUBTITLE_CREDITS }}</h2>
+    <ul>
+        <li>Gohan ZQL: (c) 2026 Esteban Monge - Sempai Space</li>
+        <li>NagiosQL: (c) 2005-2023 Martin Willisegger and the NagiosQL contributors</li>
+        <li>Claude (Anthropic): AI assistant that helped to develop Gohan ZQL</li>
+    </ul>
+    <p>{{ CREDITS_LIBRARIES }}</p>
     <h2 style="padding-top:10px;">{{ SUBTITLE_1 }}</h2>
     <p>{{ SUPPORT_TEXT_1 }}</p>
     <p><a href="https://sourceforge.net/projects/nagiosql/" target="_blank">{{ WEBSITE_LINK }}</a>

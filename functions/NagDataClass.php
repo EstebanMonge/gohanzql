@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Data processing class
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -37,9 +38,9 @@ class NagDataClass
     /** @var MysqliDbClass */
     public $myDBClass; /* Database class reference */
     /** @var NagVisualClass */
-    public $myVisClass; /* NagiosQL visual class object */
+    public $myVisClass; /* Gohan ZQL visual class object */
     /** @var NagConfigClass */
-    public $myConfigClass; /* NagiosQL configuration class object */
+    public $myConfigClass; /* Gohan ZQL configuration class object */
 
     /**
      * NagDataClass constructor.

@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Logbook administration
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -153,7 +154,7 @@ $conttp->show('logbooksite');
 /*
 Process footer
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-    . "target='_blank'>NagiosQL</a> $setFileVersion");
+$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

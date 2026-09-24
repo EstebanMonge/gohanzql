@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Cgi configuration file editor
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -20,8 +21,8 @@ use functions\NagVisualClass;
  * @var functions\NagTemplateClass $conttp Content template
  * @var functions\NagTemplateClass $maintp Main template
  * @var NagVisualClass $myVisClass Visual content class
- * @var NagDataClass $myDataClass NagiosQL data class
- * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var NagDataClass $myDataClass Gohan ZQL data class
+ * @var NagConfigClass $myConfigClass Gohan ZQL configuration class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  * @var string $prePageKey from prepend_adm.php -> Menu group id
  * @var string $chkTaFileText from prepend_content.php -> Text area
@@ -179,7 +180,7 @@ $conttp->show('naginsert');
 /*
 Process footer
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-    . "target='_blank'>NagiosQL</a> $setFileVersion");
+$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

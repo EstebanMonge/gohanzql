@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Installer main script
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -159,11 +160,11 @@ if (file_exists($filInit) && is_readable($filInit)) {
 /*
 Build content
 */
-$arrTemplate['PAGETITLE'] = '[NagiosQL] ' . $myInstClass->translate('Installation wizard');
-$arrTemplate['MAIN_TITLE'] = $myInstClass->translate('Welcome to the NagiosQL installation wizard');
-$arrTemplate['TEXT_PART_1'] = $myInstClass->translate('This wizard will help you to install and configure NagiosQL.');
+$arrTemplate['PAGETITLE'] = '[Gohan ZQL] ' . $myInstClass->translate('Installation wizard');
+$arrTemplate['MAIN_TITLE'] = $myInstClass->translate('Welcome to the Gohan ZQL installation wizard');
+$arrTemplate['TEXT_PART_1'] = $myInstClass->translate('This wizard will help you to install and configure Gohan ZQL.');
 $arrTemplate['TEXT_PART_2'] = $myInstClass->translate('For questions please visit') . ': ';
-$arrTemplate['TEXT_PART_3'] = $myInstClass->translate("First let's check your local environment and find out if everything NagiosQL needs is available.");
+$arrTemplate['TEXT_PART_3'] = $myInstClass->translate("First let's check your local environment and find out if everything Gohan ZQL needs is available.");
 $arrTemplate['TEXT_PART_4'] = $myInstClass->translate('The basic requirements are:');
 $arrTemplate['TEXT_PART_5'] = $myInstClass->translate('PHP 8.1.0 or above including:');
 $arrTemplate['TEXT_PHP_REQ_1'] = $myInstClass->translate('PHP database module:') . ' ' .
@@ -181,7 +182,7 @@ $arrTemplate['TEXT_INI_REQ_2'] = $myInstClass->translate('session.auto_start nee
 $arrTemplate['TEXT_INI_REQ_3'] = $myInstClass->translate('date.timezone should be set to your local timezone');
 $arrTemplate['TEXT_PART_7'] = $myInstClass->translate('A database server');
 $arrTemplate['TEXT_PART_8'] = $myInstClass->translate('Nagios 2.x/3.x/4.x');
-$arrTemplate['TEXT_PART_9'] = $myInstClass->translate('NagiosQL version') . ' ' . $strVersion;
+$arrTemplate['TEXT_PART_9'] = $myInstClass->translate('Gohan ZQL version') . ' ' . $strVersion;
 $arrTemplate['LOCALE'] = $chkLocale;
 $arrTemplate['ONLINE_DOC'] = $myInstClass->translate('Online documentation');
 /*

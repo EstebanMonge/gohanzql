@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Installer script - step 1
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -78,7 +79,7 @@ Build content
 $arrTemplate['STEP1_BOX'] = $myInstClass->translate('Requirements');
 $arrTemplate['STEP2_BOX'] = $myInstClass->translate('Installation');
 $arrTemplate['STEP3_BOX'] = $myInstClass->translate('Finish');
-$arrTemplate['STEP1_TITLE'] = 'NagiosQL ' . $myInstClass->translate('Installation') . ': ' .
+$arrTemplate['STEP1_TITLE'] = 'Gohan ZQL ' . $myInstClass->translate('Installation') . ': ' .
     $myInstClass->translate('Checking requirements');
 $arrTemplate['STEP1_SUBTITLE1'] = $myInstClass->translate('Checking Client');
 $arrTemplate['STEP1_SUBTITLE2'] = $myInstClass->translate('Checking PHP version');
@@ -86,10 +87,10 @@ $arrTemplate['STEP1_SUBTITLE3'] = $myInstClass->translate('Checking PHP extensio
 $arrTemplate['STEP1_SUBTITLE4'] = $myInstClass->translate('Checking available database interfaces');
 $arrTemplate['STEP1_SUBTITLE5'] = $myInstClass->translate('Checking php.ini/.htaccess settings');
 $arrTemplate['STEP1_SUBTITLE6'] = $myInstClass->translate('Checking System Permission');
-$arrTemplate['STEP1_TEXT3_1'] = $myInstClass->translate('The following modules/extensions are <em>required</em> to run NagiosQL');
+$arrTemplate['STEP1_TEXT3_1'] = $myInstClass->translate('The following modules/extensions are <em>required</em> to run Gohan ZQL');
 $arrTemplate['STEP1_TEXT3_2'] = $myInstClass->translate('The next couple of extensions are <em>optional</em> but recommended');
 $arrTemplate['STEP1_TEXT4_1'] = $myInstClass->translate('Check which of the supported extensions are installed. At least one of them is required.');
-$arrTemplate['STEP1_TEXT5_1'] = $myInstClass->translate('The following settings are <em>required</em> to run NagiosQL');
+$arrTemplate['STEP1_TEXT5_1'] = $myInstClass->translate('The following settings are <em>required</em> to run Gohan ZQL');
 /*
 Conditional checks
 */
@@ -309,8 +310,8 @@ if (file_exists($strFile6) && is_readable($strFile6)) {
 }
 if ($intError !== 0) {
     $arrTemplate['MESSAGE'] = '<span class="red">' . $myInstClass->translate('There are some errors - please '
-            . 'check your system settings and read the requirements of NagiosQL!') . "</span><br><br>\n";
-    $arrTemplate['MESSAGE'] .= $myInstClass->translate('Read the INSTALLATION file in the NagiosQL doc directory '
+            . 'check your system settings and read the requirements of Gohan ZQL!') . "</span><br><br>\n";
+    $arrTemplate['MESSAGE'] .= $myInstClass->translate('Read the INSTALLATION file in the Gohan ZQL doc directory '
         . 'or the installation PDF file on our');
     $arrTemplate['MESSAGE'] .= ' <a href="https://sourceforge.net/projects/nagiosql/documentation.html" '
         . 'target="_blank">';

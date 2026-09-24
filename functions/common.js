@@ -1,6 +1,7 @@
 /**
  * (c) 2005-2022 by Martin Willisegger
- * Project   : NagiosQL
+ * (c) 2026 by Esteban Monge - Sempai Space
+ * Project   : Gohan ZQL (fork of NagiosQL)
  * Component : common JavaScript functions
  * Website   : https://sourceforge.net/projects/nagiosql/
  * Version   : 4.0.0

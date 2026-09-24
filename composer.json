@@ -1,6 +1,6 @@
 {
     "name": "nagiosql/nagiosql",
-    "description": "NagiosQL - web based administration tool for Nagios/Icinga configuration",
+    "description": "Gohan ZQL - web based administration tool for Nagios/Icinga configuration (fork of NagiosQL)",
     "type": "project",
     "license": "GPL-2.0-only",
     "require": {

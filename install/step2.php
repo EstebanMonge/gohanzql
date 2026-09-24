@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Installer script - step 2
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -34,12 +35,12 @@ $intError = 0;
 /*
 Build content
 */
-$arrTemplate['PASSWD_MESSAGE'] = $myInstClass->translate('The NagiosQL first passwords are not equal!');
+$arrTemplate['PASSWD_MESSAGE'] = $myInstClass->translate('The Gohan ZQL first passwords are not equal!');
 $arrTemplate['FIELDS_MESSAGE'] = $myInstClass->translate('Please fill in all fields marked with an *');
 $arrTemplate['STEP1_BOX'] = $myInstClass->translate('Requirements');
 $arrTemplate['STEP2_BOX'] = $myInstClass->translate('Installation');
 $arrTemplate['STEP3_BOX'] = $myInstClass->translate('Finish');
-$arrTemplate['STEP2_TITLE'] = 'NagiosQL ' . $myInstClass->translate('Installation') . ': ' .
+$arrTemplate['STEP2_TITLE'] = 'Gohan ZQL ' . $myInstClass->translate('Installation') . ': ' .
     $myInstClass->translate('Setup');
 $arrTemplate['STEP2_TEXT1_1'] = $myInstClass->translate('Please complete the form below. Mandatory fields marked '
     . '<em>*</em>');
@@ -70,9 +71,9 @@ $arrTemplate['STEP2_TEXT2_5'] = $myInstClass->translate('Database Server Port');
 $arrTemplate['STEP2_VALUE2_5'] = htmlspecialchars($_SESSION['install']['dbport'], ENT_QUOTES, 'utf-8');
 $arrTemplate['STEP2_TEXT2_6'] = $myInstClass->translate('Database name');
 $arrTemplate['STEP2_VALUE2_6'] = htmlspecialchars($_SESSION['install']['dbname'], ENT_QUOTES, 'utf-8');
-$arrTemplate['STEP2_TEXT2_7'] = $myInstClass->translate('NagiosQL DB User');
+$arrTemplate['STEP2_TEXT2_7'] = $myInstClass->translate('Gohan ZQL DB User');
 $arrTemplate['STEP2_VALUE2_7'] = htmlspecialchars($_SESSION['install']['dbuser'], ENT_QUOTES, 'utf-8');
-$arrTemplate['STEP2_TEXT2_8'] = $myInstClass->translate('NagiosQL DB Password');
+$arrTemplate['STEP2_TEXT2_8'] = $myInstClass->translate('Gohan ZQL DB Password');
 $arrTemplate['STEP2_VALUE2_8'] = htmlspecialchars($_SESSION['install']['dbpass'], ENT_QUOTES, 'utf-8');
 $arrTemplate['STEP2_TEXT2_9'] = $myInstClass->translate('Administrative Database User');
 $arrTemplate['STEP2_VALUE2_9'] = htmlspecialchars($_SESSION['install']['admuser'], ENT_QUOTES, 'utf-8');
@@ -83,10 +84,10 @@ if ($_SESSION['install']['dbdrop'] === 1) {
 } else {
     $arrTemplate['STEP2_VALUE2_11'] = '';
 }
-$arrTemplate['STEP2_TEXT3_1'] = $myInstClass->translate('NagiosQL User Setup');
-$arrTemplate['STEP2_TEXT3_2'] = $myInstClass->translate('Initial NagiosQL User');
+$arrTemplate['STEP2_TEXT3_1'] = $myInstClass->translate('Gohan ZQL User Setup');
+$arrTemplate['STEP2_TEXT3_2'] = $myInstClass->translate('Initial Gohan ZQL User');
 $arrTemplate['STEP2_VALUE3_2'] = htmlspecialchars($_SESSION['install']['qluser'], ENT_QUOTES, 'utf-8');
-$arrTemplate['STEP2_TEXT3_3'] = $myInstClass->translate('Initial NagiosQL Password');
+$arrTemplate['STEP2_TEXT3_3'] = $myInstClass->translate('Initial Gohan ZQL Password');
 $arrTemplate['STEP2_VALUE3_3'] = htmlspecialchars($_SESSION['install']['qlpass'], ENT_QUOTES, 'utf-8');
 $arrTemplate['STEP2_TEXT3_4'] = $myInstClass->translate('Please repeat the password');
 $arrTemplate['STEP2_TEXT4_1'] = $myInstClass->translate('Nagios Configuration');
@@ -97,21 +98,21 @@ if ($_SESSION['install']['sample'] === 1) {
     $arrTemplate['STEP2_VALUE4_2'] = '';
 }
 $arrTemplate['STEP2_FORM_1'] = $myInstClass->translate('Next');
-$arrTemplate['STEP2_TEXT5_1'] = $myInstClass->translate('NagiosQL path values');
-$arrTemplate['STEP2_TEXT5_2'] = $myInstClass->translate('Create NagiosQL config paths?');
+$arrTemplate['STEP2_TEXT5_1'] = $myInstClass->translate('Gohan ZQL path values');
+$arrTemplate['STEP2_TEXT5_2'] = $myInstClass->translate('Create Gohan ZQL config paths?');
 if ($_SESSION['install']['createpath'] === 1) {
     $arrTemplate['STEP2_VALUE5_2'] = 'checked';
 } else {
     $arrTemplate['STEP2_VALUE5_2'] = '';
 }
-$arrTemplate['STEP2_TEXT5_3'] = $myInstClass->translate('NagiosQL config path');
+$arrTemplate['STEP2_TEXT5_3'] = $myInstClass->translate('Gohan ZQL config path');
 $arrTemplate['STEP2_VALUE5_3'] = htmlspecialchars($_SESSION['install']['qlpath'], ENT_QUOTES, 'utf-8');
 $arrTemplate['STEP2_TEXT5_4'] = $myInstClass->translate('Nagios config path');
 $arrTemplate['STEP2_VALUE5_4'] = htmlspecialchars($_SESSION['install']['nagpath'], ENT_QUOTES, 'utf-8');
 $arrTemplate['STEP2_TEXT5_5'] = $myInstClass->translate('Both path values were stored in your configuration target '
     . 'settings for localhost.');
 $arrTemplate['STEP2_TEXT5_6'] = $myInstClass->translate('If you select the create path option, be sure that the '
-    . 'NagiosQL base path exist and the webserver demon has write access to it. So the installer will create the '
+    . 'Gohan ZQL base path exist and the webserver demon has write access to it. So the installer will create the '
     . "required subdirectories in your localhost's filesystem (hosts, services, backup etc.)");
 $arrTemplate['INSTALL_FIELDS'] = '';
 /*

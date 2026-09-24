@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Preprocessing script
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -448,17 +449,17 @@ Insert main template
 if (isset($preContent) && ($preContent !== '') && (!isset($preNoMain) || ($preNoMain !== 1))) {
     $maintp = new functions\NagTemplateClass($preBasePath . 'templates/');
     $maintp->loadTemplatefile('main.htm.twig');
-    $maintp->setVariable('META_DESCRIPTION', 'NagiosQL System Monitoring Administration Tool');
-    $maintp->setVariable('AUTHOR', 'NagiosQL Team');
+    $maintp->setVariable('META_DESCRIPTION', 'Gohan ZQL System Monitoring Administration Tool');
+    $maintp->setVariable('AUTHOR', 'Gohan ZQL Team');
     $maintp->setVariable('LANGUAGE', 'de');
-    $maintp->setVariable('PUBLISHER', 'NagiosQL @ Sourceforge');
+    $maintp->setVariable('PUBLISHER', 'Sempai Space');
     if ((int)$_SESSION['logged_in'] === 1) {
         $maintp->setVariable('ADMIN', '<a href="' . $_SESSION['SETS']['path']['base_url'] . 'admin.php" '
             . 'class="top-link">' . translate('Administration') . '</a>');
     }
     $maintp->setVariable('BASE_PATH', $_SESSION['SETS']['path']['base_url']);
     $maintp->setVariable('ROBOTS', 'noindex,nofollow');
-    $maintp->setVariable('PAGETITLE', 'NagiosQL - Version ' . $setDBVersion);
+    $maintp->setVariable('PAGETITLE', 'Gohan ZQL - Version ' . $setDBVersion);
     $maintp->setVariable('IMAGEDIR', $_SESSION['SETS']['path']['base_url'] . 'images/');
     if (isset($prePageId) && ($intError === 0)) {
         $maintp->setVariable('POSITION', $myVisClass->getPosition($prePageId, translate('Administration')));

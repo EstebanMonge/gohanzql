@@ -1,6 +1,6 @@
 # #############################################################################
 # #
-# # Project   : NagiosQL
+# # Project   : Gohan ZQL
 # # Component : Translation File English
 # # Website   : https://sourceforge.net/projects/nagiosql/
 # # Version   : 3.4.1
@@ -11,7 +11,7 @@
 # Jens Hyllegaard <jens.hyllegaard@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: NagiosQL\n"
+"Project-Id-Version: Gohan ZQL\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-09 22:49+0100\n"
 "PO-Revision-Date: 2012-03-09 22:49+0100\n"
@@ -28,12 +28,12 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin.php:34
-msgid "NagiosQL Administration"
-msgstr "NagiosQL administration"
+msgid "Gohan ZQL Administration"
+msgstr "Gohan ZQL administration"
 
 #: admin.php:37
-msgid "Welcome to NagiosQL, the administration module that can be used to easily create, modify and delete configuration files for Nagios. The data is stored in a database and can be written directly to the standard files at any time you want."
-msgstr "Velkommen til NagiosQL, administrationsmodulet der kan bruges til nemt at oprette, ændre og slette konfigurationsfiler til Nagios. Data gemmes i en database og kan når som helst skrives direkte til standardfilerne."
+msgid "Welcome to Gohan ZQL, the administration module that can be used to easily create, modify and delete configuration files for Nagios. The data is stored in a database and can be written directly to the standard files at any time you want."
+msgstr "Velkommen til Gohan ZQL, administrationsmodulet der kan bruges til nemt at oprette, ændre og slette konfigurationsfiler til Nagios. Data gemmes i en database og kan når som helst skrives direkte til standardfilerne."
 
 #: index.php:45
 msgid "Welcome to"
@@ -44,8 +44,8 @@ msgid "Welcome"
 msgstr "Velkommen"
 
 #: index.php:47
-msgid "Please enter your username and password to access NagiosQL.<br>If you forgot one of them, please contact your Administrator."
-msgstr "Indtast venligst dit brugernavn og adgangskode for at tilgå NagiosQL.<br>Hvis du har glemt en af dem, kontakt da venligst din administrator."
+msgid "Please enter your username and password to access Gohan ZQL.<br>If you forgot one of them, please contact your Administrator."
+msgstr "Indtast venligst dit brugernavn og adgangskode for at tilgå Gohan ZQL.<br>Hvis du har glemt en af dem, kontakt da venligst din administrator."
 
 #: index.php:48
 msgid "Username"
@@ -65,8 +65,8 @@ msgstr "Administration"
 
 # administration.php
 #: admin/administration.php:34
-msgid "Functions to administrate NagiosQL V3"
-msgstr "Funktioner til at administrere NagiosQL V3"
+msgid "Functions to administrate Gohan ZQL V3"
+msgstr "Funktioner til at administrere Gohan ZQL V3"
 
 #: admin/alarming.php:31
 msgid "Alarming"
@@ -726,12 +726,12 @@ msgid "<b>Check your configuration after import!</b><br>In cause of an error or 
 msgstr "<b>Tjek din konfiguration efter import!</b><br>I tilfælde af fejl eller en ufærdig konfiguration, kan en ny importering af den forkerte konfiguration løse problemet."
 
 #: admin/info.php:39
-msgid "This is relative path of your NagiosQL Installation"
-msgstr "Dette er den relative sti til din NagiosQL installation"
+msgid "This is relative path of your Gohan ZQL Installation"
+msgstr "Dette er den relative sti til din Gohan ZQL installation"
 
 #: admin/info.php:40
-msgid "This is the absolut path to your NagiosQL Installation"
-msgstr "Dette er den absolutte sti til din NagiosQL installation"
+msgid "This is the absolut path to your Gohan ZQL Installation"
+msgstr "Dette er den absolutte sti til din Gohan ZQL installation"
 
 #: admin/info.php:41
 msgid "If you need a secure connection, select HTTPS instead of HTTP"
@@ -758,12 +758,12 @@ msgid "MySQL Server Port, default is 3306"
 msgstr "MySQL serverport, standard er 3306"
 
 #: admin/info.php:47
-msgid "Name of the NagiosQL database<br>e.g. db_nagiosql_v3"
-msgstr "Navn på NagiosQL databasen<br>f.eks. db_nagiosql_v3"
+msgid "Name of the Gohan ZQL database<br>e.g. db_nagiosql_v3"
+msgstr "Navn på Gohan ZQL databasen<br>f.eks. db_nagiosql_v3"
 
 #: admin/info.php:48
-msgid "User with sufficient permission for the NagiosQL database<br>At least this user should have SELECT, INSERT, UPDATE, DELETE permissions"
-msgstr "Bruger med nødvendige rettigheder til NagiosQL databasen<br>Som minimum skal denne bruger have rettigheder til SELECT, INSERT, UPDATE og DELETEBruger med nødvendige rettigheder til NagiosQL databasen<br>Som minimum skal denne bruger have rettigheder til SELECT, INSERT, UPDATE og DELETE"
+msgid "User with sufficient permission for the Gohan ZQL database<br>At least this user should have SELECT, INSERT, UPDATE, DELETE permissions"
+msgstr "Bruger med nødvendige rettigheder til Gohan ZQL databasen<br>Som minimum skal denne bruger have rettigheder til SELECT, INSERT, UPDATE og DELETEBruger med nødvendige rettigheder til Gohan ZQL databasen<br>Som minimum skal denne bruger have rettigheder til SELECT, INSERT, UPDATE og DELETE"
 
 #: admin/info.php:49
 msgid "Password for the above mentioned user"
@@ -774,8 +774,8 @@ msgid "After the defined amount of seconds the session will terminate for securi
 msgstr "Efter det foruddefinerede antal sekunder, vil sessionen afbrydes af sikkerhedsmæssige årsagerEfter det foruddefinerede antal sekunder, vil sessionen afbrydes af sikkerhedsmæssige årsager"
 
 #: admin/info.php:51
-msgid "Decide between authentication based on your Webserver<br>e.g. Apache configuration (config file or htaccess) or NagiosQL"
-msgstr "Vælg godkendelsesmetode baseret på din webserver<br>f.eks. Apache konfiguration (konfig fil eller htaccess) eller NagiosQLVælg godkendelsesmetode baseret på din webserver<br>f.eks. Apache konfiguration (konfig fil eller htaccess) eller NagiosQL"
+msgid "Decide between authentication based on your Webserver<br>e.g. Apache configuration (config file or htaccess) or Gohan ZQL"
+msgstr "Vælg godkendelsesmetode baseret på din webserver<br>f.eks. Apache konfiguration (konfig fil eller htaccess) eller NagiosQLVælg godkendelsesmetode baseret på din webserver<br>f.eks. Apache konfiguration (konfig fil eller htaccess) eller Gohan ZQL"
 
 #: admin/info.php:52
 msgid "How many entries per side should be visibile (e.g. services or hosts)"
@@ -1093,8 +1093,8 @@ msgid "Configure Settings"
 msgstr "Konfigurér indstillinger"
 
 #: admin/settings.php:154
-msgid "Change your current NagiosQL settings (e.g. Database user, Language)."
-msgstr "Tilpas dine aktuelle NagiosQL indstillinger (f.eks. databasebruger og sprog).Tilpas dine aktuelle NagiosQL indstillinger (f.eks. databasebruger og sprog)."
+msgid "Change your current Gohan ZQL settings (e.g. Database user, Language)."
+msgstr "Tilpas dine aktuelle Gohan ZQL indstillinger (f.eks. databasebruger og sprog).Tilpas dine aktuelle Gohan ZQL indstillinger (f.eks. databasebruger og sprog)."
 
 #: admin/settings.php:158
 msgid "Path"
@@ -1218,8 +1218,8 @@ msgid "Service ext. info"
 msgstr "Udv. service-info"
 
 #: admin/support.php:65
-msgid "NagiosQL support page"
-msgstr "NagiosQL support side"
+msgid "Gohan ZQL support page"
+msgstr "Gohan ZQL support side"
 
 #: admin/support.php:75
 msgid "Support contact information"
@@ -3069,20 +3069,20 @@ msgstr "Standardværdi filen er ikke tilgængelig eller er ikke læsbar (install
 
 #: install/index.php:150
 #: install/install.php:124
-msgid "Welcome to the NagiosQL Installation Wizard"
-msgstr "Velkommen til NagiosQL installationsguiden"
+msgid "Welcome to the Gohan ZQL Installation Wizard"
+msgstr "Velkommen til Gohan ZQL installationsguiden"
 
 #: install/index.php:151
-msgid "This wizard will help you to install and configure NagiosQL."
-msgstr "Denne guide vil hjælpe dig med at installere og konfigurere NagiosQL."
+msgid "This wizard will help you to install and configure Gohan ZQL."
+msgstr "Denne guide vil hjælpe dig med at installere og konfigurere Gohan ZQL."
 
 #: install/index.php:152
 msgid "For questions please visit"
 msgstr "Ved spørgsmål besøg venligst"
 
 #: install/index.php:153
-msgid "First let's check your local environment and find out if everything NagiosQL needs is available."
-msgstr "Lad os først undersøge dit lokale miljø, og se om alt hvad NagiosQL skal bruge er tilgængeligt.Lad os først undersøge dit lokale miljø, og se om alt hvad NagiosQL skal bruge er tilgængeligt."
+msgid "First let's check your local environment and find out if everything Gohan ZQL needs is available."
+msgstr "Lad os først undersøge dit lokale miljø, og se om alt hvad Gohan ZQL skal bruge er tilgængeligt.Lad os først undersøge dit lokale miljø, og se om alt hvad Gohan ZQL skal bruge er tilgængeligt."
 
 #: install/index.php:154
 msgid "The basic requirements are:"
@@ -3176,8 +3176,8 @@ msgid "Checking System Permission"
 msgstr "Kontrollerer system-rettigheder"
 
 #: install/step1.php:90
-msgid "The following modules/extensions are <em>required</em> to run NagiosQL"
-msgstr "De følgende moduler/udvidelser er <em>krævet</em> for at køre NagiosQL"
+msgid "The following modules/extensions are <em>required</em> to run Gohan ZQL"
+msgstr "De følgende moduler/udvidelser er <em>krævet</em> for at køre Gohan ZQL"
 
 #: install/step1.php:91
 msgid "The next couple of extensions are <em>optional</em> but recommended"
@@ -3188,8 +3188,8 @@ msgid "Check which of the supported extensions are installed. At least one of th
 msgstr "Kontroller hvilke af de understøttede udvidelser der er installeret. Mindst en af dem er krævet.Kontroller hvilke af de understøttede udvidelser der er installeret. Mindst en af dem er krævet."
 
 #: install/step1.php:93
-msgid "The following settings are <em>required</em> to run NagiosQL"
-msgstr "Følgende indstillinger er <em>krævet</em> for at køre NagiosQL"
+msgid "The following settings are <em>required</em> to run Gohan ZQL"
+msgstr "Følgende indstillinger er <em>krævet</em> for at køre Gohan ZQL"
 
 #: install/step1.php:107
 msgid "ENABLED"
@@ -3309,12 +3309,12 @@ msgid "Read test on a image file (images/pixel.gif)"
 msgstr "Læse-test på en billedfil (images/pixel.gif)"
 
 #: install/step1.php:254
-msgid "There are some errors - please check your system settings and read the requirements of NagiosQL!"
-msgstr "Der er nogle fejl - kontroller venligst dine systemindstilling og læs kravene til NagiosQL!Der er nogle fejl - kontroller venligst dine systemindstilling og læs kravene til NagiosQL!"
+msgid "There are some errors - please check your system settings and read the requirements of Gohan ZQL!"
+msgstr "Der er nogle fejl - kontroller venligst dine systemindstilling og læs kravene til Gohan ZQL!Der er nogle fejl - kontroller venligst dine systemindstilling og læs kravene til Gohan ZQL!"
 
 #: install/step1.php:255
-msgid "Read the INSTALLATION file from NagiosQL to find out, how to fix them."
-msgstr "Læs INSTALLATION filen fra NagiosQL for finde vejledning til at løse dem.Læs INSTALLATION filen fra NagiosQL for finde vejledning til at løse dem."
+msgid "Read the INSTALLATION file from Gohan ZQL to find out, how to fix them."
+msgstr "Læs INSTALLATION filen fra Gohan ZQL for finde vejledning til at løse dem.Læs INSTALLATION filen fra Gohan ZQL for finde vejledning til at løse dem."
 
 #: install/step1.php:256
 msgid "After that - refresh this page to proceed"
@@ -3333,8 +3333,8 @@ msgid "Next"
 msgstr "Næste"
 
 #: install/step2.php:33
-msgid "The NagiosQL first passwords are not equal!"
-msgstr "NagiosQL startkoderne er ikke ens!"
+msgid "The Gohan ZQL first passwords are not equal!"
+msgstr "Gohan ZQL startkoderne er ikke ens!"
 
 #: install/step2.php:38
 msgid "Setup"
@@ -3365,12 +3365,12 @@ msgid "Database Server Port"
 msgstr "Database serverport"
 
 #: install/step2.php:55
-msgid "NagiosQL DB User"
-msgstr "NagiosQL DB bruger"
+msgid "Gohan ZQL DB User"
+msgstr "Gohan ZQL DB bruger"
 
 #: install/step2.php:57
-msgid "NagiosQL DB Password"
-msgstr "NagiosQL DB adgangskode"
+msgid "Gohan ZQL DB Password"
+msgstr "Gohan ZQL DB adgangskode"
 
 #: install/step2.php:59
 msgid "Administrative Database User"
@@ -3385,16 +3385,16 @@ msgid "Drop database if already exists?"
 msgstr "Slet databasen hvis den allerede eksisterer?"
 
 #: install/step2.php:64
-msgid "NagiosQL User Setup"
-msgstr "NagiosQL bruger-opsætning"
+msgid "Gohan ZQL User Setup"
+msgstr "Gohan ZQL bruger-opsætning"
 
 #: install/step2.php:65
-msgid "Initial NagiosQL User"
-msgstr "Første NagiosQL bruger"
+msgid "Initial Gohan ZQL User"
+msgstr "Første Gohan ZQL bruger"
 
 #: install/step2.php:67
-msgid "Initial NagiosQL Password"
-msgstr "Første NagiosQL adgangskode"
+msgid "Initial Gohan ZQL Password"
+msgstr "Første Gohan ZQL adgangskode"
 
 #: install/step2.php:69
 msgid "Please repeat the password"
@@ -3409,16 +3409,16 @@ msgid "Import Nagios sample config?"
 msgstr "Importer Nagios eksempel-konfiguration?"
 
 #: install/step2.php:74
-msgid "NagiosQL path values"
-msgstr "NagiosQL sti værdier"
+msgid "Gohan ZQL path values"
+msgstr "Gohan ZQL sti værdier"
 
 #: install/step2.php:75
-msgid "Create NagiosQL config paths?"
-msgstr "Opret NagiosQL konfigurationsstier?"
+msgid "Create Gohan ZQL config paths?"
+msgstr "Opret Gohan ZQL konfigurationsstier?"
 
 #: install/step2.php:77
-msgid "NagiosQL config path"
-msgstr "NagiosQL konfigurationssti"
+msgid "Gohan ZQL config path"
+msgstr "Gohan ZQL konfigurationssti"
 
 #: install/step2.php:79
 msgid "Nagios config path"
@@ -3429,8 +3429,8 @@ msgid "Both path values were stored in your configuration target settings for lo
 msgstr "Begge værdier blev gemt i dine konfigurationsmål indstilling for lokalværter."
 
 #: install/step2.php:82
-msgid "If you select the create path option, be sure that the NagiosQL base path exist and the webserver demon has write access to it. So the installer will create the required subdirectories in your localhost's filesystem (hosts, services, backup etc.)"
-msgstr "Hvis du vælge opret sti funktionen, skal du sørge for at NagiosQL grundstien eksisterer, og at webserver dæmonen har adgang til den. Derefter vil installationsprogrammet oprette de nødvendige undermapper i din lokalværts filsystem (hosts, services, backup osv.)"
+msgid "If you select the create path option, be sure that the Gohan ZQL base path exist and the webserver demon has write access to it. So the installer will create the required subdirectories in your localhost's filesystem (hosts, services, backup etc.)"
+msgstr "Hvis du vælge opret sti funktionen, skal du sørge for at Gohan ZQL grundstien eksisterer, og at webserver dæmonen har adgang til den. Derefter vil installationsprogrammet oprette de nødvendige undermapper i din lokalværts filsystem (hosts, services, backup osv.)"
 
 #: install/step2.php:94
 msgid "Please backup your database before proceeding!"
@@ -3441,8 +3441,8 @@ msgid "Finishing Setup"
 msgstr "Færdiggør installation"
 
 #: install/step3.php:42
-msgid "Deploy NagiosQL settings"
-msgstr "Udsend NagiosQL indstillinger"
+msgid "Deploy Gohan ZQL settings"
+msgstr "Udsend Gohan ZQL indstillinger"
 
 #: install/step3.php:43
 msgid "Database server connection (privileged user)"
@@ -3457,28 +3457,28 @@ msgid "Database server support"
 msgstr "Database server undstøttelse"
 
 #: install/step3.php:46
-msgid "Delete existing NagiosQL database"
-msgstr "Slet eksisterende NagiosQL database"
+msgid "Delete existing Gohan ZQL database"
+msgstr "Slet eksisterende Gohan ZQL database"
 
 #: install/step3.php:47
 msgid "Creating new database"
 msgstr "Opretter ny database"
 
 #: install/step3.php:48
-msgid "Create NagiosQL database user"
-msgstr "Opret NagiosQL databasebruger"
+msgid "Create Gohan ZQL database user"
+msgstr "Opret Gohan ZQL databasebruger"
 
 #: install/step3.php:49
-msgid "Installing NagiosQL database tables"
-msgstr "Installerer NagiosQL databasetabeller"
+msgid "Installing Gohan ZQL database tables"
+msgstr "Installerer Gohan ZQL databasetabeller"
 
 #: install/step3.php:50
-msgid "Set initial NagiosQL Administrator"
-msgstr "Opretter første NagiosQL administrator"
+msgid "Set initial Gohan ZQL Administrator"
+msgstr "Opretter første Gohan ZQL administrator"
 
 #: install/step3.php:51
-msgid "Database server connection (NagiosQL user)"
-msgstr "Databaseserver forbindelse (NagiosQL bruger)"
+msgid "Database server connection (Gohan ZQL user)"
+msgstr "Databaseserver forbindelse (Gohan ZQL bruger)"
 
 #: install/step3.php:52
 msgid "Writing global settings to database"
@@ -3493,16 +3493,16 @@ msgid "Import Nagios sample data"
 msgstr "Importer Nagios eksempeldata"
 
 #: install/step3.php:55
-msgid "Create and/or store NagiosQL path settings"
-msgstr "Opret og/eller gem NagiosQL sti-indstillinger"
+msgid "Create and/or store Gohan ZQL path settings"
+msgstr "Opret og/eller gem Gohan ZQL sti-indstillinger"
 
 #: install/step3.php:73
-msgid "Updating existing NagiosQL database"
-msgstr "Opdatér eksisterende NagiosQL database"
+msgid "Updating existing Gohan ZQL database"
+msgstr "Opdatér eksisterende Gohan ZQL database"
 
 #: install/step3.php:80
-msgid "Installed NagiosQL version"
-msgstr "Installeret NagiosQL version"
+msgid "Installed Gohan ZQL version"
+msgstr "Installeret Gohan ZQL version"
 
 #: install/step3.php:86
 msgid "Upgrading from version"
@@ -3525,8 +3525,8 @@ msgid "Converting database fields to utf8 character set"
 msgstr "Konverterer databasefelter til utf8 tegnsæt"
 
 #: install/step3.php:126
-msgid "Create new NagiosQL database"
-msgstr "Opret ny NagiosQL database"
+msgid "Create new Gohan ZQL database"
+msgstr "Opret ny Gohan ZQL database"
 
 #: install/step3.php:133
 msgid "Database already exists and drop database was not selected, please correct or manage manually"
@@ -3574,8 +3574,8 @@ msgid "not supported"
 msgstr "ikke understøttet"
 
 #: install/functions/install_class.php:268
-msgid "Your NagiosQL installation is up to date - no further actions are needed!"
-msgstr "Din NagiosQL installation er opdateret - ingen yderligere handlinger er nødvendige!"
+msgid "Your Gohan ZQL installation is up to date - no further actions are needed!"
+msgstr "Din Gohan ZQL installation er opdateret - ingen yderligere handlinger er nødvendige!"
 
 #: install/functions/install_class.php:272
 #: install/functions/install_class.php:279
@@ -3640,8 +3640,8 @@ msgid "Check the permissions of the created paths!"
 msgstr "Kontrollér rettighederne for de oprettede stier!"
 
 #: install/functions/install_class.php:736
-msgid "NagiosQL config path is not writeable - only database values updated"
-msgstr "NagiosQL konfigurationsti er ikke skrivbar - kun databaseværdier er opdateret"
+msgid "Gohan ZQL config path is not writeable - only database values updated"
+msgstr "Gohan ZQL konfigurationsti er ikke skrivbar - kun databaseværdier er opdateret"
 
 # prepend.adm
 #: install/functions/install_class.php:776
@@ -3670,8 +3670,8 @@ msgstr "Databasefejl ved konvertering til utf-8:"
 #~ msgstr "Error"
 #~ msgid "An error occured during the version check"
 #~ msgstr "An error occured during the version check"
-#~ msgid "Checking for NagiosQL Updates"
-#~ msgstr "Checking for NagiosQL Updates"
+#~ msgid "Checking for Gohan ZQL Updates"
+#~ msgstr "Checking for Gohan ZQL Updates"
 #~ msgid "You already have the latest development version installed"
 #~ msgstr "You already have the latest development version installed"
 #~ msgid ""

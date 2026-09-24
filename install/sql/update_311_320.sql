@@ -1,13 +1,14 @@
 --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 --
---  NagiosQL
+--  Gohan ZQL
 --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 --
 --  (c) 2005-2023 by Martin Willisegger
+--  (c) 2026 by Esteban Monge - Sempai Space
 --
---  Project   : NagiosQL
+--  Project   : Gohan ZQL (fork of NagiosQL)
 --  Component : Update from NagiosQL 3.1.x to NagiosQL 3.2.0
 --  Website   : https://sourceforge.net/projects/nagiosql/
 --  Version   : 4.0.0

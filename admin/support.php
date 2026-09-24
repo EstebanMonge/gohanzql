@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Support page
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -21,7 +22,7 @@ use functions\NagVisualClass;
  * @var functions\NagTemplateClass $maintp Main template
  * @var MysqliDbClass $myDBClass MySQL database class
  * @var NagVisualClass $myVisClass Visual content class
- * @var NagConfigClass $myConfigClass NagiosQL configuration class
+ * @var NagConfigClass $myConfigClass Gohan ZQL configuration class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  * @var string $setGITVersion from prepend_adm.php -> Application version string - GIT version
  * @var int $chkDomainId from prepend_adm.php -> Configuration domain id
@@ -53,7 +54,7 @@ require $preBasePath . 'functions/prepend_content.php';
 /*
 Start content
 */
-$conttp->setVariable('TITLE', translate('NagiosQL support page'));
+$conttp->setVariable('TITLE', translate('Gohan ZQL support page'));
 $conttp->parse('header');
 $conttp->show('header');
 /*
@@ -63,6 +64,13 @@ $conttp->setVariable('MAINSITE', $_SESSION['SETS']['path']['base_url'] . 'admin.
 foreach ($arrDescription as $elem) {
     $conttp->setVariable($elem['name'], $elem['string']);
 }
+$conttp->setVariable('SUBTITLE_ABOUT', translate('About Gohan ZQL'));
+$conttp->setVariable('ABOUT_TEXT', translate('Gohan ZQL is a fork of NagiosQL, the web based administration tool for '
+    . 'Nagios configuration created by Martin Willisegger. It is maintained by Esteban Monge (Sempai Space) and '
+    . 'released under the GNU General Public License. The copyright notices of the original authors are preserved.'));
+$conttp->setVariable('SUBTITLE_CREDITS', translate('Credits'));
+$conttp->setVariable('CREDITS_LIBRARIES', translate('Third-party components:') . ' Twig (BSD), TinyMCE (GPL), '
+    . 'YUI 3 (BSD, maintained fork by Canonical).');
 $conttp->setVariable('SUBTITLE_1', translate('Support contact information'));
 $conttp->setVariable('SUPPORT_TEXT_1', translate('For questions, the online support forum or contact information '
     . 'visit our website:'));
@@ -718,7 +726,7 @@ $conttp->show('support');
 /*
 Process footer
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-    . "target='_blank'>NagiosQL</a> $setFileVersion");
+$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

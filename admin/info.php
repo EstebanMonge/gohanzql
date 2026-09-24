@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Admin information dialog
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -43,8 +44,8 @@ if ($chkKey1 === 'admin' and isset($_SESSION['updInfo'])) {
 } elseif ($chkKey1 === 'settings') {
     /* Exception for settings page to have gettext translated text */
     $arrTrans = array(
-        'txtRootPath' => translate('This is relative path of your NagiosQL Installation'),
-        'txtBasePath' => translate('This is the absolut path to your NagiosQL Installation'),
+        'txtRootPath' => translate('This is relative path of your Gohan ZQL Installation'),
+        'txtBasePath' => translate('This is the absolut path to your Gohan ZQL Installation'),
         'selProtocol' => translate('If you need a secure connection, select HTTPS instead of HTTP'),
         'txtTempdir' => translate('Please choose a temporary directory with write permissions. The default is the ' .
             'temp directory provided by your OS'),
@@ -52,14 +53,14 @@ if ($chkKey1 === 'admin' and isset($_SESSION['updInfo'])) {
         'txtEncoding' => translate('Encoding should be set to nothing else than utf-8. Any changes at your own risk'),
         'txtDBserver' => translate('IP-Address or hostname of the database server<br>e.g. localhost'),
         'txtDBport' => translate('MySQL Server Port, default is 3306'),
-        'txtDBname' => translate('Name of the NagiosQL database<br>e.g. db_nagiosql_v3'),
-        'txtDBuser' => translate('User with sufficient permission for the NagiosQL database<br>At least this user ' .
+        'txtDBname' => translate('Name of the Gohan ZQL database<br>e.g. db_nagiosql_v3'),
+        'txtDBuser' => translate('User with sufficient permission for the Gohan ZQL database<br>At least this user ' .
             'should have SELECT, INSERT, UPDATE, DELETE permissions'),
         'txtDBpass' => translate('Password for the above mentioned user'),
         'txtLogoff' => translate('After the defined amount of seconds the session will terminate for security ' .
             'reasons'),
         'selWSAuth' => translate('Decide between authentication based on your Webserver<br>e.g. Apache ' .
-            'configuration (config file or htaccess) or NagiosQL'),
+            'configuration (config file or htaccess) or Gohan ZQL'),
         'txtLines' => translate('Number of entries per side that should be visible (e.g. services or hosts)'),
         'selSeldisable' => translate('Method of selection of multiple entries by using the new dialog or by holding ' .
             'CTRL + left mouse button, as in NagiosQL 2'),

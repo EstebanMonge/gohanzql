@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Installer Class
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -160,7 +161,7 @@ class NagInstallClass
      * Connect to database server as administrator
      * @param string|null $strStatusMessage Array variable for status message
      * @param string|null $strErrorMessage Error string
-     * @param int $intMode Mode (0=admin user/1=NagiosQL user
+     * @param int $intMode Mode (0=admin user/1=Gohan ZQL user
      * @return int Status variable (0=ok,1=failed)
      */
     public function openAdmDBSrv(string &$strStatusMessage = null, string &$strErrorMessage = null, int $intMode = 0): int
@@ -190,7 +191,7 @@ class NagInstallClass
      * Connect to database as administrator
      * @param string|null $strStatusMessage Error string
      * @param string|null $strErrorMessage Error string
-     * @param int $intMode Mode (0=admin user/1=NagiosQL user
+     * @param int $intMode Mode (0=admin user/1=Gohan ZQL user
      * @return int Status variable (0=ok,1=failed)
      */
     public function openDatabase(string &$strStatusMessage = null, string &$strErrorMessage = null, int $intMode = 0): int
@@ -256,11 +257,11 @@ class NagInstallClass
     }
 
     /**
-     * Check NagiosQL version
+     * Check Gohan ZQL version
      * @param string|null $strStatusMessage Variable for status message
      * @param string|null $strErrorMessage Error string
      * @param array $arrUpdate Array including all update files
-     * @param string|null $setVersion Current NagiosQL version string
+     * @param string|null $setVersion Current Gohan ZQL version string
      * @return int Status variable (0=ok,1=failed)
      * @noinspection PhpOptionalBeforeRequiredParametersInspection
      */
@@ -272,7 +273,7 @@ class NagInstallClass
         $strDBError = str_replace('::', '<br>', $this->myDBClass->strErrorMessage);
         /* Process result */
         if (($strDBError === '') && ($setVersion !== '')) {
-            /* NagiosQL version supported? */
+            /* Gohan ZQL version supported? */
             $intVersionError = 0;
             switch ($setVersion) {
                 case '3.0.0':
@@ -321,7 +322,7 @@ class NagInstallClass
                 $strStatusMessage = '<span class="green">' . $this->translate('supported') . '</span> ('
                     . $setVersion . ')';
             } elseif ($intVersionError === 2) {
-                $strErrorMessage .= $this->translate('Your NagiosQL installation is up to date - no further '
+                $strErrorMessage .= $this->translate('Your Gohan ZQL installation is up to date - no further '
                         . 'actions are needed!') . "<br>\n";
                 $strStatusMessage = '<span class="green">' . $this->translate('up-to-date') . '</span> ('
                     . $setVersion . ')';
@@ -344,7 +345,7 @@ class NagInstallClass
     }
 
     /**
-     * Delete old NagiosQL database
+     * Delete old Gohan ZQL database
      * @param string|null $strStatusMessage Variable for status message
      * @param string|null $strErrorMessage Error string
      * @return int Status variable (0=ok,1=failed)
@@ -367,7 +368,7 @@ class NagInstallClass
     }
 
     /**
-     * Create NagiosQL database
+     * Create Gohan ZQL database
      * @param string|null $strStatusMessage Variable for status message
      * @param string|null $strErrorMessage Error string
      * @return int Status variable (0=ok,1=failed)
@@ -414,10 +415,10 @@ class NagInstallClass
         $intReturn = 0;
         $intUserError = 0;
         $strDBError = '';
-        /* Grant NagiosQL database user */
+        /* Grant Gohan ZQL database user */
         if (($this->arrSession['install']['dbtype'] === 'mysql') ||
             ($this->arrSession['install']['dbtype'] === 'mysqli')) {
-            /* Does the NagiosQL database user exist? */
+            /* Does the Gohan ZQL database user exist? */
             $intUserError = 0;
             $this->myDBClass->insertData('FLUSH PRIVILEGES');
             $strSQL = "SELECT * FROM `mysql`.`user` WHERE  `Host`='" . $this->arrSession['install']['localsrv'] . "' "
@@ -469,7 +470,7 @@ class NagInstallClass
     }
 
     /**
-     * Update NagiosQL database
+     * Update Gohan ZQL database
      * @param string|null $strStatusMessage Variable for status message
      * @param string|null $strErrorMessage Error string
      * @param array $arrUpdate Array including all update files
@@ -558,7 +559,7 @@ class NagInstallClass
     }
 
     /**
-     * Create NagiosQL administrator
+     * Create Gohan ZQL administrator
      * @param string|null $strStatusMessage Variable for status message
      * @param string|null $strErrorMessage Error string
      * @return int Status variable (0=ok,1=failed)
@@ -690,11 +691,11 @@ class NagInstallClass
             fwrite($filSettings, "?>\n");
             fwrite($filSettings, ";///////////////////////////////////////////////////////////////////////////////\n");
             fwrite($filSettings, ";\n");
-            fwrite($filSettings, "; NagiosQL\n");
+            fwrite($filSettings, "; Gohan ZQL\n");
             fwrite($filSettings, ";\n");
             fwrite($filSettings, ";///////////////////////////////////////////////////////////////////////////////\n");
             fwrite($filSettings, ";\n");
-            fwrite($filSettings, "; Project  : NagiosQL\n");
+            fwrite($filSettings, "; Project  : Gohan ZQL (fork of NagiosQL)\n");
             fwrite($filSettings, "; Component: Database Configuration\n");
             fwrite($filSettings, "; Website  : https://sourceforge.net/projects/nagiosql/\n");
             fwrite($filSettings, '; Date     : ' . date('F j, Y, g:i a') . "\n");
@@ -781,7 +782,7 @@ class NagInstallClass
                     $this->translate('Check the permissions of the created paths!') . ')';
             } else {
                 $strStatusMessage = '<span class="red">' . $this->translate('failed') . '</span>';
-                $strErrorMessage .= $this->translate('NagiosQL config path is not writeable - only database '
+                $strErrorMessage .= $this->translate('Gohan ZQL config path is not writeable - only database '
                         . 'values updated') . "<br>\n";
                 $intReturn = 1;
             }
@@ -793,7 +794,7 @@ class NagInstallClass
     }
 
     /**
-     * Converting NagiosQL database to utf-8
+     * Converting Gohan ZQL database to utf-8
      * @param string|null $strStatusMessage Variable for status message
      * @param string|null $strErrorMessage Error string
      * @return int Status variable (0=ok,1=failed)
@@ -820,7 +821,7 @@ class NagInstallClass
     }
 
     /**
-     * Converting NagiosQL database tables to utf-8
+     * Converting Gohan ZQL database tables to utf-8
      * @param string|null $strStatusMessage Variable for status message
      * @param string|null $strErrorMessage Error string
      * @return int Status variable (0=ok,1=failed)
@@ -870,7 +871,7 @@ class NagInstallClass
     }
 
     /**
-     * Converting NagiosQL database tables to utf-8
+     * Converting Gohan ZQL database tables to utf-8
      * @param string|null $strStatusMessage Variable for status message
      * @param string|null $strErrorMessage Error string
      * @return int Status variable (0=ok,1=failed)

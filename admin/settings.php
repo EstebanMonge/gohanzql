@@ -1,11 +1,12 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
- Component : NagiosQL settings
+ Project   : Gohan ZQL (fork of NagiosQL)
+ Component : Gohan ZQL settings
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
@@ -184,11 +185,11 @@ if (filter_input(INPUT_POST, 'selValue1')) {
             fwrite($filSettings, "?>\n");
             fwrite($filSettings, ";///////////////////////////////////////////////////////////////////////////////\n");
             fwrite($filSettings, ";\n");
-            fwrite($filSettings, "; NagiosQL\n");
+            fwrite($filSettings, "; Gohan ZQL\n");
             fwrite($filSettings, ";\n");
             fwrite($filSettings, ";///////////////////////////////////////////////////////////////////////////////\n");
             fwrite($filSettings, ";\n");
-            fwrite($filSettings, "; Project  : NagiosQL\n");
+            fwrite($filSettings, "; Project  : Gohan ZQL (fork of NagiosQL)\n");
             fwrite($filSettings, "; Component: Database Configuration\n");
             fwrite($filSettings, "; Website  : https://sourceforge.net/projects/nagiosql/\n");
             fwrite($filSettings, '; Date     : ' . date('F j, Y, g:i a') . "\n");
@@ -246,7 +247,7 @@ foreach ($arrDescription as $elem) {
     $conttp->setVariable($elem['name'], $elem['string']);
 }
 $conttp->setVariable('ACTION_INSERT', filter_input(INPUT_SERVER, 'PHP_SELF'));
-$conttp->setVariable('LANG_DESCRIPTION', translate('Change your current NagiosQL settings (e.g. Database user, '
+$conttp->setVariable('LANG_DESCRIPTION', translate('Change your current Gohan ZQL settings (e.g. Database user, '
     . 'Language).'));
 /* Path settings */
 $conttp->setVariable('PATH', translate('Path'));
@@ -345,7 +346,7 @@ $conttp->show('settingssite');
 /*
 Footer ausgeben
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-    . "target='_blank'>NagiosQL</a> $setFileVersion");
+$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

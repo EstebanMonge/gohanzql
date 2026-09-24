@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Admin main site
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -37,10 +38,10 @@ require $preBasePath . 'functions/prepend_content.php';
 /*
 Include Content
 */
-$conttp->setVariable('TITLE', translate('NagiosQL Administration'));
+$conttp->setVariable('TITLE', translate('Gohan ZQL Administration'));
 $conttp->parse('header');
 $conttp->show('header');
-$conttp->setVariable('DESC', translate('Welcome to NagiosQL, the administration module that can be used to easily '
+$conttp->setVariable('DESC', translate('Welcome to Gohan ZQL, the administration module that can be used to easily '
     . 'create, modify and delete configuration files for Nagios. The data is stored in a database '
     . 'and can be written directly to the standard files at any time you want.'));
 $conttp->parse('main');
@@ -48,7 +49,7 @@ $conttp->show('main');
 /*
 Include footer
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-    . "target='_blank'>NagiosQL</a> $setFileVersion - GIT Version: $setGITVersion");
+$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion - GIT Version: $setGITVersion (fork of "
+    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

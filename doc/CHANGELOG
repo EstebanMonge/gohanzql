@@ -1,5 +1,8 @@
 CHANGELOG 4.0.0
 ---------------
+- The project is now called Gohan ZQL: a fork of NagiosQL 3.5.0 maintained by Esteban Monge (Sempai Space). The
+  original copyright notices and the license of NagiosQL (Martin Willisegger) are preserved. Only the visible product
+  name was changed, technical names (database name, default paths, PHP classes) stay compatible with NagiosQL
 - Support for PHP < 8.1 dropped
 - Template engine replaced: PEAR HTML_Template_IT is now Twig (bundled in libraries/vendor, no Composer needed to run
   NagiosQL). PEAR is not required any more. The templates in templates/ are now Twig files (*.htm.twig for the

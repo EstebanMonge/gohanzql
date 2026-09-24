@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2023 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Data import
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -21,7 +22,7 @@ use functions\NagVisualClass;
  * @var functions\NagTemplateClass $maintp Main template
  * @var MysqliDbClass $myDBClass MySQL database class
  * @var NagVisualClass $myVisClass Visual content class
- * @var NagDataClass $myDataClass NagiosQL data class
+ * @var NagDataClass $myDataClass Gohan ZQL data class
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  * @var string $prePageKey from prepend_adm.php -> Menu group id
  * @var int $chkStatus from prepend_adm.php -> (hidden) Status field
@@ -322,7 +323,7 @@ $conttp->show('main');
 /*
 Process footer
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' "
-    . "target='_blank'>NagiosQL</a> $setFileVersion");
+$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

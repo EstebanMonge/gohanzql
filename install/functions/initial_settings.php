@@ -3,11 +3,11 @@ exit;
 ?>
 ;///////////////////////////////////////////////////////////////////////////////
 ;
-; NagiosQL
+; Gohan ZQL
 ;
 ;///////////////////////////////////////////////////////////////////////////////
 ;
-; Project   : NagiosQL
+; Project   : Gohan ZQL (fork of NagiosQL)
 ; Component : Initial configuration settings
 ; Website   : https://sourceforge.net/projects/nagiosql/
 ; Version   : 4.0.0

@@ -1,12 +1,13 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// NagiosQL
+// Gohan ZQL
 //
 ///////////////////////////////////////////////////////////////////////////////
 //
 // (c) 2005-2022 by Martin Willisegger
+// (c) 2026 by Esteban Monge - Sempai Space
 //
-// Project   : NagiosQL
+// Project   : Gohan ZQL (fork of NagiosQL)
 // Component : Installations HowTo
 // Website   : https://sourceforge.net/projects/nagiosql/
 // Version   : 4.0.0
@@ -50,10 +51,10 @@ extension=ssh2
 = Neuinstallation =
 ===================
 
-  1. Download und entpacken von NagiosQL 4.0 in einem Apache zugaenglichen Verzeichnis.
+  1. Download und entpacken von Gohan ZQL 4.0 in einem Apache zugaenglichen Verzeichnis.
   2. Der Installationsassistent wird automatisch durch Eingabe von install/index.php gestartet.
   3. Die gewuenschte Sprache auswaehlen (siehe Appendix 2.)
-  4. Zum Installieren von NagiosQL den Anweisungen folgen.
+  4. Zum Installieren von Gohan ZQL den Anweisungen folgen.
 
 ==================
 = AKTUALISIERUNG =
@@ -62,11 +63,11 @@ extension=ssh2
   1. Aktualisierungen von NagiosQL 1.x und 2.x sind leider nicht moeglich, bitte einfach eine neue Installation starten und
      dann die Nagios Konfiguration durch den Import einbinden.
   2. Aktualisierungen von NagiosQL 3.x
-    a. Download und entpacken von NagiosQL 4.0 in ein NEUES Apache zugaenglichen Verzeichnis (DocumentRoot auf neues Verzeichnis
+    a. Download und entpacken von Gohan ZQL 4.0 in ein NEUES Apache zugaenglichen Verzeichnis (DocumentRoot auf neues Verzeichnis
 	   aendern)
-	b. Wird dieselbe Apachekonfiguration verwendet (altes NagiosQL Verzeichnis wegkopieren, neues NagiosQL Verzeichnis bekommt
+	b. Wird dieselbe Apachekonfiguration verwendet (altes Gohan ZQL Verzeichnis wegkopieren, neues Gohan ZQL Verzeichnis bekommt
 	   denselben Namen), sollte der Apache Demon vor dem Upgrade neu gestartet werden.
-    c. Verschiebe die alte config/settings.php Datei in das neue NagiosQL 4.0 Verzeichnis config/
+    c. Verschiebe die alte config/settings.php Datei in das neue Gohan ZQL 4.0 Verzeichnis config/
 	d. Die alte Datenbank manuell sichern (z.Bsp. mit mysqldump)
     e. Der Installationsassistent wird durch den Aufruf von install/index.php gestartet
     f. Die gewuenschte Sprache waehlen (siehe auch Appendix 1.) und den Anweisungen folgen
@@ -74,8 +75,8 @@ extension=ssh2
 =================
 = Konfiguration =
 =================
-  1. NagiosQL
-      a. Loggen Sie sich in Ihre neue NagiosQL Installation ein.
+  1. Gohan ZQL
+      a. Loggen Sie sich in Ihre neue Gohan ZQL Installation ein.
       b. Ueberpruefen Sie die automatisch gesetzten Einstellungen unter: Administration => Einstellungen
       c. Konfigurieren Sie die individuellen Nagios Einstellungen unter: Administration => Domains
   2. Nagios

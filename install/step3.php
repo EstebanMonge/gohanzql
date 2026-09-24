@@ -1,10 +1,11 @@
 <?php
 /* ----------------------------------------------------------------------------
- NagiosQL
+ Gohan ZQL
 -------------------------------------------------------------------------------
  (c) 2005-2022 by Martin Willisegger
+ (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : NagiosQL
+ Project   : Gohan ZQL (fork of NagiosQL)
  Component : Installer script - step 3
  Website   : https://sourceforge.net/projects/nagiosql/
  Version   : 4.0.0
@@ -47,23 +48,23 @@ Build content
 $arrTemplate['STEP1_BOX'] = $myInstClass->translate('Requirements');
 $arrTemplate['STEP2_BOX'] = $myInstClass->translate('Installation');
 $arrTemplate['STEP3_BOX'] = $myInstClass->translate('Finish');
-$arrTemplate['STEP3_TITLE'] = 'NagiosQL ' . $myInstClass->translate('Installation') . ': ' .
+$arrTemplate['STEP3_TITLE'] = 'Gohan ZQL ' . $myInstClass->translate('Installation') . ': ' .
     $myInstClass->translate('Finishing Setup');
 $arrTemplate['INST_VISIBLE'] = 'showfield';
-$arrTemplate['STEP4_SUB_TITLE'] = $myInstClass->translate('Deploy NagiosQL settings');
+$arrTemplate['STEP4_SUB_TITLE'] = $myInstClass->translate('Deploy Gohan ZQL settings');
 $arrTemplate['STEP3_TEXT_01'] = $myInstClass->translate('Database server connection (privileged user)');
 $arrTemplate['STEP3_TEXT_03'] = $myInstClass->translate('Database server version');
 $arrTemplate['STEP3_TEXT_05'] = $myInstClass->translate('Database server support');
-$arrTemplate['STEP3_TEXT_07'] = $myInstClass->translate('Delete existing NagiosQL database');
+$arrTemplate['STEP3_TEXT_07'] = $myInstClass->translate('Delete existing Gohan ZQL database');
 $arrTemplate['STEP3_TEXT_09'] = $myInstClass->translate('Creating new database');
-$arrTemplate['STEP3_TEXT_11'] = $myInstClass->translate('Installing NagiosQL database tables');
-$arrTemplate['STEP3_TEXT_13'] = $myInstClass->translate('Create NagiosQL database user');
-$arrTemplate['STEP3_TEXT_15'] = $myInstClass->translate('Set initial NagiosQL Administrator');
-$arrTemplate['STEP3_TEXT_17'] = $myInstClass->translate('Database server connection (NagiosQL user)');
+$arrTemplate['STEP3_TEXT_11'] = $myInstClass->translate('Installing Gohan ZQL database tables');
+$arrTemplate['STEP3_TEXT_13'] = $myInstClass->translate('Create Gohan ZQL database user');
+$arrTemplate['STEP3_TEXT_15'] = $myInstClass->translate('Set initial Gohan ZQL Administrator');
+$arrTemplate['STEP3_TEXT_17'] = $myInstClass->translate('Database server connection (Gohan ZQL user)');
 $arrTemplate['STEP4_TEXT_01'] = $myInstClass->translate('Writing global settings to database');
 $arrTemplate['STEP4_TEXT_03'] = $myInstClass->translate('Writing database configuration to settings.php');
 $arrTemplate['STEP4_TEXT_05'] = $myInstClass->translate('Import Nagios sample data');
-$arrTemplate['STEP4_TEXT_07'] = $myInstClass->translate('Create and/or store NagiosQL path settings');
+$arrTemplate['STEP4_TEXT_07'] = $myInstClass->translate('Create and/or store Gohan ZQL path settings');
 $arrTemplate['STEP4_VISIBLE'] = 'hidefield';
 $arrTemplate['STEP3_TEXT_02_SHOW'] = 'hidefield';
 $arrTemplate['STEP3_TEXT_03_SHOW'] = 'hidefield';
@@ -85,7 +86,7 @@ $intInstError = 0;
 Doing installation/upgrade
 */
 if ($_SESSION['install']['mode'] === 'Update') {
-    $arrTemplate['STEP3_SUB_TITLE'] = $myInstClass->translate('Updating existing NagiosQL database');
+    $arrTemplate['STEP3_SUB_TITLE'] = $myInstClass->translate('Updating existing Gohan ZQL database');
     /*
     Include database class
     */
@@ -116,9 +117,9 @@ if ($_SESSION['install']['mode'] === 'Update') {
         $intError = $myInstClass->openDatabase($arrTemplate['STEP3_TEXT_02'], $strErrorMessage);
     }
     $arrTemplate['STEP3_TEXT_02_SHOW'] = 'showfield';
-    /* Check NagiosQL version */
+    /* Check Gohan ZQL version */
     if ($intError === 0) {
-        $arrTemplate['STEP3_TEXT_03'] = $myInstClass->translate('Installed NagiosQL version');
+        $arrTemplate['STEP3_TEXT_03'] = $myInstClass->translate('Installed Gohan ZQL version');
         $arrTemplate['STEP3_TEXT_03_SHOW'] = 'showfield';
         $intError = $myInstClass->checkQLVersion(
             $arrTemplate['STEP3_TEXT_04'],
@@ -127,7 +128,7 @@ if ($_SESSION['install']['mode'] === 'Update') {
             $setQLVersion
         );
     }
-    /* Upgrade NagiosQL DB */
+    /* Upgrade Gohan ZQL DB */
     if ($intError === 0) {
         $arrTemplate['STEP3_TEXT_05'] = $myInstClass->translate('Upgrading from version') . ' ' . $setQLVersion
             . ' ' . $myInstClass->translate('to') . ' ' . $preNagiosQL_ver;
@@ -163,7 +164,7 @@ if ($_SESSION['install']['mode'] === 'Update') {
         $intError2 = $myInstClass->openDatabase($arrTemplate['STEP3_TEXT_18'], $strErrorMessage, 1);
         $intError = $intError1 + $intError2;
     }
-    /* Deploy NagiosQL database settings */
+    /* Deploy Gohan ZQL database settings */
     if ($intError === 0) {
         $arrTemplate['STEP4_VISIBLE'] = 'showfield';
         $intError = $myInstClass->updateSettingsDB($arrTemplate['STEP4_TEXT_02'], $strErrorMessage);
@@ -174,7 +175,7 @@ if ($_SESSION['install']['mode'] === 'Update') {
         $intError = $myInstClass->updateSettingsFile($arrTemplate['STEP4_TEXT_04'], $strErrorMessage);
     }
 } else {
-    $arrTemplate['STEP3_SUB_TITLE'] = $myInstClass->translate('Create new NagiosQL database');
+    $arrTemplate['STEP3_SUB_TITLE'] = $myInstClass->translate('Create new Gohan ZQL database');
     /*
     Include database class
     */
@@ -247,12 +248,12 @@ if ($_SESSION['install']['mode'] === 'Update') {
         $arrInsert[] = $preSqlNewInstall;
         $intError = $myInstClass->updateQLDB($arrTemplate['STEP3_TEXT_12'], $strErrorMessage, $arrInsert);
     }
-    /* Grant NagiosQL database user */
+    /* Grant Gohan ZQL database user */
     if ($intError === 0) {
         $arrTemplate['STEP3_TEXT_13_SHOW'] = 'showfield';
         $intError = $myInstClass->grantDBUser($arrTemplate['STEP3_TEXT_14'], $strErrorMessage);
     }
-    /* Create NagiosQL admin user */
+    /* Create Gohan ZQL admin user */
     if ($intError === 0) {
         $arrTemplate['STEP3_TEXT_15_SHOW'] = 'showfield';
         $intError = $myInstClass->createNQLAdmin($arrTemplate['STEP3_TEXT_16'], $strErrorMessage);
@@ -269,7 +270,7 @@ if ($_SESSION['install']['mode'] === 'Update') {
             $intError = $myInstClass->openDatabase($arrTemplate['STEP3_TEXT_18'], $strErrorMessage, 1);
         }
     }
-    /* Deploy NagiosQL settings */
+    /* Deploy Gohan ZQL settings */
     if ($intError === 0) {
         $arrTemplate['STEP4_VISIBLE'] = 'showfield';
         $intError = $myInstClass->updateSettingsDB($arrTemplate['STEP4_TEXT_02'], $strErrorMessage);
@@ -285,7 +286,7 @@ if ($_SESSION['install']['mode'] === 'Update') {
         $arrSample[] = 'sql/import_nagios_sample.sql';
         $intError = $myInstClass->updateQLDB($arrTemplate['STEP4_TEXT_06'], $strErrorMessage, $arrSample);
     }
-    /* Create NagiosQL path and write path settings to the database */
+    /* Create Gohan ZQL path and write path settings to the database */
     if ($intError === 0) {
         $arrTemplate['STEP4_TEXT_07_SHOW'] = 'showfield';
         $intError = $myInstClass->updateQLpath($arrTemplate['STEP4_TEXT_08'], $strErrorMessage);
