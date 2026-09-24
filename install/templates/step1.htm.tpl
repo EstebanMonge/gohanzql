@@ -41,6 +41,7 @@
         {CHECK_6_CONTENT_6}
         {CHECK_6_CONTENT_7}
         {CHECK_6_CONTENT_8}
+        {CHECK_6_CONTENT_9}
         <br>
         {MESSAGE}
         <br>

@@ -69,7 +69,6 @@ $arrSourceURLs = array(
     'SimpleXML' => 'https://www.php.net/manual/en/book.simplexml.php',
     'FTP' => 'https://www.php.net/manual/en/book.ftp.php',
     'MySQL' => 'https://php.net/manual/de/book.mysqli.php',
-    'PEAR' => 'https://pear.php.net',
     'date.timezone' => 'https://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone',
     'SSH2' => 'https://pecl.php.net/package/ssh2'
 );
@@ -117,7 +116,7 @@ if ($_SESSION['install']['jscript'] === 'yes') {
             . 'twice so that the status changes') . ')';
 }
 /* PHP version check */
-$strMinPHPVersion = '7.2.0';
+$strMinPHPVersion = '8.1.0';
 $arrTemplate['CHECK_2_TEXT'] = $myInstClass->translate('Version');
 if (version_compare(PHP_VERSION, $strMinPHPVersion, '>=')) {
     $arrTemplate['CHECK_2_PIC'] = 'valid';
@@ -136,24 +135,6 @@ if (version_compare(PHP_VERSION, $strMinPHPVersion, '>=')) {
 $strExtPath = ini_get('extension_dir');
 $strPrefix = (PHP_SHLIB_SUFFIX === 'dll') ? 'php_' : '';
 $strHTML1 = '';
-/* Check for pear */
-$intErrorReporting = error_reporting();
-error_reporting(0);
-include_once 'System.php';
-error_reporting($intErrorReporting);
-$intPearResult = 0;
-if (class_exists('System')) {
-    $intPearResult = 1;
-}
-if ($intPearResult === 1) {
-    $strHTML1 .= $strHTMLPart1 . 'PEAR' . $strHTMLPart4 . $myInstClass->translate('OK') . "</span>\n";
-} else {
-    $strMsg = '<a href="' . $arrSourceURLs['PEAR'] . '" target="_blank">' . $strHTMLPart7 . '</a>';
-    $strHTML1 .= $strHTMLPart2 . 'PEAR' . $strHTMLPart5 . $myInstClass->translate('NOT AVAILABLE') . ' (' . $strMsg . ')'
-        . "</span>\n";
-    $intError = 1;
-}
-$strHTML1 .= "<br>\n";
 foreach ($arrRequiredExt as $key => $elem) {
     if (extension_loaded($elem)) {
         $strHTML1 .= $strHTMLPart1 . $key . $strHTMLPart4 . $myInstClass->translate('OK') . "</span>\n";
@@ -281,7 +262,7 @@ if (file_exists($strFile1) && is_readable($strFile1)) {
             . '(admin.php)') . $strHTMLPart5 . $myInstClass->translate('failed') . "</span><br>\n";
     $intError = 1;
 }
-$strFile2 = '../templates/index.htm.tpl';
+$strFile2 = '../templates/index.htm.twig';
 if (file_exists($strFile2) && is_readable($strFile2)) {
     $arrTemplate['CHECK_6_CONTENT_5'] = $strHTMLPart1 . $myInstClass->translate('Read test on one template file '
             . '(templates/index.tpl.htm)') . $strHTMLPart4 . $myInstClass->translate('OK') . "</span><br>\n";
@@ -290,7 +271,7 @@ if (file_exists($strFile2) && is_readable($strFile2)) {
             . '(templates/index.tpl.htm)') . $strHTMLPart5 . $myInstClass->translate('failed') . "</span><br>\n";
     $intError = 1;
 }
-$strFile3 = '../templates/admin/datalist.htm.tpl';
+$strFile3 = '../templates/admin/datalist.htm.twig';
 if (file_exists($strFile3) && is_readable($strFile3)) {
     $arrTemplate['CHECK_6_CONTENT_6'] = $strHTMLPart1 . $myInstClass->translate('Read test on one admin template file '
             . '(templates/admin/datalist.htm.tpl)') . $strHTMLPart4 . $myInstClass->translate('OK') . "</span><br>\n";
@@ -299,7 +280,7 @@ if (file_exists($strFile3) && is_readable($strFile3)) {
             . '(templates/admin/datalist.htm.tpl)') . $strHTMLPart5 . $myInstClass->translate('failed') . "</span><br>\n";
     $intError = 1;
 }
-$strFile4 = '../templates/files/contacts.tpl.dat';
+$strFile4 = '../templates/files/contacts.cfg.twig';
 if (file_exists($strFile4) && is_readable($strFile4)) {
     $arrTemplate['CHECK_6_CONTENT_7'] = $strHTMLPart1 . $myInstClass->translate('Read test on one file template '
             . '(templates/files/contacts.tpl.dat)') . $strHTMLPart4 . $myInstClass->translate('OK') . "</span><br>\n";
@@ -315,6 +296,15 @@ if (file_exists($strFile5) && is_readable($strFile5)) {
 } else {
     $arrTemplate['CHECK_6_CONTENT_8'] = $strHTMLPart2 . $myInstClass->translate('Read test on one image file '
             . '(images/pixel.gif)') . $strHTMLPart5 . $myInstClass->translate('failed') . "</span><br>\n";
+    $intError = 1;
+}
+$strFile6 = '../libraries/vendor/autoload.php';
+if (file_exists($strFile6) && is_readable($strFile6)) {
+    $arrTemplate['CHECK_6_CONTENT_9'] = $strHTMLPart1 . $myInstClass->translate('Read test on the template library '
+            . '(libraries/vendor)') . $strHTMLPart4 . $myInstClass->translate('OK') . "</span><br>\n";
+} else {
+    $arrTemplate['CHECK_6_CONTENT_9'] = $strHTMLPart2 . $myInstClass->translate('Read test on the template library '
+            . '(libraries/vendor)') . $strHTMLPart5 . $myInstClass->translate('failed') . "</span><br>\n";
     $intError = 1;
 }
 if ($intError !== 0) {

@@ -3571,8 +3571,8 @@ msgid "The basic requirements are:"
 msgstr "The basic requirements are:"
 
 #: install/index.php:168
-msgid "PHP 7.2.0 or above (PHP 8 is recommended) including:"
-msgstr "PHP 7.2.0 or above (PHP 8 is recommended) including:"
+msgid "PHP 8.1.0 or above including:"
+msgstr "PHP 8.1.0 or above including:"
 
 #: install/index.php:169
 msgid "PHP database module:"

@@ -12,8 +12,8 @@
 -----------------------------------------------------------------------------*/
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp Content template
- * @var HTML_Template_IT $maintp Main template
+ * @var functions\NagTemplateClass $conttp Content template
+ * @var functions\NagTemplateClass $maintp Main template
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  */
 /*
@@ -26,7 +26,7 @@ $preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_
 Define common variables
 */
 $prePageId = 6;
-$preContent = 'admin/mainpages.htm.tpl';
+$preContent = 'admin/mainpages.htm.twig';
 /*
 Include preprocessing file
 */

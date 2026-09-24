@@ -17,8 +17,8 @@ use functions\NagVisualClass;
 
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp Content template
- * @var HTML_Template_IT $maintp Main template
+ * @var functions\NagTemplateClass $conttp Content template
+ * @var functions\NagTemplateClass $maintp Main template
  * @var NagVisualClass $myVisClass Visual content class
  * @var NagDataClass $myDataClass NagiosQL data class
  * @var NagConfigClass $myConfigClass NagiosQL configuration class
@@ -37,7 +37,7 @@ $preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_
 Define common variables
 */
 $prePageId = 28;
-$preContent = 'admin/nagioscfg.htm.tpl';
+$preContent = 'admin/nagioscfg.htm.twig';
 $preAccess = 1;
 $preFieldvars = 1;
 $intRemoveTmp = 0;

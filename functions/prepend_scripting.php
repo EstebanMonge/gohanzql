@@ -45,7 +45,7 @@ $SETS = parse_ini_file($preIniFile, true);
 /*
 Include external function/class files - part 1
 */
-require_once $preBasePath . 'libraries/pear/HTML/Template/IT.php';
+require_once $preBasePath . 'libraries/vendor/autoload.php';
 require $preBasePath . 'functions/Autoloader.php';
 functions\Autoloader::register($preBasePath);
 

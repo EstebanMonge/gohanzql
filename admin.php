@@ -12,8 +12,8 @@
 -----------------------------------------------------------------------------*/
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
+ * @var functions\NagTemplateClass $conttp
+ * @var functions\NagTemplateClass $maintp
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  * @var string $setGITVersion from prepend_adm.php -> Application GIT subversion string
  */
@@ -26,7 +26,7 @@ $preBasePath = strstr(filter_input(INPUT_SERVER, 'SCRIPT_FILENAME'), 'admin.php'
 Define common variables
 */
 $prePageId = 1;
-$preContent = 'admin/mainpages.htm.tpl';
+$preContent = 'admin/mainpages.htm.twig';
 $preAccess = 1;
 $preFieldvars = 1;
 /*

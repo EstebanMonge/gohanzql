@@ -21,7 +21,6 @@
 namespace functions;
 
 use FTP\Connection;
-use HTML_Template_IT;
 use function count;
 use function dirname;
 use function function_exists;
@@ -1018,7 +1017,6 @@ class NagConfigClass
         $strSQL = '';
         $strOrderField = '';
         $strFileString = '';
-        $arrTplOptions = array('use_preg' => false);
         $strDomainWhere = ' (`config_id`=' . $this->intDomainId . ') ';
         $intType = 0;
         $intReturn = 0;
@@ -1046,14 +1044,14 @@ class NagConfigClass
             $strDomainWhere = str_replace(')', ' OR `config_id`=0)', $strDomainWhere);
         }
         /* Special processing for table host and service */
-        $setTemplate = $strFileString . '.tpl.dat';
+        $setTemplate = $strFileString . '.cfg.twig';
         if (($strTableName === 'tbl_host') || ($strTableName === 'tbl_service')) {
             // Define variable names based on table name
             switch ($strTableName) {
                 case 'tbl_host':
                     $strFileString = $arrTableData[$intID]['host_name'];
                     $intDomainId = $arrTableData[$intID]['config_id'];
-                    $setTemplate = 'hosts.tpl.dat';
+                    $setTemplate = 'hosts.cfg.twig';
                     $intType = 1;
                     /** @noinspection SqlResolve */
                     $strSQL = 'SELECT * FROM `' . $strTableName . "` WHERE `host_name`='$strFileString' "
@@ -1062,7 +1060,7 @@ class NagConfigClass
                 case 'tbl_service':
                     $strFileString = $arrTableData[$intID]['config_name'];
                     $intDomainId = $arrTableData[$intID]['config_id'];
-                    $setTemplate = 'services.tpl.dat';
+                    $setTemplate = 'services.cfg.twig';
                     $intType = 2;
                     /** @noinspection SqlResolve */
                     $strSQL = 'SELECT * FROM `' . $strTableName . "` WHERE `config_name`='$strFileString' "
@@ -1076,9 +1074,8 @@ class NagConfigClass
         }
         $strFile = $strFileString . '.cfg';
         /* Load configuration template file */
-        $tplConf = new HTML_Template_IT($this->arrSettings['path']['base_path'] . '/templates/files/');
+        $tplConf = new NagTemplateClass($this->arrSettings['path']['base_path'] . '/templates/files/');
         $tplConf->loadTemplatefile($setTemplate);
-        $tplConf->setOptions($arrTplOptions);
         $tplConf->setVariable('CREATE_DATE', date('Y-m-d H:i:s'));
         $tplConf->setVariable('NAGIOS_QL_VERSION', $this->arrSettings['db']['version']);
         $tplConf->setVariable('VERSION', $this->getVersionString($intConfigID));
@@ -1403,14 +1400,14 @@ class NagConfigClass
     /**
      * Get related data
      * @param string $strTableName Table name
-     * @param HTML_Template_IT $resTemplate Template ressource
+     * @param NagTemplateClass $resTemplate Template ressource
      * @param array $arrData Dataset array
      * @param string $strDataKey Data key
      * @param string|null $strDataValue Data value
      * @return int 0 = use data / 1 = skip data
      * Status message is stored in message class variables
      */
-    private function getRelationData(string $strTableName, HTML_Template_IT $resTemplate, array $arrData, string $strDataKey, string &$strDataValue = null): int
+    private function getRelationData(string $strTableName, NagTemplateClass $resTemplate, array $arrData, string $strDataKey, string &$strDataValue = null): int
     {
         /* Define variables */
         $intReturn = 0;
@@ -1652,12 +1649,12 @@ class NagConfigClass
     }
 
     /**
-     * @param HTML_Template_IT $resTemplate Template object
+     * @param NagTemplateClass $resTemplate Template object
      * @param array $arrData Dataset array
      * @param array $elem Relation data array
      * @return int 0 = use data / 1 = skip data
      */
-    private function processRelation5(HTML_Template_IT $resTemplate, array $arrData, array $elem): int
+    private function processRelation5(NagTemplateClass $resTemplate, array $arrData, array $elem): int
     {
         /* Define variables */
         $arrDataRel = array();

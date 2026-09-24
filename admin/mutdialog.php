@@ -13,7 +13,7 @@
 
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp Content template
+ * @var functions\NagTemplateClass $conttp Content template
  * @var array $arrDescription from fieldvars.php -> Translated common strings
  * @var int $intVersion from prepend_adm.php -> Nagios version
  */
@@ -26,7 +26,7 @@ $preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_
 /*
 Define common variables
 */
-$preContent = 'admin/mutdialog.htm.tpl';
+$preContent = 'admin/mutdialog.htm.twig';
 /*
 Process post parameters
 */

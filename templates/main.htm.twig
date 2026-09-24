@@ -1,0 +1,106 @@
+{# NagiosQL template (Twig), rendered by functions\NagTemplateClass. Every block is one template fragment: {{ NAME }} is a
+   placeholder, {{ __name__ }} is the slot where the output of the inner block "name" is inserted. #}
+{% block __global__ %}<!-- (c) 2005-2023 by Martin Willisegger -->
+<!-- -->
+<!-- Project   : NagiosQL -->
+<!-- Component : main template -->
+<!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
+<!-- Version   : 3.5.0 -->
+<!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
+{{ __header__ }}
+                        {{ __dselect__ }}
+                        {{ __header2__ }}
+            {{ __footer__ }}{% endblock %}
+{% block header %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>{{ PAGETITLE }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="{{ META_DESCRIPTION }}">
+    <meta name="keywords" content="{{ META_KEYWORDS }}">
+    <meta name="robots" content="{{ ROBOTS }}">
+    <meta name="author" content="{{ AUTHOR }}">
+    <meta name="content-language" content="{{ LANGUAGE }}">
+    <meta name="publisher" content="{{ PUBLISHER }}">{{ SPECIALMETA }}
+    <link rel="SHORTCUT ICON" href="{{ BASE_PATH }}favicon.ico">
+    <!-- YUI Components -->
+    <link href="{{ BASE_PATH }}functions/yui/build/button/assets/skins/sam/button.css" rel="stylesheet" type="text/css">
+    <link href="{{ BASE_PATH }}functions/yui/build/container/assets/skins/sam/container.css" rel="stylesheet"
+          type="text/css">
+    <link href="{{ BASE_PATH }}functions/yui/build/calendar/assets/skins/sam/calendar.css" rel="stylesheet" type="text/css">
+    <!-- CSS Include -->
+    <link href="{{ BASE_PATH }}config/main.css" rel="stylesheet" type="text/css">
+    <link href="{{ BASE_PATH }}config/content.css" rel="stylesheet" type="text/css">
+    <link href="{{ BASE_PATH }}functions/yui/build/tabview/assets/skins/sam/tabview.css" rel="stylesheet" type="text/css">
+    <!-- YUI Scripts -->
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/yui/build/element/element-min.js"></script>
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/yui/build/button/button-min.js"></script>
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/yui/build/connection/connection-min.js"></script>
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/yui/build/utilities/utilities.js"></script>
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/yui/build/container/container-min.js"></script>
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/yui/build/calendar/calendar-min.js"></script>
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/yui/build/tabview/tabview-min.js"></script>
+    <script type="text/JavaScript" src="{{ BASE_PATH }}functions/common.js"></script>
+    <script type="text/javascript" language="javascript">
+        <!--
+        function doChangeDomain() {
+            document.frmDomChange.submit();
+        }
+
+        //-->
+    </script>
+</head>
+<body class="yui-skin-sam">
+<table width="100%" cellpadding="0" cellspacing="0" class="header">
+    <tr>
+        <td class="headerleft">{{ ADMIN }}&nbsp;{{ MONITOR }}&nbsp;{{ PLUGINS }}</td>
+        <td class="headermiddle">&nbsp;</td>
+        <td class="headerright">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="infoleft">{{ POSITION }}</td>
+        <td class="inforight">&nbsp;</td>
+        <td class="inforight">
+            <form name="frmDomChange" action="" method="post">
+                <table cellpadding="0" cellspacing="0" border="0" align="right" width="350">
+                    <tr>
+                        {% endblock %}
+{% block dselect %}
+
+                        <td class="inforight2">{{ DOMAIN_INFO }}</td>
+                        <td class="inforight2">
+                            <select title="{{ DOMAIN_INFO }}" name="selDomain" onChange="doChangeDomain();">
+                                {{ __domainsel__ }}
+                            </select>
+                        </td>
+                        {% endblock %}
+{% block domainsel %}
+
+                                <option value="{{ DOMAIN_VALUE }}" {{ DOMAIN_SELECTED }}>{{ DOMAIN_TEXT }}</option>
+                                {% endblock %}
+{% block header2 %}
+
+                        <td class="inforight2">&nbsp;&nbsp;{{ LOGIN_INFO }}&nbsp;{{ LOGOUT_INFO }}</td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+</table>
+<table width="100%">
+    <tr>
+        {{ MAINMENU }}
+        <td class="main" valign="top">
+            {% endblock %}
+{% block footer %}
+
+        </td>
+    </tr>
+</table>
+<p class="version">{{ VERSION_INFO }}</p>
+</body>
+</html>
+{% endblock %}

@@ -13,7 +13,7 @@
 error_reporting(E_ALL & ~E_STRICT);
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp Content template
+ * @var functions\NagTemplateClass $conttp Content template
  */
 /*
 Timezone settings
@@ -161,7 +161,7 @@ if ($intError === 0) {
 /*
 Include external function/class files
 */
-require_once $preBasePath . 'libraries/pear/HTML/Template/IT.php';
+require_once $preBasePath . 'libraries/vendor/autoload.php';
 if (isset($preFieldvars) && ($preFieldvars === 1)) {
     require $preBasePath . 'config/fieldvars.php';
 }
@@ -408,7 +408,7 @@ if (((int)$_SESSION['logged_in'] === 1) && ($intError === 0)) {
         }
         /* Update login time */
         $_SESSION['timestamp'] = time();
-        if (isset($preContent) && ($preContent === 'index.htm.tpl')) {
+        if (isset($preContent) && ($preContent === 'index.htm.twig')) {
             header('Location: ' . $_SESSION['SETS']['path']['protocol'] . '://' .
                 filter_input(INPUT_SERVER, 'HTTP_HOST') . $_SESSION['startsite']);
             exit;
@@ -446,10 +446,8 @@ if (isset($prePageId) && ((int)$prePageId !== 1)) {
 Insert main template
 */
 if (isset($preContent) && ($preContent !== '') && (!isset($preNoMain) || ($preNoMain !== 1))) {
-    $arrTplOptions = array('use_preg' => false);
-    $maintp = new HTML_Template_IT($preBasePath . 'templates/');
-    $maintp->loadTemplatefile('main.htm.tpl');
-    $maintp->setOptions($arrTplOptions);
+    $maintp = new functions\NagTemplateClass($preBasePath . 'templates/');
+    $maintp->loadTemplatefile('main.htm.twig');
     $maintp->setVariable('META_DESCRIPTION', 'NagiosQL System Monitoring Administration Tool');
     $maintp->setVariable('AUTHOR', 'NagiosQL Team');
     $maintp->setVariable('LANGUAGE', 'de');
@@ -562,7 +560,6 @@ if (isset($preContent) && ($preContent !== '') && (!isset($preNoMain) || ($preNo
 Insert content and master template
 */
 if (isset($preContent) && ($preContent !== '')) {
-    $arrTplOptions = array('use_preg' => false);
     if (!file_exists($preBasePath . 'templates/' . $preContent) ||
         !is_readable($preBasePath . 'templates/' . $preContent)) {
         echo '<span style="color:#F00">' . translate('Warning - template file not found or not readable, please '
@@ -570,17 +567,15 @@ if (isset($preContent) && ($preContent !== '')) {
         echo str_replace('//', '/', $preBasePath . 'templates/' . $preContent) . '</span><br>';
         exit;
     }
-    $conttp = new HTML_Template_IT($preBasePath . 'templates/');
+    $conttp = new functions\NagTemplateClass($preBasePath . 'templates/');
     $conttp->loadTemplatefile($preContent);
-    $conttp->setOptions($arrTplOptions);
     $strRootPath = $_SESSION['SETS']['path']['base_url'];
     $conttp->setVariable('BASE_PATH', $strRootPath);
     $conttp->setVariable('IMAGE_PATH', $strRootPath . 'images/');
-    $mastertp = new HTML_Template_IT($preBasePath . 'templates/');
+    $mastertp = new functions\NagTemplateClass($preBasePath . 'templates/');
     if (isset($preListTpl) && ($preListTpl !== '')) {
         $mastertp->loadTemplatefile($preListTpl);
     }
-    $mastertp->setOptions($arrTplOptions);
 }
 /*
 Process standard get/post parameters

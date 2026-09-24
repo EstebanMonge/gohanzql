@@ -20,7 +20,6 @@
 
 namespace functions;
 
-use HTML_Template_IT;
 use function strlen;
 
 class NagContentClass
@@ -68,9 +67,9 @@ class NagContentClass
 
     /**
      * Data list view - form initialization
-     * @param HTML_Template_IT $objTemplate Form template object
+     * @param NagTemplateClass $objTemplate Form template object
      */
-    public function listViewInit(HTML_Template_IT $objTemplate): void
+    public function listViewInit(NagTemplateClass $objTemplate): void
     {
         /* Language text replacements from fieldvars.php file */
         foreach ($this->arrDescription as $elem) {
@@ -89,7 +88,7 @@ class NagContentClass
 
     /**
      * Data list view - value insertions
-     * @param HTML_Template_IT $objTemplate Form template object
+     * @param NagTemplateClass $objTemplate Form template object
      * @param array $arrData Database values
      * @param int $intDLCount1 Total count of data lines for one page
      * @param int $intDLCount2 Total count of data lines (all data)
@@ -98,7 +97,7 @@ class NagContentClass
      * @param int $intLimit Actual data char limit for field 2
      */
     public function listData(
-        HTML_Template_IT $objTemplate,
+        NagTemplateClass $objTemplate,
         array            $arrData,
         int              $intDLCount1,
         int              $intDLCount2,
@@ -441,7 +440,7 @@ class NagContentClass
 
     /**
      * Display information messages
-     * @param HTML_Template_IT $objTemplate Form template object
+     * @param NagTemplateClass $objTemplate Form template object
      * @param string $strErrorMessage Error messages
      * @param string $strInfoMessage Information messages
      * @param string $strConsistMessage Consistency messages
@@ -450,7 +449,7 @@ class NagContentClass
      * @param int $intNoTime Status value for showing time information (0 = show time)
      */
     public function showMessages(
-        HTML_Template_IT $objTemplate,
+        NagTemplateClass $objTemplate,
         string           $strErrorMessage,
         string           $strInfoMessage,
         string           $strConsistMessage,
@@ -498,10 +497,10 @@ class NagContentClass
 
     /**
      * Display page footer
-     * @param HTML_Template_IT $objTemplate Form template object
+     * @param NagTemplateClass $objTemplate Form template object
      * @param string $setFileVersion NagiosQL version
      */
-    public function showFooter(HTML_Template_IT $objTemplate, string $setFileVersion): void
+    public function showFooter(NagTemplateClass $objTemplate, string $setFileVersion): void
     {
         $objTemplate->setVariable('VERSION_INFO', "<a href='https://sourceforge.net/projects/nagiosql/' " .
             "target='_blank'>NagiosQL</a> $setFileVersion");
@@ -511,10 +510,10 @@ class NagContentClass
 
     /**
      * Single data form initialization
-     * @param HTML_Template_IT $objTemplate Form template object
+     * @param NagTemplateClass $objTemplate Form template object
      * @param string $strChbFields Comma separated string of checkbox value names
      */
-    public function addFormInit(HTML_Template_IT $objTemplate, string $strChbFields = ''): void
+    public function addFormInit(NagTemplateClass $objTemplate, string $strChbFields = ''): void
     {
         /* Language text replacements from fieldvars.php file */
         foreach ($this->arrDescription as $elem) {
@@ -585,13 +584,13 @@ class NagContentClass
 
     /**
      * Single data form - value insertion
-     * @param HTML_Template_IT $objTemplate Form template object
+     * @param NagTemplateClass $objTemplate Form template object
      * @param array $arrModifyData Database values
      * @param int $intLocked Data is locked (0 = no / 1 = yes)
      * @param string $strInfo Information string
      * @param string $strChbFields Comma separated string of checkbox value names
      */
-    public function addInsertData(HTML_Template_IT $objTemplate, array $arrModifyData, int $intLocked, string $strInfo, string $strChbFields = ''): void
+    public function addInsertData(NagTemplateClass $objTemplate, array $arrModifyData, int $intLocked, string $strInfo, string $strChbFields = ''): void
     {
         /* Insert text data values */
         foreach ($arrModifyData as $key => $value) {

@@ -19,9 +19,9 @@ use functions\NagVisualClass;
 
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp Content template
- * @var HTML_Template_IT $maintp Main template
- * @var HTML_Template_IT $mastertp Master template (list view)
+ * @var functions\NagTemplateClass $conttp Content template
+ * @var functions\NagTemplateClass $maintp Main template
+ * @var functions\NagTemplateClass $mastertp Master template (list view)
  * @var MysqliDbClass $myDBClass MySQL database class
  * @var NagVisualClass $myVisClass Visual content class
  * @var NagDataClass $myDataClass NagiosQL data class
@@ -77,8 +77,8 @@ $preBasePath = preg_replace($strPattern, '', filter_input(INPUT_SERVER, 'SCRIPT_
 Define common variables
 */
 $prePageId = 23;
-$preContent = 'admin/serviceescalations.htm.tpl';
-$preListTpl = 'admin/datalist.htm.tpl';
+$preContent = 'admin/serviceescalations.htm.twig';
+$preListTpl = 'admin/datalist.htm.twig';
 $preSearchSession = 'serviceescalation';
 $preTableName = 'tbl_serviceescalation';
 $preKeyField = 'config_name';

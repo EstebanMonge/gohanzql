@@ -20,7 +20,6 @@
 
 namespace functions;
 
-use HTML_Template_IT;
 use function count;
 use function in_array;
 use function is_array;
@@ -38,7 +37,7 @@ class NagVisualClass
     public $myConfigClass; /* String including error messages */
 
     /* Class includes */
-    /** @var HTML_Template_IT */
+    /** @var NagTemplateClass */
     public $myContentTpl; /* Database class reference */
     private $arrSettings = array(); /* Configuraton class reference */
     private $intPageId = 0; /* Content template class reference */
@@ -1345,7 +1344,7 @@ class NagVisualClass
 
     /**
      * Inserts the domain list to the list view template (host and services only)
-     * @param HTML_Template_IT $resTemplate Template object
+     * @param NagTemplateClass $resTemplate Template object
      * @noinspection PhpMissingParamTypeInspection
      */
     public function insertDomainList($resTemplate): int

@@ -24,7 +24,7 @@ use functions\NagVisualClass;
  * @var MysqliDbClass $myDBClass MySQL database class
  * @var NagConfigClass $myConfigClass NagiosQL configuration class
  * @var NagDataClass $myDataClass NagiosQL data class
- * @var HTML_Template_IT $mastertp Master template (list view)
+ * @var functions\NagTemplateClass $mastertp Master template (list view)
  * @var string $chkLimit from prepend_adm.php / settings -> Data set count per page
  * @var string $preBrowser from prepend_adm.php -> Browser version
  * @var string $chkGroupAdm from prepend_adm.php -> Session value group admin

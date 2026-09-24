@@ -20,7 +20,6 @@
 
 namespace install\functions;
 
-use HTML_Template_IT;
 use RuntimeException;
 
 class NagInstallClass
@@ -29,7 +28,7 @@ class NagInstallClass
     public $arrSession = array(); /* Session content */
 
     // Class includes
-    /** @var HTML_Template_IT $filTemplate */
+    /** @var string $filTemplate */
     public $filTemplate = ''; /* template file */
     public $myDBClass; /* Database class reference */
 

@@ -21,7 +21,7 @@
   * Webserver z.B. Apache 2.x
   * MySQL/MariaDB 5.x oder neuer
   * Nagios 2.x/3.x/4.x oder Nagios kompatible Monitoringsoftware
-	* PHP 7.2.0 oder groesser, inklusive:
+	* PHP 8.1.0 oder groesser, inklusive:
     * PHP Module: Session
     * PHP Module: MySQLi
     * PHP Module: gettext

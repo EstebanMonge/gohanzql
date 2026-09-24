@@ -1,7 +1,11 @@
 CHANGELOG 3.5.0
 ---------------
 - Support for PHP 8.x
-- Support for PHP < 7.2 dropped
+- Support for PHP < 8.1 dropped
+- Template engine replaced: PEAR HTML_Template_IT is now Twig (bundled in libraries/vendor, no Composer needed to run
+  NagiosQL). PEAR is not required any more. The templates in templates/ are now Twig files (*.htm.twig for the
+  pages, *.cfg.twig for the Nagios configuration files) - customized templates have to be ported to the new format
+- [Bugfix] Data containing text like {PLACEHOLDER} was silently removed from the pages
 - [Bugfix] hosttemplate don't use "importance" in Nagios configuration version < 4.0
 
 CHANGELOG 3.4.1

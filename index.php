@@ -12,8 +12,8 @@
 -----------------------------------------------------------------------------*/
 /**
  * Class and variable includes
- * @var HTML_Template_IT $conttp
- * @var HTML_Template_IT $maintp
+ * @var functions\NagTemplateClass $conttp
+ * @var functions\NagTemplateClass $maintp
  * @var string $setFileVersion from prepend_adm.php -> Application version string
  */
 /*
@@ -30,7 +30,7 @@ session_destroy();
 Define common variables
 */
 $intPageID = 0;
-$preContent = 'index.htm.tpl';
+$preContent = 'index.htm.twig';
 /*
 Redirect to installation wizard
 */
