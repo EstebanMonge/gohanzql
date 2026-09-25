@@ -64,8 +64,8 @@ msgstr "Amministrazione"
 
 # administration.php
 #: admin/administration.php:34
-msgid "Functions to administrate Gohan ZQL V3"
-msgstr "Funzioni per l'amministrazione di Gohan ZQL V3"
+msgid "Functions to administrate Gohan ZQL V4"
+msgstr "Funzioni per l'amministrazione di Gohan ZQL V4"
 
 #: admin/alarming.php:31
 msgid "Alarming"

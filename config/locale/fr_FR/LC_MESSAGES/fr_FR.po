@@ -64,8 +64,8 @@ msgstr "Administration"
 
 # administration.php
 #: admin/administration.php:34
-msgid "Functions to administrate Gohan ZQL V3"
-msgstr "Fonctions d'administration NagiosQL3"
+msgid "Functions to administrate Gohan ZQL V4"
+msgstr "Fonctions d'administration Gohan ZQL V4"
 
 #: admin/alarming.php:31
 msgid "Alarming"
@@ -1218,7 +1218,7 @@ msgstr "Ext. info des services"
 
 #: admin/support.php:65
 msgid "Gohan ZQL support page"
-msgstr "Page de support NagiosSQL"
+msgstr "Page de support Gohan ZQL"
 
 #: admin/support.php:75
 msgid "Support contact information"

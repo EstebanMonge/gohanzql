@@ -38,7 +38,7 @@ Include content
 $conttp->setVariable('TITLE', translate('Administration'));
 $conttp->parse('header');
 $conttp->show('header');
-$conttp->setVariable('DESC', translate('Functions to administrate Gohan ZQL V3'));
+$conttp->setVariable('DESC', translate('Functions to administrate Gohan ZQL V4'));
 $conttp->parse('main');
 $conttp->show('main');
 /*

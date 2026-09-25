@@ -64,8 +64,8 @@ msgstr "Beheer"
 
 # administration.php
 #: admin/administration.php:34
-msgid "Functions to administrate Gohan ZQL V3"
-msgstr "Functies om Gohan ZQL V3 te beheren"
+msgid "Functions to administrate Gohan ZQL V4"
+msgstr "Functies om Gohan ZQL V4 te beheren"
 
 #: admin/alarming.php:31
 msgid "Alarming"
@@ -3188,7 +3188,7 @@ msgstr "Controle welke van de ondersteunde extensies geïnstalleerd zijn. Minima
 
 #: install/step1.php:93
 msgid "The following settings are <em>required</em> to run Gohan ZQL"
-msgstr "De volgens instellingen zijn <em>vereist</em> om NagiosSQL te kunnen gebruiken"
+msgstr "De volgens instellingen zijn <em>vereist</em> om Gohan ZQL te kunnen gebruiken"
 
 #: install/step1.php:107
 msgid "ENABLED"
@@ -3385,7 +3385,7 @@ msgstr "Database verwijderen als deze al bestaat?"
 
 #: install/step2.php:64
 msgid "Gohan ZQL User Setup"
-msgstr "NagiosSQL Gebruiker Setup"
+msgstr "Gohan ZQL Gebruiker Setup"
 
 #: install/step2.php:65
 msgid "Initial Gohan ZQL User"

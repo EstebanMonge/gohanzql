@@ -64,8 +64,8 @@ msgstr "管理"
 
 # administration.php
 #: admin/administration.php:34
-msgid "Functions to administrate Gohan ZQL V3"
-msgstr "Gohan ZQL V3管理者の機能"
+msgid "Functions to administrate Gohan ZQL V4"
+msgstr "Gohan ZQL V4管理者の機能"
 
 #: admin/alarming.php:31
 msgid "Alarming"
@@ -726,7 +726,7 @@ msgstr ""
 
 #: admin/info.php:39
 msgid "This is relative path of your Gohan ZQL Installation"
-msgstr "これは、NagioSQLインストールの相対パスです。"
+msgstr "これは、Gohan ZQLインストールの相対パスです。"
 
 #: admin/info.php:40
 msgid "This is the absolut path to your Gohan ZQL Installation"

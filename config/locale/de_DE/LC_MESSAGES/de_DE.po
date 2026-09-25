@@ -56,8 +56,8 @@ msgstr "Verwaltung"
 
 # administration.php
 #: admin/administration.php:40
-msgid "Functions to administrate Gohan ZQL V3"
-msgstr "Funktionen für die Administration von Gohan ZQL V3"
+msgid "Functions to administrate Gohan ZQL V4"
+msgstr "Funktionen für die Administration von Gohan ZQL V4"
 
 #: admin/alarming.php:44 config/fieldvars.php:297 config/fieldvars.php:298
 msgid "Alarming"
@@ -3891,7 +3891,7 @@ msgid ""
 "Read the INSTALLATION file in the Gohan ZQL doc directory or the installation "
 "PDF file on our"
 msgstr ""
-"Lesen sie die INSTALLATION Datei im Nagiosql doc Verzeichnis oder die "
+"Lesen sie die INSTALLATION Datei im Gohan ZQL doc Verzeichnis oder die "
 "Installation PDF Datei von unserer"
 
 #: install/step1.php:327

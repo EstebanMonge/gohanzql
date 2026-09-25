@@ -49,8 +49,8 @@ msgstr "管理"
 
 # administration.php
 #: admin/administration.php:38
-msgid "Functions to administrate Gohan ZQL V3"
-msgstr "管理NAGIOSQL V3的功能"
+msgid "Functions to administrate Gohan ZQL V4"
+msgstr "管理Gohan ZQL V4的功能"
 
 #: admin/alarming.php:35 config/fieldvars.php:293 config/fieldvars.php:294
 msgid "Alarming"
@@ -3008,7 +3008,7 @@ msgstr "不支持"
 
 #: install/functions/NagInstallClass.php:477
 msgid "Your Gohan ZQL installation is up to date - no further actions are needed!"
-msgstr "您的NAGIOSQL安装日期是最新的-没有进一步的检查的必要！"
+msgstr "您的Gohan ZQL安装日期是最新的-没有进一步的检查的必要！"
 
 #: install/functions/NagInstallClass.php:483 install/functions/NagInstallClass.php:491
 msgid "Updates to NagiosQL 3.2 and above are only supported from NagiosQL 3.0.0 and above!"
@@ -3062,7 +3062,7 @@ msgstr "检查创建的路径的权限！"
 
 #: install/functions/NagInstallClass.php:939
 msgid "Gohan ZQL config path is not writeable - only database values updated"
-msgstr "NAGIOSQL配置路径不可写入-只更新数据库值"
+msgstr "Gohan ZQL配置路径不可写入-只更新数据库值"
 
 # prepend.adm
 #: install/functions/NagInstallClass.php:969 install/functions/NagInstallClass.php:1017 install/functions/NagInstallClass.php:1069
@@ -3374,7 +3374,7 @@ msgstr "下一步"
 
 #: install/step2.php:32
 msgid "The Gohan ZQL first passwords are not equal!"
-msgstr "NAGIOSQL第一个密码不一致！"
+msgstr "Gohan ZQL第一个密码不一致！"
 
 #: install/step2.php:38
 msgid "Setup"
@@ -3454,7 +3454,7 @@ msgstr "Gohan ZQL路径值"
 
 #: install/step2.php:96
 msgid "Create Gohan ZQL config paths?"
-msgstr "创建NAGIOSQL配置路径？"
+msgstr "创建Gohan ZQL配置路径？"
 
 #: install/step2.php:102
 msgid "Gohan ZQL config path"
@@ -3510,7 +3510,7 @@ msgstr "创建新数据库"
 
 #: install/step3.php:50
 msgid "Installing Gohan ZQL database tables"
-msgstr "安装NAGIOSQL数据库表"
+msgstr "安装Gohan ZQL数据库表"
 
 #: install/step3.php:51
 msgid "Create Gohan ZQL database user"
@@ -3538,7 +3538,7 @@ msgstr "导入Nagios参考数据"
 
 #: install/step3.php:57
 msgid "Create and/or store Gohan ZQL path settings"
-msgstr "创建或保存NAGIOSQL路径设置"
+msgstr "创建或保存Gohan ZQL路径设置"
 
 #: install/step3.php:80
 msgid "Updating existing Gohan ZQL database"
