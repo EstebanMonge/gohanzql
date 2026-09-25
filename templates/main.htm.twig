@@ -19,6 +19,7 @@
 <head>
     <title>{{ PAGETITLE }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ META_DESCRIPTION }}">
     <meta name="keywords" content="{{ META_KEYWORDS }}">
     <meta name="robots" content="{{ ROBOTS }}">
@@ -31,6 +32,7 @@
     <!-- CSS Include -->
     <link href="{{ BASE_PATH }}config/main.css" rel="stylesheet" type="text/css">
     <link href="{{ BASE_PATH }}config/content.css" rel="stylesheet" type="text/css">
+    <link href="{{ BASE_PATH }}config/responsive.css" rel="stylesheet" type="text/css">
     <!-- YUI 3 (modules are loaded on demand from functions/yui) -->
     <script type="text/javascript">
         var YUI_config = {
@@ -55,7 +57,9 @@
 <body class="yui3-skin-sam">
 <table width="100%" cellpadding="0" cellspacing="0" class="header">
     <tr>
-        <td class="headerleft">{{ ADMIN }}&nbsp;{{ MONITOR }}&nbsp;{{ PLUGINS }}</td>
+        <td class="headerleft"><button type="button" id="nql-menu-toggle" class="nql-menu-toggle" aria-controls="nql-menu"
+                                       aria-expanded="false" title="{{ MENU_SHOW }}" aria-label="{{ MENU_SHOW }}"
+                                       data-show="{{ MENU_SHOW }}" data-hide="{{ MENU_HIDE }}">&#9776;</button>{{ ADMIN }}&nbsp;{{ MONITOR }}&nbsp;{{ PLUGINS }}</td>
         <td class="headermiddle">&nbsp;</td>
         <td class="headerright">&nbsp;</td>
     </tr>

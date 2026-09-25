@@ -65,6 +65,21 @@ YUI().use('panel', 'dd-plugin', 'dd-constrain', 'io-base', 'node', 'calendar', '
     }
 });
 
+// Responsive menu: on small screens the menu is hidden, the button in the header shows and hides it
+document.addEventListener('DOMContentLoaded', function () {
+    const button = document.getElementById('nql-menu-toggle');
+    if (button && document.getElementById('nql-menu')) {
+        document.body.classList.add('nql-has-menu');
+        button.addEventListener('click', function () {
+            const open = document.body.classList.toggle('nql-menu-open');
+            const label = open ? button.getAttribute('data-hide') : button.getAttribute('data-show');
+            button.setAttribute('aria-expanded', open ? 'true' : 'false');
+            button.setAttribute('title', label);
+            button.setAttribute('aria-label', label);
+        });
+    }
+});
+
 // Dialogs which are created once and reused
 const nqlDialogs = {};
 
@@ -233,6 +248,8 @@ function calendarinit(lang, start, field, key, cont, obj) {
 
             Y.one('#' + key).on('click', function () {
                 panel.show();
+                // on small screens the field can be at the bottom of the page
+                panel.get('boundingBox').getDOMNode().scrollIntoView({block: 'nearest'});
             });
         });
     });

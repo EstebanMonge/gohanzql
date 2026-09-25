@@ -1,3 +1,8 @@
+CHANGELOG 4.1.0 (in development)
+--------------------------------
+- Responsive web interface: the pages now adapt to phones and tablets (viewport setting, new config/responsive.css,
+  a menu button for small screens, dialogs and forms that fit the screen). The layout on wide screens is unchanged
+
 CHANGELOG 4.0.0
 ---------------
 - The project is now called Gohan ZQL: a fork of NagiosQL 3.5.0 maintained by Esteban Monge (Sempai Space). The

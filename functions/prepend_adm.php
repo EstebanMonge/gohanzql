@@ -453,6 +453,8 @@ if (isset($preContent) && ($preContent !== '') && (!isset($preNoMain) || ($preNo
     $maintp->setVariable('AUTHOR', 'Gohan ZQL Team');
     $maintp->setVariable('LANGUAGE', 'de');
     $maintp->setVariable('PUBLISHER', 'Sempai Space');
+    $maintp->setVariable('MENU_SHOW', translate('Show menu'));
+    $maintp->setVariable('MENU_HIDE', translate('Hide menu'));
     if ((int)$_SESSION['logged_in'] === 1) {
         $maintp->setVariable('ADMIN', '<a href="' . $_SESSION['SETS']['path']['base_url'] . 'admin.php" '
             . 'class="top-link">' . translate('Administration') . '</a>');

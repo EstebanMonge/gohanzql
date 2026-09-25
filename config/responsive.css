@@ -1,0 +1,441 @@
+@charset "utf-8";
+/* ----------------------------------------------------------------------------
+ Gohan ZQL
+-------------------------------------------------------------------------------
+ (c) 2026 by Esteban Monge - Sempai Space
+
+ Project   : Gohan ZQL
+ Component : CSS responsive definition (phones and small tablets)
+ Website   : https://github.com/EstebanMonge/gohanzql
+ Version   : 4.0.0
+ GIT Repo  : https://github.com/EstebanMonge/gohanzql
+-----------------------------------------------------------------------------*/
+
+/* The menu toggle button is only used on small screens */
+.nql-menu-toggle {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    /************************/
+    /**  Page and header    */
+    /************************/
+    body {
+        min-width: 0;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    /* Top bar: the dark band with the menu links, below it the light info row */
+    table.header,
+    table.header > tbody,
+    table.header > tbody > tr,
+    table.header > tbody > tr > td {
+        display: block;
+        width: auto !important;
+        height: auto;
+    }
+
+    /* The dark band keeps its 40px, the info row below it sits on the light part of the background image */
+    table.header > tbody > tr:first-child {
+        display: flex;
+        align-items: flex-end;
+        height: 40px;
+    }
+
+    .headermiddle,
+    .headerright {
+        display: none;
+    }
+
+    .headerleft {
+        padding: 12px 8px 0 8px;
+    }
+
+    .infoleft {
+        padding: 6px 8px 0 8px;
+    }
+
+    .inforight {
+        padding: 4px 8px;
+        text-align: left;
+    }
+
+    .inforight:empty {
+        display: none;
+    }
+
+    /* Domain selection and login information */
+    table.header table {
+        display: block;
+        width: 100% !important;
+        float: none;
+    }
+
+    table.header table > tbody,
+    table.header table > tbody > tr {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+    }
+
+    table.header table td {
+        display: block;
+        width: auto !important;
+        padding: 2px 12px 2px 0;
+        text-align: left;
+    }
+
+    /* Menu toggle button */
+    .nql-menu-toggle {
+        display: none;
+        margin: 0 8px 0 0;
+        padding: 0 10px;
+        height: 26px;
+        border: 1px solid #FFFFFF;
+        border-radius: 3px;
+        background: #175087;
+        color: #FFFFFF;
+        font-size: 18px;
+        line-height: 22px;
+        cursor: pointer;
+        vertical-align: bottom;
+    }
+
+    body.nql-has-menu .nql-menu-toggle {
+        display: inline-block;
+    }
+
+    body.nql-menu-open .nql-menu-toggle {
+        background: #FFFFFF;
+        color: #175087;
+    }
+
+    /************************/
+    /**  Menu and content   */
+    /************************/
+    body > table:not(.header),
+    body > table:not(.header) > tbody,
+    body > table:not(.header) > tbody > tr,
+    body > table:not(.header) > tbody > tr > td {
+        display: block;
+        width: auto !important;
+    }
+
+    /* The menu is a drop-down below the header */
+    body.nql-has-menu:not(.nql-menu-open) .nql-menu {
+        display: none;
+    }
+
+    .nql-menu {
+        padding: 6px 8px 10px 8px;
+        border-bottom: 1px solid #CBD9E5;
+        text-align: left;
+    }
+
+    .nql-menu .menutable,
+    .nql-menu .menutable > tbody,
+    .nql-menu .menutable > tbody > tr,
+    .nql-menu .menutable > tbody > tr > td {
+        display: block;
+        width: auto;
+    }
+
+    .nql-menu .menutable > tbody > tr > td {
+        height: auto;
+        min-height: 24px;
+        line-height: 24px;
+    }
+
+    .nql-menu .menu,
+    .nql-menu .menu_act {
+        width: auto;
+        margin-top: 2px;
+        background-repeat: no-repeat;
+    }
+
+    .nql-menu .menu {
+        background-color: #648EB0;
+    }
+
+    .nql-menu .menu_act {
+        background-color: #CBD9E5;
+    }
+
+    .nql-menu .menu a,
+    .nql-menu .menu_act a,
+    .nql-menu .menu_sub a {
+        display: block;
+    }
+
+    .menulinksmall,
+    #donate {
+        display: none;
+    }
+
+    td.main {
+        padding: 8px !important;
+    }
+
+    #content_main {
+        top: 0;
+        left: 0;
+        width: auto !important;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+        overflow-x: auto;
+    }
+
+    #content_main table {
+        max-width: 100%;
+    }
+
+    td.main [style*="width"] {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #content_title {
+        font-size: 18px;
+        line-height: 1.25;
+    }
+
+    .version {
+        padding: 0 8px;
+    }
+
+    /************************/
+    /**  Forms              */
+    /************************/
+    /* Every row is a wrapping line: label on its own line, then the field and its help icon */
+    #content_main .content_formtable,
+    #content_main .content_formtable > tbody {
+        display: block;
+        width: 100% !important;
+        top: 0;
+    }
+
+    #content_main .content_formtable > tbody > tr {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+    #content_main .content_formtable > tbody > tr > td {
+        display: block;
+        width: auto !important;
+        height: auto;
+        padding: 2px 6px 2px 0;
+    }
+
+    #content_main .content_formtable > tbody > tr > td[colspan] {
+        flex: 1 1 100%;
+    }
+
+    #content_main .content_formtable > tbody > tr > td.content_tbl_row1 {
+        flex: 0 0 100%;
+        font-weight: bold;
+    }
+
+    #content_main .content_formtable > tbody > tr > td.content_tbl_row2 {
+        flex: 1 1 60%;
+    }
+
+    #content_main .content_formtable > tbody > tr > td.content_tbl_row3,
+    #content_main .content_formtable > tbody > tr > td.content_tbl_row4 {
+        flex: 0 0 auto;
+    }
+
+    /* Text fields and lists use the full width; 16px avoids the automatic zoom of mobile browsers */
+    #content_main .content_formtable input[type=text],
+    #content_main .content_formtable input[type=password],
+    #content_main .content_formtable input[type=file],
+    #content_main .content_formtable select,
+    #content_main .content_formtable textarea,
+    #login .content_formtable input[type=text],
+    #login .content_formtable input[type=password] {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    #content_main .content_formtable input[type=text][style*="width"],
+    #content_main .content_formtable input.short,
+    #content_main .content_formtable input.shortmust {
+        width: auto;
+        max-width: 100%;
+    }
+
+    #content_main .content_formtable input[type=button],
+    #content_main .content_formtable input[type=submit],
+    #content_main .content_formtable input[type=reset] {
+        min-height: 32px;
+        margin: 2px 4px 2px 0;
+    }
+
+    /* Login */
+    #login {
+        min-width: 0;
+        padding: 0 12px;
+        box-sizing: border-box;
+    }
+
+    #login .content_formtable {
+        width: 100%;
+    }
+
+    /************************/
+    /**  Lists and logbook  */
+    /************************/
+    .content_listtable,
+    .content_logtable,
+    .env_table {
+        width: auto !important;
+        min-width: 100%;
+    }
+
+    /* Words stay whole; a table which is still too wide scrolls inside the content area */
+    .content_listtable td,
+    .content_listtable th,
+    .content_logtable td,
+    .content_logtable th {
+        white-space: normal;
+        padding: 3px 5px;
+    }
+
+    .content_listtable td img {
+        margin: 2px 1px;
+    }
+
+    /************************/
+    /**  Tabbed forms       */
+    /************************/
+    #content_main .nql-tabview {
+        width: auto !important;
+    }
+
+    .yui3-tabview-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .yui3-tab-label {
+        padding: 4px 8px;
+    }
+
+    /************************/
+    /**  Dialogs            */
+    /************************/
+    .yui3-panel {
+        max-width: 96vw;
+    }
+
+    /* a closed dialog must not widen the page */
+    .yui3-panel.yui3-panel-hidden {
+        display: none;
+    }
+
+    .yui3-widget-bd {
+        max-height: 70vh;
+        overflow: auto;
+    }
+
+    /* The list editing dialogs (two list boxes next to each other) stack their parts; not the calendar grid */
+    [id^="mutdialog"] #content_main .content_formtable,
+    [id^="mutdialog"] #content_main .content_formtable > tbody,
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr,
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr > td,
+    [id^="mutdialog"] table,
+    [id^="mutdialog"] table > tbody,
+    [id^="mutdialog"] table > tbody > tr,
+    [id^="mutdialog"] table > tbody > tr > td {
+        display: block;
+        width: auto !important;
+    }
+
+    [id^="mutdialog"] #content_main .content_formtable select,
+    [id^="mutdialog"] select {
+        width: 100% !important;
+        max-width: 100%;
+        height: 150px;
+        box-sizing: border-box;
+    }
+
+    [id^="mutdialog"] td img {
+        margin: 4px 8px;
+    }
+
+    /* the lists are stacked now: "add" points down, "remove" points up */
+    [id^="mutdialog"] td img[src*="pfeil_"] {
+        margin: 12px 8px;
+        transform: rotate(90deg);
+    }
+
+    /* Order: Available label, Available list, arrows, Selected label, Selected list */
+    [id^="mutdialog"] #content_main .content_formtable > tbody {
+        display: grid;
+        grid-template-columns: 100%;
+    }
+
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr {
+        display: contents;
+    }
+
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr:first-child > td:nth-child(1) {
+        order: 1;
+    }
+
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr:nth-child(2) > td:nth-child(1) {
+        order: 2;
+    }
+
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr:first-child > td:nth-child(2) {
+        display: none;
+    }
+
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr:nth-child(2) > td:nth-child(2),
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr:nth-child(n+3) > td:nth-child(1) {
+        order: 3;
+        text-align: center;
+    }
+
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr:first-child > td:nth-child(3) {
+        order: 4;
+    }
+
+    [id^="mutdialog"] #content_main .content_formtable > tbody > tr:nth-child(2) > td:nth-child(3) {
+        order: 5;
+    }
+
+    /************************/
+    /**  Help text editor   */
+    /************************/
+    #content_main textarea#taFileText,
+    .tox-tinymce {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    #content_main .content_formtable > tbody > tr > td.content_tbl_row2 {
+        flex: 1 1 70%;
+    }
+
+    .yui3-panel {
+        max-width: 98vw;
+    }
+
+    #content_title {
+        font-size: 16px;
+    }
+}

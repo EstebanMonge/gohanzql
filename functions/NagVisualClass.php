@@ -124,7 +124,7 @@ class NagVisualClass
         $this->intPageId = $intPageId;
         if (!isset($this->arrSession['menu']) || ($this->arrSession['menu'] !== 'invisible')) {
             /* Menu visible */
-            $strHTML = '<td width="150" align="center" valign="top">' . "\n";
+            $strHTML = '<td width="150" align="center" valign="top" id="nql-menu" class="nql-menu">' . "\n";
             $strHTML .= '<table cellspacing="1" class="menutable">' . "\n";
             $this->hasMenuRecursive(0, 'menu', $intCntId, $strHTML);
             $strHTML .= '</table>' . "\n";
