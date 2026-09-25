@@ -8,7 +8,7 @@
 --  (c) 2005-2022 by Martin Willisegger
 --  (c) 2026 by Esteban Monge - Sempai Space
 --
---  Project   : Gohan ZQL (fork of NagiosQL)
+--  Project   : Gohan ZQL
 --  Component : Complete Gohan ZQL Database
 --  Website   : https://github.com/EstebanMonge/gohanzql
 --  Version   : 4.0.0

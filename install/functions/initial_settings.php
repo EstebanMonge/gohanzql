@@ -7,7 +7,7 @@ exit;
 ;
 ;///////////////////////////////////////////////////////////////////////////////
 ;
-; Project   : Gohan ZQL (fork of NagiosQL)
+; Project   : Gohan ZQL
 ; Component : Initial configuration settings
 ; Website   : https://github.com/EstebanMonge/gohanzql
 ; Version   : 4.0.0

@@ -1,7 +1,7 @@
 <!-- (c) 2005-2022 by Martin Willisegger -->
 <!-- (c) 2026 by Esteban Monge - Sempai Space -->
 <!-- -->
-<!-- Project   : Gohan ZQL (fork of NagiosQL) -->
+<!-- Project   : Gohan ZQL -->
 <!-- Component : Installer template -->
 <!-- Website   : https://github.com/EstebanMonge/gohanzql -->
 <!-- Version   : 4.0.0 -->
@@ -29,9 +29,7 @@
             {CONTENT}
         </div>
         <div id="footer">
-            <a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> <?php echo BASE_VERSION; ?> (fork of
-            <a href='https://sourceforge.net/projects/nagiosql/'
-               target='_blank'>NagiosQL</a>)
+            <a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> <?php echo BASE_VERSION; ?>
         </div>
     </div>
 </div>

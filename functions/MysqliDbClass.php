@@ -6,7 +6,7 @@
  (c) 2005-2022 by Martin Willisegger
  (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : Gohan ZQL (fork of NagiosQL)
+ Project   : Gohan ZQL
  Component : MySQLi data processing class
  Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0

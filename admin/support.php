@@ -5,7 +5,7 @@
  (c) 2005-2023 by Martin Willisegger
  (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : Gohan ZQL (fork of NagiosQL)
+ Project   : Gohan ZQL
  Component : Support page
  Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0
@@ -734,7 +734,6 @@ $conttp->show('support');
 /*
 Process footer
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> $setFileVersion (fork of "
-    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
+$maintp->setVariable('VERSION_INFO', "<a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> $setFileVersion");
 $maintp->parse('footer');
 $maintp->show('footer');

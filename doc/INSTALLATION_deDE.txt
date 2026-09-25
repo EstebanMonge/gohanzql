@@ -7,7 +7,7 @@
 // (c) 2005-2022 by Martin Willisegger
 // (c) 2026 by Esteban Monge - Sempai Space
 //
-// Project   : Gohan ZQL (fork of NagiosQL)
+// Project   : Gohan ZQL
 // Component : Installations HowTo
 // Website   : https://github.com/EstebanMonge/gohanzql
 // Version   : 4.0.0
@@ -114,7 +114,7 @@ Oeffnen Sie nach erfolgter Installation die Support Seite unter Administration u
 ================
 === Probleme ===
 ================
-Zur Zeit gibt es keine bekannten Probleme. Fragen und Programmfehler bitte als Issue im GitHub-Repository melden (https://github.com/EstebanMonge/gohanzql/issues); das urspruengliche NagiosQL-Projekt findet man unter https://sourceforge.net/projects/nagiosql/
+Zur Zeit gibt es keine bekannten Probleme. Fragen und Programmfehler bitte als Issue im GitHub-Repository melden (https://github.com/EstebanMonge/gohanzql/issues)
 
 ================
 === APPENDIX ===

@@ -1,6 +1,6 @@
 {
     "name": "nagiosql/nagiosql",
-    "description": "Gohan ZQL - web based administration tool for Nagios/Icinga configuration (fork of NagiosQL)",
+    "description": "Gohan ZQL - web based administration tool for Nagios/Icinga configuration",
     "type": "project",
     "homepage": "https://github.com/EstebanMonge/gohanzql",
     "support": {

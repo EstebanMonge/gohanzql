@@ -5,7 +5,7 @@
  (c) 2005-2022 by Martin Willisegger
  (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : Gohan ZQL (fork of NagiosQL)
+ Project   : Gohan ZQL
  Component : Installer Class
  Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0
@@ -695,7 +695,7 @@ class NagInstallClass
             fwrite($filSettings, ";\n");
             fwrite($filSettings, ";///////////////////////////////////////////////////////////////////////////////\n");
             fwrite($filSettings, ";\n");
-            fwrite($filSettings, "; Project  : Gohan ZQL (fork of NagiosQL)\n");
+            fwrite($filSettings, "; Project  : Gohan ZQL\n");
             fwrite($filSettings, "; Component: Database Configuration\n");
             fwrite($filSettings, "; Website  : https://github.com/EstebanMonge/gohanzql\n");
             fwrite($filSettings, '; Date     : ' . date('F j, Y, g:i a') . "\n");

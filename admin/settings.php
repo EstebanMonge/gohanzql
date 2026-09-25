@@ -5,7 +5,7 @@
  (c) 2005-2023 by Martin Willisegger
  (c) 2026 by Esteban Monge - Sempai Space
 
- Project   : Gohan ZQL (fork of NagiosQL)
+ Project   : Gohan ZQL
  Component : Gohan ZQL settings
  Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0
@@ -189,7 +189,7 @@ if (filter_input(INPUT_POST, 'selValue1')) {
             fwrite($filSettings, ";\n");
             fwrite($filSettings, ";///////////////////////////////////////////////////////////////////////////////\n");
             fwrite($filSettings, ";\n");
-            fwrite($filSettings, "; Project  : Gohan ZQL (fork of NagiosQL)\n");
+            fwrite($filSettings, "; Project  : Gohan ZQL\n");
             fwrite($filSettings, "; Component: Database Configuration\n");
             fwrite($filSettings, "; Website  : https://github.com/EstebanMonge/gohanzql\n");
             fwrite($filSettings, '; Date     : ' . date('F j, Y, g:i a') . "\n");
@@ -346,7 +346,6 @@ $conttp->show('settingssite');
 /*
 Footer ausgeben
 */
-$maintp->setVariable('VERSION_INFO', "<a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> $setFileVersion (fork of "
-    . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
+$maintp->setVariable('VERSION_INFO', "<a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> $setFileVersion");
 $maintp->parse('footer');
 $maintp->show('footer');
