@@ -2,9 +2,9 @@
 # #
 # # Project   : Gohan ZQL
 # # Component : Translation File English
-# # Website   : https://sourceforge.net/projects/nagiosql/
+# # Website   : https://github.com/EstebanMonge/gohanzql
 # # Version   : 3.4.1
-# # GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+# # GIT Repo  : https://github.com/EstebanMonge/gohanzql
 # #
 # #############################################################################
 # Translators:
@@ -1073,7 +1073,7 @@ msgstr ""
 
 #: admin/settings.php:129
 msgid "Error in setting the correct locale, please report this error with the associated output of 'locale -a'"
-msgstr "Errore nel settaggio della localizzazione, riportare questo errore con l'output del comando 'locale -a' a bugs@nagiosql.org"
+msgstr "Errore nel settaggio della localizzazione, riportare questo errore con l'output del comando 'locale -a' a https://github.com/EstebanMonge/gohanzql/issues"
 
 #: admin/settings.php:136
 msgid "Settings were changed"
@@ -2917,8 +2917,8 @@ msgstr "Errore durante la connessione al database:"
 
 #: functions/prepend_adm.php:133
 #: functions/prepend_adm.php:192
-msgid "Error in setting the correct locale, please report this error with the associated output of  'locale -a' to bugs@nagiosql.org"
-msgstr "Errore nel settaggio della localizzazione, riportare questo errore con l'output del comando 'locale -a' a bugs@nagiosql.org"
+msgid "Error in setting the correct locale, please report this error with the associated output of  'locale -a' to https://github.com/EstebanMonge/gohanzql/issues"
+msgstr "Errore nel settaggio della localizzazione, riportare questo errore con l'output del comando 'locale -a' a https://github.com/EstebanMonge/gohanzql/issues"
 
 #: functions/prepend_adm.php:269
 msgid "Webserver login successfull"

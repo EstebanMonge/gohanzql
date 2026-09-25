@@ -10,9 +10,9 @@
 --
 --  Project   : Gohan ZQL (fork of NagiosQL)
 --  Component : Update from NagiosQL 3.0.2 to NagiosQL 3.0.3
---  Website   : https://sourceforge.net/projects/nagiosql/
+--  Website   : https://github.com/EstebanMonge/gohanzql
 --  Version   : 4.0.0
---  GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+--  GIT Repo  : https://github.com/EstebanMonge/gohanzql
 --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 --

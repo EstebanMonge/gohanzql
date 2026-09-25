@@ -9,9 +9,9 @@
 //
 // Project   : Gohan ZQL (fork of NagiosQL)
 // Component : Installation HowTo
-// Website   : https://sourceforge.net/projects/nagiosql/
+// Website   : https://github.com/EstebanMonge/gohanzql
 // Version   : 4.0.0
-// GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+// GIT Repo  : https://github.com/EstebanMonge/gohanzql
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -114,7 +114,7 @@ After installation - go to administration - support and check your installation.
 ================
 === PROBLEMS ===
 ================
-There are currently no known issues. If you having questions, please visit our forum https://sourceforge.net/projects/nagiosql/. If you probably found a bug, please help us and open a new bug report at http://dev.nagigosql.org
+There are currently no known issues. If you have questions or if you probably found a bug, please open an issue at https://github.com/EstebanMonge/gohanzql/issues (the original NagiosQL project is at https://sourceforge.net/projects/nagiosql/).
 
 ================
 === APPENDIX ===

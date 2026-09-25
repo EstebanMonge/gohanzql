@@ -3,9 +3,9 @@
 <!-- -->
 <!-- Project   : Gohan ZQL (fork of NagiosQL) -->
 <!-- Component : Installer template - step 2 -->
-<!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
+<!-- Website   : https://github.com/EstebanMonge/gohanzql -->
 <!-- Version   : 4.0.0 -->
-<!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
+<!-- GIT Repo  : https://github.com/EstebanMonge/gohanzql -->
 <script type="text/javascript">
     <!--
     // Send form

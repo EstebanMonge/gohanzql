@@ -2,9 +2,9 @@
 # #
 # # Project   : Gohan ZQL
 # # Component : Translation File English
-# # Website   : https://sourceforge.net/projects/nagiosql/
+# # Website   : https://github.com/EstebanMonge/gohanzql
 # # Version   : 3.4.0
-# # GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+# # GIT Repo  : https://github.com/EstebanMonge/gohanzql
 # #
 # #############################################################################
 # Translators:
@@ -2869,8 +2869,8 @@ msgid "Unrestricted access"
 msgstr "无限制访问"
 
 #: functions/prepend_adm.php:214
-msgid "Error in setting the correct locale, please report this error with the associated output of  'locale -a' to bugs@nagiosql.org"
-msgstr "在设置正确的区域时出错，请将此错误以及'locale -a'的输出汇报给bugs@nagiosql.org"
+msgid "Error in setting the correct locale, please report this error with the associated output of  'locale -a' to https://github.com/EstebanMonge/gohanzql/issues"
+msgstr "在设置正确的区域时出错，请将此错误以及'locale -a'的输出汇报给https://github.com/EstebanMonge/gohanzql/issues"
 
 #: functions/prepend_adm.php:306
 msgid "Webserver login successfull"

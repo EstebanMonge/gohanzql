@@ -7,9 +7,9 @@
 
  Project   : Gohan ZQL (fork of NagiosQL)
  Component : Support page
- Website   : https://sourceforge.net/projects/nagiosql/
+ Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0
- GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+ GIT Repo  : https://github.com/EstebanMonge/gohanzql
 -----------------------------------------------------------------------------*/
 
 use functions\MysqliDbClass;
@@ -72,6 +72,11 @@ $conttp->setVariable('SUBTITLE_CREDITS', translate('Credits'));
 $conttp->setVariable('CREDITS_LIBRARIES', translate('Third-party components:') . ' Twig (BSD), TinyMCE (GPL), '
     . 'YUI 3 (BSD, maintained fork by Canonical).');
 $conttp->setVariable('SUBTITLE_1', translate('Support contact information'));
+$conttp->setVariable('PROJECT_TEXT', translate('Gohan ZQL: for questions, bug reports and suggestions please use '
+    . 'the project page on GitHub:'));
+$conttp->setVariable('PROJECT_LINK', translate('Gohan ZQL on GitHub'));
+$conttp->setVariable('ISSUES_LINK', translate('Report an issue'));
+$conttp->setVariable('UPSTREAM_TEXT', translate('The original NagiosQL project (upstream):'));
 $conttp->setVariable('SUPPORT_TEXT_1', translate('For questions, the online support forum or contact information '
     . 'visit our website:'));
 $conttp->setVariable('WEBSITE_LINK', translate('NagiosQL on sourceforge'));
@@ -97,6 +102,9 @@ $conttp->setVariable('TRANSLATION_LINK', translate('Transifex translation servic
 GIT repository
 */
 $conttp->setVariable('SUBTITLE_8', translate('GIT software repository'));
+$conttp->setVariable('GIT_TEXT_FORK', translate('The Gohan ZQL sources are available on GitHub. There you will '
+    . 'always find the latest changes.'));
+$conttp->setVariable('GIT_LINK_FORK', translate('GitHub'));
 $conttp->setVariable('SUPPORT_TEXT_5', translate('The NagiosQL sources are available on GitLab. There you will '
     . 'always find the latest bugfixes and changes as well as older branches.'));
 $conttp->setVariable('GIT_LINK', translate('GitLab'));
@@ -726,7 +734,7 @@ $conttp->show('support');
 /*
 Process footer
 */
-$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+$maintp->setVariable('VERSION_INFO', "<a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> $setFileVersion (fork of "
     . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

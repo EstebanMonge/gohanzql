@@ -3,9 +3,9 @@
 <!-- -->
 <!-- Project   : Gohan ZQL (fork of NagiosQL) -->
 <!-- Component : Installer template - step 3 -->
-<!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
+<!-- Website   : https://github.com/EstebanMonge/gohanzql -->
 <!-- Version   : 4.0.0 -->
-<!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
+<!-- GIT Repo  : https://github.com/EstebanMonge/gohanzql -->
 <div id="installmenu">
     <div id="installmenu_content">
         <p class="step1_active"><a href='install.php?step=1'><br><br>{STEP1_BOX}</a></p>

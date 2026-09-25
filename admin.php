@@ -7,9 +7,9 @@
 
  Project   : Gohan ZQL (fork of NagiosQL)
  Component : Admin main site
- Website   : https://sourceforge.net/projects/nagiosql/
+ Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0
- GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+ GIT Repo  : https://github.com/EstebanMonge/gohanzql
 -----------------------------------------------------------------------------*/
 /**
  * Class and variable includes
@@ -49,7 +49,7 @@ $conttp->show('main');
 /*
 Include footer
 */
-$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion - GIT Version: $setGITVersion (fork of "
+$maintp->setVariable('VERSION_INFO', "<a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> $setFileVersion - GIT Version: $setGITVersion (fork of "
     . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

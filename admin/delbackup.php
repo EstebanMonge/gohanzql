@@ -7,9 +7,9 @@
 
  Project   : Gohan ZQL (fork of NagiosQL)
  Component : Delete backup files
- Website   : https://sourceforge.net/projects/nagiosql/
+ Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0
- GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+ GIT Repo  : https://github.com/EstebanMonge/gohanzql
 -----------------------------------------------------------------------------*/
 
 use functions\NagConfigClass;
@@ -195,7 +195,7 @@ $conttp->show('main');
 /*
 Footer ausgeben
 */
-$maintp->setVariable('VERSION_INFO', "Gohan ZQL $setFileVersion (fork of "
+$maintp->setVariable('VERSION_INFO', "<a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> $setFileVersion (fork of "
     . "<a href='https://sourceforge.net/projects/nagiosql/' target='_blank'>NagiosQL</a>)");
 $maintp->parse('footer');
 $maintp->show('footer');

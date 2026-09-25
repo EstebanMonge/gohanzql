@@ -2,6 +2,8 @@
 
 Gohan ZQL is a web based administration tool for Nagios/Icinga configuration.
 
+- Project page, source code and issue tracker: <https://github.com/EstebanMonge/gohanzql>
+
 It is a **fork of [NagiosQL](https://sourceforge.net/projects/nagiosql/)** (version 3.5.0), the tool created by
 Martin Willisegger. The original copyright notices and the license are preserved.
 
@@ -30,8 +32,11 @@ See `doc/INSTALLATION_enGB.txt` (English) or `doc/INSTALLATION_deDE.txt` (German
 - Only the visible product name was changed. Technical names such as the default database name, the default
   configuration paths (`/etc/nagiosql`) and the PHP class names still use the original NagiosQL names, so that
   installations stay compatible with NagiosQL.
-- The website and repository links in the file headers, the donation button, the translation service link and the
-  online version check still point to the upstream NagiosQL project until Gohan ZQL has its own.
+- The project links (file headers, footer, support page, installer) point to this repository. The donation button,
+  the translation service link and the online version check still point to the upstream NagiosQL project until
+  Gohan ZQL has its own.
+- The full history of NagiosQL is kept: `main` contains it, and the original NagiosQL branches are available as
+  `nagiosql/*` branches (for example `nagiosql/3.5.0`, the version this fork started from).
 - See `doc/CHANGELOG` for the changes.
 
 ## License

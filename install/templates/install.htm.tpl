@@ -3,9 +3,9 @@
 <!-- -->
 <!-- Project   : Gohan ZQL (fork of NagiosQL) -->
 <!-- Component : Installer template -->
-<!-- Website   : https://sourceforge.net/projects/nagiosql/ -->
+<!-- Website   : https://github.com/EstebanMonge/gohanzql -->
 <!-- Version   : 4.0.0 -->
-<!-- GIT Repo  : https://gitlab.com/wizonet/NagiosQL -->
+<!-- GIT Repo  : https://github.com/EstebanMonge/gohanzql -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -29,7 +29,7 @@
             {CONTENT}
         </div>
         <div id="footer">
-            Gohan ZQL <?php echo BASE_VERSION; ?> (fork of
+            <a href='https://github.com/EstebanMonge/gohanzql' target='_blank'>Gohan ZQL</a> <?php echo BASE_VERSION; ?> (fork of
             <a href='https://sourceforge.net/projects/nagiosql/'
                target='_blank'>NagiosQL</a>)
         </div>

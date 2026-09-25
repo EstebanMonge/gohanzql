@@ -2,9 +2,9 @@
 # #
 # # Project   : Gohan ZQL
 # # Component : Translation File English
-# # Website   : https://sourceforge.net/projects/nagiosql/
+# # Website   : https://github.com/EstebanMonge/gohanzql
 # # Version   : 3.4.0
-# # GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+# # GIT Repo  : https://github.com/EstebanMonge/gohanzql
 # #
 # #############################################################################
 # Translators:
@@ -2918,8 +2918,8 @@ msgstr "Error al conectar a la base de datos:"
 
 #: functions/prepend_adm.php:133
 #: functions/prepend_adm.php:192
-msgid "Error in setting the correct locale, please report this error with the associated output of  'locale -a' to bugs@nagiosql.org"
-msgstr "Error al configurar el locale correcto, por favor informa de este error con la salida asociada de  'locale -a' a bugs@nagiosql.org"
+msgid "Error in setting the correct locale, please report this error with the associated output of  'locale -a' to https://github.com/EstebanMonge/gohanzql/issues"
+msgstr "Error al configurar el locale correcto, por favor informa de este error con la salida asociada de  'locale -a' a https://github.com/EstebanMonge/gohanzql/issues"
 
 #: functions/prepend_adm.php:269
 msgid "Webserver login successfull"

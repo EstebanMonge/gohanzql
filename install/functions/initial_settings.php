@@ -9,9 +9,9 @@ exit;
 ;
 ; Project   : Gohan ZQL (fork of NagiosQL)
 ; Component : Initial configuration settings
-; Website   : https://sourceforge.net/projects/nagiosql/
+; Website   : https://github.com/EstebanMonge/gohanzql
 ; Version   : 4.0.0
-; GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+; GIT Repo  : https://github.com/EstebanMonge/gohanzql
 ;
 ; DO NOT USE THIS FILE AS NAGIOSQL SETTINGS FILE!
 ;

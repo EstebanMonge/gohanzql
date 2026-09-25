@@ -3,9 +3,9 @@
  * (c) 2026 by Esteban Monge - Sempai Space
  * Project   : Gohan ZQL (fork of NagiosQL)
  * Component : common JavaScript functions
- * Website   : https://sourceforge.net/projects/nagiosql/
+ * Website   : https://github.com/EstebanMonge/gohanzql
  * Version   : 4.0.0
- * GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+ * GIT Repo  : https://github.com/EstebanMonge/gohanzql
  */
 let popup = false;
 

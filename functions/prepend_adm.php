@@ -7,9 +7,9 @@
 
  Project   : Gohan ZQL (fork of NagiosQL)
  Component : Preprocessing script
- Website   : https://sourceforge.net/projects/nagiosql/
+ Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0
- GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+ GIT Repo  : https://github.com/EstebanMonge/gohanzql
 -----------------------------------------------------------------------------*/
 error_reporting(E_ALL & ~E_STRICT);
 /**
@@ -213,7 +213,7 @@ if (isset($chkLogout) && ($chkLogout === 'yes')) {
     );
     if (!isset($strLocale)) {
         $strErrorMessage .= translate('Error in setting the correct locale, please report this error with the '
-                . "associated output of  'locale -a' to bugs@nagiosql.org") . '::';
+                . "associated output of  'locale -a' to https://github.com/EstebanMonge/gohanzql/issues") . '::';
         $intError = 1;
     }
     putenv('LC_ALL=' . $SETS['data']['locale'] . '.utf-8');

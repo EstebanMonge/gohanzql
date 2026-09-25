@@ -7,9 +7,9 @@
 
  Project   : Gohan ZQL (fork of NagiosQL)
  Component : Installer Class
- Website   : https://sourceforge.net/projects/nagiosql/
+ Website   : https://github.com/EstebanMonge/gohanzql
  Version   : 4.0.0
- GIT Repo  : https://gitlab.com/wizonet/NagiosQL
+ GIT Repo  : https://github.com/EstebanMonge/gohanzql
 -----------------------------------------------------------------------------*/
 
 /* ----------------------------------------------------------------------------
@@ -697,7 +697,7 @@ class NagInstallClass
             fwrite($filSettings, ";\n");
             fwrite($filSettings, "; Project  : Gohan ZQL (fork of NagiosQL)\n");
             fwrite($filSettings, "; Component: Database Configuration\n");
-            fwrite($filSettings, "; Website  : https://sourceforge.net/projects/nagiosql/\n");
+            fwrite($filSettings, "; Website  : https://github.com/EstebanMonge/gohanzql\n");
             fwrite($filSettings, '; Date     : ' . date('F j, Y, g:i a') . "\n");
             fwrite($filSettings, '; Version  : ' . $this->arrSession['install']['version'] . "\n");
             fwrite($filSettings, ";\n");
