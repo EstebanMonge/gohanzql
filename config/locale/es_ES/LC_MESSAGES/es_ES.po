@@ -16,7 +16,7 @@ msgstr ""
 "POT-Creation-Date: 2012-03-09 22:51+0100\n"
 "PO-Revision-Date: 2012-03-09 22:51+0100\n"
 "Last-Translator: \n"
-"Language-Team: Spanish (Spain) (http://www.transifex.net/projects/p/nagiosql/language/es_ES/)\n"
+"Language-Team: Spanish (Spain)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1225,32 +1225,16 @@ msgstr ""
 msgid "Support contact information"
 msgstr ""
 
-#: admin/support.php:76
-msgid "For questions, the online support forum or contact information visit our website:"
-msgstr ""
-
 #: admin/support.php:80
-msgid "Donate to support NagiosQL"
+msgid "Donate to support Gohan ZQL"
 msgstr ""
 
 #: admin/support.php:81
-msgid "If you like NagiosQL and it simplifies your daily work, then you may want to support the project by making a donation. This helps us to keep NagiosQL alive and to cover our costs. Thank you for your donation!"
+msgid "If you like Gohan ZQL and it simplifies your daily work, then you may want to support the project by making a donation. This helps us to keep Gohan ZQL alive and to cover our costs. Thank you for your donation!"
 msgstr ""
 
 #: admin/support.php:82
-msgid "Donate for NagiosQL on sourceforge"
-msgstr ""
-
-#: admin/support.php:86
-msgid "Translation services"
-msgstr ""
-
-#: admin/support.php:87
-msgid "NagiosQL was translated into various languages​​. Since some translators are no longer available in later versions, there may be untranslated words or phrases. If you want to help us complete the translation, correct them or introduce a new language​​, then sign up with us now! The translations are simply feasible online - we use an open translation service where you can register for free at any time:"
-msgstr ""
-
-#: admin/support.php:88
-msgid "Transifex translation service"
+msgid "Donate to Gohan ZQL"
 msgstr ""
 
 #: admin/support.php:92
@@ -1724,8 +1708,8 @@ msgid "You already have the latest version installed"
 msgstr "Ya tiene la última versión instalada"
 
 #: admin/versioncheck.php:93
-msgid "You are using an old NagiosQL version. Please update to the latest stable version"
-msgstr "Está usando una versión de NagiosQL anticuada. Por favor, actualice a la última versión estable"
+msgid "You are using an old Gohan ZQL version. Please update to the latest stable version"
+msgstr "Está usando una versión de Gohan ZQL anticuada. Por favor, actualice a la última versión estable"
 
 #: admin/versioncheck.php:96
 msgid "You are using a newer development version without official support"

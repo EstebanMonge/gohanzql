@@ -76,28 +76,14 @@ $conttp->setVariable('PROJECT_TEXT', translate('Gohan ZQL: for questions, bug re
     . 'the project page on GitHub:'));
 $conttp->setVariable('PROJECT_LINK', translate('Gohan ZQL on GitHub'));
 $conttp->setVariable('ISSUES_LINK', translate('Report an issue'));
-$conttp->setVariable('UPSTREAM_TEXT', translate('The original NagiosQL project (upstream):'));
-$conttp->setVariable('SUPPORT_TEXT_1', translate('For questions, the online support forum or contact information '
-    . 'visit our website:'));
-$conttp->setVariable('WEBSITE_LINK', translate('NagiosQL on sourceforge'));
 /*
 Donation
 */
-$conttp->setVariable('SUBTITLE_2', translate('Donate to support NagiosQL'));
-$conttp->setVariable('SUPPORT_TEXT_2', translate('If you like NagiosQL and it simplifies your daily work, then you '
-    . 'may want to support the project by making a donation. This helps us to keep NagiosQL alive and to cover '
+$conttp->setVariable('SUBTITLE_2', translate('Donate to support Gohan ZQL'));
+$conttp->setVariable('SUPPORT_TEXT_2', translate('If you like Gohan ZQL and it simplifies your daily work, then you '
+    . 'may want to support the project by making a donation. This helps us to keep Gohan ZQL alive and to cover '
     . 'our costs. Thank you for your donation!'));
-$conttp->setVariable('DONATE_LINK', translate('Donate for NagiosQL on sourceforge'));
-/*
-Translations
-*/
-$conttp->setVariable('SUBTITLE_3', translate('Translation services'));
-$conttp->setVariable('SUPPORT_TEXT_3', translate('NagiosQL was translated into various languages​​. Since some '
-    . 'translators are no longer available in later versions, there may be untranslated words or phrases. If '
-    . 'you want to help us complete the translation, correct them or introduce a new language​​, then sign up '
-    . 'with us now! The translations are simply feasible online - we use an open translation service where '
-    . 'you can register for free at any time:'));
-$conttp->setVariable('TRANSLATION_LINK', translate('Transifex translation service'));
+$conttp->setVariable('DONATE_LINK', translate('Donate to Gohan ZQL'));
 /*
 GIT repository
 */
@@ -105,9 +91,6 @@ $conttp->setVariable('SUBTITLE_8', translate('GIT software repository'));
 $conttp->setVariable('GIT_TEXT_FORK', translate('The Gohan ZQL sources are available on GitHub. There you will '
     . 'always find the latest changes.'));
 $conttp->setVariable('GIT_LINK_FORK', translate('GitHub'));
-$conttp->setVariable('SUPPORT_TEXT_5', translate('The NagiosQL sources are available on GitLab. There you will '
-    . 'always find the latest bugfixes and changes as well as older branches.'));
-$conttp->setVariable('GIT_LINK', translate('GitLab'));
 /*
 Online version check
 */

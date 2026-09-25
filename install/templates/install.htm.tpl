@@ -22,7 +22,7 @@
                 <a href="index.php"><img src="images/gohanzql_logo.png" border="0" alt="Gohan ZQL Logo" title="Gohan ZQL Logo"></a>
             </div>
             <div id="documentation">
-                <a href="https://sourceforge.net/projects/nagiosql/faq.html"
+                <a href="https://github.com/EstebanMonge/gohanzql/tree/main/doc"
                    target="_blank"><?php echo translate("Online Documentation"); ?></a>
             </div>
         </div>

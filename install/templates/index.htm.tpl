@@ -22,7 +22,7 @@
                 <a href="index.php"><img src="images/gohanzql_logo.png" border="0" alt="Gohan ZQL"></a>
             </div>
             <div id="documentation">
-                <a href='https://sourceforge.net/projects/nagiosql/files/nagiosql/Documentation/'
+                <a href='https://github.com/EstebanMonge/gohanzql/tree/main/doc'
                    target='_blank'>{NAGIOS_FAQ}</a>
             </div>
             <div id="langselector">
@@ -78,7 +78,7 @@
                                   value="{NEW_INSTALLATION}" {DISABLE_NEW}>
                             <input type="submit" name="butUpgrade" id="butUpgrade" value="{UPDATE}" {DISABLE_UPDATE}>
                         </p>
-                        <p><a href='https://sourceforge.net/projects/nagiosql/files/nagiosql/Documentation/'
+                        <p><a href='https://github.com/EstebanMonge/gohanzql/tree/main/doc'
                               target='_blank'>{ONLINE_DOC}</a></p>
                     </form>
                 </div>

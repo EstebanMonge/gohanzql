@@ -129,10 +129,10 @@ class NagVisualClass
             $this->hasMenuRecursive(0, 'menu', $intCntId, $strHTML);
             $strHTML .= '</table>' . "\n";
             $strHTML .= '<br><a href="' . $strInvisible . '" class="menulinksmall">[' . translate('Hide menu') . ']</a>' . "\n";
-            $strHTML .= '<div id="donate"><a href="https://sourceforge.net/donate/index.php?group_id=134390" ';
+            $strHTML .= '<div id="donate"><a href="https://www.paypal.com/donate/?hosted_button_id=3VDHVZFFNHBGC" ';
             $strHTML .= 'target="_blank"><img src="' . $this->arrSettings['path']['base_url'] . 'images/donate_2.png" ';
-            $strHTML .= 'width="60" height="24" border="0" alt="' . translate('Donate for NagiosQL on sourceforge');
-            $strHTML .= '" title="' . translate('Donate for NagiosQL on sourceforge') . '"></a></div>';
+            $strHTML .= 'width="60" height="24" border="0" alt="' . translate('Donate to Gohan ZQL');
+            $strHTML .= '" title="' . translate('Donate to Gohan ZQL') . '"></a></div>';
         } else {
             /* Menu invisible */
             $strHTML = '<td valign="top">' . "\n";

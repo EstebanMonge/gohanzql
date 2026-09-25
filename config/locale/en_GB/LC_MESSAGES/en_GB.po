@@ -1375,76 +1375,28 @@ msgstr "Gohan ZQL support page"
 msgid "Support contact information"
 msgstr "Support contact information"
 
-#: admin/support.php:67
-msgid ""
-"For questions, the online support forum or contact information visit our "
-"website:"
-msgstr ""
-"For questions, the online support forum or contact information visit our "
-"website:"
-
-#: admin/support.php:69
-msgid "NagiosQL on sourceforge"
-msgstr "NagiosQL on sourceforge"
-
 #: admin/support.php:73
-msgid "Donate to support NagiosQL"
-msgstr "Donate to support NagiosQL"
+msgid "Donate to support Gohan ZQL"
+msgstr "Donate to support Gohan ZQL"
 
 #: admin/support.php:74
 msgid ""
-"If you like NagiosQL and it simplifies your daily work, then you may want to "
-"support the project by making a donation. This helps us to keep NagiosQL "
+"If you like Gohan ZQL and it simplifies your daily work, then you may want to "
+"support the project by making a donation. This helps us to keep Gohan ZQL "
 "alive and to cover our costs. Thank you for your donation!"
 msgstr ""
-"If you like NagiosQL and it simplifies your daily work, then you may want to "
-"support the project by making a donation. This helps us to keep NagiosQL "
+"If you like Gohan ZQL and it simplifies your daily work, then you may want to "
+"support the project by making a donation. This helps us to keep Gohan ZQL "
 "alive and to cover our costs. Thank you for your donation!"
 
 #: admin/support.php:77 functions/NagVisualClass.php:134
 #: functions/NagVisualClass.php:135
-msgid "Donate for NagiosQL on sourceforge"
-msgstr "Donate for NagiosQL on sourceforge"
-
-#: admin/support.php:81
-msgid "Translation services"
-msgstr "Translation services"
-
-#: admin/support.php:82
-msgid ""
-"NagiosQL was translated into various languages​​. Since some translators are "
-"no longer available in later versions, there may be untranslated words or "
-"phrases. If you want to help us complete the translation, correct them or "
-"introduce a new language​​, then sign up with us now! The translations are "
-"simply feasible online - we use an open translation service where you can "
-"register for free at any time:"
-msgstr ""
-"NagiosQL was translated into various languages​​. Since some translators are "
-"no longer available in later versions, there may be untranslated words or "
-"phrases. If you want to help us complete the translation, correct them or "
-"introduce a new language​​, then sign up with us now! The translations are "
-"simply feasible online - we use an open translation service where you can "
-"register for free at any time:"
-
-#: admin/support.php:87
-msgid "Transifex translation service"
-msgstr "Transifex translation service"
+msgid "Donate to Gohan ZQL"
+msgstr "Donate to Gohan ZQL"
 
 #: admin/support.php:91
 msgid "GIT software repository"
 msgstr "GIT software repository"
-
-#: admin/support.php:92
-msgid ""
-"The NagiosQL sources are available on GitLab. There you will always find the "
-"latest bugfixes and changes as well as older branches."
-msgstr ""
-"The NagiosQL sources are available on GitLab. There you will always find the "
-"latest bugfixes and changes as well as older branches."
-
-#: admin/support.php:94
-msgid "GitLab"
-msgstr "GitLab"
 
 #: admin/support.php:98
 msgid "Version check"
@@ -1920,10 +1872,10 @@ msgstr "new GIT hotfix version available:"
 
 #: admin/versioncheck.php:130
 msgid ""
-"You are using an old NagiosQL version. Please update to the latest stable "
+"You are using an old Gohan ZQL version. Please update to the latest stable "
 "version"
 msgstr ""
-"You are using an old NagiosQL version. Please update to the latest stable "
+"You are using an old Gohan ZQL version. Please update to the latest stable "
 "version"
 
 #: admin/versioncheck.php:135

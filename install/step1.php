@@ -313,7 +313,7 @@ if ($intError !== 0) {
             . 'check your system settings and read the requirements of Gohan ZQL!') . "</span><br><br>\n";
     $arrTemplate['MESSAGE'] .= $myInstClass->translate('Read the INSTALLATION file in the Gohan ZQL doc directory '
         . 'or the installation PDF file on our');
-    $arrTemplate['MESSAGE'] .= ' <a href="https://sourceforge.net/projects/nagiosql/documentation.html" '
+    $arrTemplate['MESSAGE'] .= ' <a href="https://github.com/EstebanMonge/gohanzql/tree/main/doc" '
         . 'target="_blank">';
     $arrTemplate['MESSAGE'] .= $myInstClass->translate('online documentation') . '</a><br>' .
         $myInstClass->translate('site to find out, how to fix them.') . "<br>\n";

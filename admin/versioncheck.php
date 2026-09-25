@@ -128,10 +128,10 @@ if ($chkShow === 1) {
         }
 
     } elseif (version_compare($strVersion, $setFileVersion, '>=')) {
-        $setFileInformation = "<span class='redmessage'>" . translate('You are using an old NagiosQL version. Please ' .
+        $setFileInformation = "<span class='redmessage'>" . translate('You are using an old Gohan ZQL version. Please ' .
                 'update to the latest stable version') . '</span>: ';
-        $setFileInformation .= '<a href="https://sourceforge.net/projects/nagiosql/files/" target="_blank">' .
-            'NagiosQL on Sourceforge</a>';
+        $setFileInformation .= '<a href="https://github.com/EstebanMonge/gohanzql" target="_blank">' .
+            translate('Gohan ZQL on GitHub') . '</a>';
     } elseif (version_compare($strVersion, $setFileVersion, '<=')) {
         $setFileInformation = "<span class='redmessage'>" . translate('You are using a newer development version ' .
                 'without official support') . '</span>';
