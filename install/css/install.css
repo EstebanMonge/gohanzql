@@ -370,3 +370,94 @@ select.required {
     color: #666;
     font-size: 0.95em;
 }
+
+/**********************************************/
+/* Small screens (phones and small tablets)
+/**********************************************/
+@media (max-width: 900px) {
+    body {
+        padding: 4px;
+    }
+
+    #page {
+        border-width: 3px;
+    }
+
+    #page_margins {
+        min-width: 0;
+    }
+
+    /* Header: logo, documentation link and language selection one below the other */
+    #header {
+        height: auto;
+        padding: 8px 5px;
+    }
+
+    #header-logo,
+    #documentation,
+    #langselector {
+        position: static;
+        margin: 4px 0;
+        text-align: center;
+    }
+
+    /* The steps are shown as a row above the form */
+    #installmenu {
+        width: auto;
+        float: none;
+    }
+
+    #installmenu_content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 5px;
+    }
+
+    #installmenu_content p {
+        margin: 2px;
+        transform: scale(0.8);
+        transform-origin: center top;
+    }
+
+    #installmain {
+        margin-left: 0;
+    }
+
+    #installmain_content,
+    #indexmain_content {
+        padding: 10px;
+    }
+
+    #install-center {
+        padding-left: 0;
+    }
+
+    /* Forms: label above the field */
+    #installmain table,
+    #installmain table > tbody,
+    #installmain table > tbody > tr,
+    #installmain table > tbody > tr > td {
+        display: block;
+        width: auto !important;
+    }
+
+    #installmain table > tbody > tr {
+        margin-bottom: 6px;
+    }
+
+    #installmain input[type=text],
+    #installmain input[type=password],
+    #installmain select {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+        height: auto;
+    }
+
+    #installmain fieldset {
+        min-width: 0;
+        box-sizing: border-box;
+    }
+}

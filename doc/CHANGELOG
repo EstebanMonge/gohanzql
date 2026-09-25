@@ -2,6 +2,7 @@ CHANGELOG 4.1.0 (in development)
 --------------------------------
 - Responsive web interface: the pages now adapt to phones and tablets (viewport setting, new config/responsive.css,
   a menu button for small screens, dialogs and forms that fit the screen). The layout on wide screens is unchanged
+- The installer can be used on small screens too and shows the Gohan ZQL logo
 
 CHANGELOG 4.0.0
 ---------------

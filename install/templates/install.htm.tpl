@@ -10,6 +10,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{PAGETITLE}</title>
     <link href="css/install.css" rel="stylesheet" type="text/css">
 </head>
@@ -18,7 +19,7 @@
     <div id="page">
         <div id="header">
             <div id="header-logo">
-                <a href="index.php"><img src="images/nagiosql.png" border="0" alt="Gohan ZQL Logo" title="Gohan ZQL Logo"></a>
+                <a href="index.php"><img src="images/gohanzql_logo.png" border="0" alt="Gohan ZQL Logo" title="Gohan ZQL Logo"></a>
             </div>
             <div id="documentation">
                 <a href="https://sourceforge.net/projects/nagiosql/faq.html"
