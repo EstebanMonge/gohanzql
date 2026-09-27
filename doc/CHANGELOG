@@ -6,6 +6,10 @@ CHANGELOG 4.1.0 (in development)
 - The donation button and the donation link on the support page now lead to the Gohan ZQL PayPal donation page
 - The support page, the installer and the version check no longer link to the NagiosQL project pages (SourceForge,
   GitLab, Transifex); the installer documentation links point to the doc directory of the Gohan ZQL repository
+- The small action icons (edit, delete, copy, search, help, ...) are now a consistent set based on Bootstrap Icons
+  (MIT, images/LICENSE-bootstrap-icons.txt) in neutral gray, replacing the old mismatched GIFs/PNGs. Filenames are
+  unchanged, so no template or code was touched. The installer's valid/invalid/warning icons keep their status
+  colours (green/red/orange)
 
 CHANGELOG 4.0.0
 ---------------
