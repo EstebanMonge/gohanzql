@@ -1,7 +1,7 @@
 CHANGELOG 4.1.0 (in development)
 --------------------------------
 - Responsive web interface: the pages now adapt to phones and tablets (viewport setting, new config/responsive.css,
-  a menu button for small screens, dialogs and forms that fit the screen). The layout on wide screens is unchanged
+  a menu button for small screens, dialogs and forms that fit the screen)
 - The installer can be used on small screens too and shows the Gohan ZQL logo
 - The donation button and the donation link on the support page now lead to the Gohan ZQL PayPal donation page
 - The support page, the installer and the version check no longer link to the NagiosQL project pages (SourceForge,
@@ -10,6 +10,8 @@ CHANGELOG 4.1.0 (in development)
   (MIT, images/LICENSE-bootstrap-icons.txt) in neutral gray, replacing the old mismatched GIFs/PNGs. Filenames are
   unchanged, so no template or code was touched. The installer's valid/invalid/warning icons keep their status
   colours (green/red/orange)
+- The page content now uses wide screens too: it was capped at a fixed 890px regardless of window size, it now grows
+  up to 1600px
 
 CHANGELOG 4.0.0
 ---------------

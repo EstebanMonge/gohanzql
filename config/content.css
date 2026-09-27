@@ -15,11 +15,13 @@
 #content_main {
     top: -3px;
     left: 0;
-    width: 890px;
+    min-width: 890px;
+    max-width: 1600px;
     margin: 0;
     padding: 0 0 0 10px;
     position: relative;
     font-size: 12px;
+    box-sizing: border-box;
 }
 
 /* Content title (list and single view) */
