@@ -316,6 +316,19 @@
         margin: 2px 1px;
     }
 
+    /* Bigger touch targets for the icons that actually do something (edit/delete/copy/write/download/info in list
+       rows, the dual-listbox movers, the reorder and calendar buttons, ...). Matched by [onclick] so this picks up
+       every clickable icon regardless of which template or table it sits in, while a purely decorative or
+       hover-only icon (most tip.gif help icons, which have no click handler) is left at its normal size. */
+    #content_main img[onclick] {
+        width: 28px;
+        height: 28px;
+        padding: 6px;
+        margin: 2px;
+        box-sizing: content-box;
+        vertical-align: middle;
+    }
+
     /************************/
     /**  Tabbed forms       */
     /************************/

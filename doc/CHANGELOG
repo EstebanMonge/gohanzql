@@ -12,6 +12,8 @@ CHANGELOG 4.1.0 (in development)
   colours (green/red/orange)
 - The page content now uses wide screens too: it was capped at a fixed 890px regardless of window size, it now grows
   up to 1600px
+- Bigger touch targets on phones and tablets: the clickable icons (edit, delete, copy, ...) grow from 18px to 28px
+  with real spacing between them, instead of being packed edge to edge. Desktop is unchanged
 
 CHANGELOG 4.0.0
 ---------------
